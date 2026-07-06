@@ -4,6 +4,22 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Episode — The CX Algorithm Podcast</title>
+<meta name="description" content="Listen to this episode of The CX Algorithm Podcast — conversations on data, AI, leadership and human insight with Dr Eslam Afifi." />
+<link rel="canonical" id="canonicalLink" href="https://www.thecxalgorithm.com/episode" />
+<meta name="theme-color" content="#0C1128" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="The CX Algorithm Podcast" />
+<meta property="og:title" content="Episode — The CX Algorithm Podcast" />
+<meta property="og:description" content="Conversations on data, AI, leadership and human insight with Dr Eslam Afifi." />
+<meta property="og:url" content="https://www.thecxalgorithm.com/episode" />
+<meta property="og:image" content="https://www.thecxalgorithm.com/assets/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Episode — The CX Algorithm Podcast" />
+<meta name="twitter:description" content="Conversations on data, AI, leadership and human insight with Dr Eslam Afifi." />
+<meta name="twitter:image" content="https://www.thecxalgorithm.com/assets/og-image.png" />
+<script defer src="/_vercel/insights/script.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Oswald:wght@500;600&display=swap" rel="stylesheet" />
@@ -347,6 +363,8 @@
   function render() {
     const n = epNum(ep, epIdx);
     document.title = (ep.title ? ep.title + ' — ' : '') + 'The CX Algorithm Podcast';
+    const canon = document.getElementById('canonicalLink');
+    if (canon) canon.href = 'https://www.thecxalgorithm.com/episode?ep=' + epIdx;
     const meta = ['EPISODE ' + n];
     if (ep.date) meta.push(esc(ep.date));
     if (ep.duration) meta.push(esc(ep.duration));

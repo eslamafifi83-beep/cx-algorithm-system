@@ -265,33 +265,47 @@
   .login-card .btn-gold { width: 100%; margin-top: 1.5rem; }
   #loginError { color: var(--danger); font-size: 0.82rem; margin-top: 0.9rem; min-height: 1.2em; }
 
+  /* ---- Mobile section picker (replaces the sidebar below 900px) ---- */
+  .tab-select-wrap { display: none; }
+  #tabSelect {
+    width: 100%;
+    padding: 0.9rem 3rem 0.9rem 1rem;
+    border-radius: 12px;
+    background: var(--panel) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath d='M3 6l5 5 5-5' fill='none' stroke='%23E9A33D' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 1rem center;
+    border: 1.5px solid rgba(233, 163, 61, 0.35);
+    color: var(--text);
+    font-family: "Sora", sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+  #tabSelect:focus { outline: 2px solid var(--gold); outline-offset: 1px; }
+
   @media (max-width: 900px) {
-    .layout { grid-template-columns: 1fr; gap: 1.25rem; }
-    nav.tabs {
+    .layout { grid-template-columns: 1fr; gap: 1rem; margin-top: 1rem; }
+    nav.tabs { display: none; }
+    .tab-select-wrap {
+      display: block;
       position: sticky;
-      top: 4.6rem;
+      top: 0;
       z-index: 9;
-      flex-direction: row;
-      overflow-x: auto;
-      gap: 0.4rem;
       background: var(--midnight);
-      padding: 0.5rem 0;
+      padding: 0.75rem 0;
       border-bottom: 1px solid var(--hairline);
     }
-    .tab-btn {
-      flex: none;
-      border-left: none;
-      border: 1.5px solid var(--hairline);
-      border-radius: 999px;
-      padding: 0.45rem 1rem;
-      font-size: 0.78rem;
-    }
-    .tab-btn.active { border-color: var(--gold); background: rgba(233, 163, 61, 0.1); }
+    header.bar { position: static; }
     .row { grid-template-columns: 1fr; }
     .co-row { grid-template-columns: 72px 1fr; }
-    .co-row input[type="file"] { grid-column: 2; }
+    .co-row input[type="file"] { grid-column: 2; max-width: 100%; }
     .co-row .btn-danger { grid-column: 2; justify-self: start; }
     .co-logo { width: 72px; }
+    .card { padding: 1rem; }
+    .ep-body { padding: 0 1rem 1rem; }
+    .art-row input[type="file"] { max-width: 100%; }
+    .savebar-inner { flex-direction: column-reverse; align-items: stretch; gap: 0.5rem; }
+    .savebar .btn-gold { width: 100%; padding: 0.9rem; }
+    #status { text-align: center; min-height: 1em; }
   }
 </style>
 </head>
@@ -333,6 +347,10 @@
 
 <main class="wrap">
   <div class="layout">
+
+    <div class="tab-select-wrap">
+      <select id="tabSelect" aria-label="Choose admin section"></select>
+    </div>
 
     <nav class="tabs" aria-label="Admin sections">
       <button class="tab-btn active" data-tab="hero" type="button">Hero</button>
@@ -496,9 +514,26 @@
   function showTab(name) {
     tabButtons.forEach(b => b.classList.toggle('active', b.dataset.tab === name));
     document.querySelectorAll('.panel').forEach(p => p.classList.toggle('active', p.id === 'panel-' + name));
+    const sel = $('tabSelect');
+    if (sel && sel.value !== name) sel.value = name;
     history.replaceState(null, '', '#' + name);
   }
   tabButtons.forEach(b => b.addEventListener('click', () => showTab(b.dataset.tab)));
+
+  // Mobile section picker: mirrors the sidebar (labels + live counts)
+  function buildTabSelect() {
+    const sel = $('tabSelect');
+    if (!sel) return;
+    const current = document.querySelector('.tab-btn.active')?.dataset.tab || 'hero';
+    sel.innerHTML = tabButtons.map(b => {
+      const label = b.childNodes[0].textContent.trim();
+      const count = b.querySelector('.count')?.textContent;
+      return `<option value="${b.dataset.tab}">${label}${count !== undefined ? ' (' + count + ')' : ''}</option>`;
+    }).join('');
+    sel.value = current;
+  }
+  buildTabSelect();
+  $('tabSelect').addEventListener('change', (e) => showTab(e.target.value));
   const initialTab = location.hash.slice(1);
   if (['hero', 'companies', 'episodes', 'blog', 'messages', 'host', 'about', 'links'].includes(initialTab)) showTab(initialTab);
 
@@ -506,6 +541,7 @@
     $('count-episodes').textContent = content ? content.episodes.length : 0;
     $('count-companies').textContent = content ? content.marquee.items.length : 0;
     $('count-articles').textContent = content ? content.blog.articles.length : 0;
+    buildTabSelect();
   }
 
   async function uploadImage(file) {
@@ -750,6 +786,7 @@
       const out = await res.json();
       if (!res.ok || !out.ok) throw new Error(out.error || 'Failed to load');
       $('count-messages').textContent = out.messages.length;
+      buildTabSelect();
       if (!out.messages.length) {
         box.innerHTML = '<p class="hint">No messages yet. Submissions from the contact page will appear here.</p>';
         return;

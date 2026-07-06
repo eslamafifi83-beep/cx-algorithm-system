@@ -205,6 +205,20 @@
   .ep-body { padding: 0 1.25rem 1.25rem; border-top: 1px solid var(--hairline); }
   .ep-actions { display: flex; justify-content: flex-end; margin-top: 1rem; }
 
+  /* ---- Spotify auto-fill box ---- */
+  .spotify-import {
+    margin: 1rem 0 1.25rem;
+    padding: 0.9rem 1rem 1rem;
+    border: 1px solid rgba(233, 163, 61, 0.3);
+    border-radius: 12px;
+    background: rgba(233, 163, 61, 0.06);
+  }
+  .spotify-import label { margin-top: 0; color: var(--gold-light); }
+  .spotify-import .art-row { margin-top: 0.6rem; gap: 0.6rem; }
+  .spotify-import input[type="url"] { flex: 1; min-width: 220px; }
+  .spotify-import .btn-small { white-space: nowrap; }
+  .spotify-import .btn-small:disabled { opacity: 0.6; cursor: default; }
+
   /* ---- Companies: compact rows ---- */
   .co-row {
     display: grid;
@@ -638,6 +652,14 @@
         <svg class="ep-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 6 L8 11 L13 6"/></svg>
       </summary>
       <div class="ep-body">
+        <div class="spotify-import">
+          <label>⚡ Auto-fill from Spotify</label>
+          <div class="art-row">
+            <input type="url" data-spotify placeholder="https://open.spotify.com/episode/…" />
+            <button class="btn-gold btn-small" type="button" data-spotify-fetch>Fetch details</button>
+          </div>
+          <p class="file-note" data-spotify-note>Paste the Spotify link for this episode, then Fetch to fill in the title, cover, description, date &amp; duration below. Add the guest name yourself.</p>
+        </div>
         <label>Label</label>
         <input type="text" data-f="eyebrow" value="" />
         <label>Title</label>
@@ -750,6 +772,49 @@
         det.querySelector('[data-note]').textContent = p;
         status('Image uploaded — remember to Save & publish.', 'ok');
       } catch (err) { status('Upload failed: ' + err.message, 'err'); }
+    });
+
+    // ---- Auto-fill from Spotify ----
+    const spInput = det.querySelector('[data-spotify]');
+    const spBtn = det.querySelector('[data-spotify-fetch]');
+    const spNote = det.querySelector('[data-spotify-note]');
+    if (ep.audio && /(open\.spotify\.com\/[^ ]*episode|spotify:episode)/.test(ep.audio)) spInput.value = ep.audio;
+    function fillField(f, val) {
+      if (!val) return;
+      content.episodes[index][f] = val;
+      const el = det.querySelector(`[data-f="${f}"]`);
+      if (el) el.value = val;
+    }
+    spBtn.addEventListener('click', async () => {
+      const url = spInput.value.trim();
+      if (!url) { spNote.textContent = 'Paste a Spotify episode link first.'; spInput.focus(); return; }
+      const label = spBtn.textContent;
+      spBtn.disabled = true; spBtn.textContent = 'Fetching…';
+      spNote.textContent = 'Reading from Spotify…';
+      try {
+        const res = await fetch(location.origin + '/api/spotify?url=' + encodeURIComponent(url), { headers: adminHeaders() });
+        const out = await res.json();
+        if (!res.ok || !out.ok) throw new Error(out.error || 'Fetch failed');
+        fillField('title', out.title);
+        fillField('description', out.description);
+        fillField('about', out.about);
+        fillField('date', out.date);
+        fillField('duration', out.duration);
+        fillField('audio', out.audio);
+        if (out.image) {
+          content.episodes[index].image = out.image;
+          thumb.src = out.image; thumb.style.visibility = 'visible';
+          det.querySelector('[data-note]').textContent = out.image;
+        }
+        refreshSummary();
+        spNote.textContent = out.note || 'Filled in from Spotify — review the fields, add the guest name, then Save & publish.';
+        status('Episode details pulled from Spotify — remember to Save & publish.', 'ok');
+      } catch (err) {
+        spNote.textContent = 'Could not fetch: ' + err.message;
+        status('Spotify fetch failed: ' + err.message, 'err');
+      } finally {
+        spBtn.disabled = false; spBtn.textContent = label;
+      }
     });
     return det;
   }

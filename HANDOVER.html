@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Handover — The CX Algorithm Website</title>
+<style>
+  :root {
+    --navy: #0C1128; --gold: #C9862A; --gold-light: #E9A33D; --blue: #3E6DB5;
+    --ink: #1c2033; --muted: #5b6478; --line: #e3e6ef; --paper: #fff; --wash: #f6f7fb;
+    --warn-bg: #fdf1e3; --warn-edge: #d98b2b; --danger-bg: #fdeeee; --danger-edge: #b03a3a;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: var(--ink); line-height: 1.6; background: var(--wash); }
+  .sheet { max-width: 860px; margin: 0 auto; background: var(--paper); padding: 3rem clamp(1.25rem, 5vw, 3.5rem); }
+  header.top { background: var(--navy); color: #fff; border-radius: 14px; padding: 1.75rem; margin-bottom: 2rem; }
+  header.top .kick { font-size: 0.72rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold-light); font-weight: 700; margin: 0 0 0.5rem; }
+  header.top h1 { margin: 0; font-size: 1.6rem; line-height: 1.2; }
+  header.top p { margin: 0.6rem 0 0; color: #b9c0d8; font-size: 0.95rem; }
+  h2 { font-size: 1.25rem; margin: 2.4rem 0 0.75rem; color: var(--navy); padding-bottom: 0.4rem; border-bottom: 2px solid var(--gold-light); }
+  h3 { font-size: 1rem; margin: 1.4rem 0 0.4rem; color: var(--navy); }
+  p { margin: 0.6rem 0; }
+  em { color: var(--muted); }
+  ul, ol { padding-left: 1.3rem; } li { margin: 0.35rem 0; }
+  code { background: #eef0f7; padding: 0.1rem 0.4rem; border-radius: 5px; font-family: Consolas, monospace; font-size: 0.85em; }
+  table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+  th, td { text-align: left; padding: 0.55rem 0.65rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { background: var(--navy); color: #fff; font-weight: 600; white-space: nowrap; }
+  tr:nth-child(even) td { background: var(--wash); }
+  .callout { border-left: 4px solid var(--gold-light); background: #fdf7ee; border-radius: 0 8px 8px 0; padding: 0.8rem 1rem; margin: 1.1rem 0; font-size: 0.92rem; }
+  .callout.warn { border-left-color: var(--warn-edge); background: var(--warn-bg); }
+  .callout.danger { border-left-color: var(--danger-edge); background: var(--danger-bg); }
+  .checklist { list-style: none; padding-left: 0; }
+  .checklist li::before { content: "☐  "; color: var(--gold); font-weight: 700; }
+  hr { border: none; border-top: 1px solid var(--line); margin: 2rem 0; }
+  @media print { body { background: #fff; } .sheet { max-width: none; padding: 0; } .callout, tr { break-inside: avoid; } h2 { break-after: avoid; } }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+<header class="top">
+  <p class="kick">The CX Algorithm Podcast</p>
+  <h1>Website Handover Document</h1>
+  <p>Everything you (or anyone helping you) needs to know to run, edit, and redesign thecxalgorithm.com. Written July 2026. Keep this file safe — and keep your passwords in a separate, private notes file, never in here.</p>
+</header>
+
+<h2>1. Your accounts — the five websites that run everything</h2>
+<table>
+  <tr><th>Service</th><th>Web address</th><th>What it does</th><th>What's in it</th></tr>
+  <tr><td><strong>Vercel</strong></td><td>vercel.com</td><td><strong>Hosting</strong> — shows your site to the world, runs the behind-the-scenes functions</td><td>Team <code>THE_CX_ALGORITHIM</code> → project <code>cx-algorithm-system</code>. Environment Variables (your 5 secret settings), Domains, Deployments (history of every version)</td></tr>
+  <tr><td><strong>Supabase</strong></td><td>supabase.com</td><td><strong>Data</strong> — permanently stores your content, uploads, and contact messages</td><td>Project <code>cx-algorithm</code> (address: <code>fuuuhcvwlrfenjfpcymy.supabase.co</code>). Tables: <code>site_content</code>, <code>messages</code>. Storage buckets: <code>uploads</code>, <code>media</code></td></tr>
+  <tr><td><strong>GitHub</strong></td><td>github.com</td><td><strong>Code</strong> — the master copy of the website's code</td><td>Repository <code>eslamafifi83-beep/cx-algorithm-system</code> (private). Every change pushed here goes live automatically</td></tr>
+  <tr><td><strong>Cloudflare</strong></td><td>dash.cloudflare.com</td><td><strong>Domain</strong> — owns thecxalgorithm.com, points it at Vercel, (later) email forwarding</td><td>Domain registration (⚠️ keep Auto-Renew ON — ~$11/yr), DNS records, Email Routing</td></tr>
+  <tr><td><strong>The site itself</strong></td><td>thecxalgorithm.com<br /><em>(also cx-algorithm-system.vercel.app)</em></td><td>Your live website</td><td>Admin panel at <code>/admin</code> — sign in with the username &amp; password you set in Vercel</td></tr>
+</table>
+<p><em>All accounts use the same email and sign in "with GitHub" where possible. Passwords live in your own notes/password manager — not in this document.</em></p>
+
+<h2>2. Where your secret keys &amp; passwords live</h2>
+<table>
+  <tr><th>Secret</th><th>Where it lives</th><th>Notes</th></tr>
+  <tr><td>Admin username &amp; password (for /admin)</td><td>Vercel → Project → Settings → <strong>Environment Variables</strong> (<code>ADMIN_USER</code>, <code>ADMIN_PASSWORD</code>)</td><td>Forgot it? Change the value in Vercel, then Deployments → newest → ⋯ → Redeploy. New password works immediately.</td></tr>
+  <tr><td>Supabase secret key (<code>sb_secret_…</code>)</td><td>Vercel Environment Variables (<code>SUPABASE_SECRET_KEY</code>) + your private notes</td><td>The master key to your data. If it ever leaks: Supabase → Settings → API Keys → revoke → make new → update in Vercel → Redeploy.</td></tr>
+  <tr><td>Supabase database password</td><td>Your private notes</td><td>Rarely needed. Can be reset in Supabase settings.</td></tr>
+  <tr><td>Publishable key (<code>sb_publishable_…</code>)</td><td>Vercel env var; it's public-safe by design</td><td>Not a secret — no action ever needed.</td></tr>
+</table>
+<div class="callout danger"><strong>Golden rule:</strong> secrets go into Vercel's Environment Variables screen or your private notes — never into the code, never into a chat, never into email. (We learned this one live 🙂 — and rotated the key properly.)</div>
+
+<h2>3. Changing CONTENT (text, episodes, photos) — no code needed</h2>
+<p>Go to <strong>thecxalgorithm.com/admin</strong>, sign in, edit, press <strong>Save &amp; publish</strong>. Live within seconds. The tabs:</p>
+<table>
+  <tr><th>Admin tab</th><th>Controls</th></tr>
+  <tr><td>Hero</td><td>Homepage headline (use *asterisks* for gold words), tagline, intro paragraph</td></tr>
+  <tr><td>Companies</td><td>The scrolling "Featuring guests from" logos — add companies, upload logos</td></tr>
+  <tr><td>Episodes</td><td>Everything per episode: title, guest, dates, thumbnail, <strong>audio/video (Spotify link or file upload)</strong>, show notes, takeaways, resources</td></tr>
+  <tr><td>Blog</td><td>Your LinkedIn article cards + the newsletter button link</td></tr>
+  <tr><td>Messages</td><td>Contact-form inbox — read &amp; delete enquiries</td></tr>
+  <tr><td>Host</td><td>Your name, bio, photo</td></tr>
+  <tr><td>About page</td><td>Stats numbers, conference photo gallery, "As seen at" venue names</td></tr>
+  <tr><td>Links</td><td>Apple/Spotify/Amazon URLs, socials, contact email</td></tr>
+</table>
+<div class="callout">🎬 <strong>Video tip:</strong> for video episodes, paste a Spotify link rather than uploading huge files — free storage is 1 GB (fine for images + many audio episodes, not for video).</div>
+
+<h2>4. Changing DESIGN (UX/UI) — the code route</h2>
+<p>Design lives in the code. The workflow is always the same three steps:</p>
+<ol>
+  <li><strong>Edit</strong> the files on your computer: <code>C:\Users\eslam\MOCKUPS\cx-algorithm-system</code> — easiest way: open Claude Code in that folder and describe the change ("make the hero headline bigger", "change the gold to a warmer tone"). Claude has memory notes about this project's whole history.</li>
+  <li><strong>Preview locally</strong> (optional but smart): run <code>node server.js</code> in that folder → open <code>http://localhost:4173</code>. Test before the world sees it.</li>
+  <li><strong>Publish:</strong> commit &amp; push to GitHub (Claude can do this). Vercel auto-deploys in ~1 minute. Nothing else to click.</li>
+</ol>
+
+<h3>Which file is which page</h3>
+<table>
+  <tr><th>File</th><th>What it is</th></tr>
+  <tr><td><code>index.html</code></td><td>Homepage (hero + soundscape animation, logo marquee, topics, episodes, platforms footer)</td></tr>
+  <tr><td><code>episodes.html</code> / <code>episode.html</code></td><td>Episode list / single-episode page with the Video⇄Audio player</td></tr>
+  <tr><td><code>about.html</code></td><td>The Host page (portrait ring, stats, story, six lenses, photo gallery)</td></tr>
+  <tr><td><code>blog.html</code> / <code>contact.html</code></td><td>Articles page / Contact page with the adaptive form</td></tr>
+  <tr><td><code>admin.html</code></td><td>The admin panel itself</td></tr>
+  <tr><td><code>assets/loader.js</code></td><td>The animated logo <strong>loading screen</strong> (shared by every page)</td></tr>
+  <tr><td><code>assets/</code></td><td>Logo, host portrait, company logos committed with the site</td></tr>
+  <tr><td><code>api/</code> + <code>lib/</code></td><td>The backend functions (content, contact, uploads, messages) — the "engine"</td></tr>
+  <tr><td><code>content.json</code></td><td>Starter content only — the live site reads from Supabase, not this file</td></tr>
+  <tr><td><code>server.js</code></td><td>Local preview server ONLY — never deployed</td></tr>
+</table>
+
+<h3>The design system (for consistent changes)</h3>
+<ul>
+  <li><strong>Fonts:</strong> Poppins everywhere (site-wide decision, July 2026). Allura for the About-page signature; Oswald on the loading screen.</li>
+  <li><strong>Colors:</strong> defined as variables at the top of each page's <code>&lt;style&gt;</code> block — <code>--gold: #E9A33D</code>, <code>--midnight: #0C1128</code>, <code>--blue: #6FA8DC</code>, etc. ⚠️ Each page carries its own copy, so a palette change must be applied to all pages (ask Claude — this was done twice already and takes minutes).</li>
+  <li><strong>Design source documents:</strong> the original designer handoffs live in <code>G:\My Drive\Podcast\Website\</code> (homepage, episodes, about, blog, contact, loading screen, hero animation). Any redesign should start from those.</li>
+  <li><strong>Old homepage backup:</strong> <code>index.backup-2026-07-05.html</code> — the pre-redesign version, kept for reference.</li>
+</ul>
+
+<h2>5. Things that will bite if forgotten ⚠️</h2>
+<ul>
+  <li><strong>Git author identity:</strong> code pushed to GitHub must be authored as <code>298448529+eslamafifi83-beep@users.noreply.github.com</code> or Vercel <strong>blocks the deployment</strong> ("commit author does not have access"). This is already configured inside the project folder — but if the project is ever copied to a new computer, set it again first thing.</li>
+  <li><strong>Don't delete <code>vercel.json</code>:</strong> it pins the project type ("Other") — without it Vercel hunts for a server file and the build fails with "No entrypoint found."</li>
+  <li><strong>Never commit <code>.env</code>:</strong> it's git-ignored on purpose. The one on your machine currently holds a dead (rotated) key — harmless.</li>
+  <li><strong>Cloudflare's orange cloud:</strong> DNS records pointing at Vercel must stay <strong>gray ("DNS only")</strong>. Turning them orange breaks the site.</li>
+  <li><strong>Domain renewal:</strong> thecxalgorithm.com renews yearly (~$11) — keep Auto-Renew ON and your card valid in Cloudflare, or the site (and email) go dark.</li>
+  <li><strong>Vercel free plan</strong> is for non-commercial use — fine for the podcast; if you start selling sponsorships through the site, upgrade to Pro (~$20/mo).</li>
+</ul>
+
+<h2>6. If something breaks — first aid</h2>
+<table>
+  <tr><th>Symptom</th><th>Do this</th></tr>
+  <tr><td>Site is down / broken after a change</td><td>Vercel → Deployments → find the last <strong>working</strong> deployment → ⋯ menu → <strong>"Promote to Production"</strong> (or "Instant Rollback"). Instantly restores the previous version.</td></tr>
+  <tr><td>Forgot admin password</td><td>Vercel → Settings → Environment Variables → edit <code>ADMIN_PASSWORD</code> → save → Deployments → Redeploy.</td></tr>
+  <tr><td>Edits in admin don't appear on the site</td><td>Wait ~30 seconds and hard-refresh (Ctrl+Shift+R) — pages briefly cache content.</td></tr>
+  <tr><td>Deployment "Blocked — commit author…"</td><td>The git identity issue above. Re-set the author email in the project folder.</td></tr>
+  <tr><td>Anything else</td><td>Open Claude Code in the project folder and describe/screenshot the problem — the project history is in its memory.</td></tr>
+</table>
+
+<h2>7. Still on the to-do list (as of handover)</h2>
+<ul class="checklist">
+  <li>Finish domain connection: add the two DNS records in Cloudflare (A <code>@</code> → <code>76.76.21.21</code>, CNAME <code>www</code> → <code>cname.vercel-dns.com</code>, both gray-cloud) so thecxalgorithm.com goes green in Vercel.</li>
+  <li>Set up free email forwarding (Cloudflare → Email → Email Routing → hello@thecxalgorithm.com → your Gmail).</li>
+  <li>Fill real content via /admin: episode audio/dates/guests, platform links (Apple/Spotify/Amazon), LinkedIn newsletter URL, gallery photos, real "As seen at" venue names (current ones are placeholders).</li>
+  <li>Upload official logos for Openbank and World Journeys (currently shown as text).</li>
+  <li>When the YouTube channel launches: add the URL in admin → Links, and ask Claude to switch YouTube from "Available Soon" to a live link.</li>
+  <li>When a trailer exists: point the hero's "Watch Trailer" button at it (currently goes to the episodes section).</li>
+</ul>
+
+<hr />
+<p style="color:var(--muted);font-size:0.85rem;">The CX Algorithm Podcast · Hosted by Dr Eslam Afifi · Handover prepared with Claude Code, July 2026. Companion documents in the same folder: LAUNCH-GUIDE.html (how it was deployed) and DEPLOY.md (hosting options considered).</p>
+
+</div>
+</body>
+</html>

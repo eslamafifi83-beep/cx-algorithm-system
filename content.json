@@ -1,9 +1,35 @@
 {
+  "nav": [
+    { "id": "home", "label": "Home" },
+    { "id": "about", "label": "The Host" },
+    { "id": "episodes", "label": "Episodes" },
+    { "id": "guests", "label": "Guests" },
+    { "id": "blog", "label": "Articles" },
+    { "id": "contact", "label": "Contact" }
+  ],
   "hero": {
     "headlineLine1": "Where *Creativity*",
     "headlineLine2": "Meets *Innovation*",
     "tagline": "A Weekly Podcast",
     "lede": "Explore how the world's leading brands use data, technology, and human insight to create experiences that inspire loyalty, trust, and growth."
+  },
+  "guests": {
+    "kicker": "The people behind the ideas",
+    "heading": "Voices shaping the future of experience",
+    "intro": "Every episode brings a leader with something real to say. Meet the operators, founders and thinkers who've joined me at the mic.",
+    "stats": [
+      { "value": "40+", "label": "Guests" },
+      { "value": "18", "label": "Countries" },
+      { "value": "12", "label": "Industries" }
+    ],
+    "items": [
+      { "name": "Dr Amina Rahal", "role": "Chief AI Officer, Meridian Bank", "category": "AI & Data", "bio": "Fifteen years turning customer data into trust at scale — and where most banks get it wrong.", "episodeLabel": "Episode 07", "episodeUrl": "", "linkedInUrl": "", "photo": "", "featured": true },
+      { "name": "Marcus Chen", "role": "VP Customer Experience, Novaretail", "category": "AI & Data", "bio": "Rebuilt a 2,000-store loyalty program around real-time personalization.", "episodeLabel": "Episode 12", "episodeUrl": "", "linkedInUrl": "", "photo": "", "featured": false },
+      { "name": "Sofia Marchetti", "role": "Founder & CEO, Bloomkit", "category": "Founders", "bio": "Bootstrapped a customer-onboarding platform to 40M users in four years.", "episodeLabel": "Episode 11", "episodeUrl": "", "linkedInUrl": "", "photo": "", "featured": false },
+      { "name": "David Okonkwo", "role": "Chief Growth Officer, Lumen", "category": "Growth", "bio": "Turned churn into the company's sharpest growth signal.", "episodeLabel": "Episode 10", "episodeUrl": "", "linkedInUrl": "", "photo": "", "featured": false },
+      { "name": "Priya Nair", "role": "Head of Service Design, Aster Health", "category": "Leadership", "bio": "Redesigned patient journeys across 60 clinics with a service-design lens.", "episodeLabel": "Episode 09", "episodeUrl": "", "linkedInUrl": "", "photo": "", "featured": false },
+      { "name": "Thomas Berg", "role": "SVP Digital, Kestrel Airlines", "category": "AI & Data", "bio": "Cut support contacts 38% with a predictive help engine.", "episodeLabel": "Episode 08", "episodeUrl": "", "linkedInUrl": "", "photo": "", "featured": false }
+    ]
   },
   "marquee": {
     "label": "Featuring guests from",

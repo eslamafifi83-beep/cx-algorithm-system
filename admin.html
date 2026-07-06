@@ -117,13 +117,13 @@
     color: var(--muted);
     margin: 1rem 0 0.35rem;
   }
-  input[type="text"], input[type="url"], input[type="email"], textarea {
+  input[type="text"], input[type="url"], input[type="email"], input[type="password"], input[type="search"], input[type="number"], select, textarea {
     width: 100%;
     background: var(--panel);
     border: 1px solid var(--hairline);
     border-radius: 10px;
     color: var(--text);
-    font-family: "Manrope", sans-serif;
+    font-family: "Sora", "Manrope", system-ui, sans-serif;
     font-size: 0.95rem;
     padding: 0.7rem 0.9rem;
   }
@@ -356,11 +356,13 @@
       <button class="tab-btn active" data-tab="hero" type="button">Hero</button>
       <button class="tab-btn" data-tab="companies" type="button">Companies <span class="count" id="count-companies">0</span></button>
       <button class="tab-btn" data-tab="episodes" type="button">Episodes <span class="count" id="count-episodes">0</span></button>
+      <button class="tab-btn" data-tab="guests" type="button">Guests <span class="count" id="count-guests">0</span></button>
       <button class="tab-btn" data-tab="blog" type="button">Blog <span class="count" id="count-articles">0</span></button>
       <button class="tab-btn" data-tab="messages" type="button">Messages <span class="count" id="count-messages">0</span></button>
       <button class="tab-btn" data-tab="host" type="button">Host</button>
       <button class="tab-btn" data-tab="about" type="button">About page</button>
       <button class="tab-btn" data-tab="links" type="button">Links</button>
+      <button class="tab-btn" data-tab="navigation" type="button">Navigation</button>
     </nav>
 
     <div class="panels">
@@ -394,6 +396,22 @@
         <p class="panel-desc">Click an episode to expand and edit it. Each episode gets its own page with a Video/Audio player: paste a Spotify link or upload the media file directly. The listing page and homepage cards update automatically.</p>
         <div id="episodes"></div>
         <button class="btn-ghost add-row" type="button" id="addEpisode">+ Add episode</button>
+      </section>
+
+      <section class="panel" id="panel-guests">
+        <h2 class="panel-title">Guests</h2>
+        <p class="panel-desc">The Guests page. Edit the intro and the three headline stats, then add a card per guest (photo, name, role, category, one-line background, episode link, LinkedIn). Mark one guest as featured for the big spotlight. Categories drive the filter buttons automatically.</p>
+        <label for="g-kicker">Kicker (small label above the heading)</label>
+        <input type="text" id="g-kicker" />
+        <label for="g-heading">Heading</label>
+        <input type="text" id="g-heading" />
+        <label for="g-intro">Intro paragraph</label>
+        <textarea id="g-intro"></textarea>
+        <label style="margin-top:1.5rem">Stats (three figures shown top-right)</label>
+        <div id="guestStats"></div>
+        <label style="margin-top:1.5rem">Guests</label>
+        <div id="guests"></div>
+        <button class="btn-ghost add-row" type="button" id="addGuest">+ Add guest</button>
       </section>
 
       <section class="panel" id="panel-blog">
@@ -452,6 +470,12 @@
           <div><label for="l-instagram">Instagram URL</label><input type="url" id="l-instagram" /></div>
           <div><label for="l-email">Contact email</label><input type="email" id="l-email" /></div>
         </div>
+      </section>
+
+      <section class="panel" id="panel-navigation">
+        <h2 class="panel-title">Navigation (menu)</h2>
+        <p class="panel-desc">Rename the menu items, or reorder them with the arrows. The page each item links to is fixed, so you can rename freely without ever breaking a link. Changes apply to the menu on every page.</p>
+        <div id="navList"></div>
       </section>
 
     </div>
@@ -535,12 +559,13 @@
   buildTabSelect();
   $('tabSelect').addEventListener('change', (e) => showTab(e.target.value));
   const initialTab = location.hash.slice(1);
-  if (['hero', 'companies', 'episodes', 'blog', 'messages', 'host', 'about', 'links'].includes(initialTab)) showTab(initialTab);
+  if (['hero', 'companies', 'episodes', 'guests', 'blog', 'messages', 'host', 'about', 'links', 'navigation'].includes(initialTab)) showTab(initialTab);
 
   function updateCounts() {
     $('count-episodes').textContent = content ? content.episodes.length : 0;
     $('count-companies').textContent = content ? content.marquee.items.length : 0;
     $('count-articles').textContent = content ? content.blog.articles.length : 0;
+    $('count-guests').textContent = content ? (content.guests.items || []).length : 0;
     buildTabSelect();
   }
 
@@ -992,6 +1017,166 @@
     });
   }
 
+  /* ---- Guests ---- */
+  function renderGuestStats() {
+    const box = $('guestStats');
+    box.innerHTML = '';
+    content.guests.stats.forEach((s, i) => {
+      const div = document.createElement('div');
+      div.className = 'co-row';
+      div.style.gridTemplateColumns = '120px 1fr';
+      div.innerHTML = `<input type="text" data-gsf="value" placeholder="40+" /><input type="text" data-gsf="label" placeholder="Guests" />`;
+      div.querySelector('[data-gsf="value"]').value = s.value || '';
+      div.querySelector('[data-gsf="label"]').value = s.label || '';
+      div.querySelector('[data-gsf="value"]').addEventListener('input', e => { content.guests.stats[i].value = e.target.value; });
+      div.querySelector('[data-gsf="label"]').addEventListener('input', e => { content.guests.stats[i].label = e.target.value; });
+      box.appendChild(div);
+    });
+  }
+
+  function guestCard(g, index, startOpen) {
+    const det = document.createElement('details');
+    det.className = 'ep';
+    if (startOpen) det.open = true;
+    det.innerHTML = `
+      <summary>
+        <span class="ep-sum-num"></span>
+        <span class="ep-sum-title"></span>
+        <svg class="ep-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 6 L8 11 L13 6"/></svg>
+      </summary>
+      <div class="ep-body">
+        <label>Name</label>
+        <input type="text" data-f="name" />
+        <label>Role &amp; company</label>
+        <input type="text" data-f="role" placeholder="Chief AI Officer, Meridian Bank" />
+        <div class="row">
+          <div><label>Category (drives the filter buttons)</label><input type="text" data-f="category" placeholder="AI & Data" /></div>
+          <div><label>Episode label</label><input type="text" data-f="episodeLabel" placeholder="Episode 07" /></div>
+        </div>
+        <label>One-line background</label>
+        <textarea data-f="bio"></textarea>
+        <div class="row">
+          <div><label>Episode link (optional)</label><input type="url" data-f="episodeUrl" placeholder="episode.html?ep=6 or a URL" /></div>
+          <div><label>LinkedIn URL</label><input type="url" data-f="linkedInUrl" placeholder="https://www.linkedin.com/in/…" /></div>
+        </div>
+        <label>Headshot photo</label>
+        <div class="art-row">
+          <img class="thumb" data-thumb src="" alt="" style="width:82px;height:82px;border-radius:50%;object-fit:cover;" />
+          <div>
+            <input type="file" data-file accept="image/png,image/jpeg,image/webp" />
+            <p class="file-note" data-note>No photo — a coloured initials badge is shown instead.</p>
+          </div>
+        </div>
+        <div class="art-row" style="margin-top:0.75rem">
+          <label style="margin:0; display:flex; align-items:center; gap:0.6rem; cursor:pointer; text-transform:none; letter-spacing:0;">
+            <input type="checkbox" data-f-featured style="width:18px;height:18px;accent-color:var(--gold);" />
+            Featured guest (the big spotlight at the top of the page)
+          </label>
+        </div>
+        <div class="ep-actions">
+          <button class="btn-danger btn-small" type="button" data-del>Remove guest</button>
+        </div>
+      </div>`;
+
+    const sumNum = det.querySelector('.ep-sum-num');
+    const sumTitle = det.querySelector('.ep-sum-title');
+    function refreshSummary() {
+      sumNum.textContent = g.featured ? '★ FEATURED' : (g.category || 'GUEST').toUpperCase();
+      sumTitle.textContent = g.name || 'Unnamed guest';
+      sumTitle.classList.toggle('empty', !g.name);
+    }
+    refreshSummary();
+
+    ['name', 'role', 'category', 'episodeLabel', 'bio', 'episodeUrl', 'linkedInUrl'].forEach(f => {
+      const el = det.querySelector(`[data-f="${f}"]`);
+      el.value = g[f] || '';
+      el.addEventListener('input', (e) => { content.guests.items[index][f] = e.target.value; refreshSummary(); });
+    });
+
+    const chk = det.querySelector('[data-f-featured]');
+    chk.checked = !!g.featured;
+    chk.addEventListener('change', () => {
+      if (chk.checked) content.guests.items.forEach((x, i) => { x.featured = (i === index); });
+      else content.guests.items[index].featured = false;
+      renderGuestsList(index);
+    });
+
+    const thumb = det.querySelector('[data-thumb]');
+    if (g.photo) thumb.src = g.photo; else thumb.style.visibility = 'hidden';
+    det.querySelector('[data-file]').addEventListener('change', async (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      try {
+        status('Uploading photo…');
+        const p = await uploadImage(file);
+        content.guests.items[index].photo = p;
+        thumb.src = p; thumb.style.visibility = 'visible';
+        det.querySelector('[data-note]').textContent = 'Uploaded.';
+        status('Photo uploaded — remember to Save & publish.', 'ok');
+      } catch (err) { status('Upload failed: ' + err.message, 'err'); }
+    });
+
+    det.querySelector('[data-del]').addEventListener('click', () => {
+      content.guests.items.splice(index, 1);
+      renderGuestsList();
+      updateCounts();
+    });
+    return det;
+  }
+
+  function renderGuestsList(openIndex) {
+    const box = $('guests');
+    box.innerHTML = '';
+    content.guests.items.forEach((g, i) => box.appendChild(guestCard(g, i, i === openIndex)));
+  }
+
+  const GUEST_SAMPLES = [
+    { name: 'Dr Amina Rahal', role: 'Chief AI Officer, Meridian Bank', category: 'AI & Data', bio: 'Fifteen years turning customer data into trust at scale — and where most banks get it wrong.', episodeLabel: 'Episode 07', episodeUrl: '', linkedInUrl: '', photo: '', featured: true },
+    { name: 'Marcus Chen', role: 'VP Customer Experience, Novaretail', category: 'AI & Data', bio: 'Rebuilt a 2,000-store loyalty program around real-time personalization.', episodeLabel: 'Episode 12', episodeUrl: '', linkedInUrl: '', photo: '', featured: false },
+    { name: 'Sofia Marchetti', role: 'Founder & CEO, Bloomkit', category: 'Founders', bio: 'Bootstrapped a customer-onboarding platform to 40M users in four years.', episodeLabel: 'Episode 11', episodeUrl: '', linkedInUrl: '', photo: '', featured: false },
+    { name: 'David Okonkwo', role: 'Chief Growth Officer, Lumen', category: 'Growth', bio: "Turned churn into the company's sharpest growth signal.", episodeLabel: 'Episode 10', episodeUrl: '', linkedInUrl: '', photo: '', featured: false },
+    { name: 'Priya Nair', role: 'Head of Service Design, Aster Health', category: 'Leadership', bio: 'Redesigned patient journeys across 60 clinics with a service-design lens.', episodeLabel: 'Episode 09', episodeUrl: '', linkedInUrl: '', photo: '', featured: false },
+    { name: 'Thomas Berg', role: 'SVP Digital, Kestrel Airlines', category: 'AI & Data', bio: 'Cut support contacts 38% with a predictive help engine.', episodeLabel: 'Episode 08', episodeUrl: '', linkedInUrl: '', photo: '', featured: false }
+  ];
+
+  /* ---- Navigation (rename + reorder pages) ---- */
+  const NAV_DEFAULT = [
+    { id: 'home', label: 'Home' }, { id: 'about', label: 'The Host' }, { id: 'episodes', label: 'Episodes' },
+    { id: 'guests', label: 'Guests' }, { id: 'blog', label: 'Articles' }, { id: 'contact', label: 'Contact' }
+  ];
+  const NAV_FILE = { home: 'index.html', about: 'about.html', episodes: 'episodes.html', guests: 'guests.html', blog: 'blog.html', contact: 'contact.html' };
+  function reconcileNav(saved) {
+    const def = {}; NAV_DEFAULT.forEach(d => def[d.id] = d.label);
+    const out = [], seen = {};
+    (saved || []).forEach(n => { if (n && NAV_FILE[n.id] && !seen[n.id]) { out.push({ id: n.id, label: n.label || def[n.id] }); seen[n.id] = 1; } });
+    NAV_DEFAULT.forEach(d => { if (!seen[d.id]) out.push({ id: d.id, label: d.label }); });
+    return out;
+  }
+  function renderNav() {
+    const box = $('navList');
+    box.innerHTML = '';
+    content.nav.forEach((n, i) => {
+      const div = document.createElement('div');
+      div.className = 'co-row';
+      div.style.gridTemplateColumns = 'auto auto 1fr auto';
+      div.innerHTML = `
+        <button class="btn-ghost btn-small" type="button" data-up ${i === 0 ? 'disabled style="opacity:.3"' : ''}>&uarr;</button>
+        <button class="btn-ghost btn-small" type="button" data-down ${i === content.nav.length - 1 ? 'disabled style="opacity:.3"' : ''}>&darr;</button>
+        <input type="text" data-navlabel />
+        <span class="file-note" style="white-space:nowrap; align-self:center;">&rarr; ${NAV_FILE[n.id]}</span>`;
+      const inp = div.querySelector('[data-navlabel]');
+      inp.value = n.label || '';
+      inp.addEventListener('input', (e) => { content.nav[i].label = e.target.value; });
+      div.querySelector('[data-up]').addEventListener('click', () => {
+        if (i > 0) { const t = content.nav[i - 1]; content.nav[i - 1] = content.nav[i]; content.nav[i] = t; renderNav(); }
+      });
+      div.querySelector('[data-down]').addEventListener('click', () => {
+        if (i < content.nav.length - 1) { const t = content.nav[i + 1]; content.nav[i + 1] = content.nav[i]; content.nav[i] = t; renderNav(); }
+      });
+      box.appendChild(div);
+    });
+  }
+
   /* ---- Form fill / collect ---- */
   function fillForm() {
     $('h-line1').value = content.hero.headlineLine1 || '';
@@ -1018,6 +1203,12 @@
     $('l-x').value = content.links.x || '';
     $('l-instagram').value = content.links.instagram || '';
     $('l-email').value = content.links.email || '';
+    $('g-kicker').value = content.guests.kicker || '';
+    $('g-heading').value = content.guests.heading || '';
+    $('g-intro').value = content.guests.intro || '';
+    renderGuestStats();
+    renderGuestsList();
+    renderNav();
     updateCounts();
   }
 
@@ -1034,6 +1225,11 @@
     content.about.venues = $('a-venues').value.split('\n').map(s => s.trim()).filter(Boolean);
     content.blog.newsletterUrl = $('b-newsletter').value;
     content.blog.articles = content.blog.articles.filter(a => (a.title || '').trim() || (a.linkedInUrl || '').trim());
+    content.guests.kicker = $('g-kicker').value;
+    content.guests.heading = $('g-heading').value;
+    content.guests.intro = $('g-intro').value;
+    content.guests.items = content.guests.items.filter(g => (g.name || '').trim());
+    content.nav = reconcileNav(content.nav);
     content.links = {
       apple: $('l-apple').value, spotify: $('l-spotify').value, amazon: $('l-amazon').value, youtube: $('l-youtube').value,
       linkedin: $('l-linkedin').value, x: $('l-x').value, instagram: $('l-instagram').value,
@@ -1084,6 +1280,13 @@
     $('articles').lastElementChild.scrollIntoView({ behavior: 'smooth', block: 'center' });
   });
 
+  $('addGuest').addEventListener('click', () => {
+    content.guests.items.push({ name: '', role: '', category: '', bio: '', episodeLabel: '', episodeUrl: '', linkedInUrl: '', photo: '', featured: false });
+    renderGuestsList(content.guests.items.length - 1);
+    updateCounts();
+    $('guests').lastElementChild.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+
   $('saveAll').addEventListener('click', async () => {
     try {
       collectForm();
@@ -1130,6 +1333,16 @@
       content.blog = content.blog || {};
       content.blog.newsletterUrl = content.blog.newsletterUrl || '';
       content.blog.articles = Array.isArray(content.blog.articles) ? content.blog.articles : [];
+      content.guests = content.guests || {};
+      content.guests.kicker = content.guests.kicker || 'The people behind the ideas';
+      content.guests.heading = content.guests.heading || 'Voices shaping the future of experience';
+      content.guests.intro = content.guests.intro || "Every episode brings a leader with something real to say. Meet the operators, founders and thinkers who've joined me at the mic.";
+      content.guests.stats = (Array.isArray(content.guests.stats) && content.guests.stats.length ? content.guests.stats : [
+        { value: '40+', label: 'Guests' }, { value: '18', label: 'Countries' }, { value: '12', label: 'Industries' }
+      ]).slice(0, 3);
+      while (content.guests.stats.length < 3) content.guests.stats.push({ value: '', label: '' });
+      content.guests.items = (Array.isArray(content.guests.items) && content.guests.items.length) ? content.guests.items : GUEST_SAMPLES.map(g => Object.assign({}, g));
+      content.nav = reconcileNav(content.nav);
       fillForm();
       status('Loaded. Edit anything, then Save & publish.');
     } catch (e) { status('Could not load content: ' + e.message, 'err'); }

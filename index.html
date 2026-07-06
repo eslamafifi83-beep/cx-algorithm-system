@@ -826,11 +826,11 @@
       <span class="brand-name">The CX Algorithm<br /><span>Podcast</span></span>
     </a>
 
-    <nav class="site-nav" id="nav" aria-label="Primary">
-      <a href="#top" aria-current="page">Home</a>
+    <nav class="site-nav" id="siteNav" data-page="home" aria-label="Primary">
+      <a href="index.html" aria-current="page">Home</a>
       <a href="about.html">The Host</a>
       <a href="episodes.html">Episodes</a>
-      <a href="#topics">Themes</a>
+      <a href="guests.html">Guests</a>
       <a href="blog.html">Articles</a>
       <a href="contact.html">Contact</a>
     </nav>
@@ -1460,16 +1460,13 @@
   hydrate();
 
   const toggle = document.getElementById('navToggle');
-  const nav = document.getElementById('nav');
+  const nav = document.getElementById('siteNav');
   toggle.addEventListener('click', () => {
     const open = nav.classList.toggle('open');
     toggle.setAttribute('aria-expanded', String(open));
   });
-  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-    nav.classList.remove('open');
-    toggle.setAttribute('aria-expanded', 'false');
-  }));
 </script>
+<script src="assets/nav.js"></script>
 
 </body>
 </html>

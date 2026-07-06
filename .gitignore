@@ -1,0 +1,8 @@
+# Never commit these
+node_modules/
+.env
+.env.local
+.vercel/
+
+# Old local-only runtime data (now lives in Supabase)
+messages.json

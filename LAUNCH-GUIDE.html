@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Launch Guide — The CX Algorithm Website</title>
+<style>
+  :root {
+    --navy: #0C1128;
+    --navy2: #151D42;
+    --gold: #C9862A;
+    --gold-light: #E9A33D;
+    --blue: #3E6DB5;
+    --ink: #1c2033;
+    --muted: #5b6478;
+    --line: #e3e6ef;
+    --paper: #ffffff;
+    --wash: #f6f7fb;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--ink);
+    line-height: 1.6;
+    background: var(--wash);
+  }
+  .sheet {
+    max-width: 820px;
+    margin: 0 auto;
+    background: var(--paper);
+    padding: 3rem clamp(1.25rem, 5vw, 3.5rem);
+  }
+  header.top {
+    background: var(--navy);
+    color: #fff;
+    border-radius: 14px;
+    padding: 1.75rem 1.75rem;
+    margin-bottom: 2.25rem;
+  }
+  header.top .kick {
+    font-size: 0.72rem; letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--gold-light); font-weight: 700; margin: 0 0 0.5rem;
+  }
+  header.top h1 { margin: 0; font-size: 1.7rem; line-height: 1.2; }
+  header.top p { margin: 0.65rem 0 0; color: #b9c0d8; font-size: 0.95rem; }
+  h2 {
+    font-size: 1.3rem; margin: 2.5rem 0 0.75rem; color: var(--navy);
+    padding-bottom: 0.4rem; border-bottom: 2px solid var(--gold-light);
+  }
+  h3 { font-size: 1.05rem; margin: 1.5rem 0 0.4rem; color: var(--navy); }
+  p { margin: 0.6rem 0; }
+  a { color: var(--blue); }
+  em { color: var(--muted); }
+  ul, ol { padding-left: 1.3rem; }
+  li { margin: 0.35rem 0; }
+  code {
+    background: #eef0f7; padding: 0.1rem 0.4rem; border-radius: 5px;
+    font-family: "SFMono-Regular", Consolas, monospace; font-size: 0.85em;
+  }
+  .legend {
+    display: flex; gap: 1.5rem; flex-wrap: wrap;
+    background: var(--wash); border: 1px solid var(--line);
+    border-radius: 10px; padding: 0.9rem 1.1rem; margin: 1.25rem 0;
+    font-size: 0.92rem;
+  }
+  .legend b { color: var(--navy); }
+  .you { color: #b06a00; font-weight: 700; }
+  .me { color: var(--blue); font-weight: 700; }
+  table { width: 100%; border-collapse: collapse; margin: 1.25rem 0; font-size: 0.92rem; }
+  th, td { text-align: left; padding: 0.6rem 0.7rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { background: var(--navy); color: #fff; font-weight: 600; }
+  tr:nth-child(even) td { background: var(--wash); }
+  .callout {
+    border-left: 4px solid var(--gold-light);
+    background: #fdf7ee; border-radius: 0 8px 8px 0;
+    padding: 0.8rem 1rem; margin: 1.25rem 0; font-size: 0.93rem;
+  }
+  .callout.warn { border-left-color: #d98b2b; background: #fdf1e3; }
+  .callout.lock { border-left-color: #b03a3a; background: #fdeeee; }
+  .phase {
+    background: var(--wash); border: 1px solid var(--line);
+    border-radius: 12px; padding: 1.25rem 1.4rem; margin: 1.25rem 0;
+  }
+  .phase h2 { margin-top: 0; border: none; padding: 0; }
+  .step { margin: 0.75rem 0; }
+  .checklist { list-style: none; padding-left: 0; }
+  .checklist li::before { content: "☐  "; color: var(--gold); font-weight: 700; }
+  .cost { display: flex; align-items: baseline; gap: 0.5rem; }
+  .big { font-size: 1.6rem; font-weight: 800; color: var(--navy); }
+  hr { border: none; border-top: 1px solid var(--line); margin: 2rem 0; }
+  @media print {
+    body { background: #fff; }
+    .sheet { max-width: none; padding: 0; }
+    header.top { border-radius: 0; }
+    .phase, .callout { break-inside: avoid; }
+    h2 { break-after: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <header class="top">
+    <p class="kick">The CX Algorithm Podcast</p>
+    <h1>Launch Guide — putting your website online</h1>
+    <p>A complete, beginner-friendly, step-by-step plan using Vercel + Supabase. You've never done this before, and that's completely fine.</p>
+  </header>
+
+  <div class="legend">
+    <span><span class="you">👤 YOU</span> = something you click in a website. I'll help at every step.</span>
+    <span><span class="me">🤖 CLAUDE</span> = code &amp; setup I do for you. You don't touch these.</span>
+  </div>
+  <p><strong>You never have to write code.</strong> Your job: make a few free accounts, paste in some values I give you, and click "Deploy." My job: everything technical. <em>Your time: roughly 1–1.5 hours across a few sittings. No rush, nothing risky until the final step.</em></p>
+
+  <h2>The big picture, in plain words</h2>
+  <p>Right now your website lives only on your computer. To put it online we use two free services:</p>
+  <ul>
+    <li><strong>Vercel</strong> = the <em>stage</em>. It shows your pages to the world and runs the behind-the-scenes logic (admin panel, contact form).</li>
+    <li><strong>Supabase</strong> = the <em>filing cabinet</em>. It permanently stores your content, uploaded images/audio, and the messages people send you.</li>
+  </ul>
+  <p>You edit in your admin panel → it saves to Supabase → your live pages read from Supabase. Two more helpers come later: <strong>GitHub</strong> (a safe online copy of the code that Vercel reads from — so your site auto-updates) and <strong>Cloudflare</strong> (points your web address at the site and gives free email forwarding).</p>
+
+  <h2>What it costs</h2>
+  <p class="cost"><span class="big">~$12 / year</span> &nbsp;to start — just the domain name.</p>
+  <ul>
+    <li><strong>Vercel:</strong> Free. <em>(Free plan is for non-commercial sites; a personal podcast is fine. Direct sponsorship sales later → ~$20/mo Pro.)</em></li>
+    <li><strong>Supabase:</strong> Free — includes 1 GB storage (your images + ~15–40 audio episodes). <em>Video is huge, so we use Spotify embeds for video instead of storing it.</em></li>
+    <li><strong>GitHub &amp; Cloudflare:</strong> Free.</li>
+    <li><strong>Domain:</strong> ~$12/year. &nbsp; <strong>Email:</strong> free forwarding, or ~$6/mo for a full inbox (optional).</li>
+  </ul>
+
+  <h2>The five phases at a glance</h2>
+  <table>
+    <tr><th>Phase</th><th>Who</th><th>What happens</th></tr>
+    <tr><td><strong>1. Make accounts</strong></td><td>👤 You (~15 min)</td><td>Free sign-ups: GitHub, Supabase, Vercel</td></tr>
+    <tr><td><strong>2. Set up Supabase</strong></td><td>👤 few clicks + 🤖 me</td><td>Create the project; I build the filing cabinet &amp; load your content</td></tr>
+    <tr><td><strong>3. Rebuild the code</strong></td><td>🤖 Me (you relax)</td><td>I convert everything to run on the cloud — the biggest chunk</td></tr>
+    <tr><td><strong>4. Deploy to Vercel</strong></td><td>👤 You click, I guide</td><td>Paste the settings I give you, hit Deploy → <strong>you're live</strong></td></tr>
+    <tr><td><strong>5. Domain + email</strong></td><td>👤 You + 🤖 me</td><td>Register the domain, connect it, free email forwarding</td></tr>
+  </table>
+
+  <div class="phase">
+    <h2>Phase 1 — Make your accounts <span style="font-weight:400;font-size:0.9rem;color:var(--muted)">(👤 you, ~15 min)</span></h2>
+    <p>Make three free accounts. Use the <strong>same email</strong> for all, and choose <strong>"Continue with GitHub"</strong> where offered — it links everything and saves time.</p>
+    <h3>1.1 — GitHub (do this first)</h3>
+    <p class="step">Go to <strong>github.com</strong> → <strong>Sign up</strong> → enter email, password, a username (e.g. <code>eslam-afifi</code>) → verify your email. You don't need to understand GitHub; it's just a safe home for the code.</p>
+    <h3>1.2 — Supabase</h3>
+    <p class="step">Go to <strong>supabase.com</strong> → <strong>Start your project</strong> → <strong>Continue with GitHub</strong> → approve. Don't create a project yet — we do that together in Phase 2.</p>
+    <h3>1.3 — Vercel</h3>
+    <p class="step">Go to <strong>vercel.com</strong> → <strong>Sign Up</strong> → choose <strong>Hobby</strong> (free) → <strong>Continue with GitHub</strong> → approve. Don't import anything yet.</p>
+    <p>✅ <strong>When all three say you're logged in, Phase 1 is done — tell me.</strong></p>
+  </div>
+
+  <div class="phase">
+    <h2>Phase 2 — Set up Supabase <span style="font-weight:400;font-size:0.9rem;color:var(--muted)">(👤 clicks + 🤖 me)</span></h2>
+    <h3>2.1 — 👤 Create the project</h3>
+    <ol>
+      <li>Click <strong>New project</strong>.</li>
+      <li><strong>Name:</strong> <code>cx-algorithm</code></li>
+      <li><strong>Database Password:</strong> click <strong>Generate a password</strong>, then copy &amp; save it somewhere safe.</li>
+      <li><strong>Region:</strong> pick the one closest to most of your listeners (e.g. <em>West EU / Central EU</em>). Unsure? Ask me.</li>
+      <li>Click <strong>Create new project</strong> and wait ~2 minutes.</li>
+    </ol>
+    <h3>2.2 — 👤 Send me your project's public keys</h3>
+    <p>Click the <strong>gear icon (Project Settings)</strong> → <strong>API</strong>. Copy me <strong>the first two only</strong>: the <strong>Project URL</strong> and the <strong>anon public</strong> key.</p>
+    <div class="callout lock">🔒 <strong>Do NOT send me the <code>service_role</code> key.</strong> It's the master key. You'll paste it directly into Vercel yourself in Phase 4.</div>
+    <h3>2.3 — 🤖 I build your filing cabinet</h3>
+    <p>I'll give you a block of text to paste into Supabase's <strong>SQL Editor</strong> and click <strong>Run</strong> (one click). That creates the tables and storage folders, and I'll load your current website content in so nothing is lost.</p>
+  </div>
+
+  <div class="phase">
+    <h2>Phase 3 — I rebuild the code <span style="font-weight:400;font-size:0.9rem;color:var(--muted)">(🤖 me — you relax)</span></h2>
+    <p>Nothing for you to do. I convert your behind-the-scenes server to Vercel's format, point your pages at Supabase, wire the admin panel to save to the cloud, set up image + large audio/video uploads, and replace the admin password with a secure secret you'll set yourself. <strong>This is the part that takes me a few work sessions</strong> — I'll keep you posted.</p>
+  </div>
+
+  <div class="phase">
+    <h2>Phase 4 — Deploy to Vercel <span style="font-weight:400;font-size:0.9rem;color:var(--muted)">(👤 you click, I guide)</span></h2>
+    <h3>4.1 — 👤 Import the project</h3>
+    <p>In Vercel: <strong>Add New… → Project</strong> → find your repo (<code>cx-algorithm-system</code>) → <strong>Import</strong>.</p>
+    <h3>4.2 — 👤 Add the secret settings</h3>
+    <p>In <strong>Environment Variables</strong>, add these (I'll give you exact values to paste):</p>
+    <ul>
+      <li><code>SUPABASE_URL</code> — your project URL</li>
+      <li><code>SUPABASE_ANON_KEY</code> — the public key</li>
+      <li><code>SUPABASE_SERVICE_ROLE_KEY</code> — 🔒 the master key you kept private (paste here, only here)</li>
+      <li><code>ADMIN_USER</code> — a username you choose</li>
+      <li><code>ADMIN_PASSWORD</code> — a <strong>strong new password</strong> (replaces <code>cxalgorithm2026</code>)</li>
+    </ul>
+    <h3>4.3 — 👤 Deploy</h3>
+    <p>Click <strong>Deploy</strong>, wait ~1 minute → you get a live link like <code>cx-algorithm-system.vercel.app</code>. <strong>Your site is online.</strong> 🎉 We then test it together — pages, admin login, a test upload, a test message.</p>
+  </div>
+
+  <div class="phase">
+    <h2>Phase 5 — Domain + email <span style="font-weight:400;font-size:0.9rem;color:var(--muted)">(👤 you + 🤖 me)</span></h2>
+    <h3>5.1 — 👤 Register the domain (~$12/yr)</h3>
+    <p>Go to <strong>cloudflare.com</strong> → free account → <strong>Domain Registration → Register Domain</strong> → search &amp; buy (sold at cost, no markup).</p>
+    <h3>5.2 — 🤖 + 👤 Connect it</h3>
+    <p>In Vercel: <strong>Settings → Domains</strong> → type your domain → it shows DNS records. I translate them; you paste them into Cloudflare's <strong>DNS</strong> page. Shortly after, your domain is live with automatic HTTPS (the padlock).</p>
+    <h3>5.3 — 👤 Email (optional, free)</h3>
+    <p>In Cloudflare: <strong>Email → Email Routing</strong> → forward <code>hello@yourdomain</code> to your Gmail. Free. (Full send-from inbox = Google Workspace ~$6/mo, later if you want.)</p>
+  </div>
+
+  <h2>Launch checklist (before you tell the world)</h2>
+  <ul class="checklist">
+    <li>Admin password changed to something strong (not the old <code>cxalgorithm2026</code>).</li>
+    <li>You can log into <code>/admin</code>, edit content, and the live site updates.</li>
+    <li>Contact form sends, and the message shows in your admin Messages tab.</li>
+    <li>An uploaded image appears on the live site.</li>
+    <li>The padlock (HTTPS) shows on your domain.</li>
+    <li>Real content added: episode audio/links, guest logos, platform links, newsletter link, gallery photos.</li>
+    <li>Tested on your phone as well as your computer.</li>
+  </ul>
+
+  <h2>What to do to start</h2>
+  <p>Just <strong>Phase 1</strong> — create the three free accounts (GitHub, Supabase, Vercel), all with the <strong>same email</strong>, choosing "Continue with GitHub" where offered.</p>
+  <p><strong>Your very first click:</strong> go to <strong>github.com</strong> and sign up. Meanwhile, I can begin Phase 3 (rebuilding the code) in the background — it doesn't need your accounts yet, so we work in parallel.</p>
+
+  <hr />
+  <p style="color:var(--muted);font-size:0.85rem;">The CX Algorithm Podcast · Hosted by Dr Eslam Afifi · Launch plan prepared with Claude Code.</p>
+
+</div>
+</body>
+</html>

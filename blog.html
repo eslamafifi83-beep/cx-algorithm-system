@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Blog — The CX Algorithm Podcast</title>
+<meta name="description" content="Notes on CX, AI and the algorithm of loyalty — long-form thinking from Dr Eslam Afifi's LinkedIn. Every piece opens on LinkedIn." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Oswald:wght@500;600&display=swap" rel="stylesheet" />
+<link rel="icon" type="image/png" href="assets/logo.png" />
+<style>
+  :root {
+    --midnight: #0C1128;
+    --midnight-deep: #090D20;
+    --panel: #121938;
+    --card: #151D42;
+    --gold: #E9A33D;
+    --gold-light: #F4C069;
+    --gold-deep: #C9862A;
+    --blue: #6FA8DC;
+    --blue-light: #9CC4E8;
+    --li-blue: #2F6FB0;
+    --text: #F2F1EC;
+    --muted: #A7ADC9;
+    --hairline: rgba(242, 241, 236, 0.10);
+    --hairline-gold: rgba(233, 163, 61, 0.35);
+    --display: "Poppins", system-ui, sans-serif;
+    --body: "Poppins", system-ui, sans-serif;
+    --mono: "Poppins", system-ui, sans-serif;
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    --gutter: clamp(1.25rem, 5vw, 4.5rem);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: var(--body);
+    background:
+      radial-gradient(120% 55% at 80% 0%, rgba(59, 78, 158, 0.30), transparent 65%),
+      var(--midnight);
+    color: var(--text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  .container { max-width: 1360px; margin: 0 auto; padding-left: var(--gutter); padding-right: var(--gutter); }
+  ::selection { background: var(--gold); color: var(--midnight); }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+  .site-header {
+    position: sticky; top: 0; z-index: 90;
+    background: rgba(12, 17, 40, 0.88);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--hairline);
+  }
+  .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; height: 5.25rem; }
+  .brand { display: flex; align-items: center; gap: 0.875rem; text-decoration: none; color: var(--text); flex: none; }
+  .brand-mark { width: 46px; height: 46px; border-radius: 12px; display: block; }
+  .brand-name { font-family: var(--display); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.16em; line-height: 1.45; text-transform: uppercase; }
+  .brand-name span { color: var(--gold); }
+  .site-nav { display: flex; align-items: center; gap: clamp(1rem, 2.5vw, 2.25rem); }
+  .site-nav a {
+    font-family: var(--display); font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--text); text-decoration: none; padding: 0.375rem 0; position: relative; opacity: 0.85;
+    transition: opacity 0.25s var(--ease), color 0.25s var(--ease);
+  }
+  .site-nav a::after { content: ""; position: absolute; left: 0; bottom: -4px; width: 100%; height: 2px; background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform 0.3s var(--ease); }
+  .site-nav a:hover { opacity: 1; color: var(--gold-light); }
+  .site-nav a:hover::after, .site-nav a[aria-current="page"]::after { transform: scaleX(1); }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 0.625rem;
+    font-family: var(--display); font-weight: 700; font-size: 0.8125rem; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 0.875rem 1.75rem; border-radius: 999px; text-decoration: none; cursor: pointer; border: none; min-height: 44px;
+    transition: transform 0.2s var(--ease), box-shadow 0.3s var(--ease), border-color 0.3s var(--ease), color 0.3s var(--ease);
+  }
+  .btn-gold { background: linear-gradient(180deg, var(--gold-light), var(--gold)); color: #2A1D05; box-shadow: 0 6px 24px rgba(233, 163, 61, 0.28); }
+  .btn-gold:hover { box-shadow: 0 10px 32px rgba(233, 163, 61, 0.42); transform: translateY(-1px); }
+  .btn-outline { background: transparent; color: var(--text); border: 1.5px solid rgba(255, 255, 255, 0.16); }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold-light); }
+
+  main { padding: clamp(2.5rem, 5.5vw, 3.875rem) 0 clamp(3.25rem, 6vw, 5.25rem); }
+
+  /* Header */
+  .blog-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 1.5rem; margin-bottom: clamp(2rem, 4.5vw, 3.25rem); }
+  .kicker { font-family: var(--mono); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.28em; color: var(--gold); text-transform: uppercase; }
+  .blog-head h1 { font-family: var(--display); font-weight: 800; font-size: clamp(2rem, 4.4vw, 3.375rem); line-height: 1.08; letter-spacing: -0.02em; margin-top: 0.625rem; max-width: 17ch; }
+  .blog-head .sub { color: var(--muted); font-size: 1.0625rem; max-width: 56ch; margin-top: 0.875rem; }
+  .nl-btn {
+    display: inline-flex; align-items: center; gap: 0.75rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 999px;
+    padding: 0.7rem 1.25rem;
+    text-decoration: none;
+    color: #DFE7F3;
+    font-family: var(--display); font-size: 0.875rem; font-weight: 600;
+    transition: border-color 0.25s var(--ease), transform 0.2s var(--ease);
+    white-space: nowrap;
+  }
+  .nl-btn:hover { border-color: var(--gold); transform: translateY(-1px); }
+  .nl-btn[hidden] { display: none; }
+  .in-mark {
+    width: 26px; height: 26px; border-radius: 7px; flex: none;
+    background: var(--li-blue);
+    display: grid; place-items: center;
+    font-family: var(--display); font-weight: 800; font-size: 0.8rem; color: #fff;
+  }
+  .nl-btn .arrow { color: var(--gold); flex: none; }
+
+  /* Featured */
+  .featured {
+    display: grid;
+    grid-template-columns: minmax(0, 520px) 1fr;
+    gap: clamp(1.5rem, 3vw, 2.25rem);
+    background: linear-gradient(135deg, rgba(233, 163, 61, 0.09), rgba(74, 110, 180, 0.05));
+    border: 1px solid rgba(233, 163, 61, 0.2);
+    border-radius: 22px;
+    padding: clamp(1.25rem, 2.5vw, 1.625rem);
+    margin-bottom: clamp(2.5rem, 5vw, 3.75rem);
+    text-decoration: none;
+    color: var(--text);
+    transition: border-color 0.3s var(--ease);
+  }
+  .featured:hover { border-color: var(--hairline-gold); }
+  .featured-thumb {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    min-height: 260px;
+    max-height: 320px;
+    background: radial-gradient(120% 120% at 40% 30%, #1C2F57, #0E1C3B);
+  }
+  .featured-thumb img, .featured-thumb video { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .featured-thumb .ph { position: absolute; inset: 0; display: grid; place-items: center; color: var(--muted); }
+  .feat-chip {
+    position: absolute; top: 0.875rem; left: 0.875rem;
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(12, 24, 48, 0.82);
+    backdrop-filter: blur(8px);
+    border-radius: 8px;
+    padding: 0.35rem 0.7rem;
+    font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.18em; color: var(--gold-light);
+    pointer-events: none;
+  }
+  .feat-chip .in-mark { width: 18px; height: 18px; border-radius: 5px; font-size: 0.58rem; }
+  .featured-body { display: flex; flex-direction: column; justify-content: center; gap: 0.875rem; min-width: 0; }
+  .meta-line { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+  .tag-pill {
+    font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase;
+    background: rgba(233, 163, 61, 0.14); color: var(--gold-light);
+    border-radius: 999px; padding: 0.25rem 0.75rem;
+  }
+  .meta-dim { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.1em; color: var(--muted); text-transform: uppercase; }
+  .featured-body h2 { font-family: var(--display); font-weight: 800; font-size: clamp(1.4rem, 2.6vw, 2.125rem); line-height: 1.2; letter-spacing: -0.01em; }
+  .featured-body .excerpt { color: var(--muted); max-width: 58ch; }
+  .featured-body .cta { margin-top: 0.625rem; }
+
+  /* Grid + filters */
+  .grid-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.25rem; }
+  .grid-head h2 { font-family: var(--display); font-weight: 700; font-size: 1.375rem; }
+  .chips { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+  .chip {
+    font-family: var(--display); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.05em;
+    background: rgba(255, 255, 255, 0.05); color: #C7D3E8;
+    border: none; border-radius: 999px; padding: 0.5rem 1.1rem; cursor: pointer;
+    transition: background 0.25s var(--ease), color 0.25s var(--ease);
+  }
+  .chip.active { background: var(--gold); color: #12203C; }
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .post {
+    display: flex; flex-direction: column;
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 18px;
+    overflow: hidden;
+    text-decoration: none;
+    color: var(--text);
+    transition: transform 0.3s var(--ease), border-color 0.3s var(--ease);
+  }
+  .post:hover { transform: translateY(-4px); border-color: var(--hairline-gold); }
+  .post-thumb { position: relative; height: 210px; background: radial-gradient(120% 120% at 40% 30%, #1C2F57, #0E1C3B); }
+  .post-thumb img, .post-thumb video { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .post-thumb .in-badge {
+    position: absolute; top: 0.75rem; left: 0.75rem;
+    width: 26px; height: 26px; border-radius: 7px;
+    background: rgba(47, 111, 176, 0.95);
+    display: grid; place-items: center;
+    font-family: var(--display); font-weight: 800; font-size: 0.72rem; color: #fff;
+    pointer-events: none;
+  }
+  .post-thumb .ph { position: absolute; inset: 0; display: grid; place-items: center; color: var(--muted); }
+  .post-body { display: flex; flex-direction: column; flex: 1; padding: 1.375rem; gap: 0.625rem; }
+  .post-body .tag-pill { background: rgba(111, 168, 220, 0.14); color: #9CC2E8; }
+  .post-body h3 { font-family: var(--display); font-weight: 700; font-size: 1.1rem; line-height: 1.35; }
+  .post-body .excerpt { color: var(--muted); font-size: 0.9rem; flex: 1; }
+  .post-foot {
+    display: flex; align-items: center; justify-content: space-between; gap: 0.75rem;
+    border-top: 1px solid var(--hairline);
+    padding-top: 0.875rem; margin-top: 0.375rem;
+  }
+  .post-foot .date { font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.12em; color: var(--muted); text-transform: uppercase; }
+  .read-link { font-family: var(--display); font-size: 0.8rem; font-weight: 600; color: var(--gold); white-space: nowrap; }
+  .load-wrap { display: flex; justify-content: center; padding-top: 2.25rem; }
+  .empty-note {
+    border: 1px dashed var(--hairline-gold);
+    border-radius: 18px;
+    padding: 3rem 1.5rem;
+    text-align: center;
+    color: var(--muted);
+  }
+
+  .footer { background: var(--midnight-deep); border-top: 1px solid var(--hairline); padding: 2rem 0; }
+  .footer-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; }
+  .footer a { color: var(--muted); text-decoration: none; font-family: var(--display); font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; }
+  .footer a:hover { color: var(--gold-light); }
+  .footer .copy { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.12em; color: var(--muted); }
+
+  @media (max-width: 1024px) {
+    .featured { grid-template-columns: 1fr; }
+    .cards { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 960px) {
+    .site-nav { display: none; }
+    .site-nav.open {
+      display: flex;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      height: calc(100dvh - 5.25rem);
+      overflow-y: auto;
+      background: var(--midnight-deep);
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding-top: 3rem;
+      gap: 0;
+      z-index: 80;
+    }
+    .site-nav.open a {
+      font-size: 1.25rem;
+      padding: 1.125rem 0;
+      width: 80%;
+      text-align: center;
+      border-bottom: 1px solid var(--hairline);
+    }
+    .header-subscribe { display: none; }
+    .mobile-toggle {
+      display: grid;
+      place-items: center;
+      width: 44px; height: 44px;
+      background: transparent;
+      border: 1.5px solid var(--hairline-gold);
+      border-radius: 12px;
+      color: var(--gold);
+      cursor: pointer;
+    }
+  }
+  @media (max-width: 640px) { .cards { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<script src="assets/loader.js"></script>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html" aria-label="The CX Algorithm Podcast — home">
+      <img class="brand-mark" src="assets/logo.png" alt="" aria-hidden="true" />
+      <span class="brand-name">The CX Algorithm<br /><span>Podcast</span></span>
+    </a>
+    <nav class="site-nav" id="siteNav" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="about.html">The Host</a>
+      <a href="episodes.html">Episodes</a>
+      <a href="index.html#topics">Themes</a>
+      <a href="blog.html" aria-current="page">Articles</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div style="display:flex; align-items:center; gap:0.75rem;">
+      <a class="btn btn-gold header-subscribe" href="index.html#platforms">Subscribe</a>
+      <button class="mobile-toggle" id="navToggle" hidden aria-label="Open menu" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="3" y1="6" x2="17" y2="6"/><line x1="3" y1="10" x2="17" y2="10"/><line x1="3" y1="14" x2="17" y2="14"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <div class="blog-head">
+    <div>
+      <p class="kicker">Insights &amp; Writing</p>
+      <h1>Notes on CX, AI &amp; the algorithm of loyalty</h1>
+      <p class="sub">Long-form thinking from my LinkedIn, where I unpack what really moves customer experience. Every piece opens on LinkedIn.</p>
+    </div>
+    <a class="nl-btn" id="nlBtn" href="#" target="_blank" rel="noopener noreferrer" hidden>
+      <span class="in-mark" aria-hidden="true">in</span>
+      The CX Algorithm Newsletter
+      <svg class="arrow" width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M2 11 L11 2 M11 2 H4.5 M11 2 V8.5"/></svg>
+    </a>
+  </div>
+
+  <div id="featuredSlot"></div>
+
+  <div class="grid-head">
+    <h2>Latest articles</h2>
+    <div class="chips" id="chips"></div>
+  </div>
+  <div class="cards" id="cards"></div>
+  <div class="load-wrap" id="loadWrap" hidden>
+    <button class="btn btn-outline" id="loadMore" type="button">Load more articles</button>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <a href="episodes.html">All episodes</a>
+    <span class="copy">© 2026 THE CX ALGORITHM PODCAST · HOSTED BY DR ESLAM AFIFI</span>
+  </div>
+</footer>
+
+<script>
+  const esc = s => { const d = document.createElement('div'); d.textContent = String(s ?? ''); return d.innerHTML; };
+  const escAttr = s => esc(s).replace(/"/g, '&quot;');
+  const isVideo = src => /\.(mp4|webm|mov)(\?|$)/i.test(src || '');
+
+  let articles = [];
+  let activeTag = 'All';
+  let shown = 9;
+
+  function thumbHTML(a, cls) {
+    if (!a.thumbnail) {
+      return `<div class="ph" aria-hidden="true">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"><rect x="3" y="5" width="18" height="14" rx="2.5"/><circle cx="9" cy="10" r="1.8"/><path d="M3.5 17 L9 12.5 L13 15.5 L16.5 12.5 L20.5 16"/></svg>
+      </div>`;
+    }
+    if (isVideo(a.thumbnail)) {
+      return `<video src="${escAttr(a.thumbnail)}" muted loop autoplay playsinline aria-hidden="true"></video>`;
+    }
+    return `<img src="${escAttr(a.thumbnail)}" alt="" />`;
+  }
+
+  const linkAttrs = a => a.linkedInUrl ? `href="${escAttr(a.linkedInUrl)}" target="_blank" rel="noopener noreferrer"` : 'role="article"';
+
+  function metaBits(a) {
+    const bits = [];
+    if (a.date) bits.push(esc(a.date));
+    if (a.readTime) bits.push(esc(a.readTime));
+    return bits.join(' · ');
+  }
+
+  function featuredHTML(a) {
+    return `
+      <a class="featured" ${linkAttrs(a)}>
+        <div class="featured-thumb">
+          ${thumbHTML(a)}
+          <span class="feat-chip"><span class="in-mark">in</span>FEATURED ARTICLE</span>
+        </div>
+        <div class="featured-body">
+          <div class="meta-line">
+            ${a.tag ? `<span class="tag-pill">${esc(a.tag)}</span>` : ''}
+            ${metaBits(a) ? `<span class="meta-dim">${metaBits(a)}</span>` : ''}
+          </div>
+          <h2>${esc(a.title)}</h2>
+          ${a.excerpt ? `<p class="excerpt">${esc(a.excerpt)}</p>` : ''}
+          <div class="cta"><span class="btn btn-gold">Read on LinkedIn&nbsp;&nearr;</span></div>
+        </div>
+      </a>`;
+  }
+
+  function cardHTML(a) {
+    return `
+      <a class="post" ${linkAttrs(a)}>
+        <div class="post-thumb">
+          ${thumbHTML(a)}
+          <span class="in-badge" aria-hidden="true">in</span>
+        </div>
+        <div class="post-body">
+          <div class="meta-line">
+            ${a.tag ? `<span class="tag-pill">${esc(a.tag)}</span>` : ''}
+            ${a.readTime ? `<span class="meta-dim">${esc(a.readTime)}</span>` : ''}
+          </div>
+          <h3>${esc(a.title)}</h3>
+          ${a.excerpt ? `<p class="excerpt">${esc(a.excerpt)}</p>` : '<p class="excerpt"></p>'}
+          <div class="post-foot">
+            <span class="date">${esc(a.date || '')}</span>
+            <span class="read-link">Read on LinkedIn&nbsp;&nearr;</span>
+          </div>
+        </div>
+      </a>`;
+  }
+
+  function render() {
+    const featured = articles.find(a => a.featured) || articles[articles.length - 1];
+    document.getElementById('featuredSlot').innerHTML = featured ? featuredHTML(featured) : '';
+
+    // Tag chips from the data
+    const tags = ['All', ...new Set(articles.map(a => a.tag).filter(Boolean))];
+    document.getElementById('chips').innerHTML = tags.map(t =>
+      `<button class="chip${t === activeTag ? ' active' : ''}" type="button" data-tag="${escAttr(t)}">${esc(t)}</button>`).join('');
+    document.querySelectorAll('.chip').forEach(c => c.addEventListener('click', () => {
+      activeTag = c.dataset.tag; shown = 9; render();
+    }));
+
+    let list = articles.filter(a => a !== featured).reverse(); // newest first
+    if (activeTag !== 'All') list = list.filter(a => a.tag === activeTag);
+
+    const cardsEl = document.getElementById('cards');
+    if (!articles.length) {
+      cardsEl.innerHTML = '<div class="empty-note" style="grid-column:1/-1">New articles are on the way. Meanwhile, the conversations live on the <a href="episodes.html" style="color:var(--gold-light)">episodes page</a>.</div>';
+    } else if (!list.length) {
+      cardsEl.innerHTML = '<div class="empty-note" style="grid-column:1/-1">More articles are on the way. The latest one is featured above.</div>';
+    } else {
+      cardsEl.innerHTML = list.slice(0, shown).map(cardHTML).join('');
+    }
+    document.getElementById('loadWrap').hidden = list.length <= shown;
+  }
+
+  document.getElementById('loadMore').addEventListener('click', () => { shown += 9; render(); });
+
+  (async function init() {
+    try {
+      const res = await fetch('/api/content', { cache: 'no-store' });
+      const c = await res.json();
+      const blog = c.blog || {};
+      articles = Array.isArray(blog.articles) ? blog.articles.filter(a => a && a.title) : [];
+      const nl = blog.newsletterUrl || (c.links && c.links.linkedin) || '';
+      if (nl) {
+        const btn = document.getElementById('nlBtn');
+        btn.href = nl;
+        btn.hidden = false;
+      }
+    } catch (e) { articles = []; }
+    render();
+  })();
+  const navToggle = document.getElementById('navToggle');
+  if (navToggle) {
+    const siteNav = document.getElementById('siteNav');
+    navToggle.addEventListener('click', () => {
+      const open = siteNav.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', String(open));
+    });
+    siteNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      siteNav.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    }));
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Admin — The CX Algorithm</title>
+<link rel="icon" type="image/png" href="assets/logo.png" />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --midnight: #0C1128;
+    --panel: #131A3B;
+    --card: #161E44;
+    --gold: #E9A33D;
+    --gold-light: #F4C069;
+    --blue: #6FA8DC;
+    --text: #F2F1EC;
+    --muted: #A7ADC9;
+    --hairline: rgba(242, 241, 236, 0.12);
+    --danger: #E06060;
+    --ok: #5FBF8A;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Manrope", sans-serif;
+    background: var(--midnight);
+    color: var(--text);
+    line-height: 1.6;
+    padding-bottom: 7rem;
+  }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 1.25rem; }
+
+  header.bar {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(12, 17, 40, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--hairline);
+    padding: 1rem 0;
+  }
+  .bar-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+  .bar-brand { display: flex; align-items: center; gap: 0.75rem; }
+  .bar-brand img { width: 40px; height: 40px; border-radius: 10px; }
+  .bar-brand strong { font-family: "Sora", sans-serif; font-size: 0.9rem; letter-spacing: 0.08em; }
+  .bar-brand span { display: block; font-size: 0.7rem; color: var(--gold); letter-spacing: 0.2em; font-family: "JetBrains Mono", monospace; }
+
+  /* ---- Layout: sidebar nav + panel ---- */
+  .layout {
+    display: grid;
+    grid-template-columns: 210px 1fr;
+    gap: 2.5rem;
+    align-items: start;
+    margin-top: 2rem;
+  }
+  nav.tabs {
+    position: sticky;
+    top: 5.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .tab-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    width: 100%;
+    text-align: left;
+    font-family: "Sora", sans-serif;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    background: transparent;
+    border: none;
+    border-left: 2px solid transparent;
+    border-radius: 0 10px 10px 0;
+    padding: 0.7rem 0.9rem;
+    cursor: pointer;
+    transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+  }
+  .tab-btn:hover { color: var(--text); background: rgba(242, 241, 236, 0.04); }
+  .tab-btn.active {
+    color: var(--gold-light);
+    background: rgba(233, 163, 61, 0.08);
+    border-left-color: var(--gold);
+  }
+  .tab-btn .count {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.68rem;
+    color: var(--muted);
+    background: var(--panel);
+    border: 1px solid var(--hairline);
+    border-radius: 999px;
+    padding: 0.05rem 0.55rem;
+  }
+  .tab-btn.active .count { color: var(--gold-light); border-color: rgba(233, 163, 61, 0.35); }
+
+  .panel { display: none; min-width: 0; }
+  .panel.active { display: block; }
+  .panel-title {
+    font-family: "Sora", sans-serif;
+    font-size: 1.05rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.35rem;
+  }
+  .panel-desc { font-size: 0.85rem; color: var(--muted); margin-bottom: 1.5rem; max-width: 60ch; }
+
+  label {
+    display: block;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 1rem 0 0.35rem;
+  }
+  input[type="text"], input[type="url"], input[type="email"], textarea {
+    width: 100%;
+    background: var(--panel);
+    border: 1px solid var(--hairline);
+    border-radius: 10px;
+    color: var(--text);
+    font-family: "Manrope", sans-serif;
+    font-size: 0.95rem;
+    padding: 0.7rem 0.9rem;
+  }
+  input:focus, textarea:focus { outline: 2px solid var(--gold); outline-offset: 1px; }
+  textarea { min-height: 96px; resize: vertical; }
+  .hint { font-size: 0.8rem; color: var(--muted); margin-top: 0.35rem; }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  button {
+    font-family: "Sora", sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 999px;
+    padding: 0.7rem 1.4rem;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.2s ease;
+  }
+  button:active { transform: translateY(1px); }
+  .btn-gold { background: linear-gradient(180deg, var(--gold-light), var(--gold)); color: #2A1D05; }
+  .btn-ghost { background: transparent; color: var(--text); border: 1.5px solid var(--hairline); }
+  .btn-danger { background: transparent; color: var(--danger); border: 1.5px solid rgba(224, 96, 96, 0.4); padding: 0.5rem 1rem; }
+  .btn-small { padding: 0.5rem 1rem; font-size: 0.72rem; }
+
+  .thumb {
+    width: 132px; height: 82px;
+    border-radius: 8px;
+    object-fit: cover;
+    border: 1px solid var(--hairline);
+    background: var(--panel);
+    display: block;
+  }
+  .art-row { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; margin-top: 0.75rem; }
+  .file-note { font-size: 0.78rem; color: var(--muted); }
+  input[type="file"] { color: var(--muted); font-size: 0.8rem; max-width: 230px; }
+
+  /* ---- Episodes: collapsible accordion cards ---- */
+  details.ep {
+    background: var(--card);
+    border: 1px solid var(--hairline);
+    border-radius: 14px;
+    margin-bottom: 0.75rem;
+    overflow: hidden;
+  }
+  details.ep[open] { border-color: rgba(233, 163, 61, 0.35); }
+  details.ep summary {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.9rem 1.25rem;
+    cursor: pointer;
+    user-select: none;
+  }
+  details.ep summary::-webkit-details-marker { display: none; }
+  details.ep summary:hover { background: rgba(242, 241, 236, 0.03); }
+  .ep-sum-num {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    color: var(--gold);
+    flex: none;
+  }
+  .ep-sum-title {
+    font-family: "Sora", sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: var(--text);
+  }
+  .ep-sum-title.empty { color: var(--muted); font-weight: 400; font-style: italic; }
+  .ep-chevron { flex: none; color: var(--muted); transition: transform 0.25s ease; }
+  details.ep[open] .ep-chevron { transform: rotate(180deg); }
+  .ep-body { padding: 0 1.25rem 1.25rem; border-top: 1px solid var(--hairline); }
+  .ep-actions { display: flex; justify-content: flex-end; margin-top: 1rem; }
+
+  /* ---- Companies: compact rows ---- */
+  .co-row {
+    display: grid;
+    grid-template-columns: 92px 1fr auto auto;
+    gap: 1rem;
+    align-items: center;
+    background: var(--card);
+    border: 1px solid var(--hairline);
+    border-radius: 12px;
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.6rem;
+  }
+  .co-logo {
+    width: 92px; height: 46px;
+    border-radius: 8px;
+    object-fit: contain;
+    background: #3A4A6E;
+    padding: 5px;
+    border: 1px solid var(--hairline);
+  }
+  .co-logo.empty { visibility: hidden; }
+  .co-row input[type="text"] { margin: 0; }
+  .co-row input[type="file"] { max-width: 200px; }
+  .add-row { margin-top: 0.75rem; }
+
+  .savebar {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 20;
+    background: rgba(12, 17, 40, 0.95);
+    border-top: 1px solid var(--hairline);
+    padding: 1rem 0;
+  }
+  .savebar-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+  #status { font-family: "JetBrains Mono", monospace; font-size: 0.75rem; letter-spacing: 0.08em; }
+  #status.ok { color: var(--ok); }
+  #status.err { color: var(--danger); }
+  .host-photo-preview { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; border: 2px solid var(--hairline); }
+
+  /* ---- Login gate ---- */
+  #loginGate {
+    position: fixed; inset: 0; z-index: 100;
+    background: var(--midnight);
+    display: flex; align-items: center; justify-content: center;
+    padding: 1.25rem;
+  }
+  #loginGate[hidden] { display: none; }
+  .login-card {
+    width: min(100%, 400px);
+    background: var(--card);
+    border: 1px solid var(--hairline);
+    border-radius: 16px;
+    padding: 2rem;
+  }
+  .login-card .brand-row { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem; }
+  .login-card .brand-row img { width: 44px; height: 44px; border-radius: 10px; }
+  .login-card h1 { font-family: "Sora", sans-serif; font-size: 1rem; letter-spacing: 0.1em; }
+  .login-card .sub { color: var(--muted); font-size: 0.85rem; margin-top: 0.15rem; }
+  .login-card label { margin-top: 1.1rem; }
+  .login-card .btn-gold { width: 100%; margin-top: 1.5rem; }
+  #loginError { color: var(--danger); font-size: 0.82rem; margin-top: 0.9rem; min-height: 1.2em; }
+
+  @media (max-width: 900px) {
+    .layout { grid-template-columns: 1fr; gap: 1.25rem; }
+    nav.tabs {
+      position: sticky;
+      top: 4.6rem;
+      z-index: 9;
+      flex-direction: row;
+      overflow-x: auto;
+      gap: 0.4rem;
+      background: var(--midnight);
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--hairline);
+    }
+    .tab-btn {
+      flex: none;
+      border-left: none;
+      border: 1.5px solid var(--hairline);
+      border-radius: 999px;
+      padding: 0.45rem 1rem;
+      font-size: 0.78rem;
+    }
+    .tab-btn.active { border-color: var(--gold); background: rgba(233, 163, 61, 0.1); }
+    .row { grid-template-columns: 1fr; }
+    .co-row { grid-template-columns: 72px 1fr; }
+    .co-row input[type="file"] { grid-column: 2; }
+    .co-row .btn-danger { grid-column: 2; justify-self: start; }
+    .co-logo { width: 72px; }
+  }
+</style>
+</head>
+<body>
+
+<div id="loginGate" hidden>
+  <form class="login-card" id="loginForm">
+    <div class="brand-row">
+      <img src="assets/logo.png" alt="" />
+      <div>
+        <h1>THE CX ALGORITHM</h1>
+        <p class="sub">Admin panel — sign in to continue</p>
+      </div>
+    </div>
+    <label for="loginUser">Username</label>
+    <input type="text" id="loginUser" autocomplete="username" />
+    <label for="loginPass">Password</label>
+    <input type="password" id="loginPass" autocomplete="current-password" />
+    <p id="loginError" role="alert"></p>
+    <button class="btn-gold" type="submit" id="loginBtn">Sign in</button>
+  </form>
+</div>
+
+<header class="bar">
+  <div class="wrap bar-inner">
+    <div class="bar-brand">
+      <img src="assets/logo.png" alt="" />
+      <div>
+        <strong>THE CX ALGORITHM</strong>
+        <span>ADMIN PANEL</span>
+      </div>
+    </div>
+    <div style="display:flex; gap:0.6rem;">
+      <a href="/" target="_blank"><button class="btn-ghost btn-small" type="button">View site</button></a>
+      <button class="btn-ghost btn-small" type="button" id="logoutBtn">Log out</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="layout">
+
+    <nav class="tabs" aria-label="Admin sections">
+      <button class="tab-btn active" data-tab="hero" type="button">Hero</button>
+      <button class="tab-btn" data-tab="companies" type="button">Companies <span class="count" id="count-companies">0</span></button>
+      <button class="tab-btn" data-tab="episodes" type="button">Episodes <span class="count" id="count-episodes">0</span></button>
+      <button class="tab-btn" data-tab="blog" type="button">Blog <span class="count" id="count-articles">0</span></button>
+      <button class="tab-btn" data-tab="messages" type="button">Messages <span class="count" id="count-messages">0</span></button>
+      <button class="tab-btn" data-tab="host" type="button">Host</button>
+      <button class="tab-btn" data-tab="about" type="button">About page</button>
+      <button class="tab-btn" data-tab="links" type="button">Links</button>
+    </nav>
+
+    <div class="panels">
+
+      <section class="panel active" id="panel-hero">
+        <h2 class="panel-title">Hero</h2>
+        <p class="panel-desc">The first thing visitors see: the big headline, tagline, and intro paragraph.</p>
+        <label for="h-line1">Headline line 1</label>
+        <input type="text" id="h-line1" />
+        <p class="hint">Wrap a word in *asterisks* to color it gold, e.g. Where *Creativity*</p>
+        <label for="h-line2">Headline line 2</label>
+        <input type="text" id="h-line2" />
+        <label for="h-tagline">Tagline</label>
+        <input type="text" id="h-tagline" />
+        <label for="h-lede">Intro paragraph</label>
+        <textarea id="h-lede"></textarea>
+      </section>
+
+      <section class="panel" id="panel-companies">
+        <h2 class="panel-title">Guest Companies</h2>
+        <p class="panel-desc">The scrolling banner under the hero. Each company shows its logo (recolored white automatically); without a logo the name appears as outlined text.</p>
+        <label for="m-label">Banner label</label>
+        <input type="text" id="m-label" />
+        <label>Companies</label>
+        <div id="companies"></div>
+        <button class="btn-ghost add-row" type="button" id="addCompany">+ Add company</button>
+      </section>
+
+      <section class="panel" id="panel-episodes">
+        <h2 class="panel-title">Episodes</h2>
+        <p class="panel-desc">Click an episode to expand and edit it. Each episode gets its own page with a Video/Audio player: paste a Spotify link or upload the media file directly. The listing page and homepage cards update automatically.</p>
+        <div id="episodes"></div>
+        <button class="btn-ghost add-row" type="button" id="addEpisode">+ Add episode</button>
+      </section>
+
+      <section class="panel" id="panel-blog">
+        <h2 class="panel-title">Blog</h2>
+        <p class="panel-desc">A curated index of your LinkedIn articles. Every card opens the article on LinkedIn; a video thumbnail plays silently as a preview only. One article can be flagged as featured.</p>
+        <label for="b-newsletter">LinkedIn newsletter URL (the "The CX Algorithm Newsletter" button)</label>
+        <input type="url" id="b-newsletter" placeholder="https://www.linkedin.com/newsletters/…" />
+        <label style="margin-top:1.5rem">Articles</label>
+        <div id="articles"></div>
+        <button class="btn-ghost add-row" type="button" id="addArticle">+ Add article</button>
+      </section>
+
+      <section class="panel" id="panel-messages">
+        <h2 class="panel-title">Messages</h2>
+        <p class="panel-desc">Submissions from the contact page: speaking enquiries, guest pitches and general messages. These live on the server only — visitors can't see them.</p>
+        <div id="messagesList"></div>
+      </section>
+
+      <section class="panel" id="panel-host">
+        <h2 class="panel-title">Host</h2>
+        <p class="panel-desc">Your name, bio, and photo, shown in the hero and the "Meet your host" band.</p>
+        <label for="host-name">Name</label>
+        <input type="text" id="host-name" />
+        <label for="host-bio1">Bio — paragraph 1</label>
+        <textarea id="host-bio1"></textarea>
+        <label for="host-bio2">Bio — paragraph 2</label>
+        <textarea id="host-bio2"></textarea>
+        <label>Host photo</label>
+        <div class="art-row">
+          <img id="host-photo-preview" class="host-photo-preview" src="" alt="" />
+          <input type="file" id="host-photo-file" accept="image/png,image/jpeg,image/webp" />
+        </div>
+      </section>
+
+      <section class="panel" id="panel-about">
+        <h2 class="panel-title">About page</h2>
+        <p class="panel-desc">The stats strip, the "On stage" conference photo gallery, and the "As seen at" venue names on the About page. Visitors only ever see the photos you upload here.</p>
+        <label>Stats strip (4 numbers)</label>
+        <div id="aboutStats"></div>
+        <label style="margin-top:1.5rem">Conference gallery (5 frames — the first is the tall feature)</label>
+        <div id="aboutGallery"></div>
+        <label for="a-venues" style="margin-top:1.5rem">"As seen at" venues — one per line</label>
+        <textarea id="a-venues"></textarea>
+      </section>
+
+      <section class="panel" id="panel-links">
+        <h2 class="panel-title">Links</h2>
+        <p class="panel-desc">Podcast platforms and social profiles, used across the footer.</p>
+        <div class="row">
+          <div><label for="l-apple">Apple Podcasts URL</label><input type="url" id="l-apple" /></div>
+          <div><label for="l-spotify">Spotify URL</label><input type="url" id="l-spotify" /></div>
+          <div><label for="l-amazon">Amazon Music URL</label><input type="url" id="l-amazon" /></div>
+          <div><label for="l-youtube">YouTube URL (channel is "available soon" on the site)</label><input type="url" id="l-youtube" /></div>
+          <div><label for="l-linkedin">LinkedIn URL</label><input type="url" id="l-linkedin" /></div>
+          <div><label for="l-x">X (Twitter) URL</label><input type="url" id="l-x" /></div>
+          <div><label for="l-instagram">Instagram URL</label><input type="url" id="l-instagram" /></div>
+          <div><label for="l-email">Contact email</label><input type="email" id="l-email" /></div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</main>
+
+<div class="savebar">
+  <div class="wrap savebar-inner">
+    <span id="status"></span>
+    <button class="btn-gold" id="saveAll" type="button">Save &amp; publish</button>
+  </div>
+</div>
+
+<script>
+  let content = null;
+  const $ = id => document.getElementById(id);
+  const status = (msg, cls) => { const el = $('status'); el.textContent = msg; el.className = cls || ''; };
+
+  /* ---- Auth: every admin API call carries the x-admin-key header ---- */
+  function adminHeaders() {
+    const k = sessionStorage.getItem('cxAdminKey');
+    return k ? { 'x-admin-key': k } : {};
+  }
+  async function verifyKey(key) {
+    try {
+      const res = await fetch(location.origin + '/api/messages', { headers: { 'x-admin-key': key } });
+      return res.ok;
+    } catch (e) { return false; }
+  }
+  async function gate() {
+    const stored = sessionStorage.getItem('cxAdminKey');
+    if (stored && await verifyKey(stored)) { boot(); return; }
+    sessionStorage.removeItem('cxAdminKey');
+    $('loginGate').hidden = false;
+    $('loginUser').focus();
+  }
+  $('loginForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = $('loginBtn');
+    btn.disabled = true;
+    $('loginError').textContent = '';
+    const key = $('loginUser').value.trim() + ':' + $('loginPass').value;
+    if (await verifyKey(key)) {
+      sessionStorage.setItem('cxAdminKey', key);
+      $('loginGate').hidden = true;
+      boot();
+    } else {
+      $('loginError').textContent = 'Wrong username or password.';
+      btn.disabled = false;
+      $('loginPass').focus();
+    }
+  });
+  $('logoutBtn').addEventListener('click', () => {
+    sessionStorage.removeItem('cxAdminKey');
+    location.reload();
+  });
+
+  /* ---- Tabs ---- */
+  const tabButtons = [...document.querySelectorAll('.tab-btn')];
+  function showTab(name) {
+    tabButtons.forEach(b => b.classList.toggle('active', b.dataset.tab === name));
+    document.querySelectorAll('.panel').forEach(p => p.classList.toggle('active', p.id === 'panel-' + name));
+    history.replaceState(null, '', '#' + name);
+  }
+  tabButtons.forEach(b => b.addEventListener('click', () => showTab(b.dataset.tab)));
+  const initialTab = location.hash.slice(1);
+  if (['hero', 'companies', 'episodes', 'blog', 'messages', 'host', 'about', 'links'].includes(initialTab)) showTab(initialTab);
+
+  function updateCounts() {
+    $('count-episodes').textContent = content ? content.episodes.length : 0;
+    $('count-companies').textContent = content ? content.marquee.items.length : 0;
+    $('count-articles').textContent = content ? content.blog.articles.length : 0;
+  }
+
+  async function uploadImage(file) {
+    const dataUrl = await new Promise((resolve, reject) => {
+      const r = new FileReader();
+      r.onload = () => resolve(r.result);
+      r.onerror = reject;
+      r.readAsDataURL(file);
+    });
+    const res = await fetch(location.origin + '/api/upload', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', ...adminHeaders() },
+      body: JSON.stringify({ name: file.name, data: dataUrl })
+    });
+    const out = await res.json();
+    if (!res.ok || !out.ok) throw new Error(out.error || 'Upload failed');
+    return out.path;
+  }
+
+  // Large audio/video: ask the server for a one-time signed URL, then the browser
+  // uploads the file DIRECTLY to cloud storage (no size limits on our functions).
+  async function uploadMedia(file, onProgress) {
+    const res = await fetch(location.origin + '/api/upload-url', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', ...adminHeaders() },
+      body: JSON.stringify({ name: file.name })
+    });
+    if (res.status === 404) return uploadMediaLocal(file, onProgress); // local dev server
+    const out = await res.json();
+    if (!res.ok || !out.ok) throw new Error(out.error || 'Could not start upload');
+    await new Promise((resolve, reject) => {
+      const xhr = new XMLHttpRequest();
+      xhr.open('PUT', out.uploadUrl);
+      xhr.setRequestHeader('Content-Type', file.type || 'application/octet-stream');
+      xhr.upload.onprogress = (e) => { if (e.lengthComputable && onProgress) onProgress(Math.round(e.loaded / e.total * 100)); };
+      xhr.onload = () => (xhr.status >= 200 && xhr.status < 300) ? resolve() : reject(new Error('Upload failed (' + xhr.status + ')'));
+      xhr.onerror = () => reject(new Error('Network error during upload'));
+      xhr.send(file);
+    });
+    return out.publicUrl;
+  }
+
+  // Fallback used only when running on the old local dev server
+  function uploadMediaLocal(file, onProgress) {
+    return new Promise((resolve, reject) => {
+      const xhr = new XMLHttpRequest();
+      xhr.open('POST', location.origin + '/api/upload-media?name=' + encodeURIComponent(file.name));
+      xhr.upload.onprogress = (e) => { if (e.lengthComputable && onProgress) onProgress(Math.round(e.loaded / e.total * 100)); };
+      xhr.onload = () => {
+        try {
+          const r = JSON.parse(xhr.responseText);
+          if (xhr.status === 200 && r.ok) resolve(r.path); else reject(new Error(r.error || 'Upload failed'));
+        } catch (e) { reject(new Error('Upload failed (' + xhr.status + ')')); }
+      };
+      xhr.onerror = () => reject(new Error('Network error during upload'));
+      xhr.send(file);
+    });
+  }
+
+  /* ---- Episodes (collapsible) ---- */
+  function episodeCard(ep, index, startOpen) {
+    const det = document.createElement('details');
+    det.className = 'ep';
+    if (startOpen) det.open = true;
+    det.innerHTML = `
+      <summary>
+        <span class="ep-sum-num"></span>
+        <span class="ep-sum-title"></span>
+        <svg class="ep-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 6 L8 11 L13 6"/></svg>
+      </summary>
+      <div class="ep-body">
+        <label>Label</label>
+        <input type="text" data-f="eyebrow" value="" />
+        <label>Title</label>
+        <input type="text" data-f="title" value="" />
+        <label>Short description (cards and listing blurb)</label>
+        <textarea data-f="description"></textarea>
+        <div class="row">
+          <div><label>Guest name</label><input type="text" data-f="guest" /></div>
+          <div><label>Guest role &amp; company</label><input type="text" data-f="role" /></div>
+        </div>
+        <div class="row">
+          <div><label>Date (e.g. Jan 14, 2026)</label><input type="text" data-f="date" /></div>
+          <div><label>Duration (e.g. 47 min)</label><input type="text" data-f="duration" /></div>
+        </div>
+
+        <label>Cover image / thumbnail</label>
+        <div class="art-row">
+          <img class="thumb" data-thumb src="" alt="" />
+          <div>
+            <input type="file" data-file accept="image/png,image/jpeg,image/webp" />
+            <p class="file-note" data-note>No image — the site shows the default artwork.</p>
+          </div>
+        </div>
+
+        <label>Audio — Spotify episode link OR uploaded file</label>
+        <input type="url" data-f="audio" placeholder="https://open.spotify.com/episode/… or upload below" />
+        <div class="art-row">
+          <input type="file" data-media="audio" accept=".mp3,.m4a,.wav,.aac,.ogg,audio/*" />
+          <p class="file-note" data-media-note="audio"></p>
+        </div>
+
+        <label>Video — Spotify video link OR uploaded file</label>
+        <input type="url" data-f="video" placeholder="https://open.spotify.com/episode/… or upload below" />
+        <div class="art-row">
+          <input type="file" data-media="video" accept=".mp4,.webm,.mov,video/*" />
+          <p class="file-note" data-media-note="video"></p>
+        </div>
+
+        <label>About this episode (episode page — blank line between paragraphs)</label>
+        <textarea data-f="about"></textarea>
+        <label>Key takeaways (one per line)</label>
+        <textarea data-f="takeaways"></textarea>
+        <label>Show notes / chapters (one per line: 02:15 | What the customer actually wants)</label>
+        <textarea data-f="chapters"></textarea>
+        <label>Resources mentioned (one per line: Label | https://link)</label>
+        <textarea data-f="resources"></textarea>
+        <div class="row">
+          <div><label>Guest pull-quote</label><input type="text" data-f="guestQuote" /></div>
+          <div><label>Guest bio (one short paragraph)</label><input type="text" data-f="guestBio" /></div>
+        </div>
+
+        <div class="ep-actions">
+          <button class="btn-danger btn-small" type="button" data-del>Remove episode</button>
+        </div>
+      </div>`;
+
+    const sumNum = det.querySelector('.ep-sum-num');
+    const sumTitle = det.querySelector('.ep-sum-title');
+    function refreshSummary() {
+      sumNum.textContent = ep.eyebrow || 'EP ' + String(index + 1).padStart(2, '0');
+      sumTitle.textContent = ep.title || 'Untitled episode';
+      sumTitle.classList.toggle('empty', !ep.title);
+    }
+    refreshSummary();
+
+    const FIELDS = ['eyebrow', 'title', 'description', 'guest', 'role', 'date', 'duration', 'audio', 'video', 'about', 'takeaways', 'chapters', 'resources', 'guestQuote', 'guestBio'];
+    FIELDS.forEach(f => {
+      const el = det.querySelector(`[data-f="${f}"]`);
+      el.value = ep[f] || '';
+      el.addEventListener('input', (e) => {
+        content.episodes[index][f] = e.target.value;
+        refreshSummary();
+      });
+    });
+
+    const thumb = det.querySelector('[data-thumb]');
+    if (ep.image) { thumb.src = ep.image; det.querySelector('[data-note]').textContent = ep.image; }
+    else { thumb.style.visibility = 'hidden'; }
+
+    ['audio', 'video'].forEach(kind => {
+      const note = det.querySelector(`[data-media-note="${kind}"]`);
+      note.textContent = (ep[kind] && ep[kind].startsWith('assets/')) ? 'Uploaded: ' + ep[kind] : 'No file uploaded.';
+      det.querySelector(`[data-media="${kind}"]`).addEventListener('change', async (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+        try {
+          const p = await uploadMedia(file, pct => status(`Uploading ${kind}… ${pct}%`));
+          content.episodes[index][kind] = p;
+          det.querySelector(`[data-f="${kind}"]`).value = p;
+          note.textContent = 'Uploaded: ' + p;
+          status(`${kind[0].toUpperCase() + kind.slice(1)} uploaded — remember to Save & publish.`, 'ok');
+        } catch (err) { status('Upload failed: ' + err.message, 'err'); }
+      });
+    });
+
+    det.querySelector('[data-del]').addEventListener('click', () => {
+      content.episodes.splice(index, 1);
+      renderEpisodes();
+      updateCounts();
+    });
+    det.querySelector('[data-file]').addEventListener('change', async (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      try {
+        status('Uploading image…');
+        const p = await uploadImage(file);
+        content.episodes[index].image = p;
+        thumb.src = p;
+        thumb.style.visibility = 'visible';
+        det.querySelector('[data-note]').textContent = p;
+        status('Image uploaded — remember to Save & publish.', 'ok');
+      } catch (err) { status('Upload failed: ' + err.message, 'err'); }
+    });
+    return det;
+  }
+
+  function renderEpisodes(openIndex) {
+    const box = $('episodes');
+    box.innerHTML = '';
+    content.episodes.forEach((ep, i) => box.appendChild(episodeCard(ep, i, i === openIndex)));
+  }
+
+  /* ---- Companies (compact rows) ---- */
+  function companyRow(co, index) {
+    const div = document.createElement('div');
+    div.className = 'co-row';
+    div.innerHTML = `
+      <img class="co-logo" data-thumb src="" alt="" />
+      <input type="text" data-f="name" placeholder="Company name" value="" />
+      <input type="file" data-file accept="image/png,image/jpeg,image/webp,image/gif" title="Upload logo" />
+      <button class="btn-danger btn-small" type="button" data-del>Remove</button>`;
+    div.querySelector('[data-f="name"]').value = co.name || '';
+    const thumb = div.querySelector('[data-thumb]');
+    if (co.logo) { thumb.src = co.logo; } else { thumb.classList.add('empty'); }
+
+    div.querySelector('[data-del]').addEventListener('click', () => {
+      content.marquee.items.splice(index, 1);
+      renderCompanies();
+      updateCounts();
+    });
+    div.querySelector('[data-f="name"]').addEventListener('input', (e) => {
+      content.marquee.items[index].name = e.target.value;
+    });
+    div.querySelector('[data-file]').addEventListener('change', async (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      try {
+        status('Uploading logo…');
+        const p = await uploadImage(file);
+        content.marquee.items[index].logo = p;
+        thumb.src = p;
+        thumb.classList.remove('empty');
+        status('Logo uploaded — remember to Save & publish.', 'ok');
+      } catch (err) { status('Upload failed: ' + err.message, 'err'); }
+    });
+    return div;
+  }
+
+  function renderCompanies() {
+    const box = $('companies');
+    box.innerHTML = '';
+    content.marquee.items.forEach((co, i) => box.appendChild(companyRow(co, i)));
+  }
+
+  /* ---- Contact messages (read-only inbox) ---- */
+  const INTENT_LABELS = { speak: 'Speaking enquiry', guest: 'Guest pitch', other: 'General enquiry' };
+  async function loadMessages() {
+    const box = $('messagesList');
+    try {
+      const res = await fetch(location.origin + '/api/messages', { headers: adminHeaders() });
+      const out = await res.json();
+      if (!res.ok || !out.ok) throw new Error(out.error || 'Failed to load');
+      $('count-messages').textContent = out.messages.length;
+      if (!out.messages.length) {
+        box.innerHTML = '<p class="hint">No messages yet. Submissions from the contact page will appear here.</p>';
+        return;
+      }
+      box.innerHTML = '';
+      out.messages.forEach(m => {
+        const div = document.createElement('div');
+        div.className = 'card';
+        const when = new Date(m.receivedAt).toLocaleString();
+        const fieldsHtml = Object.entries(m.fields || {})
+          .filter(([, v]) => String(v).trim())
+          .map(([k, v]) => `<div style="margin-bottom:0.25rem"><span style="color:var(--muted); font-size:0.78rem">${k}:</span> ${String(v).replace(/</g, '&lt;')}</div>`)
+          .join('');
+        div.innerHTML = `
+          <div class="card-head">
+            <strong>${INTENT_LABELS[m.intent] || m.intent}</strong>
+            <span style="display:flex; align-items:center; gap:0.75rem;">
+              <span style="font-family:'JetBrains Mono',monospace; font-size:0.68rem; color:var(--muted)">${when}</span>
+              <button class="btn-danger btn-small" type="button" data-del-msg>Delete</button>
+            </span>
+          </div>
+          <div style="margin-top:0.75rem; font-size:0.9rem;">${fieldsHtml}</div>
+          ${m.message ? `<div style="margin-top:0.75rem; padding:0.875rem 1rem; background:var(--panel); border-radius:10px; font-size:0.9rem; white-space:pre-wrap;">${String(m.message).replace(/</g, '&lt;')}</div>` : ''}`;
+        div.querySelector('[data-del-msg]').addEventListener('click', async () => {
+          try {
+            await fetch(location.origin + '/api/messages/delete', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json', ...adminHeaders() },
+              body: JSON.stringify({ id: m.id })
+            });
+            loadMessages();
+          } catch (e) { status('Delete failed: ' + e.message, 'err'); }
+        });
+        box.appendChild(div);
+      });
+    } catch (e) {
+      box.innerHTML = '<p class="hint">Could not load messages: ' + e.message + '</p>';
+    }
+  }
+
+  /* ---- Blog articles (collapsible) ---- */
+  function articleCard(a, index, startOpen) {
+    const det = document.createElement('details');
+    det.className = 'ep';
+    if (startOpen) det.open = true;
+    det.innerHTML = `
+      <summary>
+        <span class="ep-sum-num"></span>
+        <span class="ep-sum-title"></span>
+        <svg class="ep-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 6 L8 11 L13 6"/></svg>
+      </summary>
+      <div class="ep-body">
+        <label>Title</label>
+        <input type="text" data-f="title" />
+        <label>Excerpt (1–2 sentences)</label>
+        <textarea data-f="excerpt"></textarea>
+        <div class="row">
+          <div><label>Category tag (e.g. AI, Loyalty, Strategy)</label><input type="text" data-f="tag" /></div>
+          <div><label>LinkedIn article URL</label><input type="url" data-f="linkedInUrl" placeholder="https://www.linkedin.com/pulse/…" /></div>
+        </div>
+        <div class="row">
+          <div><label>Date (e.g. Jan 2026)</label><input type="text" data-f="date" /></div>
+          <div><label>Read time (e.g. 8 min read)</label><input type="text" data-f="readTime" /></div>
+        </div>
+        <label>Thumbnail — image, or a short video for a silent looping preview</label>
+        <div class="art-row">
+          <img class="thumb" data-thumb src="" alt="" />
+          <div>
+            <input type="file" data-file accept="image/png,image/jpeg,image/webp" title="Upload image" />
+            <input type="file" data-media="thumbvideo" accept=".mp4,.webm,video/*" title="Upload video preview" style="margin-top:0.4rem" />
+            <p class="file-note" data-note>No thumbnail yet.</p>
+          </div>
+        </div>
+        <div class="art-row" style="margin-top:0.75rem">
+          <label style="margin:0; display:flex; align-items:center; gap:0.6rem; cursor:pointer; text-transform:none; letter-spacing:0;">
+            <input type="checkbox" data-f-featured style="width:18px;height:18px;accent-color:var(--gold);" />
+            Featured article (shows in the large spotlight slot)
+          </label>
+        </div>
+        <div class="ep-actions">
+          <button class="btn-danger btn-small" type="button" data-del>Remove article</button>
+        </div>
+      </div>`;
+
+    const sumNum = det.querySelector('.ep-sum-num');
+    const sumTitle = det.querySelector('.ep-sum-title');
+    function refreshSummary() {
+      sumNum.textContent = a.featured ? '★ FEATURED' : (a.tag || 'ARTICLE').toUpperCase();
+      sumTitle.textContent = a.title || 'Untitled article';
+      sumTitle.classList.toggle('empty', !a.title);
+    }
+    refreshSummary();
+
+    ['title', 'excerpt', 'tag', 'linkedInUrl', 'date', 'readTime'].forEach(f => {
+      const el = det.querySelector(`[data-f="${f}"]`);
+      el.value = a[f] || '';
+      el.addEventListener('input', (e) => { content.blog.articles[index][f] = e.target.value; refreshSummary(); });
+    });
+    const chk = det.querySelector('[data-f-featured]');
+    chk.checked = !!a.featured;
+    chk.addEventListener('change', () => { content.blog.articles[index].featured = chk.checked; refreshSummary(); });
+
+    const thumb = det.querySelector('[data-thumb]');
+    const note = det.querySelector('[data-note]');
+    const setThumbUI = () => {
+      if (!a.thumbnail) { thumb.style.visibility = 'hidden'; note.textContent = 'No thumbnail yet.'; return; }
+      note.textContent = a.thumbnail;
+      if (/\.(mp4|webm|mov)(\?|$)/i.test(a.thumbnail)) { thumb.style.visibility = 'hidden'; note.textContent = 'Video preview: ' + a.thumbnail; }
+      else { thumb.style.visibility = 'visible'; thumb.src = a.thumbnail; }
+    };
+    setThumbUI();
+
+    det.querySelector('[data-file]').addEventListener('change', async (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      try {
+        status('Uploading image…');
+        const p = await uploadImage(file);
+        content.blog.articles[index].thumbnail = p;
+        a.thumbnail = p;
+        setThumbUI();
+        status('Thumbnail uploaded — remember to Save & publish.', 'ok');
+      } catch (err) { status('Upload failed: ' + err.message, 'err'); }
+    });
+    det.querySelector('[data-media="thumbvideo"]').addEventListener('change', async (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      try {
+        const p = await uploadMedia(file, pct => status(`Uploading video preview… ${pct}%`));
+        content.blog.articles[index].thumbnail = p;
+        a.thumbnail = p;
+        setThumbUI();
+        status('Video preview uploaded — remember to Save & publish.', 'ok');
+      } catch (err) { status('Upload failed: ' + err.message, 'err'); }
+    });
+
+    det.querySelector('[data-del]').addEventListener('click', () => {
+      content.blog.articles.splice(index, 1);
+      renderArticles();
+      updateCounts();
+    });
+    return det;
+  }
+
+  function renderArticles(openIndex) {
+    const box = $('articles');
+    box.innerHTML = '';
+    content.blog.articles.forEach((a, i) => box.appendChild(articleCard(a, i, i === openIndex)));
+  }
+
+  /* ---- About page: stats + gallery ---- */
+  function renderAboutStats() {
+    const box = $('aboutStats');
+    box.innerHTML = '';
+    content.about.stats.forEach((s, i) => {
+      const div = document.createElement('div');
+      div.className = 'co-row';
+      div.style.gridTemplateColumns = '140px 1fr';
+      div.innerHTML = `
+        <input type="text" data-sf="value" placeholder="15+" />
+        <input type="text" data-sf="label" placeholder="Years of global experience" />`;
+      div.querySelector('[data-sf="value"]').value = s.value || '';
+      div.querySelector('[data-sf="label"]').value = s.label || '';
+      div.querySelector('[data-sf="value"]').addEventListener('input', e => { content.about.stats[i].value = e.target.value; });
+      div.querySelector('[data-sf="label"]').addEventListener('input', e => { content.about.stats[i].label = e.target.value; });
+      box.appendChild(div);
+    });
+  }
+
+  function renderAboutGallery() {
+    const box = $('aboutGallery');
+    box.innerHTML = '';
+    content.about.gallery.forEach((g, i) => {
+      const div = document.createElement('div');
+      div.className = 'co-row';
+      div.innerHTML = `
+        <img class="co-logo" data-thumb src="" alt="" style="object-fit:cover;" />
+        <input type="text" data-gf="label" placeholder="Caption (e.g. Keynote / main stage)" />
+        <input type="file" data-gfile accept="image/png,image/jpeg,image/webp" title="Upload photo" />
+        <button class="btn-danger btn-small" type="button" data-clear>Clear photo</button>`;
+      const thumb = div.querySelector('[data-thumb]');
+      if (g.image) { thumb.src = g.image; } else { thumb.classList.add('empty'); }
+      div.querySelector('[data-gf="label"]').value = g.label || '';
+      div.querySelector('[data-gf="label"]').addEventListener('input', e => { content.about.gallery[i].label = e.target.value; });
+      div.querySelector('[data-gfile]').addEventListener('change', async (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+        try {
+          status('Uploading photo…');
+          const p = await uploadImage(file);
+          content.about.gallery[i].image = p;
+          thumb.src = p;
+          thumb.classList.remove('empty');
+          status('Photo uploaded — remember to Save & publish.', 'ok');
+        } catch (err) { status('Upload failed: ' + err.message, 'err'); }
+      });
+      div.querySelector('[data-clear]').addEventListener('click', () => {
+        content.about.gallery[i].image = '';
+        thumb.src = '';
+        thumb.classList.add('empty');
+      });
+      box.appendChild(div);
+    });
+  }
+
+  /* ---- Form fill / collect ---- */
+  function fillForm() {
+    $('h-line1').value = content.hero.headlineLine1 || '';
+    $('h-line2').value = content.hero.headlineLine2 || '';
+    $('h-tagline').value = content.hero.tagline || '';
+    $('h-lede').value = content.hero.lede || '';
+    $('m-label').value = content.marquee.label || '';
+    renderCompanies();
+    renderEpisodes();
+    renderArticles();
+    $('b-newsletter').value = content.blog.newsletterUrl || '';
+    $('host-name').value = content.host.name || '';
+    $('host-bio1').value = content.host.bio1 || '';
+    $('host-bio2').value = content.host.bio2 || '';
+    $('host-photo-preview').src = content.host.photo || '';
+    renderAboutStats();
+    renderAboutGallery();
+    $('a-venues').value = (content.about.venues || []).join('\n');
+    $('l-apple').value = content.links.apple || '';
+    $('l-spotify').value = content.links.spotify || '';
+    $('l-amazon').value = content.links.amazon || '';
+    $('l-youtube').value = content.links.youtube || '';
+    $('l-linkedin').value = content.links.linkedin || '';
+    $('l-x').value = content.links.x || '';
+    $('l-instagram').value = content.links.instagram || '';
+    $('l-email').value = content.links.email || '';
+    updateCounts();
+  }
+
+  function collectForm() {
+    content.hero.headlineLine1 = $('h-line1').value;
+    content.hero.headlineLine2 = $('h-line2').value;
+    content.hero.tagline = $('h-tagline').value;
+    content.hero.lede = $('h-lede').value;
+    content.marquee.label = $('m-label').value;
+    content.marquee.items = content.marquee.items.filter(co => (co.name || '').trim() || co.logo);
+    content.host.name = $('host-name').value;
+    content.host.bio1 = $('host-bio1').value;
+    content.host.bio2 = $('host-bio2').value;
+    content.about.venues = $('a-venues').value.split('\n').map(s => s.trim()).filter(Boolean);
+    content.blog.newsletterUrl = $('b-newsletter').value;
+    content.blog.articles = content.blog.articles.filter(a => (a.title || '').trim() || (a.linkedInUrl || '').trim());
+    content.links = {
+      apple: $('l-apple').value, spotify: $('l-spotify').value, amazon: $('l-amazon').value, youtube: $('l-youtube').value,
+      linkedin: $('l-linkedin').value, x: $('l-x').value, instagram: $('l-instagram').value,
+      email: $('l-email').value
+    };
+  }
+
+  $('host-photo-file').addEventListener('change', async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    try {
+      status('Uploading photo…');
+      const p = await uploadImage(file);
+      content.host.photo = p;
+      $('host-photo-preview').src = p;
+      status('Photo uploaded — remember to Save & publish.', 'ok');
+    } catch (err) { status('Upload failed: ' + err.message, 'err'); }
+  });
+
+  $('addEpisode').addEventListener('click', () => {
+    content.episodes.push({
+      eyebrow: 'EPISODE ' + String(content.episodes.length + 1).padStart(2, '0'),
+      title: '', description: '', guest: '', role: '', date: '', duration: '',
+      image: '', audio: '', video: '',
+      about: '', takeaways: '', chapters: '', resources: '', guestQuote: '', guestBio: ''
+    });
+    renderEpisodes(content.episodes.length - 1);
+    updateCounts();
+    $('episodes').lastElementChild.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+
+  $('addCompany').addEventListener('click', () => {
+    content.marquee.items.push({ name: '', logo: '' });
+    renderCompanies();
+    updateCounts();
+    const rows = $('companies');
+    rows.lastElementChild.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    rows.lastElementChild.querySelector('[data-f="name"]').focus();
+  });
+
+  $('addArticle').addEventListener('click', () => {
+    content.blog.articles.push({
+      title: '', excerpt: '', tag: '', date: '', readTime: '',
+      thumbnail: '', linkedInUrl: '', featured: false
+    });
+    renderArticles(content.blog.articles.length - 1);
+    updateCounts();
+    $('articles').lastElementChild.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+
+  $('saveAll').addEventListener('click', async () => {
+    try {
+      collectForm();
+      status('Saving…');
+      const res = await fetch(location.origin + '/api/content', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', ...adminHeaders() },
+        body: JSON.stringify(content)
+      });
+      const out = await res.json();
+      if (!res.ok || !out.ok) throw new Error(out.error || 'Save failed');
+      fillForm();
+      status('Published. The live site now shows your changes.', 'ok');
+    } catch (err) { status('Save failed: ' + err.message, 'err'); }
+  });
+
+  async function boot() {
+    loadMessages();
+    try {
+      const res = await fetch(location.origin + '/api/content', { cache: 'no-store' });
+      content = await res.json();
+      content.hero = content.hero || {};
+      content.marquee = content.marquee || {};
+      content.marquee.items = (content.marquee.items || []).map(co =>
+        typeof co === 'string' ? { name: co, logo: '' } : co);
+      content.episodes = content.episodes || [];
+      content.host = content.host || {};
+      content.links = content.links || {};
+      content.about = content.about || {};
+      content.about.stats = (Array.isArray(content.about.stats) && content.about.stats.length ? content.about.stats : [
+        { value: '15+', label: 'Years of global experience' },
+        { value: '4', label: 'Continents lived & worked' },
+        { value: '30+', label: 'Stages spoken on' },
+        { value: '$688M', label: 'In funds growth' }
+      ]).slice(0, 4);
+      content.about.gallery = (Array.isArray(content.about.gallery) && content.about.gallery.length ? content.about.gallery : [
+        { image: '', label: 'Keynote / main stage' },
+        { image: '', label: 'Panel' },
+        { image: '', label: 'Workshop' },
+        { image: '', label: 'Backstage' },
+        { image: '', label: 'With the audience' }
+      ]).slice(0, 5);
+      content.about.venues = content.about.venues || [];
+      content.blog = content.blog || {};
+      content.blog.newsletterUrl = content.blog.newsletterUrl || '';
+      content.blog.articles = Array.isArray(content.blog.articles) ? content.blog.articles : [];
+      fillForm();
+      status('Loaded. Edit anything, then Save & publish.');
+    } catch (e) { status('Could not load content: ' + e.message, 'err'); }
+  }
+
+  gate();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,8 @@
+# Local-development-only files — never deployed to Vercel
+server.js
+scripts/
+index.backup-2026-07-05.html
+DEPLOY.md
+LAUNCH-GUIDE.md
+LAUNCH-GUIDE.html
+.env.example

@@ -1,0 +1,169 @@
+{
+  "hero": {
+    "headlineLine1": "Where *Creativity*",
+    "headlineLine2": "Meets *Innovation*",
+    "tagline": "A Weekly Podcast",
+    "lede": "Explore how the world's leading brands use data, technology, and human insight to create experiences that inspire loyalty, trust, and growth."
+  },
+  "marquee": {
+    "label": "Featuring guests from",
+    "items": [
+      {
+        "name": "IE University",
+        "logo": "assets/companies/ie-university.svg"
+      },
+      {
+        "name": "Samsung",
+        "logo": "assets/companies/samsung.svg"
+      },
+      {
+        "name": "Openbank",
+        "logo": ""
+      },
+      {
+        "name": "Mastercard",
+        "logo": "assets/uploads/1783098031485-Mastercard.png"
+      },
+      {
+        "name": "World Journeys",
+        "logo": ""
+      }
+    ]
+  },
+  "episodes": [
+    {
+      "eyebrow": "EPISODE 01",
+      "title": "Branding Excellence",
+      "description": "Crafting identities that stand out and connect with purpose.",
+      "guest": "",
+      "role": "",
+      "date": "",
+      "duration": "",
+      "image": "",
+      "audio": "",
+      "video": "",
+      "about": "",
+      "takeaways": "",
+      "chapters": "",
+      "resources": "",
+      "guestQuote": "",
+      "guestBio": ""
+    },
+    {
+      "eyebrow": "EPISODE 02",
+      "title": "Digital Innovation",
+      "description": "Designing seamless digital experiences that inspire action.",
+      "guest": "",
+      "role": "",
+      "date": "",
+      "duration": "",
+      "image": "",
+      "audio": "",
+      "video": "",
+      "about": "",
+      "takeaways": "",
+      "chapters": "",
+      "resources": "",
+      "guestQuote": "",
+      "guestBio": ""
+    },
+    {
+      "eyebrow": "EPISODE 03",
+      "title": "Creative Impact",
+      "description": "Transforming ideas into designs that leave a lasting impression.",
+      "guest": "",
+      "role": "",
+      "date": "",
+      "duration": "",
+      "image": "",
+      "audio": "",
+      "video": "",
+      "about": "",
+      "takeaways": "",
+      "chapters": "",
+      "resources": "",
+      "guestQuote": "",
+      "guestBio": ""
+    }
+  ],
+  "about": {
+    "stats": [
+      {
+        "value": "15+",
+        "label": "Years of global experience"
+      },
+      {
+        "value": "4",
+        "label": "Continents lived & worked"
+      },
+      {
+        "value": "30+",
+        "label": "Stages spoken on"
+      },
+      {
+        "value": "$688M",
+        "label": "In funds growth"
+      }
+    ],
+    "gallery": [
+      {
+        "image": "",
+        "label": "Keynote / main stage"
+      },
+      {
+        "image": "",
+        "label": "Panel"
+      },
+      {
+        "image": "",
+        "label": "Workshop"
+      },
+      {
+        "image": "",
+        "label": "Backstage"
+      },
+      {
+        "image": "",
+        "label": "With the audience"
+      }
+    ],
+    "venues": [
+      "CX Summit",
+      "ForrData",
+      "NextGen CX",
+      "ExperienceLive",
+      "The Loyalty Forum"
+    ]
+  },
+  "blog": {
+    "newsletterUrl": "",
+    "articles": [
+      {
+        "title": "Channels Are Delivery Mechanisms. Journeys Are the Product.",
+        "excerpt": "Customers don't wake up wanting to use a channel, they have a job to be done. A reflection on my conversation with Sasha Zablotskyi of Openbank on journey-centricity, org design, and why AI is accelerating the death of channels.",
+        "tag": "Strategy",
+        "date": "Jan 2026",
+        "readTime": "8 min read",
+        "thumbnail": "",
+        "linkedInUrl": "",
+        "featured": true
+      }
+    ]
+  },
+  "host": {
+    "name": "Dr Eslam Afifi",
+    "bio1": "Hello, I'm Dr Eslam Afifi - a CX and data leader with over 15 years of experience helping organizations across Australia, Europe, and the GCC. I've learned that great experiences don't come from one element alone: they're created through the right Algorithm of people, data, and technology.",
+    "bio2": "I created The CX Algorithm to bring together diverse voices - innovators, leaders, and storytellers - who each add something unique to the formula. Because when we listen, share, and collaborate, we uncover the real intelligence behind extraordinary customer experiences.",
+    "photo": "assets/dr-eslam-afifi.png"
+  },
+  "links": {
+    "apple": "",
+    "spotify": "",
+    "amazon": "",
+    "youtube": "",
+    "linkedin": "",
+    "x": "",
+    "instagram": "",
+    "email": "eslamafifi783@gmail.com"
+  }
+}

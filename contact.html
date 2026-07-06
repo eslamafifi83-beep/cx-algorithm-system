@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Contact — The CX Algorithm Podcast</title>
+<meta name="description" content="Book Dr Eslam Afifi to speak, pitch yourself as a guest on The CX Algorithm Podcast, or start a partnership conversation." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Oswald:wght@500;600&display=swap" rel="stylesheet" />
+<link rel="icon" type="image/png" href="assets/logo.png" />
+<style>
+  :root {
+    --midnight: #0C1128;
+    --midnight-deep: #090D20;
+    --panel: #121938;
+    --card: #151D42;
+    --gold: #E9A33D;
+    --gold-light: #F4C069;
+    --gold-deep: #C9862A;
+    --blue: #6FA8DC;
+    --blue-light: #9CC4E8;
+    --text: #F2F1EC;
+    --muted: #A7ADC9;
+    --hairline: rgba(242, 241, 236, 0.10);
+    --hairline-gold: rgba(233, 163, 61, 0.35);
+    --display: "Poppins", system-ui, sans-serif;
+    --body: "Poppins", system-ui, sans-serif;
+    --mono: "Poppins", system-ui, sans-serif;
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    --gutter: clamp(1.25rem, 5vw, 4.5rem);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: var(--body);
+    background:
+      radial-gradient(120% 50% at 80% 0%, rgba(59, 78, 158, 0.30), transparent 65%),
+      var(--midnight);
+    color: var(--text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  .container { max-width: 1360px; margin: 0 auto; padding-left: var(--gutter); padding-right: var(--gutter); }
+  ::selection { background: var(--gold); color: var(--midnight); }
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+  .site-header {
+    position: sticky; top: 0; z-index: 90;
+    background: rgba(12, 17, 40, 0.88);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--hairline);
+  }
+  .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; height: 5.25rem; }
+  .brand { display: flex; align-items: center; gap: 0.875rem; text-decoration: none; color: var(--text); flex: none; }
+  .brand-mark { width: 46px; height: 46px; border-radius: 12px; display: block; }
+  .brand-name { font-family: var(--display); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.16em; line-height: 1.45; text-transform: uppercase; }
+  .brand-name span { color: var(--gold); }
+  .site-nav { display: flex; align-items: center; gap: clamp(1rem, 2.5vw, 2.25rem); }
+  .site-nav a {
+    font-family: var(--display); font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--text); text-decoration: none; padding: 0.375rem 0; position: relative; opacity: 0.85;
+    transition: opacity 0.25s var(--ease), color 0.25s var(--ease);
+  }
+  .site-nav a::after { content: ""; position: absolute; left: 0; bottom: -4px; width: 100%; height: 2px; background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform 0.3s var(--ease); }
+  .site-nav a:hover { opacity: 1; color: var(--gold-light); }
+  .site-nav a:hover::after, .site-nav a[aria-current="page"]::after { transform: scaleX(1); }
+  .site-nav a[aria-current="page"] { opacity: 1; }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 0.625rem;
+    font-family: var(--display); font-weight: 700; font-size: 0.8125rem; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 0.875rem 1.75rem; border-radius: 999px; text-decoration: none; cursor: pointer; border: none; min-height: 44px;
+    transition: transform 0.2s var(--ease), box-shadow 0.3s var(--ease), filter 0.2s var(--ease);
+  }
+  .btn-gold { background: linear-gradient(180deg, var(--gold-light), var(--gold)); color: #2A1D05; box-shadow: 0 6px 24px rgba(233, 163, 61, 0.28); }
+  .btn-gold:hover { box-shadow: 0 10px 32px rgba(233, 163, 61, 0.42); transform: translateY(-1px); }
+  .btn-gold:disabled { opacity: 0.6; cursor: wait; transform: none; }
+
+  main { padding-bottom: clamp(3.25rem, 6vw, 5.25rem); }
+
+  /* Header */
+  .contact-head { text-align: center; padding: clamp(2.75rem, 5.5vw, 4.125rem) 0 0.5rem; }
+  .kicker { font-family: var(--mono); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.4em; color: var(--gold); text-transform: uppercase; }
+  .contact-head h1 {
+    font-family: var(--display); font-weight: 800;
+    font-size: clamp(2rem, 4.6vw, 3.5rem);
+    line-height: 1.08; letter-spacing: -0.02em;
+    max-width: 20ch; margin: 1.1rem auto 1.25rem;
+  }
+  .contact-head .sub { color: var(--muted); font-size: 1.0625rem; max-width: 56ch; margin: 0 auto; }
+
+  /* Intent cards */
+  .intents {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+    padding: clamp(2rem, 4.5vw, 2.875rem) 0 0.75rem;
+  }
+  .intent {
+    position: relative;
+    border-radius: 20px;
+    padding: 2rem 1.875rem;
+    background: rgba(255, 255, 255, 0.035);
+    border: 1.5px solid rgba(255, 255, 255, 0.08);
+    cursor: pointer;
+    text-align: left;
+    color: var(--text);
+    font-family: var(--body);
+    transition: transform 0.2s var(--ease), border-color 0.2s var(--ease), background 0.2s var(--ease), box-shadow 0.2s var(--ease);
+  }
+  .intent:hover { transform: translateY(-4px); }
+  .intent.active {
+    border-color: rgba(233, 163, 61, 0.75);
+    background: rgba(233, 163, 61, 0.09);
+    box-shadow: 0 20px 50px -28px rgba(233, 163, 61, 0.5);
+  }
+  .intent .tick {
+    position: absolute; top: 22px; right: 22px;
+    width: 26px; height: 26px; border-radius: 50%;
+    background: var(--gold);
+    display: none; align-items: center; justify-content: center;
+  }
+  .intent.active .tick { display: flex; }
+  .intent .icon-tile {
+    width: 58px; height: 58px; border-radius: 15px;
+    background: rgba(233, 163, 61, 0.12);
+    display: grid; place-items: center;
+    margin-bottom: 1.375rem;
+  }
+  .intent h3 { font-family: var(--display); font-size: 1.3rem; font-weight: 700; margin-bottom: 0.6rem; }
+  .intent p { color: var(--muted); font-size: 0.9rem; line-height: 1.6; }
+
+  /* Form + sidebar */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1.55fr 1fr;
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+    align-items: start;
+    padding-top: clamp(1.75rem, 3.5vw, 2.5rem);
+  }
+  .form-card {
+    border-radius: 22px;
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .form-title-row { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
+  .form-title-row .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); flex: none; }
+  .form-title-row h2 { font-family: var(--display); font-size: 1.5rem; font-weight: 700; }
+  .form-blurb { color: var(--muted); font-size: 0.9375rem; margin-bottom: 1.875rem; }
+  .fields { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .field label { display: block; color: #C4D0E5; font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.03em; margin-bottom: 8px; }
+  .cx-in {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #EEF3FA;
+    font-family: var(--body);
+    font-size: 0.9375rem;
+    outline: none;
+    transition: border-color 0.18s ease, background 0.18s ease;
+  }
+  .cx-in::placeholder { color: #6F83A6; }
+  .cx-in:focus { border-color: rgba(233, 163, 61, 0.7); background: rgba(233, 163, 61, 0.06); }
+  .cx-in.invalid { border-color: rgba(224, 96, 96, 0.7); }
+  textarea.cx-in { resize: vertical; min-height: 130px; }
+  .form-foot { display: flex; align-items: center; justify-content: space-between; gap: 1.25rem; margin-top: 1.75rem; flex-wrap: wrap; }
+  .prefer { display: flex; align-items: center; gap: 10px; color: #7F92B3; font-size: 0.8125rem; }
+  .prefer strong { color: #CFD8E6; font-weight: 600; }
+  .form-status { font-size: 0.85rem; margin-top: 0.875rem; }
+  .form-status.err { color: #E06060; }
+  .success-card { text-align: center; padding: 3rem 1.5rem; }
+  .success-card .big-tick {
+    width: 64px; height: 64px; border-radius: 50%;
+    background: var(--gold);
+    display: grid; place-items: center;
+    margin: 0 auto 1.25rem;
+  }
+  .success-card h2 { font-family: var(--display); font-weight: 700; font-size: 1.5rem; margin-bottom: 0.5rem; }
+  .success-card p { color: var(--muted); max-width: 44ch; margin: 0 auto 1.5rem; }
+
+  /* Sidebar */
+  .sidebar { display: flex; flex-direction: column; gap: 20px; }
+  .expect-card {
+    border-radius: 20px; padding: 1.875rem;
+    background: linear-gradient(150deg, rgba(233, 163, 61, 0.1), rgba(74, 110, 180, 0.05));
+    border: 1px solid rgba(233, 163, 61, 0.2);
+  }
+  .expect-card h3, .host-card h3 { font-family: var(--display); font-size: 1.1rem; font-weight: 700; margin-bottom: 1.25rem; }
+  .expect-row { display: flex; align-items: flex-start; gap: 13px; margin-bottom: 1rem; }
+  .expect-row:last-child { margin-bottom: 0; }
+  .expect-row .tile {
+    flex: none; width: 30px; height: 30px; border-radius: 9px;
+    background: rgba(233, 163, 61, 0.14);
+    display: grid; place-items: center;
+    margin-top: 0.15rem;
+  }
+  .expect-row .t { color: #EEF3FA; font-size: 0.9rem; font-weight: 600; }
+  .expect-row .d { color: var(--muted); font-size: 0.8125rem; line-height: 1.5; }
+  .host-card {
+    border-radius: 20px; padding: 1.875rem;
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .host-id { display: flex; align-items: center; gap: 15px; margin-bottom: 1.375rem; }
+  .host-id img { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 2px solid rgba(233, 163, 61, 0.5); }
+  .host-id .n { font-family: var(--display); font-size: 1rem; font-weight: 700; }
+  .host-id .r { color: var(--gold); font-size: 0.8125rem; font-weight: 600; }
+  .host-fact { display: flex; align-items: center; gap: 11px; color: var(--muted); font-size: 0.875rem; margin-bottom: 0.8rem; }
+  .host-fact strong { color: #EEF3FA; font-weight: 600; }
+  .host-socials { display: flex; gap: 12px; margin-top: 1.375rem; }
+  .host-socials a {
+    width: 42px; height: 42px; border-radius: 50%;
+    border: 1px solid rgba(233, 163, 61, 0.45);
+    display: grid; place-items: center;
+    color: var(--gold);
+    transition: background 0.25s var(--ease), color 0.25s var(--ease), transform 0.2s var(--ease);
+  }
+  .host-socials a:hover { background: var(--gold); color: var(--midnight); transform: translateY(-2px); }
+  .host-socials a[hidden] { display: none; }
+
+  .footer { background: var(--midnight-deep); border-top: 1px solid var(--hairline); padding: 2rem 0; margin-top: clamp(2rem, 4vw, 3rem); }
+  .footer-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; }
+  .footer a { color: var(--muted); text-decoration: none; font-family: var(--display); font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; }
+  .footer a:hover { color: var(--gold-light); }
+  .footer .copy { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.12em; color: var(--muted); }
+
+  @media (max-width: 1024px) {
+    .intents { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    .fields { grid-template-columns: 1fr; }
+    .field { grid-column: 1 / -1 !important; }
+  }
+  @media (max-width: 960px) {
+    .site-nav { display: none; }
+    .site-nav.open {
+      display: flex;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      height: calc(100dvh - 5.25rem);
+      overflow-y: auto;
+      background: var(--midnight-deep);
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding-top: 3rem;
+      gap: 0;
+      z-index: 80;
+    }
+    .site-nav.open a {
+      font-size: 1.25rem;
+      padding: 1.125rem 0;
+      width: 80%;
+      text-align: center;
+      border-bottom: 1px solid var(--hairline);
+    }
+    .header-subscribe { display: none; }
+    .mobile-toggle {
+      display: grid;
+      place-items: center;
+      width: 44px; height: 44px;
+      background: transparent;
+      border: 1.5px solid var(--hairline-gold);
+      border-radius: 12px;
+      color: var(--gold);
+      cursor: pointer;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .intent:hover, .btn-gold:hover, .host-socials a:hover { transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<script src="assets/loader.js"></script>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html" aria-label="The CX Algorithm Podcast — home">
+      <img class="brand-mark" src="assets/logo.png" alt="" aria-hidden="true" />
+      <span class="brand-name">The CX Algorithm<br /><span>Podcast</span></span>
+    </a>
+    <nav class="site-nav" id="siteNav" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="about.html">The Host</a>
+      <a href="episodes.html">Episodes</a>
+      <a href="index.html#topics">Themes</a>
+      <a href="blog.html">Articles</a>
+      <a href="contact.html" aria-current="page">Contact</a>
+    </nav>
+    <div style="display:flex; align-items:center; gap:0.75rem;">
+      <a class="btn btn-gold header-subscribe" href="index.html#platforms">Subscribe</a>
+      <button class="mobile-toggle" id="navToggle" hidden aria-label="Open menu" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="3" y1="6" x2="17" y2="6"/><line x1="3" y1="10" x2="17" y2="10"/><line x1="3" y1="14" x2="17" y2="14"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <div class="contact-head">
+    <p class="kicker">Get in touch</p>
+    <h1>Let's create something worth talking about</h1>
+    <p class="sub">Whether you want me on your stage, on your screen, or across the mic as a guest on the show, start here and tell me what you have in mind.</p>
+  </div>
+
+  <div class="intents" role="radiogroup" aria-label="What are you reaching out about?" id="intents"></div>
+
+  <div class="contact-grid">
+    <div class="form-card" id="formCard"></div>
+
+    <aside class="sidebar">
+      <div class="expect-card">
+        <h3>What to expect</h3>
+        <div class="expect-row">
+          <span class="tile"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E9A33D" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+          <div><div class="t">A real reply</div><div class="d">Every message is read by me, not a bot or an agency.</div></div>
+        </div>
+        <div class="expect-row">
+          <span class="tile"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E9A33D" stroke-width="1.6" stroke-linecap="round"><rect x="4" y="5" width="16" height="16" rx="2.5"/><path d="M4 9h16M8 3v4M16 3v4"/></svg></span>
+          <div><div class="t">Clear next steps</div><div class="d">If it's a fit, you'll get availability and practical details fast.</div></div>
+        </div>
+        <div class="expect-row">
+          <span class="tile"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E9A33D" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-11"/></svg></span>
+          <div><div class="t">The right fit</div><div class="d">If I'm not the right person, I'll say so and point you to someone better.</div></div>
+        </div>
+      </div>
+
+      <div class="host-card">
+        <div class="host-id">
+          <img id="hostPhoto" src="assets/dr-eslam-afifi.png" alt="Dr Eslam Afifi" />
+          <div>
+            <div class="n" id="hostName">Dr Eslam Afifi</div>
+            <div class="r">Host · Speaker · CX &amp; AI</div>
+          </div>
+        </div>
+        <div class="host-fact">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6FA8DC" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          <span>Typical reply within <strong>2 business days</strong></span>
+        </div>
+        <div class="host-fact">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6FA8DC" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-5.5 7-11a7 7 0 0 0-14 0c0 5.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
+          <span>Available worldwide · in-person &amp; virtual</span>
+        </div>
+        <div class="host-socials">
+          <a href="#" id="soLinkedin" hidden aria-label="LinkedIn">
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor"><path d="M4.98 3.5 C4.98 4.6 4.1 5.5 3 5.5 C1.9 5.5 1 4.6 1 3.5 C1 2.4 1.9 1.5 3 1.5 C4.1 1.5 4.98 2.4 4.98 3.5 Z M1.2 7.2 H4.8 V19 H1.2 Z M7.4 7.2 H10.8 V8.8 C11.3 7.9 12.6 6.9 14.5 6.9 C18 6.9 19 9.1 19 12.3 V19 H15.4 V13 C15.4 11.4 15 10.2 13.5 10.2 C12 10.2 11.2 11.3 11.2 13 V19 H7.4 Z"/></svg>
+          </a>
+          <a href="#" id="soX" hidden aria-label="X (Twitter)">
+            <svg width="16" height="16" viewBox="0 0 18 18" fill="currentColor"><path d="M10.7 7.6 L17.3 0 H15.7 L10 6.6 L5.4 0 H0.1 L7 10 L0.1 18 H1.7 L7.7 11 L12.5 18 H17.8 L10.7 7.6 Z"/></svg>
+          </a>
+          <a href="#" id="soInstagram" hidden aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="1.5" y="1.5" width="17" height="17" rx="5"/><circle cx="10" cy="10" r="4"/><circle cx="15.2" cy="4.8" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="mailto:eslamafifi783@gmail.com" id="soMail" aria-label="Email">
+            <svg width="18" height="18" viewBox="0 0 20 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><rect x="1" y="1" width="18" height="14" rx="3"/><path d="M2 3 L10 9.5 L18 3"/></svg>
+          </a>
+        </div>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <a href="episodes.html">All episodes</a>
+    <span class="copy">© 2026 THE CX ALGORITHM PODCAST · HOSTED BY DR ESLAM AFIFI</span>
+  </div>
+</footer>
+
+<script>
+  const esc = s => { const d = document.createElement('div'); d.textContent = String(s ?? ''); return d.innerHTML; };
+  const escAttr = s => esc(s).replace(/"/g, '&quot;');
+
+  const ICONS = {
+    stage: '<path d="M4 9l8-4.5L20 9l-8 4.5z"/><path d="M6 11v5c0 1.5 2.7 2.6 6 2.6s6-1.1 6-2.6v-5"/>',
+    mic: '<rect x="9" y="2.5" width="6" height="11" rx="3"/><path d="M5.8 11a6.2 6.2 0 0 0 12.4 0"/><line x1="12" y1="17.5" x2="12" y2="21"/><line x1="8.5" y1="21" x2="15.5" y2="21"/>',
+    handshake: '<path d="M8 12l2.5 2.5a1.5 1.5 0 0 0 2.1 0L20 8"/><path d="M4 8l3-2 4 3M20 8l-3-2-3.5 2.6"/><path d="M4 8v6l3 3M20 8v6l-3 3"/>'
+  };
+
+  const INTENTS = [
+    { key: 'speak', icon: 'stage', title: 'Speak at your event', desc: 'Keynotes, panels, fireside chats and workshops on CX, AI and customer-led growth.' },
+    { key: 'guest', icon: 'mic', title: 'Come on the show', desc: 'Pitch yourself or a guest to be featured in an upcoming episode of the podcast.' },
+    { key: 'other', icon: 'handshake', title: 'Partner or collaborate', desc: 'Sponsorships, media, and partnerships that move the customer experience forward.' }
+  ];
+
+  const CONFIG = {
+    speak: {
+      formTitle: 'Speaking enquiry',
+      formBlurb: "Tell me about your event and the moment you're trying to create for your audience.",
+      submitLabel: 'Send enquiry',
+      messageLabel: 'Topic & goals for the session',
+      messagePh: 'What would you like me to speak about, and what should the audience walk away with?',
+      fields: [
+        { label: 'Your name', ph: 'Your full name', col: '1 / 2', required: true },
+        { label: 'Work email', ph: 'you@company.com', col: '2 / 3', required: true, email: true },
+        { label: 'Organisation', ph: 'Company or event', col: '1 / 2' },
+        { label: 'Event name', ph: 'e.g. CX Summit 2026', col: '2 / 3' },
+        { label: 'Event date', ph: 'DD / MM / YYYY', col: '1 / 2' },
+        { label: 'Format', ph: 'Keynote · Panel · Fireside · Workshop', col: '2 / 3' },
+        { label: 'Audience size', ph: 'e.g. 300', col: '1 / 2' },
+        { label: 'Location', ph: 'City, or Virtual', col: '2 / 3' }
+      ]
+    },
+    guest: {
+      formTitle: 'Guest pitch',
+      formBlurb: 'Give me a feel for who you are and the conversation we could have on the show.',
+      submitLabel: 'Send pitch',
+      messageLabel: 'What should we talk about?',
+      messagePh: "The angle, story or hot take you'd bring, and why it matters to our audience right now.",
+      fields: [
+        { label: 'Full name', ph: 'Your full name', col: '1 / 2', required: true },
+        { label: 'Email', ph: 'you@company.com', col: '2 / 3', required: true, email: true },
+        { label: 'Company & role', ph: 'e.g. Head of CX', col: '1 / 2' },
+        { label: 'LinkedIn profile', ph: 'linkedin.com/in/…', col: '2 / 3' },
+        { label: 'Area of expertise', ph: 'e.g. AI-driven personalization', col: '1 / 2' },
+        { label: 'Preferred format', ph: 'Audio · Video', col: '2 / 3' }
+      ]
+    },
+    other: {
+      formTitle: 'General enquiry',
+      formBlurb: "A few details and I'll point your message to the right place.",
+      submitLabel: 'Send message',
+      messageLabel: 'Your message',
+      messagePh: 'Tell me what you have in mind…',
+      fields: [
+        { label: 'Your name', ph: 'Your full name', col: '1 / 2', required: true },
+        { label: 'Email', ph: 'you@company.com', col: '2 / 3', required: true, email: true },
+        { label: 'Organisation', ph: 'Company / outlet', col: '1 / 2' },
+        { label: 'Nature of enquiry', ph: 'Partnership · Press · Other', col: '2 / 3' }
+      ]
+    }
+  };
+
+  let selected = 'speak';
+  let contactEmail = 'eslamafifi783@gmail.com';
+  const values = { speak: {}, guest: {}, other: {} }; // preserve typed values per intent
+
+  function renderIntents() {
+    document.getElementById('intents').innerHTML = INTENTS.map(it => `
+      <button type="button" class="intent${it.key === selected ? ' active' : ''}" role="radio" aria-checked="${it.key === selected}" data-key="${it.key}">
+        <span class="tick"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#12203C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-11"/></svg></span>
+        <span class="icon-tile"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#E9A33D" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${ICONS[it.icon]}</svg></span>
+        <h3>${it.title}</h3>
+        <p>${it.desc}</p>
+      </button>`).join('');
+    document.querySelectorAll('.intent').forEach(b => b.addEventListener('click', () => {
+      saveValues();
+      selected = b.dataset.key;
+      renderIntents();
+      renderForm();
+    }));
+  }
+
+  function saveValues() {
+    const c = CONFIG[selected];
+    document.querySelectorAll('#formCard [data-field]').forEach((el, i) => {
+      values[selected][el.dataset.field] = el.value;
+    });
+    const msg = document.getElementById('msgField');
+    if (msg) values[selected].__message = msg.value;
+  }
+
+  function renderForm() {
+    const c = CONFIG[selected];
+    const v = values[selected];
+    document.getElementById('formCard').innerHTML = `
+      <div class="form-title-row"><span class="dot"></span><h2>${c.formTitle}</h2></div>
+      <p class="form-blurb">${c.formBlurb}</p>
+      <form id="contactForm" novalidate>
+        <div class="fields">
+          ${c.fields.map(f => `
+            <div class="field" style="grid-column:${f.col}">
+              <label>${f.label}${f.required ? ' *' : ''}</label>
+              <input class="cx-in" type="${f.email ? 'email' : 'text'}" data-field="${escAttr(f.label)}" ${f.required ? 'data-required' : ''} ${f.email ? 'data-email' : ''} placeholder="${escAttr(f.ph)}" value="${escAttr(v[f.label] || '')}" />
+            </div>`).join('')}
+          <div class="field" style="grid-column:1/-1">
+            <label>${c.messageLabel}</label>
+            <textarea class="cx-in" id="msgField" rows="5" placeholder="${escAttr(c.messagePh)}">${esc(v.__message || '')}</textarea>
+          </div>
+        </div>
+        <div class="form-foot">
+          <div class="prefer">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#6FA8DC" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M4 7l8 6 8-6"/></svg>
+            <span>Prefer email?&nbsp;<strong id="preferEmail">${esc(contactEmail)}</strong></span>
+          </div>
+          <button class="btn btn-gold" type="submit" id="submitBtn">
+            ${c.submitLabel}
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+          </button>
+        </div>
+        <p class="form-status" id="formStatus" role="status"></p>
+      </form>`;
+    document.getElementById('contactForm').addEventListener('submit', onSubmit);
+  }
+
+  async function onSubmit(e) {
+    e.preventDefault();
+    const c = CONFIG[selected];
+    const statusEl = document.getElementById('formStatus');
+    statusEl.className = 'form-status';
+    statusEl.textContent = '';
+
+    const fields = {};
+    let firstBad = null;
+    document.querySelectorAll('#formCard [data-field]').forEach(el => {
+      el.classList.remove('invalid');
+      const val = el.value.trim();
+      fields[el.dataset.field] = val;
+      const needsValue = el.hasAttribute('data-required') && !val;
+      const badEmail = el.hasAttribute('data-email') && val && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
+      if (needsValue || badEmail) {
+        el.classList.add('invalid');
+        if (!firstBad) firstBad = { el, msg: needsValue ? 'Please fill in the required fields.' : 'That email address doesn\'t look right.' };
+      }
+    });
+    if (firstBad) {
+      statusEl.className = 'form-status err';
+      statusEl.textContent = firstBad.msg;
+      firstBad.el.focus();
+      return;
+    }
+
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.firstChild.textContent = 'Sending… ';
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ intent: selected, fields, message: document.getElementById('msgField').value.trim() })
+      });
+      const out = await res.json();
+      if (!res.ok || !out.ok) throw new Error(out.error || 'Something went wrong');
+      values[selected] = {};
+      document.getElementById('formCard').innerHTML = `
+        <div class="success-card">
+          <div class="big-tick"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#12203C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-11"/></svg></div>
+          <h2>Message sent</h2>
+          <p>Thanks for reaching out. I read every message myself and typically reply within 2 business days.</p>
+          <button class="btn btn-gold" type="button" onclick="renderForm()">Send another message</button>
+        </div>`;
+    } catch (err) {
+      btn.disabled = false;
+      btn.firstChild.textContent = c.submitLabel + ' ';
+      statusEl.className = 'form-status err';
+      statusEl.textContent = 'Could not send: ' + err.message + '. You can also email ' + contactEmail + '.';
+    }
+  }
+
+  renderIntents();
+  renderForm();
+
+  (async function hydrate() {
+    try {
+      const res = await fetch('/api/content', { cache: 'no-store' });
+      const c = await res.json();
+      if (c.host) {
+        if (c.host.photo) document.getElementById('hostPhoto').src = c.host.photo;
+        if (c.host.name) document.getElementById('hostName').textContent = c.host.name;
+      }
+      if (c.links) {
+        if (c.links.email) {
+          contactEmail = c.links.email;
+          const pe = document.getElementById('preferEmail');
+          if (pe) pe.textContent = c.links.email;
+          document.getElementById('soMail').href = 'mailto:' + c.links.email;
+        }
+        const map = { soLinkedin: c.links.linkedin, soX: c.links.x, soInstagram: c.links.instagram };
+        Object.entries(map).forEach(([id, url]) => {
+          if (url) { const el = document.getElementById(id); el.href = url; el.hidden = false; }
+        });
+      }
+    } catch (e) { /* defaults stay */ }
+  })();
+
+  const navToggle = document.getElementById('navToggle');
+  if (navToggle) {
+    const siteNav = document.getElementById('siteNav');
+    navToggle.addEventListener('click', () => {
+      const open = siteNav.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', String(open));
+    });
+    siteNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      siteNav.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    }));
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Episodes — The CX Algorithm Podcast</title>
+<meta name="description" content="Every conversation from The CX Algorithm Podcast in one place: data, AI, leadership, and human insight shaping extraordinary customer experiences." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Oswald:wght@500;600&display=swap" rel="stylesheet" />
+<link rel="icon" type="image/png" href="assets/logo.png" />
+<style>
+  :root {
+    --midnight: #0C1128;
+    --midnight-deep: #090D20;
+    --panel: #121938;
+    --card: #151D42;
+    --gold: #E9A33D;
+    --gold-light: #F4C069;
+    --gold-deep: #C9862A;
+    --blue: #6FA8DC;
+    --blue-light: #9CC4E8;
+    --text: #F2F1EC;
+    --muted: #A7ADC9;
+    --hairline: rgba(242, 241, 236, 0.10);
+    --hairline-gold: rgba(233, 163, 61, 0.35);
+    --display: "Poppins", system-ui, sans-serif;
+    --body: "Poppins", system-ui, sans-serif;
+    --mono: "Poppins", system-ui, sans-serif;
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    --gutter: clamp(1.25rem, 5vw, 4.5rem);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: var(--body);
+    background:
+      radial-gradient(ellipse 70% 40% at 50% 0%, rgba(59, 78, 158, 0.25), transparent 70%),
+      var(--midnight);
+    color: var(--text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  .container { max-width: 1360px; margin: 0 auto; padding-left: var(--gutter); padding-right: var(--gutter); }
+  ::selection { background: var(--gold); color: var(--midnight); }
+  a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+  /* Header (site shell) */
+  .site-header {
+    position: sticky; top: 0; z-index: 90;
+    background: rgba(12, 17, 40, 0.88);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--hairline);
+  }
+  .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; height: 5.25rem; }
+  .brand { display: flex; align-items: center; gap: 0.875rem; text-decoration: none; color: var(--text); flex: none; }
+  .brand-mark { width: 46px; height: 46px; border-radius: 12px; display: block; }
+  .brand-name { font-family: var(--display); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.16em; line-height: 1.45; text-transform: uppercase; }
+  .brand-name span { color: var(--gold); }
+  .site-nav { display: flex; align-items: center; gap: clamp(1rem, 2.5vw, 2.25rem); }
+  .site-nav a {
+    font-family: var(--display); font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--text); text-decoration: none; padding: 0.375rem 0; position: relative; opacity: 0.85;
+    transition: opacity 0.25s var(--ease), color 0.25s var(--ease);
+  }
+  .site-nav a::after { content: ""; position: absolute; left: 0; bottom: -4px; width: 100%; height: 2px; background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform 0.3s var(--ease); }
+  .site-nav a:hover { opacity: 1; color: var(--gold-light); }
+  .site-nav a:hover::after, .site-nav a[aria-current="page"]::after { transform: scaleX(1); }
+  .site-nav a[aria-current="page"] { opacity: 1; }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 0.625rem;
+    font-family: var(--display); font-weight: 700; font-size: 0.8125rem; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 0.875rem 1.75rem; border-radius: 999px; text-decoration: none; cursor: pointer; border: none; min-height: 44px;
+    transition: transform 0.2s var(--ease), box-shadow 0.3s var(--ease), border-color 0.3s var(--ease), color 0.3s var(--ease);
+  }
+  .btn-gold { background: linear-gradient(180deg, var(--gold-light), var(--gold)); color: #2A1D05; box-shadow: 0 6px 24px rgba(233, 163, 61, 0.28); }
+  .btn-gold:hover { box-shadow: 0 10px 32px rgba(233, 163, 61, 0.42); transform: translateY(-1px); }
+  .btn-gold:active { transform: translateY(1px); }
+  .btn-outline { background: transparent; color: var(--text); border: 1.5px solid var(--hairline-gold); }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold-light); }
+
+  /* Page header */
+  .page-head { padding: clamp(2.5rem, 6vw, 4.5rem) 0 clamp(1.5rem, 3vw, 2.5rem); }
+  .page-head-grid { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 1.5rem; }
+  .kicker { font-family: var(--mono); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.28em; color: var(--gold); text-transform: uppercase; }
+  .page-head h1 { font-family: var(--display); font-weight: 800; font-size: clamp(2rem, 4.4vw, 3.25rem); letter-spacing: -0.015em; line-height: 1.12; margin-top: 0.5rem; max-width: 18ch; }
+  .list-controls { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+  .search-box { position: relative; }
+  .search-box svg { position: absolute; left: 0.9rem; top: 50%; transform: translateY(-50%); color: var(--muted); pointer-events: none; }
+  .search-box input {
+    width: min(300px, 74vw);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--hairline);
+    border-radius: 999px;
+    color: var(--text);
+    font-family: var(--body);
+    font-size: 0.9rem;
+    padding: 0.65rem 1.1rem 0.65rem 2.6rem;
+  }
+  .search-box input::placeholder { color: var(--muted); }
+  .sort-select {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--hairline);
+    border-radius: 999px;
+    color: var(--text);
+    font-family: var(--display);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    padding: 0.65rem 1.1rem;
+    cursor: pointer;
+  }
+  .sort-select option { background: var(--panel); }
+
+  /* Featured latest */
+  .featured {
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+    background: linear-gradient(135deg, rgba(233, 163, 61, 0.10), rgba(74, 110, 180, 0.06));
+    border: 1px solid rgba(233, 163, 61, 0.22);
+    border-radius: 20px;
+    padding: clamp(1.25rem, 2.5vw, 1.75rem);
+    margin-bottom: clamp(2.5rem, 5vw, 4rem);
+  }
+  .featured-art {
+    position: relative;
+    min-height: 300px;
+    border-radius: 14px;
+    background: radial-gradient(120% 120% at 40% 30%, #1C2F57 0%, #14244A 55%, #0E1C3B 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    overflow: hidden;
+  }
+  .featured-art img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .latest-tag {
+    position: absolute; top: 1rem; left: 1rem;
+    font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.2em;
+    color: #2A1D05; background: linear-gradient(180deg, var(--gold-light), var(--gold));
+    border-radius: 999px; padding: 0.3rem 0.85rem; z-index: 1;
+  }
+  .eqmini { display: flex; align-items: flex-end; gap: 5px; height: 44px; }
+  .eqmini span { width: 6px; border-radius: 3px; transform-origin: center bottom; animation: eqmini 1.2s ease-in-out infinite; }
+  .eqmini span:nth-child(1) { height: 40%; background: #79B9DE; animation-delay: 0s; }
+  .eqmini span:nth-child(2) { height: 75%; background: #57A6D9; animation-delay: 0.12s; }
+  .eqmini span:nth-child(3) { height: 100%; background: #EAF0F6; animation-delay: 0.24s; }
+  .eqmini span:nth-child(4) { height: 62%; background: #F4C069; animation-delay: 0.36s; }
+  .eqmini span:nth-child(5) { height: 85%; background: #E9A33D; animation-delay: 0.48s; }
+  .eqmini span:nth-child(6) { height: 48%; background: #C9862A; animation-delay: 0.6s; }
+  @keyframes eqmini { 0%, 100% { transform: scaleY(0.4); } 50% { transform: scaleY(1); } }
+  .featured-art .ep-tag { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.22em; color: var(--muted); }
+
+  .featured-body { display: flex; flex-direction: column; justify-content: center; gap: 0.875rem; min-width: 0; }
+  .meta-row { font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.14em; color: var(--gold); text-transform: uppercase; }
+  .meta-row .dim { color: var(--muted); }
+  .featured-body h2 { font-family: var(--display); font-weight: 800; font-size: clamp(1.5rem, 2.6vw, 2.125rem); letter-spacing: -0.01em; line-height: 1.2; }
+  .featured-body p.blurb { color: var(--muted); max-width: 62ch; }
+  .guest-chip { display: flex; align-items: center; gap: 0.75rem; margin-top: 0.25rem; }
+  .avatar {
+    width: 44px; height: 44px; border-radius: 50%; flex: none;
+    display: grid; place-items: center;
+    font-family: var(--display); font-weight: 700; font-size: 0.8rem; color: #12203C;
+  }
+  .guest-chip .who strong { font-family: var(--display); font-size: 0.9rem; display: block; line-height: 1.3; }
+  .guest-chip .who span { font-size: 0.8rem; color: var(--muted); }
+  .featured-ctas { display: flex; gap: 0.875rem; flex-wrap: wrap; margin-top: 0.5rem; }
+
+  /* Episode rows */
+  .list-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; }
+  .list-head h2 { font-family: var(--display); font-weight: 700; font-size: 1.375rem; }
+  .list-head .count { font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.14em; color: var(--muted); }
+  .ep-row {
+    display: grid;
+    grid-template-columns: 64px 1fr auto auto auto;
+    align-items: center;
+    gap: clamp(0.875rem, 2vw, 1.5rem);
+    padding: 1rem 0.5rem;
+    border-top: 1px solid var(--hairline);
+    text-decoration: none;
+    color: var(--text);
+    transition: background 0.25s var(--ease);
+  }
+  .ep-row:last-of-type { border-bottom: 1px solid var(--hairline); }
+  .ep-row:hover { background: rgba(242, 241, 236, 0.03); }
+  .ep-tile {
+    width: 64px; height: 64px; border-radius: 12px; flex: none;
+    background: radial-gradient(120% 120% at 40% 30%, #1C2F57, #0E1C3B);
+    border: 1px solid var(--hairline);
+    display: grid; place-items: center;
+    font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.1em; color: var(--gold);
+    overflow: hidden;
+  }
+  .ep-tile img { width: 100%; height: 100%; object-fit: cover; }
+  .ep-row .titles { min-width: 0; }
+  .ep-row .date { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.14em; color: var(--muted); text-transform: uppercase; }
+  .ep-row .title { font-family: var(--display); font-weight: 600; font-size: 1.05rem; line-height: 1.35; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .ep-row .guest { display: flex; align-items: center; gap: 0.6rem; color: var(--muted); font-size: 0.85rem; }
+  .ep-row .guest .avatar { width: 34px; height: 34px; font-size: 0.66rem; }
+  .ep-row .dur { font-family: var(--mono); font-size: 0.75rem; color: var(--muted); }
+  .row-play {
+    width: 46px; height: 46px; border-radius: 50%; flex: none;
+    border: 1.5px solid var(--gold); color: var(--gold); background: transparent;
+    display: grid; place-items: center;
+    transition: background 0.25s var(--ease), color 0.25s var(--ease);
+  }
+  .ep-row:hover .row-play { background: var(--gold); color: var(--midnight); }
+  .load-more-wrap { display: flex; justify-content: center; padding: 2rem 0 1rem; }
+  .empty-note { color: var(--muted); padding: 2rem 0.5rem; border-top: 1px solid var(--hairline); }
+
+  main { padding-bottom: clamp(3rem, 7vw, 5.5rem); }
+
+  /* Footer */
+  .footer {
+    background: var(--midnight-deep);
+    border-top: 1px solid var(--hairline);
+    padding: 2rem 0;
+  }
+  .footer-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; }
+  .footer a { color: var(--muted); text-decoration: none; font-family: var(--display); font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; }
+  .footer a:hover { color: var(--gold-light); }
+  .footer .copy { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.12em; color: var(--muted); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .eqmini span { animation: none; }
+  }
+  @media (max-width: 960px) {
+    .site-nav { display: none; }
+    .site-nav.open {
+      display: flex;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      height: calc(100dvh - 5.25rem);
+      overflow-y: auto;
+      background: var(--midnight-deep);
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding-top: 3rem;
+      gap: 0;
+      z-index: 80;
+    }
+    .site-nav.open a {
+      font-size: 1.25rem;
+      padding: 1.125rem 0;
+      width: 80%;
+      text-align: center;
+      border-bottom: 1px solid var(--hairline);
+    }
+    .header-subscribe { display: none; }
+    .mobile-toggle {
+      display: grid;
+      place-items: center;
+      width: 44px; height: 44px;
+      background: transparent;
+      border: 1.5px solid var(--hairline-gold);
+      border-radius: 12px;
+      color: var(--gold);
+      cursor: pointer;
+    }
+    .featured { grid-template-columns: 1fr; }
+    .featured-art { min-height: 220px; }
+  }
+  @media (max-width: 700px) {
+    .ep-row { grid-template-columns: 52px 1fr auto; }
+    .ep-row .guest, .ep-row .dur { display: none; }
+    .ep-tile { width: 52px; height: 52px; }
+    .ep-row .title { white-space: normal; font-size: 0.95rem; }
+  }
+</style>
+</head>
+<body>
+
+<script src="assets/loader.js"></script>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html" aria-label="The CX Algorithm Podcast — home">
+      <img class="brand-mark" src="assets/logo.png" alt="" aria-hidden="true" />
+      <span class="brand-name">The CX Algorithm<br /><span>Podcast</span></span>
+    </a>
+    <nav class="site-nav" id="siteNav" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="about.html">The Host</a>
+      <a href="episodes.html" aria-current="page">Episodes</a>
+      <a href="index.html#topics">Themes</a>
+      <a href="blog.html">Articles</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div style="display:flex; align-items:center; gap:0.75rem;">
+      <a class="btn btn-gold header-subscribe" href="index.html#platforms">Subscribe</a>
+      <button class="mobile-toggle" id="navToggle" hidden aria-label="Open menu" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="3" y1="6" x2="17" y2="6"/><line x1="3" y1="10" x2="17" y2="10"/><line x1="3" y1="14" x2="17" y2="14"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <div class="page-head">
+    <div class="page-head-grid">
+      <div>
+        <p class="kicker">All Episodes</p>
+        <h1>Every conversation, in one place</h1>
+      </div>
+      <div class="list-controls">
+        <div class="search-box">
+          <svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="6.5" cy="6.5" r="5"/><line x1="10.5" y1="10.5" x2="14" y2="14"/></svg>
+          <input type="search" id="searchInput" placeholder="Search episodes…" aria-label="Search episodes" />
+        </div>
+        <select class="sort-select" id="sortSelect" aria-label="Sort episodes">
+          <option value="newest">Newest</option>
+          <option value="oldest">Oldest</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <section id="featured" aria-label="Latest episode"></section>
+
+  <section aria-label="All episodes">
+    <div class="list-head">
+      <h2>More episodes</h2>
+      <span class="count" id="epCount"></span>
+    </div>
+    <div id="rows"></div>
+    <div class="load-more-wrap" id="loadMoreWrap" hidden>
+      <button class="btn btn-outline" id="loadMore" type="button">Load more episodes</button>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <a href="index.html">The CX Algorithm Podcast</a>
+    <span class="copy">© 2026 THE CX ALGORITHM PODCAST · HOSTED BY DR ESLAM AFIFI</span>
+  </div>
+</footer>
+
+<script>
+  const esc = s => { const d = document.createElement('div'); d.textContent = String(s ?? ''); return d.innerHTML; };
+  const AV_GRADS = [
+    'linear-gradient(135deg, #F4C069, #E9A33D)',
+    'linear-gradient(135deg, #9CC4E8, #6FA8DC)',
+    'linear-gradient(135deg, #EAF0F6, #9DB4CB)',
+    'linear-gradient(135deg, #F4A53A, #C9862A)',
+    'linear-gradient(135deg, #79B9DE, #4A7DB6)'
+  ];
+  const initials = name => (name || '').split(/\s+/).filter(Boolean).slice(0, 2).map(w => w[0].toUpperCase()).join('') || 'CX';
+  const epNum = (ep, i) => {
+    const m = /\d+/.exec(ep.eyebrow || '');
+    return m ? m[0].padStart(2, '0') : String(i + 1).padStart(2, '0');
+  };
+  const metaRow = (ep, i) => {
+    const bits = ['EP ' + epNum(ep, i)];
+    if (ep.date) bits.push(esc(ep.date));
+    if (ep.duration) bits.push(esc(ep.duration));
+    return bits.join(' <span class="dim">·</span> ');
+  };
+
+  let episodes = [];
+  let shown = 8;
+
+  function featuredHTML(ep, idx) {
+    const art = ep.image
+      ? `<img src="${esc(ep.image)}" alt="" />`
+      : `<div class="eqmini" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+         <span class="ep-tag">EPISODE ${epNum(ep, idx)}</span>`;
+    const guest = ep.guest ? `
+      <div class="guest-chip">
+        <span class="avatar" style="background:${AV_GRADS[idx % AV_GRADS.length]}">${esc(initials(ep.guest))}</span>
+        <span class="who"><strong>${esc(ep.guest)}</strong><span>${esc(ep.role || '')}</span></span>
+      </div>` : '';
+    const watch = ep.video ? `<a class="btn btn-outline" href="episode.html?ep=${idx}&mode=video">Watch</a>` : '';
+    return `
+      <article class="featured">
+        <div class="featured-art">
+          <span class="latest-tag">LATEST</span>
+          ${art}
+        </div>
+        <div class="featured-body">
+          <p class="meta-row">${metaRow(ep, idx)}</p>
+          <h2>${esc(ep.title || 'Untitled episode')}</h2>
+          ${ep.description ? `<p class="blurb">${esc(ep.description)}</p>` : ''}
+          ${guest}
+          <div class="featured-ctas">
+            <a class="btn btn-gold" href="episode.html?ep=${idx}">Play episode</a>
+            ${watch}
+          </div>
+        </div>
+      </article>`;
+  }
+
+  function rowHTML(ep, idx, gradIdx) {
+    const tile = ep.image ? `<img src="${esc(ep.image)}" alt="" />` : `EP ${epNum(ep, idx)}`;
+    return `
+      <a class="ep-row" href="episode.html?ep=${idx}">
+        <span class="ep-tile">${tile}</span>
+        <span class="titles">
+          ${ep.date ? `<span class="date">${esc(ep.date)}</span>` : ''}
+          <span class="title">${esc(ep.title || 'Untitled episode')}</span>
+        </span>
+        <span class="guest">
+          ${ep.guest ? `<span class="avatar" style="background:${AV_GRADS[gradIdx % AV_GRADS.length]}">${esc(initials(ep.guest))}</span> ${esc(ep.guest)}` : ''}
+        </span>
+        <span class="dur">${esc(ep.duration || '')}</span>
+        <span class="row-play" aria-hidden="true">
+          <svg width="13" height="15" viewBox="0 0 12 14" fill="currentColor"><path d="M0 0 L12 7 L0 14 Z"/></svg>
+        </span>
+      </a>`;
+  }
+
+  function currentList() {
+    const q = document.getElementById('searchInput').value.trim().toLowerCase();
+    const sort = document.getElementById('sortSelect').value;
+    // Original order = oldest first; newest = reversed
+    let list = episodes.map((ep, idx) => ({ ep, idx }));
+    if (sort === 'newest') list = list.reverse();
+    if (q) list = list.filter(({ ep }) =>
+      (ep.title || '').toLowerCase().includes(q) ||
+      (ep.guest || '').toLowerCase().includes(q) ||
+      (ep.description || '').toLowerCase().includes(q));
+    return list;
+  }
+
+  function render() {
+    const latestIdx = episodes.length - 1;
+    document.getElementById('featured').innerHTML =
+      episodes.length ? featuredHTML(episodes[latestIdx], latestIdx) : '';
+
+    const list = currentList().filter(({ idx }) => idx !== latestIdx || document.getElementById('searchInput').value.trim());
+    const total = list.length;
+    const visible = list.slice(0, shown);
+    document.getElementById('rows').innerHTML = visible.length
+      ? visible.map(({ ep, idx }, i) => rowHTML(ep, idx, i)).join('')
+      : '<p class="empty-note">No episodes match your search.</p>';
+    document.getElementById('epCount').textContent = total + (total === 1 ? ' EPISODE' : ' EPISODES');
+    document.getElementById('loadMoreWrap').hidden = total <= shown;
+  }
+
+  document.getElementById('searchInput').addEventListener('input', () => { shown = 8; render(); });
+  document.getElementById('sortSelect').addEventListener('change', () => { shown = 8; render(); });
+  document.getElementById('loadMore').addEventListener('click', () => { shown += 8; render(); });
+
+  (async function init() {
+    try {
+      const res = await fetch('/api/content', { cache: 'no-store' });
+      const c = await res.json();
+      episodes = Array.isArray(c.episodes) ? c.episodes : [];
+    } catch (e) { episodes = []; }
+    render();
+  })();
+  const navToggle = document.getElementById('navToggle');
+  if (navToggle) {
+    const siteNav = document.getElementById('siteNav');
+    navToggle.addEventListener('click', () => {
+      const open = siteNav.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', String(open));
+    });
+    siteNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      siteNav.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    }));
+  }
+</script>
+
+</body>
+</html>

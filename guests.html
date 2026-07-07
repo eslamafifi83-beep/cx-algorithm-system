@@ -154,12 +154,11 @@
   .g-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; transition: transform 0.5s var(--ease); }
   .g-card:hover .g-photo img { transform: scale(1.04); }
   .g-photo .ph { position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--display); font-weight: 800; font-size: 2.75rem; color: rgba(255,255,255,0.85); }
-  .g-scrim { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 45%, rgba(9, 14, 28, 0.92)); pointer-events: none; }
-  .g-cat { position: absolute; top: 1rem; left: 1rem; background: rgba(12, 24, 48, 0.72); backdrop-filter: blur(6px); color: #D9E2F0; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em; border-radius: 999px; padding: 0.35rem 0.8rem; }
-  .g-name-wrap { position: absolute; left: 1.25rem; right: 1.25rem; bottom: 1.125rem; }
-  .g-name { font-family: var(--display); color: #fff; font-size: 1.3rem; font-weight: 700; line-height: 1.15; }
-  .g-role { color: #CBD6E8; font-size: 0.84rem; font-weight: 500; margin-top: 0.2rem; }
-  .g-body { padding: 1.25rem 1.375rem 1.375rem; }
+  /* Name, role and category live in the body — the photo stays clean and uncovered */
+  .g-body { padding: 1.375rem; }
+  .g-cat { display: inline-block; background: rgba(233, 163, 61, 0.12); border: 1px solid rgba(233, 163, 61, 0.32); color: var(--gold-light); font-size: 0.66rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; border-radius: 999px; padding: 0.3rem 0.7rem; margin-bottom: 0.85rem; }
+  .g-name { font-family: var(--display); color: #fff; font-size: 1.25rem; font-weight: 700; line-height: 1.2; }
+  .g-role { color: #9FB2D0; font-size: 0.85rem; font-weight: 500; margin: 0.25rem 0 0.95rem; }
   .g-bio { color: #97A6C2; font-size: 0.875rem; line-height: 1.6; margin-bottom: 1.125rem; }
   /* Clamp long guest notes to ~5 lines with a Read more toggle */
   .g-bio, .fg-bio { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 5; overflow: hidden; }
@@ -374,14 +373,11 @@
       <div class="g-card">
         <div class="g-photo">
           ${photoHTML(g, 'g-photo', gi)}
-          <div class="g-scrim"></div>
-          ${g.category ? `<span class="g-cat">${esc(g.category)}</span>` : ''}
-          <div class="g-name-wrap">
-            <div class="g-name">${esc(g.name)}</div>
-            ${g.role ? `<div class="g-role">${esc(g.role)}</div>` : ''}
-          </div>
         </div>
         <div class="g-body">
+          ${g.category ? `<span class="g-cat">${esc(g.category)}</span>` : ''}
+          <div class="g-name">${esc(g.name)}</div>
+          ${g.role ? `<div class="g-role">${esc(g.role)}</div>` : ''}
           ${g.bio ? `<p class="g-bio">${esc(g.bio)}</p>` : ''}
           <div class="g-foot">${ep}${li}</div>
         </div>
@@ -398,21 +394,29 @@
   // Add a Read more / Read less toggle only to bios that overflow the 5-line clamp.
   function clampBios() {
     document.querySelectorAll('.g-bio, .fg-bio').forEach(el => {
-      const next = el.nextElementSibling;
-      if (next && next.classList.contains('read-more')) return;
-      if (el.scrollHeight - el.clientHeight > 2) {
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.className = 'read-more';
-        btn.textContent = 'Read more';
-        btn.addEventListener('click', () => {
+      const sib = el.nextElementSibling;
+      const btn = (sib && sib.classList.contains('read-more')) ? sib : null;
+      el.classList.remove('expanded'); // measure against the collapsed state
+      const overflowing = el.scrollHeight - el.clientHeight > 4;
+      if (overflowing && !btn) {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'read-more';
+        b.textContent = 'Read more';
+        b.addEventListener('click', () => {
           const open = el.classList.toggle('expanded');
-          btn.textContent = open ? 'Read less' : 'Read more';
+          b.textContent = open ? 'Read less' : 'Read more';
         });
-        el.insertAdjacentElement('afterend', btn);
+        el.insertAdjacentElement('afterend', b);
+      } else if (!overflowing && btn) {
+        btn.remove(); // bio now fits (e.g. after a resize) — drop the toggle
+      } else if (btn) {
+        btn.textContent = 'Read more';
       }
     });
   }
+  let clampTimer;
+  window.addEventListener('resize', () => { clearTimeout(clampTimer); clampTimer = setTimeout(clampBios, 150); });
 
   function render() {
     renderStats();

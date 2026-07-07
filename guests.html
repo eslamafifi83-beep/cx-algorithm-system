@@ -109,7 +109,7 @@
     margin-top: clamp(2rem, 4vw, 2.75rem);
   }
   .fg-photo { position: relative; min-height: 420px; }
-  .fg-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .fg-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; }
   .fg-photo .ph { position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--display); font-weight: 800; font-size: 4rem; color: rgba(255,255,255,0.9); }
   .fg-pill {
     position: absolute; top: 1.375rem; left: 1.375rem; z-index: 1;
@@ -151,7 +151,7 @@
   }
   .g-card:hover { transform: translateY(-6px); border-color: rgba(233, 163, 61, 0.4); box-shadow: 0 30px 60px -34px rgba(0,0,0,0.8); }
   .g-photo { position: relative; height: 300px; overflow: hidden; background: radial-gradient(120% 120% at 40% 30%, #1C2F57, #0E1C3B); }
-  .g-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s var(--ease); }
+  .g-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; transition: transform 0.5s var(--ease); }
   .g-card:hover .g-photo img { transform: scale(1.04); }
   .g-photo .ph { position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--display); font-weight: 800; font-size: 2.75rem; color: rgba(255,255,255,0.85); }
   .g-scrim { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 45%, rgba(9, 14, 28, 0.92)); pointer-events: none; }
@@ -161,6 +161,11 @@
   .g-role { color: #CBD6E8; font-size: 0.84rem; font-weight: 500; margin-top: 0.2rem; }
   .g-body { padding: 1.25rem 1.375rem 1.375rem; }
   .g-bio { color: #97A6C2; font-size: 0.875rem; line-height: 1.6; margin-bottom: 1.125rem; }
+  /* Clamp long guest notes to ~5 lines with a Read more toggle */
+  .g-bio, .fg-bio { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 5; overflow: hidden; }
+  .g-bio.expanded, .fg-bio.expanded { display: block; -webkit-line-clamp: unset; overflow: visible; }
+  .read-more { display: inline-block; background: none; border: none; padding: 0; margin: -0.5rem 0 1.125rem; color: var(--gold-light); font-family: var(--display); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.02em; cursor: pointer; }
+  .read-more:hover { text-decoration: underline; }
   .g-foot { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; }
   .g-ep { display: inline-flex; align-items: center; gap: 0.45rem; color: #8BA0C2; font-family: var(--display); font-size: 0.8rem; font-weight: 600; text-decoration: none; transition: color 0.2s var(--ease); }
   .g-ep:hover { color: var(--gold-light); }
@@ -390,6 +395,25 @@
     document.querySelectorAll('.chip').forEach(b => b.addEventListener('click', () => { activeCat = b.dataset.cat; shown = 9; render(); }));
   }
 
+  // Add a Read more / Read less toggle only to bios that overflow the 5-line clamp.
+  function clampBios() {
+    document.querySelectorAll('.g-bio, .fg-bio').forEach(el => {
+      const next = el.nextElementSibling;
+      if (next && next.classList.contains('read-more')) return;
+      if (el.scrollHeight - el.clientHeight > 2) {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'read-more';
+        btn.textContent = 'Read more';
+        btn.addEventListener('click', () => {
+          const open = el.classList.toggle('expanded');
+          btn.textContent = open ? 'Read less' : 'Read more';
+        });
+        el.insertAdjacentElement('afterend', btn);
+      }
+    });
+  }
+
   function render() {
     renderStats();
     renderFeatured();
@@ -406,6 +430,7 @@
     document.getElementById('gKicker').textContent = data.kicker || DEFAULTS.kicker;
     document.getElementById('gHeading').textContent = data.heading || DEFAULTS.heading;
     document.getElementById('gIntro').textContent = data.intro || DEFAULTS.intro;
+    clampBios();
   }
 
   document.getElementById('loadMore').addEventListener('click', () => { shown += 9; render(); });
@@ -426,6 +451,7 @@
     } catch (e) { /* defaults */ }
     featured = data.items.find(g => g.featured) || data.items[0] || null;
     render();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(clampBios);
   })();
 
   const navToggle = document.getElementById('navToggle');

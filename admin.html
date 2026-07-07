@@ -458,6 +458,11 @@
           <img id="host-photo-preview" class="host-photo-preview" src="" alt="" />
           <input type="file" id="host-photo-file" accept="image/png,image/jpeg,image/webp" />
         </div>
+        <label style="margin-top:1.5rem">Press kit (PDF) — powers the “Download press kit” button on the About page</label>
+        <div class="art-row">
+          <input type="file" id="host-presskit-file" accept="application/pdf,.pdf,.zip" />
+          <p class="file-note" id="host-presskit-note">No press kit uploaded — the button opens an email request instead.</p>
+        </div>
       </section>
 
       <section class="panel" id="panel-about">
@@ -1257,6 +1262,7 @@
     $('host-bio1').value = content.host.bio1 || '';
     $('host-bio2').value = content.host.bio2 || '';
     $('host-photo-preview').src = content.host.photo || '';
+    $('host-presskit-note').textContent = content.host.pressKit ? ('Uploaded: ' + content.host.pressKit) : 'No press kit uploaded — the button opens an email request instead.';
     renderAboutStats();
     renderAboutGallery();
     $('a-venues').value = (content.about.venues || []).join('\n');
@@ -1311,6 +1317,17 @@
       content.host.photo = p;
       $('host-photo-preview').src = p;
       status('Photo uploaded — remember to Save & publish.', 'ok');
+    } catch (err) { status('Upload failed: ' + err.message, 'err'); }
+  });
+
+  $('host-presskit-file').addEventListener('change', async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    try {
+      const p = await uploadMedia(file, pct => status('Uploading press kit… ' + pct + '%'));
+      content.host.pressKit = p;
+      $('host-presskit-note').textContent = 'Uploaded: ' + p;
+      status('Press kit uploaded — remember to Save & publish.', 'ok');
     } catch (err) { status('Upload failed: ' + err.message, 'err'); }
   });
 

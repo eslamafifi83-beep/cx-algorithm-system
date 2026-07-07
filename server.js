@@ -41,7 +41,7 @@ const MIME = {
   '.mov': 'video/quicktime'
 };
 
-const MEDIA_EXT = new Set(['.mp3', '.m4a', '.wav', '.aac', '.ogg', '.mp4', '.webm', '.mov']);
+const MEDIA_EXT = new Set(['.mp3', '.m4a', '.wav', '.aac', '.ogg', '.mp4', '.webm', '.mov', '.pdf', '.zip']);
 const MEDIA_DIR = path.join(ROOT, 'assets', 'media');
 const MEDIA_MAX_BYTES = 1024 * 1024 * 1024; // 1 GB per file
 

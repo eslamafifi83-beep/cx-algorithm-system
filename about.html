@@ -407,6 +407,19 @@
     </div>
   </section>
 
+  <!-- GALLERY -->
+  <section class="stage-band">
+    <div class="container">
+      <div class="stage-head">
+        <p class="kicker">On stage</p>
+        <h2>From the mic to the main stage</h2>
+        <p class="sub">Keynotes, panels and workshops around the world.</p>
+      </div>
+      <div class="mosaic" id="mosaic"></div>
+      <div class="venues" id="venues"></div>
+    </div>
+  </section>
+
   <!-- LENSES -->
   <section class="container lenses">
     <div class="lenses-head">
@@ -444,19 +457,6 @@
         <h3>Connected teams</h3>
         <p>Aligning service, product and marketing around the customer.</p>
       </article>
-    </div>
-  </section>
-
-  <!-- GALLERY -->
-  <section class="stage-band">
-    <div class="container">
-      <div class="stage-head">
-        <p class="kicker">On stage</p>
-        <h2>From the mic to the main stage</h2>
-        <p class="sub">Keynotes, panels and workshops around the world.</p>
-      </div>
-      <div class="mosaic" id="mosaic"></div>
-      <div class="venues" id="venues"></div>
     </div>
   </section>
 
@@ -546,6 +546,11 @@
         document.getElementById('contactLink').href = 'mailto:' + c.links.email;
         document.getElementById('bookLink').href = 'mailto:' + c.links.email + '?subject=Speaking%20enquiry';
         document.getElementById('pressLink').href = 'mailto:' + c.links.email + '?subject=Press%20kit%20request';
+      }
+      // If a press-kit file has been uploaded in the admin, the button downloads it directly.
+      if (c.host && c.host.pressKit) {
+        const pl = document.getElementById('pressLink');
+        if (pl) { pl.href = c.host.pressKit; pl.target = '_blank'; pl.rel = 'noopener'; }
       }
     } catch (e) { /* defaults below */ }
     renderStats(Array.isArray(about.stats) && about.stats.length ? about.stats : DEFAULT_STATS);

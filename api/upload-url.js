@@ -4,7 +4,7 @@
 const { supabase, BUCKETS } = require('../lib/supabase');
 const { isAdmin } = require('../lib/auth');
 
-const MEDIA_EXT = new Set(['.mp3', '.m4a', '.wav', '.aac', '.ogg', '.mp4', '.webm', '.mov']);
+const MEDIA_EXT = new Set(['.mp3', '.m4a', '.wav', '.aac', '.ogg', '.mp4', '.webm', '.mov', '.pdf', '.zip']);
 
 module.exports = async (req, res) => {
   if (req.method !== 'POST') {

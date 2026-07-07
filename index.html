@@ -537,17 +537,22 @@
     align-items: center;
   }
   .marquee-track span:not(:has(img)) { opacity: 0.68; }
+  /* Logos sit on clean light tiles so any brand — colour, dark, or with its own
+     background — reads correctly on the navy band (no blanket white-out filter). */
+  .marquee-track span:has(img) {
+    background: #fff;
+    border-radius: 12px;
+    padding: 11px 18px;
+    transition: transform 0.25s var(--ease);
+  }
+  .marquee-track span:hover:has(img) { transform: translateY(-2px); }
   .marquee-track span img {
-    height: 56px;
+    height: 34px;
     width: auto;
-    max-width: 190px;
+    max-width: 152px;
     object-fit: contain;
     display: block;
-    filter: brightness(0) invert(1);
-    opacity: 0.85;
-    transition: opacity 0.25s var(--ease);
   }
-  .marquee-track span:hover img { opacity: 1; }
   @keyframes marquee { to { transform: translateX(-50%); } }
 
   /* ============ TOPICS ============ */
@@ -1391,6 +1396,7 @@
   function renderEpisodes(eps) {
     const grid = document.getElementById('episodesGrid');
     grid.innerHTML = '';
+    const cards = [];
     eps.forEach((ep, i) => {
       const card = document.createElement('article');
       card.className = 'episode-card reveal in';
@@ -1417,7 +1423,34 @@
       card.appendChild(wrap);
       card.appendChild(body);
       grid.appendChild(card);
+      cards.push(card);
     });
+    setupLoadMore(cards);
+  }
+
+  // Home page shows the first few episodes; the rest reveal on demand.
+  const EP_INITIAL = 3, EP_STEP = 3;
+  function setupLoadMore(cards) {
+    const cta = document.querySelector('.episodes-cta');
+    const old = document.getElementById('loadMoreEps');
+    if (old) old.remove();
+    if (!cta || cards.length <= EP_INITIAL) return;
+    let shown = EP_INITIAL;
+    const apply = () => cards.forEach((c, i) => { c.style.display = i < shown ? '' : 'none'; });
+    apply();
+    const btn = document.createElement('button');
+    btn.id = 'loadMoreEps';
+    btn.type = 'button';
+    btn.className = 'btn btn-outline';
+    btn.textContent = 'Load more episodes';
+    btn.addEventListener('click', () => {
+      shown = Math.min(shown + EP_STEP, cards.length);
+      apply();
+      if (shown >= cards.length) btn.style.display = 'none';
+    });
+    cta.style.gap = '1rem';
+    cta.style.flexWrap = 'wrap';
+    cta.insertBefore(btn, cta.firstChild);
   }
 
   const setText = (id, val) => { if (val) { const el = document.getElementById(id); if (el) el.textContent = val; } };

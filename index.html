@@ -224,7 +224,7 @@
   .hero-grid {
     position: relative;
     display: grid;
-    grid-template-columns: 1.05fr 0.98fr 0.72fr;
+    grid-template-columns: 1fr 0.95fr 0.82fr;
     gap: clamp(1.5rem, 3.5vw, 3rem);
     align-items: center;
   }
@@ -415,7 +415,7 @@
   }
   .host-portrait {
     position: relative;
-    width: min(60vw, 268px);
+    width: min(60vw, 320px);
     aspect-ratio: 1;
     animation: floaty 7s ease-in-out infinite;
   }
@@ -470,6 +470,13 @@
     transition: color 0.25s var(--ease);
   }
   .meet-link:hover { color: var(--gold-light); }
+
+  /* Desktop only: align the portrait's centre with the soundscape's centre.
+     The caption hangs just below the portrait without pushing it upward. */
+  @media (min-width: 1101px) {
+    .hero-host { align-self: stretch; justify-content: center; }
+    .host-caption { position: absolute; left: 0; right: 0; top: calc(50% + 180px); }
+  }
 
   /* ============ SECTION HEADINGS ============ */
   .band { padding: clamp(3.5rem, 8vw, 6.5rem) 0; }

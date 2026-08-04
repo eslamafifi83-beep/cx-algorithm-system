@@ -638,7 +638,7 @@
   }
   .episode-art-wrap { overflow: hidden; }
   .episode-art {
-    aspect-ratio: 16 / 10;
+    aspect-ratio: 16 / 9; /* matches podcast cover thumbnails exactly — no side cropping */
     display: block;
     width: 100%;
     transform-origin: center;
@@ -1053,7 +1053,7 @@
 
       <div class="episodes-grid" id="episodesGrid">
         <article class="episode-card reveal">
-          <div class="episode-art-wrap"><svg class="episode-art" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Episode 1 artwork: a chess king">
+          <div class="episode-art-wrap"><svg class="episode-art" viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Episode 1 artwork: a chess king">
             <defs>
               <linearGradient id="art1" x1="0" y1="0" x2="1" y2="1">
                 <stop offset="0" stop-color="#1B2452"/><stop offset="1" stop-color="#0D1330"/>
@@ -1082,7 +1082,7 @@
         </article>
 
         <article class="episode-card reveal">
-          <div class="episode-art-wrap"><svg class="episode-art" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Episode 2 artwork: rising data bars">
+          <div class="episode-art-wrap"><svg class="episode-art" viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Episode 2 artwork: rising data bars">
             <defs>
               <linearGradient id="art2" x1="0" y1="0" x2="1" y2="1">
                 <stop offset="0" stop-color="#14204E"/><stop offset="1" stop-color="#0C1128"/>
@@ -1111,7 +1111,7 @@
         </article>
 
         <article class="episode-card reveal">
-          <div class="episode-art-wrap"><svg class="episode-art" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Episode 3 artwork: a glowing lightbulb">
+          <div class="episode-art-wrap"><svg class="episode-art" viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Episode 3 artwork: a glowing lightbulb">
             <defs>
               <linearGradient id="art3" x1="0" y1="0" x2="1" y2="1">
                 <stop offset="0" stop-color="#181F4B"/><stop offset="1" stop-color="#0C1128"/>
@@ -1472,7 +1472,13 @@
     const grid = document.getElementById('episodesGrid');
     grid.innerHTML = '';
     const cards = [];
-    eps.forEach((ep, i) => {
+    // Admin-picked episodes (homeFeatured) lead the grid; the rest sit behind
+    // "Load more". With nothing picked, the first three lead as before.
+    const all = eps.map((ep, idx) => ({ ep, idx }));
+    const picked = all.filter(x => x.ep.homeFeatured);
+    const ordered = picked.length ? picked.concat(all.filter(x => !x.ep.homeFeatured)) : all;
+    const initialCount = picked.length || EP_INITIAL;
+    ordered.forEach(({ ep, idx: i }) => {
       const card = document.createElement('article');
       card.className = 'episode-card reveal in';
       const wrap = document.createElement('div');
@@ -1500,17 +1506,17 @@
       grid.appendChild(card);
       cards.push(card);
     });
-    setupLoadMore(cards);
+    setupLoadMore(cards, initialCount);
   }
 
-  // Home page shows the first few episodes; the rest reveal on demand.
+  // Home page shows the picked (or first few) episodes; the rest reveal on demand.
   const EP_INITIAL = 3, EP_STEP = 3;
-  function setupLoadMore(cards) {
+  function setupLoadMore(cards, initial) {
     const cta = document.querySelector('.episodes-cta');
     const old = document.getElementById('loadMoreEps');
     if (old) old.remove();
-    if (!cta || cards.length <= EP_INITIAL) return;
-    let shown = EP_INITIAL;
+    if (!cta || cards.length <= initial) return;
+    let shown = initial;
     const apply = () => cards.forEach((c, i) => { c.style.display = i < shown ? '' : 'none'; });
     apply();
     const btn = document.createElement('button');

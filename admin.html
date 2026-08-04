@@ -107,6 +107,13 @@
     margin-bottom: 0.35rem;
   }
   .panel-desc { font-size: 0.85rem; color: var(--muted); margin-bottom: 1.5rem; max-width: 60ch; }
+  .panel-sub { font-family: "Sora", sans-serif; font-size: 0.95rem; font-weight: 700; color: var(--gold-light); margin-bottom: 0.75rem; }
+  .hf-row { display: flex; align-items: center; gap: 0.7rem; padding: 0.55rem 0.2rem; border-bottom: 1px solid var(--hairline); }
+  .hf-row:last-child { border-bottom: none; }
+  .hf-row input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--gold); flex: none; }
+  .hf-row .hf-num { font-family: "JetBrains Mono", monospace; font-size: 0.72rem; color: var(--gold); flex: none; min-width: 78px; }
+  .hf-row .hf-title { font-size: 0.875rem; color: var(--text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .hf-row .hf-title.empty { color: var(--muted); font-style: italic; }
 
   label {
     display: block;
@@ -367,7 +374,7 @@
     </div>
 
     <nav class="tabs" aria-label="Admin sections">
-      <button class="tab-btn active" data-tab="hero" type="button">Hero</button>
+      <button class="tab-btn active" data-tab="hero" type="button">Home page</button>
       <button class="tab-btn" data-tab="companies" type="button">Companies <span class="count" id="count-companies">0</span></button>
       <button class="tab-btn" data-tab="episodes" type="button">Episodes <span class="count" id="count-episodes">0</span></button>
       <button class="tab-btn" data-tab="guests" type="button">Guests <span class="count" id="count-guests">0</span></button>
@@ -382,8 +389,9 @@
     <div class="panels">
 
       <section class="panel active" id="panel-hero">
-        <h2 class="panel-title">Hero</h2>
-        <p class="panel-desc">The first thing visitors see: the big headline, tagline, and intro paragraph.</p>
+        <h2 class="panel-title">Home page</h2>
+        <p class="panel-desc">The hero section visitors see first, and which episodes appear under "Fresh this season".</p>
+        <h3 class="panel-sub">Hero section</h3>
         <label for="h-line1">Headline line 1</label>
         <input type="text" id="h-line1" />
         <p class="hint">Wrap a word in *asterisks* to color it gold, e.g. Where *Creativity*</p>
@@ -393,6 +401,9 @@
         <input type="text" id="h-tagline" />
         <label for="h-lede">Intro paragraph</label>
         <textarea id="h-lede"></textarea>
+        <h3 class="panel-sub" style="margin-top:2rem">"Fresh this season" episodes</h3>
+        <p class="hint">Tick the episodes to show on the home page. Unticked episodes stay behind the "Load more" button. If none are ticked, the first three are shown.</p>
+        <div id="homeFeatured"></div>
       </section>
 
       <section class="panel" id="panel-companies">
@@ -560,6 +571,7 @@
     const sel = $('tabSelect');
     if (sel && sel.value !== name) sel.value = name;
     history.replaceState(null, '', '#' + name);
+    if (name === 'hero' && content) renderHomeFeatured(); // pick up new/renamed episodes
   }
   tabButtons.forEach(b => b.addEventListener('click', () => showTab(b.dataset.tab)));
 
@@ -800,6 +812,7 @@
         const res = await fetch(location.origin + '/api/spotify?url=' + encodeURIComponent(url), { headers: adminHeaders() });
         const out = await res.json();
         if (!res.ok || !out.ok) throw new Error(out.error || 'Fetch failed');
+        const dupI = content.episodes.findIndex((e2, j2) => j2 !== index && (e2.audio || '').trim() === out.audio);
         fillField('title', out.title);
         fillField('description', out.description);
         fillField('about', out.about);
@@ -812,8 +825,14 @@
           det.querySelector('[data-note]').textContent = out.image;
         }
         refreshSummary();
-        spNote.textContent = out.note || 'Filled in from Spotify — review the fields, add the guest name, then Save & publish.';
-        status('Episode details pulled from Spotify — remember to Save & publish.', 'ok');
+        if (dupI >= 0) {
+          const other = content.episodes[dupI].eyebrow || 'Episode ' + (dupI + 1);
+          spNote.textContent = '⚠ ' + other + ' already uses this exact Spotify episode — double-check you pasted the right link.';
+          status('Warning: this Spotify episode is already used by ' + other + '.', 'err');
+        } else {
+          spNote.textContent = out.note || 'Filled in from Spotify — review the fields, add the guest name, then Save & publish.';
+          status('Episode details pulled from Spotify — remember to Save & publish.', 'ok');
+        }
       } catch (err) {
         spNote.textContent = 'Could not fetch: ' + err.message;
         status('Spotify fetch failed: ' + err.message, 'err');
@@ -828,6 +847,31 @@
     const box = $('episodes');
     box.innerHTML = '';
     content.episodes.forEach((ep, i) => box.appendChild(episodeCard(ep, i, i === openIndex)));
+    renderHomeFeatured();
+  }
+
+  /* ---- Home page: which episodes appear as "Fresh this season" ---- */
+  function renderHomeFeatured() {
+    const box = $('homeFeatured');
+    if (!box || !content) return;
+    box.innerHTML = '';
+    content.episodes.forEach((ep, i) => {
+      const row = document.createElement('label');
+      row.className = 'hf-row';
+      const cb = document.createElement('input');
+      cb.type = 'checkbox';
+      cb.checked = !!ep.homeFeatured;
+      cb.addEventListener('change', () => { content.episodes[i].homeFeatured = cb.checked; });
+      const num = document.createElement('span');
+      num.className = 'hf-num';
+      num.textContent = ep.eyebrow || 'EP ' + String(i + 1).padStart(2, '0');
+      const title = document.createElement('span');
+      title.className = 'hf-title' + (ep.title ? '' : ' empty');
+      title.textContent = ep.title || 'Untitled episode';
+      row.append(cb, num, title);
+      box.appendChild(row);
+    });
+    if (!content.episodes.length) box.innerHTML = '<p class="hint">No episodes yet — add some in the Episodes tab.</p>';
   }
 
   /* ---- Companies (compact rows) ---- */

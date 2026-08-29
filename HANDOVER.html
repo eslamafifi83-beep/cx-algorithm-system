@@ -42,16 +42,18 @@
 <header class="top">
   <p class="kick">The CX Algorithm Podcast</p>
   <h1>Website Handover Document</h1>
-  <p>Everything you (or anyone helping you) needs to know to run, edit, and redesign thecxalgorithm.com. Written July 2026. Keep this file safe — and keep your passwords in a separate, private notes file, never in here.</p>
+  <p>Everything you (or anyone helping you) needs to know to run, edit, and redesign thecxalgorithm.com. Written July 2026, <strong>updated 29 August 2026</strong> (guests page, navigation manager, Spotify auto-fill, press kit, home-page curation, and the full email setup). Keep this file safe — and keep your passwords in a separate, private notes file, never in here.</p>
 </header>
 
-<h2>1. Your accounts — the five websites that run everything</h2>
+<h2>1. Your accounts — the seven services that run everything</h2>
 <table>
   <tr><th>Service</th><th>Web address</th><th>What it does</th><th>What's in it</th></tr>
-  <tr><td><strong>Vercel</strong></td><td>vercel.com</td><td><strong>Hosting</strong> — shows your site to the world, runs the behind-the-scenes functions</td><td>Team <code>THE_CX_ALGORITHIM</code> → project <code>cx-algorithm-system</code>. Environment Variables (your 5 secret settings), Domains, Deployments (history of every version)</td></tr>
+  <tr><td><strong>Vercel</strong></td><td>vercel.com</td><td><strong>Hosting</strong> — shows your site to the world, runs the behind-the-scenes functions</td><td>Team <code>THE_CX_ALGORITHIM</code> → project <code>cx-algorithm-system</code>. Environment Variables (your 7 secret settings), Domains, Deployments (history of every version)</td></tr>
   <tr><td><strong>Supabase</strong></td><td>supabase.com</td><td><strong>Data</strong> — permanently stores your content, uploads, and contact messages</td><td>Project <code>cx-algorithm</code> (address: <code>fuuuhcvwlrfenjfpcymy.supabase.co</code>). Tables: <code>site_content</code>, <code>messages</code>. Storage buckets: <code>uploads</code>, <code>media</code></td></tr>
   <tr><td><strong>GitHub</strong></td><td>github.com</td><td><strong>Code</strong> — the master copy of the website's code</td><td>Repository <code>eslamafifi83-beep/cx-algorithm-system</code> (private). Every change pushed here goes live automatically</td></tr>
-  <tr><td><strong>Cloudflare</strong></td><td>dash.cloudflare.com</td><td><strong>Domain</strong> — owns thecxalgorithm.com, points it at Vercel, (later) email forwarding</td><td>Domain registration (⚠️ keep Auto-Renew ON — ~$11/yr), DNS records, Email Routing</td></tr>
+  <tr><td><strong>Cloudflare</strong></td><td>dash.cloudflare.com</td><td><strong>Domain &amp; incoming email</strong> — owns thecxalgorithm.com, points it at Vercel, forwards your email</td><td>Domain registration (⚠️ keep Auto-Renew ON — ~$11/yr), DNS records, Email Routing (hello@ → your Gmail)</td></tr>
+  <tr><td><strong>Spotify for Developers</strong></td><td>developer.spotify.com/dashboard</td><td><strong>Episode auto-fill</strong> — lets the admin pull title/cover/description/date/duration from a Spotify link</td><td>App <code>CX Algorithm Admin</code>. Its Client ID &amp; Secret are copied into Vercel (see section 2)</td></tr>
+  <tr><td><strong>Google / Gmail</strong></td><td>mail.google.com<br />myaccount.google.com</td><td><strong>Your mailbox</strong> — receives forwarded podcast email and sends as hello@thecxalgorithm.com</td><td>2-Step Verification ON, one App Password (used once, stored inside Gmail), "Send mail as" hello@thecxalgorithm.com</td></tr>
   <tr><td><strong>The site itself</strong></td><td>thecxalgorithm.com<br /><em>(also cx-algorithm-system.vercel.app)</em></td><td>Your live website</td><td>Admin panel at <code>/admin</code> — sign in with the username &amp; password you set in Vercel</td></tr>
 </table>
 <p><em>All accounts use the same email and sign in "with GitHub" where possible. Passwords live in your own notes/password manager — not in this document.</em></p>
@@ -63,25 +65,39 @@
   <tr><td>Supabase secret key (<code>sb_secret_…</code>)</td><td>Vercel Environment Variables (<code>SUPABASE_SECRET_KEY</code>) + your private notes</td><td>The master key to your data. If it ever leaks: Supabase → Settings → API Keys → revoke → make new → update in Vercel → Redeploy.</td></tr>
   <tr><td>Supabase database password</td><td>Your private notes</td><td>Rarely needed. Can be reset in Supabase settings.</td></tr>
   <tr><td>Publishable key (<code>sb_publishable_…</code>)</td><td>Vercel env var; it's public-safe by design</td><td>Not a secret — no action ever needed.</td></tr>
+  <tr><td>Spotify Client ID &amp; Secret</td><td>Vercel Environment Variables (<code>SPOTIFY_CLIENT_ID</code>, <code>SPOTIFY_CLIENT_SECRET</code>)</td><td>Powers the admin's "Auto-fill from Spotify". Originals viewable any time at developer.spotify.com/dashboard → your app → Settings. If changed there, update Vercel + Redeploy.</td></tr>
+  <tr><td>Gmail App Password</td><td>Inside Gmail only (Settings → Accounts → Send mail as)</td><td>Created once (Aug 2026) to let Gmail send as hello@. You never need it again. To revoke/recreate: myaccount.google.com/apppasswords.</td></tr>
 </table>
 <div class="callout danger"><strong>Golden rule:</strong> secrets go into Vercel's Environment Variables screen or your private notes — never into the code, never into a chat, never into email. (We learned this one live 🙂 — and rotated the key properly.)</div>
 
-<h2>3. Changing CONTENT (text, episodes, photos) — no code needed</h2>
+<h2>3. Your email — hello@thecxalgorithm.com (set up Aug 2026)</h2>
+<table>
+  <tr><th>Direction</th><th>How it works</th><th>Where it's managed</th></tr>
+  <tr><td><strong>Receiving</strong></td><td>Anyone emails <code>hello@thecxalgorithm.com</code> → Cloudflare forwards it → lands in your Gmail inbox</td><td>Cloudflare → thecxalgorithm.com → Email → Email Routing</td></tr>
+  <tr><td><strong>Sending</strong></td><td>In Gmail, the <strong>From</strong> dropdown on any new email lets you pick <code>hello@thecxalgorithm.com</code>. Sent through Google's own server (smtp.gmail.com, port 587, TLS) using the App Password</td><td>Gmail → ⚙ → See all settings → Accounts and Import → "Send mail as"</td></tr>
+  <tr><td><strong>Replying</strong></td><td>Automatic — Gmail replies from whichever address the email was sent to (podcast mail gets podcast replies)</td><td>Same screen: "Reply from the same address the message was sent to" is selected</td></tr>
+</table>
+<div class="callout">Your personal Gmail is still the <em>default</em> From address — pick hello@ from the dropdown when emailing for the podcast. Want hello@ as the default instead? One click next to it on that same Gmail settings screen ("make default").</div>
+
+<h2>4. Changing CONTENT (text, episodes, photos) — no code needed</h2>
 <p>Go to <strong>thecxalgorithm.com/admin</strong>, sign in, edit, press <strong>Save &amp; publish</strong>. Live within seconds. The tabs:</p>
 <table>
   <tr><th>Admin tab</th><th>Controls</th></tr>
-  <tr><td>Hero</td><td>Homepage headline (use *asterisks* for gold words), tagline, intro paragraph</td></tr>
-  <tr><td>Companies</td><td>The scrolling "Featuring guests from" logos — add companies, upload logos</td></tr>
-  <tr><td>Episodes</td><td>Everything per episode: title, guest, dates, thumbnail, <strong>audio/video (Spotify link or file upload)</strong>, show notes, takeaways, resources</td></tr>
+  <tr><td>Home page</td><td>Hero headline (use *asterisks* for gold words), tagline, intro — plus the <strong>"Fresh this season" checklist</strong>: tick which episodes lead the homepage (unticked ones sit behind "Load more"; none ticked = first three)</td></tr>
+  <tr><td>Companies</td><td>The scrolling "Featuring guests from" logos. Upload any logo file — the site auto-trims its empty margins and shows it on a uniform white tile (transparent PNGs look best)</td></tr>
+  <tr><td>Episodes</td><td>Everything per episode. ⚡ <strong>Auto-fill from Spotify:</strong> paste the episode's Spotify link → Fetch → title, cover, description, date &amp; duration fill in automatically (add the guest name yourself). Warns you if another episode already uses the same link. Audio/video via Spotify link or file upload; show notes, takeaways, chapters, resources</td></tr>
+  <tr><td>Guests</td><td>The Guests page: intro + three stats, and a card per guest (name, role, category, bio, photo, episode &amp; LinkedIn links, "featured" spotlight toggle). Categories become the page's filter buttons</td></tr>
   <tr><td>Blog</td><td>Your LinkedIn article cards + the newsletter button link</td></tr>
   <tr><td>Messages</td><td>Contact-form inbox — read &amp; delete enquiries</td></tr>
-  <tr><td>Host</td><td>Your name, bio, photo</td></tr>
+  <tr><td>Host</td><td>Your name, bio, photo — and the <strong>press kit PDF upload</strong> (powers the "Download press kit" button on the About page; until one is uploaded the button opens an email request)</td></tr>
   <tr><td>About page</td><td>Stats numbers, conference photo gallery, "As seen at" venue names</td></tr>
-  <tr><td>Links</td><td>Apple/Spotify/Amazon URLs, socials, contact email</td></tr>
+  <tr><td>Links</td><td>Apple/Spotify/Amazon URLs, socials, contact email (now hello@thecxalgorithm.com)</td></tr>
+  <tr><td>Navigation</td><td><strong>Rename and reorder the menu</strong> across the whole site (up/down arrows + label boxes). The page each item links to is fixed, so renaming can never break anything</td></tr>
 </table>
 <div class="callout">🎬 <strong>Video tip:</strong> for video episodes, paste a Spotify link rather than uploading huge files — free storage is 1 GB (fine for images + many audio episodes, not for video).</div>
+<div class="callout warn">👥 <strong>Guests page note:</strong> the site shipped with six <em>sample</em> guests (Dr Amina Rahal, Marcus Chen…). They show publicly until replaced — edit or delete them in the Guests tab and add your real guests.</div>
 
-<h2>4. Changing DESIGN (UX/UI) — the code route</h2>
+<h2>5. Changing DESIGN (UX/UI) — the code route</h2>
 <p>Design lives in the code. The workflow is always the same three steps:</p>
 <ol>
   <li><strong>Edit</strong> the files on your computer: <code>C:\Users\eslam\MOCKUPS\cx-algorithm-system</code> — easiest way: open Claude Code in that folder and describe the change ("make the hero headline bigger", "change the gold to a warmer tone"). Claude has memory notes about this project's whole history.</li>
@@ -94,10 +110,12 @@
   <tr><th>File</th><th>What it is</th></tr>
   <tr><td><code>index.html</code></td><td>Homepage (hero + soundscape animation, logo marquee, topics, episodes, platforms footer)</td></tr>
   <tr><td><code>episodes.html</code> / <code>episode.html</code></td><td>Episode list / single-episode page with the Video⇄Audio player</td></tr>
-  <tr><td><code>about.html</code></td><td>The Host page (portrait ring, stats, story, six lenses, photo gallery)</td></tr>
+  <tr><td><code>about.html</code></td><td>The Host page (portrait ring, stats, story, photo gallery, six lenses)</td></tr>
+  <tr><td><code>guests.html</code></td><td>Guests page (featured spotlight, category filters, guest grid)</td></tr>
   <tr><td><code>blog.html</code> / <code>contact.html</code></td><td>Articles page / Contact page with the adaptive form</td></tr>
   <tr><td><code>admin.html</code></td><td>The admin panel itself</td></tr>
-  <tr><td><code>assets/loader.js</code></td><td>The animated logo <strong>loading screen</strong> (shared by every page)</td></tr>
+  <tr><td><code>assets/loader.js</code> / <code>assets/nav.js</code></td><td>The animated logo <strong>loading screen</strong> / the shared <strong>menu</strong> (reads names &amp; order set in admin → Navigation) — both used by every page</td></tr>
+  <tr><td><code>api/spotify.js</code></td><td>The "Auto-fill from Spotify" engine (admin-only)</td></tr>
   <tr><td><code>assets/</code></td><td>Logo, host portrait, company logos committed with the site</td></tr>
   <tr><td><code>api/</code> + <code>lib/</code></td><td>The backend functions (content, contact, uploads, messages) — the "engine"</td></tr>
   <tr><td><code>content.json</code></td><td>Starter content only — the live site reads from Supabase, not this file</td></tr>
@@ -112,7 +130,7 @@
   <li><strong>Old homepage backup:</strong> <code>index.backup-2026-07-05.html</code> — the pre-redesign version, kept for reference.</li>
 </ul>
 
-<h2>5. Things that will bite if forgotten ⚠️</h2>
+<h2>6. Things that will bite if forgotten ⚠️</h2>
 <ul>
   <li><strong>Git author identity:</strong> code pushed to GitHub must be authored as <code>298448529+eslamafifi83-beep@users.noreply.github.com</code> or Vercel <strong>blocks the deployment</strong> ("commit author does not have access"). This is already configured inside the project folder — but if the project is ever copied to a new computer, set it again first thing.</li>
   <li><strong>Don't delete <code>vercel.json</code>:</strong> it pins the project type ("Other") — without it Vercel hunts for a server file and the build fails with "No entrypoint found."</li>
@@ -122,28 +140,50 @@
   <li><strong>Vercel free plan</strong> is for non-commercial use — fine for the podcast; if you start selling sponsorships through the site, upgrade to Pro (~$20/mo).</li>
 </ul>
 
-<h2>6. If something breaks — first aid</h2>
+<h2>7. If something breaks — first aid</h2>
 <table>
   <tr><th>Symptom</th><th>Do this</th></tr>
   <tr><td>Site is down / broken after a change</td><td>Vercel → Deployments → find the last <strong>working</strong> deployment → ⋯ menu → <strong>"Promote to Production"</strong> (or "Instant Rollback"). Instantly restores the previous version.</td></tr>
   <tr><td>Forgot admin password</td><td>Vercel → Settings → Environment Variables → edit <code>ADMIN_PASSWORD</code> → save → Deployments → Redeploy.</td></tr>
   <tr><td>Edits in admin don't appear on the site</td><td>Wait ~30 seconds and hard-refresh (Ctrl+Shift+R) — pages briefly cache content.</td></tr>
   <tr><td>Deployment "Blocked — commit author…"</td><td>The git identity issue above. Re-set the author email in the project folder.</td></tr>
+  <tr><td>Email to hello@ not arriving in Gmail</td><td>Check Cloudflare → Email Routing is still Active and its MX/TXT records exist. Also check Gmail's Spam folder.</td></tr>
+  <tr><td>Can't send as hello@ from Gmail</td><td>Gmail → Settings → Accounts and Import → "Send mail as" — if it shows an error, create a fresh App Password (myaccount.google.com/apppasswords) and re-enter it via "edit info".</td></tr>
+  <tr><td>Spotify auto-fill only fills title + cover</td><td>The Spotify keys aren't being read: check both env vars exist in Vercel (spelled exactly <code>SPOTIFY_CLIENT_ID</code> / <code>SPOTIFY_CLIENT_SECRET</code>), then Redeploy.</td></tr>
   <tr><td>Anything else</td><td>Open Claude Code in the project folder and describe/screenshot the problem — the project history is in its memory.</td></tr>
 </table>
 
-<h2>7. Still on the to-do list (as of handover)</h2>
+<h2>8. Done since launch ✅ &amp; still to do ☐</h2>
+<p><strong>Completed since the July handover:</strong></p>
+<ul>
+  <li>✅ Domain connected + HTTPS (thecxalgorithm.com, www, green in Vercel)</li>
+  <li>✅ Email receiving (Cloudflare forwarding) <em>and</em> sending as hello@ from Gmail (Aug 2026)</li>
+  <li>✅ SEO layer (OG cards, sitemap, robots, structured data, Vercel analytics)</li>
+  <li>✅ Guests page (replaced "Themes" in the menu) + admin Guests tab</li>
+  <li>✅ Menu renaming &amp; reordering (admin → Navigation)</li>
+  <li>✅ Spotify auto-fill for episodes (+ duplicate-link warning)</li>
+  <li>✅ Homepage curation: "Fresh this season" episode picker + Load more</li>
+  <li>✅ Press-kit upload (admin → Host) wired to the About page button</li>
+  <li>✅ Company logo tiles: uniform sizing with automatic whitespace trimming</li>
+  <li>✅ Real episodes 1–6 loaded with Spotify covers</li>
+  <li>✅ Site contact email switched to hello@thecxalgorithm.com</li>
+</ul>
+<p><strong>Still open:</strong></p>
 <ul class="checklist">
-  <li>Finish domain connection: add the two DNS records in Cloudflare (A <code>@</code> → <code>76.76.21.21</code>, CNAME <code>www</code> → <code>cname.vercel-dns.com</code>, both gray-cloud) so thecxalgorithm.com goes green in Vercel.</li>
-  <li>Set up free email forwarding (Cloudflare → Email → Email Routing → hello@thecxalgorithm.com → your Gmail).</li>
-  <li>Fill real content via /admin: episode audio/dates/guests, platform links (Apple/Spotify/Amazon), LinkedIn newsletter URL, gallery photos, real "As seen at" venue names (current ones are placeholders).</li>
-  <li>Upload official logos for Openbank and World Journeys (currently shown as text).</li>
+  <li>Replace the six <strong>sample guests</strong> on the Guests page with real ones (admin → Guests).</li>
+  <li>Check the episode list for any duplicate (EP 01 and EP 03 once held the same Spotify episode — fix the wrong one's link via Auto-fill, or delete it).</li>
+  <li>Tick your preferred "Fresh this season" episodes (admin → Home page).</li>
+  <li>Fill remaining platform links in admin → Links: Apple Podcasts, Spotify show page, Amazon Music, LinkedIn, newsletter URL.</li>
+  <li>Upload a press kit PDF (admin → Host) so the About-page button downloads it instead of opening email.</li>
+  <li>Upload a World Journeys logo (still text-only in the marquee); swap Gamechangers for a transparent-background version if they can provide one.</li>
+  <li>Real "As seen at" venue names + conference gallery photos on the About page (some are placeholders).</li>
   <li>When the YouTube channel launches: add the URL in admin → Links, and ask Claude to switch YouTube from "Available Soon" to a live link.</li>
   <li>When a trailer exists: point the hero's "Watch Trailer" button at it (currently goes to the episodes section).</li>
+  <li>Optional: make hello@ the <em>default</em> From address in Gmail; consider a DMARC record / dedicated sending service if you ever start a newsletter from the domain.</li>
 </ul>
 
 <hr />
-<p style="color:var(--muted);font-size:0.85rem;">The CX Algorithm Podcast · Hosted by Dr Eslam Afifi · Handover prepared with Claude Code, July 2026. Companion documents in the same folder: LAUNCH-GUIDE.html (how it was deployed) and DEPLOY.md (hosting options considered).</p>
+<p style="color:var(--muted);font-size:0.85rem;">The CX Algorithm Podcast · Hosted by Dr Eslam Afifi · Handover prepared with Claude Code, July 2026 · last updated 29 August 2026. Companion documents in the same folder: LAUNCH-GUIDE.html (how it was deployed) and DEPLOY.md (hosting options considered).</p>
 
 </div>
 </body>

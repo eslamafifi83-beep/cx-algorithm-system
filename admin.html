@@ -392,15 +392,21 @@
         <h2 class="panel-title">Home page</h2>
         <p class="panel-desc">The hero section visitors see first, and which episodes appear under "Fresh this season".</p>
         <h3 class="panel-sub">Hero section</h3>
+        <label for="h-onair">On-air line (next to the red "On air" light)</label>
+        <input type="text" id="h-onair" placeholder="New episode available" />
         <label for="h-line1">Headline line 1</label>
         <input type="text" id="h-line1" />
-        <p class="hint">Wrap a word in *asterisks* to color it gold, e.g. Where *Creativity*</p>
         <label for="h-line2">Headline line 2</label>
         <input type="text" id="h-line2" />
-        <label for="h-tagline">Tagline</label>
-        <input type="text" id="h-tagline" />
+        <p class="hint">Wrap a word in *asterisks* to make it gold, e.g. *decoded.* The last gold word plays the "decoding" animation.</p>
         <label for="h-lede">Intro paragraph</label>
         <textarea id="h-lede"></textarea>
+        <p class="hint">Wrap words in *asterisks* to make them bold, e.g. *The CX Algorithm* is the podcast…</p>
+        <label>Key numbers (shown under the buttons)</label>
+        <div class="row"><div><input type="text" id="hs-v-0" aria-label="Number 1" placeholder="40K+" /></div><div><input type="text" id="hs-l-0" aria-label="Label 1" placeholder="Listeners" /></div></div>
+        <div class="row" style="margin-top:0.5rem"><div><input type="text" id="hs-v-1" aria-label="Number 2" placeholder="7" /></div><div><input type="text" id="hs-l-1" aria-label="Label 2" placeholder="Countries" /></div></div>
+        <div class="row" style="margin-top:0.5rem"><div><input type="text" id="hs-v-2" aria-label="Number 3" placeholder="7+" /></div><div><input type="text" id="hs-l-2" aria-label="Label 3" placeholder="Industries" /></div></div>
+        <p class="hint">Number on the left (e.g. 40K+), label on the right. The number counts up on the page. Clear a row to hide it.</p>
         <h3 class="panel-sub" style="margin-top:2rem">"Fresh this season" episodes</h3>
         <p class="hint">Tick the episodes to show on the home page. Unticked episodes stay behind the "Load more" button. If none are ticked, the first three are shown.</p>
         <div id="homeFeatured"></div>
@@ -522,6 +528,11 @@
 <script>
   let content = null;
   const $ = id => document.getElementById(id);
+  const HERO_STATS_DEFAULT = [
+    { value: '40K+', label: 'Listeners' },
+    { value: '7', label: 'Countries' },
+    { value: '7+', label: 'Industries' }
+  ];
   const status = (msg, cls) => { const el = $('status'); el.textContent = msg; el.className = cls || ''; };
 
   /* ---- Auth: every admin API call carries the x-admin-key header ---- */
@@ -1295,8 +1306,13 @@
   function fillForm() {
     $('h-line1').value = content.hero.headlineLine1 || '';
     $('h-line2').value = content.hero.headlineLine2 || '';
-    $('h-tagline').value = content.hero.tagline || '';
+    $('h-onair').value = content.hero.onAir || 'New episode available';
     $('h-lede').value = content.hero.lede || '';
+    const heroStats = Array.isArray(content.hero.stats) ? content.hero.stats : HERO_STATS_DEFAULT;
+    for (let i = 0; i < 3; i++) {
+      $('hs-v-' + i).value = (heroStats[i] && heroStats[i].value) || '';
+      $('hs-l-' + i).value = (heroStats[i] && heroStats[i].label) || '';
+    }
     $('m-label').value = content.marquee.label || '';
     renderCompanies();
     renderEpisodes();
@@ -1330,8 +1346,11 @@
   function collectForm() {
     content.hero.headlineLine1 = $('h-line1').value;
     content.hero.headlineLine2 = $('h-line2').value;
-    content.hero.tagline = $('h-tagline').value;
+    content.hero.onAir = $('h-onair').value.trim();
     content.hero.lede = $('h-lede').value;
+    content.hero.stats = [0, 1, 2]
+      .map(i => ({ value: $('hs-v-' + i).value.trim(), label: $('hs-l-' + i).value.trim() }))
+      .filter(s => s.value);
     content.marquee.label = $('m-label').value;
     content.marquee.items = content.marquee.items.filter(co => (co.name || '').trim() || co.logo);
     content.host.name = $('host-name').value;

@@ -8,10 +8,15 @@
     { "id": "contact", "label": "Contact" }
   ],
   "hero": {
-    "headlineLine1": "Where *Creativity*",
-    "headlineLine2": "Meets *Innovation*",
-    "tagline": "A Weekly Podcast",
-    "lede": "Explore how the world's leading brands use data, technology, and human insight to create experiences that inspire loyalty, trust, and growth."
+    "onAir": "New episode available",
+    "headlineLine1": "Great experiences,",
+    "headlineLine2": "*decoded.*",
+    "lede": "*The CX Algorithm* is the podcast where Dr Eslam Afifi talks with the leaders reshaping customer experience, data and AI.",
+    "stats": [
+      { "value": "40K+", "label": "Listeners" },
+      { "value": "7", "label": "Countries" },
+      { "value": "7+", "label": "Industries" }
+    ]
   },
   "guests": {
     "kicker": "The people behind the ideas",

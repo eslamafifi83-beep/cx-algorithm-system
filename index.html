@@ -207,10 +207,11 @@
     content: "";
     position: absolute;
     inset: 0;
-    background-image: radial-gradient(rgba(242,241,236,0.055) 1px, transparent 1px);
-    background-size: 32px 32px;
-    mask-image: radial-gradient(ellipse 70% 62% at 62% 46%, black 25%, transparent 80%);
-    -webkit-mask-image: radial-gradient(ellipse 70% 62% at 62% 46%, black 25%, transparent 80%);
+    /* Dot field, centred behind the signal */
+    background-image: radial-gradient(rgba(242,241,236,0.10) 1.2px, transparent 1.7px);
+    background-size: 30px 30px;
+    mask-image: radial-gradient(ellipse 58% 72% at 70% 46%, black 30%, transparent 78%);
+    -webkit-mask-image: radial-gradient(ellipse 58% 72% at 70% 46%, black 30%, transparent 78%);
     pointer-events: none;
   }
   .hero::after {
@@ -230,11 +231,12 @@
     grid-template-rows: 1fr auto;
     grid-template-areas: "copy stage" "dock dock";
     column-gap: clamp(1.5rem, 4vw, 4rem);
-    min-height: calc(100svh - 5.25rem);
+    min-height: calc(100svh - 5.25rem - 1px); /* screen minus the sticky header and its border */
   }
 
   /* — The pitch — */
-  .hero-copy { grid-area: copy; align-self: center; min-width: 0; padding-block: clamp(1rem, 3vh, 2.5rem); }
+  /* Copy and signal start near the top together; spare height sits above the logo strip */
+  .hero-copy { grid-area: copy; align-self: start; min-width: 0; padding-block: clamp(1.25rem, 4.5vh, 3.25rem) 1rem; }
   .onair {
     display: inline-flex;
     align-items: center;
@@ -323,8 +325,9 @@
   .hstat small { display: block; margin-top: 6px; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
 
   /* — The signal: the logo's soundwave bent into a circle, host at the centre — */
-  .hero-stage-cell { grid-area: stage; align-self: center; min-width: 0; display: grid; place-items: center; padding-block: clamp(1rem, 3vh, 2.5rem); }
-  .hero-stage { --viz: clamp(320px, min(40vw, calc(100svh - 5.25rem - 230px)), 640px); --orbit: 0.45; position: relative; width: var(--viz); max-width: 100%; }
+  .hero-stage-cell { grid-area: stage; align-self: start; min-width: 0; display: grid; place-items: start center; padding-block: clamp(1.25rem, 4.5vh, 3.25rem) 1rem; }
+  /* Sized from the screen height so the signal and the full-size logo strip always fit together */
+  .hero-stage { --viz: clamp(320px, min(40vw, calc(100svh - 5.25rem - 270px)), 660px); --orbit: 0.45; position: relative; width: var(--viz); max-width: 100%; }
   .signal-viz { position: relative; width: 100%; aspect-ratio: 1; }
   .signal-viz canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
   .host-ph {
@@ -418,6 +421,7 @@
 
   /* — Guest logos, docked at the fold — */
   .hero-dock { grid-area: dock; position: relative; z-index: 0; display: flex; align-items: center; gap: clamp(1rem, 2.6vw, 2.5rem); padding-block: 16px; }
+  .hero-dock.reveal { transform: none; } /* fade in only: it sits on the screen edge, so it must not slide up from below it */
   .hero-dock::before {
     content: "";
     position: absolute;
@@ -440,17 +444,19 @@
   .marquee-track { display: flex; gap: 18px; width: max-content; animation: marquee 46s linear infinite; }
   .marquee:hover .marquee-track { animation-play-state: paused; }
   @keyframes marquee { to { transform: translateX(calc(-50% - 9px)); } }
-  .logo-tile { flex: none; width: 152px; height: 58px; padding: 10px 18px; border-radius: 12px; background: #fff; display: grid; place-items: center; }
+  /* Flex (not grid) so the image's 100% height resolves against the tile's fixed
+     height — each logo stays inside its padding instead of spilling out */
+  .logo-tile { flex: none; width: 206px; height: 92px; padding: 15px 24px; border-radius: 14px; background: #fff; display: flex; align-items: center; justify-content: center; }
   .logo-tile img { width: 100%; height: 100%; object-fit: contain; display: block; }
-  .logo-tile.is-text { font-family: var(--display); font-weight: 700; font-size: 0.8rem; line-height: 1.2; color: var(--midnight); text-align: center; }
+  .logo-tile.is-text { font-family: var(--display); font-weight: 700; font-size: 0.95rem; line-height: 1.2; color: var(--midnight); text-align: center; }
 
   /* Short laptop screens: keep the whole hero, logos included, above the fold */
   @media (min-width: 961px) and (max-height: 800px) {
     .hero-copy h1 { font-size: clamp(2.3rem, min(4vw, 7.4vh), 3.6rem); margin: 1rem 0 0.75rem; }
-    .hero-stage { --viz: clamp(300px, min(38vw, calc(100svh - 5.25rem - 200px)), 600px); }
+    .hero-stage { --viz: clamp(300px, min(38vw, calc(100svh - 5.25rem - 250px)), 600px); }
     .hero-stats { margin-top: 1.1rem; padding-top: 0.9rem; }
     .hero-dock { padding-block: 11px; }
-    .logo-tile { width: 140px; height: 50px; padding: 8px 16px; }
+    .logo-tile { width: 186px; height: 80px; padding: 12px 20px; }
   }
 
   /* Tablet & phone: one column, logos moved up right under the numbers */
@@ -460,6 +466,10 @@
     .hero-copy h1 { font-size: clamp(2.4rem, 10vw, 3.6rem); }
     .hero-dock { flex-direction: column; align-items: stretch; gap: 12px; padding-block: 18px; }
     .hero-dock::before { border-bottom: 1px solid var(--hairline); }
+    .hero::before {
+      mask-image: radial-gradient(ellipse 80% 34% at 50% 78%, black 30%, transparent 80%);
+      -webkit-mask-image: radial-gradient(ellipse 80% 34% at 50% 78%, black 30%, transparent 80%);
+    }
     .marquee-label { max-width: none; text-align: center; }
     .hero-stage-cell { padding-block: 2rem 2.75rem; }
     .hero-stage-cell { place-items: stretch; }
@@ -474,7 +484,7 @@
     .hstat { padding-inline: 12px; }
     .hstat small { font-size: 0.6rem; letter-spacing: 0.1em; }
     .orbit-chip b { font-size: 0.62rem; padding: 5px 9px; }
-    .logo-tile { width: 132px; height: 50px; padding: 8px 14px; }
+    .logo-tile { width: 172px; height: 78px; padding: 12px 18px; }
   }
 
   /* ============ SECTION HEADINGS ============ */

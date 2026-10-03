@@ -152,6 +152,9 @@
   .source small { display: flex; align-items: center; gap: 7px; font-family: var(--display); font-size: 0.66rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--faint); margin-bottom: 0.5rem; }
   .source small i { width: 7px; height: 7px; border-radius: 50%; background: #1DB954; }
   .source iframe { display: block; width: 100%; border: 0; border-radius: 12px; }
+  /* Same size as Spotify's player, shown until it loads (on the visitor's first interaction) */
+  #audioHost:empty { height: 152px; border-radius: 12px; background: rgba(255, 255, 255, 0.035); border: 1px solid var(--hairline); display: grid; place-items: center; }
+  #audioHost:empty::before { content: "Spotify player loads when you press play"; font-size: 0.78rem; color: var(--faint); }
   .hint { margin-top: 0.75rem; font-size: 0.82rem; color: var(--gold-light); }
   .nomedia { margin-top: 2rem; padding: 1.4rem 1.5rem; border-radius: 16px; background: rgba(255, 255, 255, 0.04); border: 1px solid var(--hairline); color: var(--muted); }
 
@@ -410,6 +413,21 @@
     ctrlPromises[mode].catch(() => plainEmbed(mode));
     return ctrlPromises[mode];
   }
+  // Spotify's player (and its cookies) loads at the visitor's first touch, click, key, scroll or
+  // hover over the player, not with the page: it's ready long before anyone reaches Play, while
+  // people who are only browsing never download it. Pressing Play first still works (it loads, then plays).
+  function warmSpotify() {
+    const events = ['pointerdown', 'touchstart', 'keydown', 'scroll', 'wheel'];
+    const opts = { passive: true, capture: true };
+    const stage = $('stage');
+    const go = () => {
+      events.forEach(t => removeEventListener(t, go, opts));
+      if (stage) stage.removeEventListener('pointerenter', go);
+      ensureCtrl(P.mode).catch(() => {});
+    };
+    events.forEach(t => addEventListener(t, go, opts));
+    if (stage) stage.addEventListener('pointerenter', go);
+  }
   function onSpotify(mode, d) {
     if (mode !== P.mode) return;
     P.paused = !!d.isPaused;
@@ -495,7 +513,9 @@
     if (m === 'watch') u.searchParams.set('mode', 'watch'); else u.searchParams.delete('mode');
     u.searchParams.delete('t');
     history.replaceState(null, '', u);
-    if (P.kind === 'spotify') {
+    if (P.kind === 'spotify' && initial) {
+      warmSpotify();
+    } else if (P.kind === 'spotify') {
       const existed = !!ctrls[m];
       const c = await ensureCtrl(m).catch(() => null);
       if (c && existed && at > 1) c.seek(at);

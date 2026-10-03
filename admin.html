@@ -1669,7 +1669,7 @@
     if (!ids.length) { status('No Spotify episodes to fill from.', 'err'); return; }
     btn.disabled = true; btn.textContent = 'Filling…';
     try {
-      const r = await fetch(location.origin + '/api/episode-meta?v=5&ids=' + ids.join(','));
+      const r = await fetch(location.origin + '/api/episode-meta?v=6&ids=' + ids.join(','));
       const meta = ((await r.json()) || {}).episodes || {};
       const clock = s => { s = Math.round(s); const m = Math.floor(s / 60), x = String(s % 60).padStart(2, '0'); return m + ':' + x; };
       const filler = /^(Crafting identities that stand out|Designing seamless digital experiences|Transforming ideas into designs)/i;

@@ -126,7 +126,7 @@
     const ids = [...new Set(episodes.map(e => e.sid).filter(Boolean))].sort();
     if (!ids.length) return {};
     try {
-      const r = await fetch('/api/episode-meta?v=5&ids=' + ids.join(','));
+      const r = await fetch('/api/episode-meta?v=6&ids=' + ids.join(','));
       if (!r.ok) return {};
       const j = await r.json();
       return (j && j.episodes) || {};

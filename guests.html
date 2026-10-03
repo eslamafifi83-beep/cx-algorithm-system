@@ -22,7 +22,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Oswald:wght@500;600&display=swap" rel="stylesheet" />
-<link rel="icon" type="image/png" href="assets/logo.png" />
+<link rel="icon" type="image/png" href="/assets/logo.png" />
 <script defer src="/_vercel/insights/script.js"></script>
 <style>
   :root {
@@ -236,24 +236,24 @@
 </head>
 <body>
 
-<script src="assets/loader.js"></script>
+<script src="/assets/loader.js"></script>
 
 <header class="site-header">
   <div class="container header-inner">
-    <a class="brand" href="index.html" aria-label="The CX Algorithm Podcast — home">
-      <img class="brand-mark" src="assets/logo.png" alt="" aria-hidden="true" />
+    <a class="brand" href="/" aria-label="The CX Algorithm Podcast — home">
+      <img class="brand-mark" src="/assets/logo.png" alt="" aria-hidden="true" />
       <span class="brand-name">The CX Algorithm<br /><span>Podcast</span></span>
     </a>
     <nav class="site-nav" id="siteNav" data-page="guests" aria-label="Primary">
-      <a href="index.html">Home</a>
-      <a href="guests.html" aria-current="page">Guests</a>
-      <a href="about.html">The Host</a>
-      <a href="episodes.html">Episodes</a>
-      <a href="blog.html">Articles</a>
-      <a href="contact.html">Contact</a>
+      <a href="/">Home</a>
+      <a href="/guests" aria-current="page">Guests</a>
+      <a href="/about">The Host</a>
+      <a href="/episodes">Episodes</a>
+      <a href="/blog">Articles</a>
+      <a href="/contact">Contact</a>
     </nav>
     <div style="display:flex; align-items:center; gap:0.75rem;">
-      <a class="btn btn-gold header-subscribe" href="contact.html">Contact us</a>
+      <a class="btn btn-gold header-subscribe" href="/contact">Contact us</a>
       <button class="mobile-toggle" id="navToggle" hidden aria-label="Open menu" aria-expanded="false">
         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="3" y1="6" x2="17" y2="6"/><line x1="3" y1="10" x2="17" y2="10"/><line x1="3" y1="14" x2="17" y2="14"/></svg>
       </button>
@@ -287,12 +287,13 @@
 
 <footer class="footer">
   <div class="container footer-inner">
-    <a href="episodes.html">All episodes</a>
+    <a href="/episodes">All episodes</a>
     <span class="copy">© 2026 THE CX ALGORITHM PODCAST · HOSTED BY DR ESLAM AFIFI</span>
   </div>
 </footer>
 
-<script src="assets/guest-identity.js"></script>
+<script src="/assets/guest-identity.js"></script>
+<script src="/assets/links.js"></script>
 <script>
   const esc = s => { const d = document.createElement('div'); d.textContent = String(s ?? ''); return d.innerHTML; };
   const escAttr = s => esc(s).replace(/"/g, '&quot;');
@@ -338,7 +339,7 @@
     if (g.episodeUrl) return g.episodeUrl;
     const n = guestEp(g);
     const i = n ? episodes.findIndex(e => twoDigits(e.eyebrow) === n) : -1;
-    return i >= 0 ? 'episode.html?ep=' + i : 'episodes.html';
+    return i >= 0 && window.CXLinks ? CXLinks.episodeUrl(episodes, i) : '/episodes';
   }
   // Topics typed in a different word order ("AI & Data" / "Data & AI") count as one
   const topicKey = t => String(t || '').toLowerCase().split(/\s*(?:&|\/|,|\band\b)\s*/).map(s => s.trim()).filter(Boolean).sort().join('|');
@@ -434,7 +435,7 @@
       <h3>Your voice could be next</h3>
       <p>We're always looking for leaders with something real to say about customer experience, data and AI.</p>
       <div class="vp" aria-hidden="true">${voiceprint('your voice', 44)}</div>
-      <a class="btn btn-gold" href="contact.html#guest">Pitch yourself</a>
+      <a class="btn btn-gold" href="/contact#guest">Pitch yourself</a>
     </article>`;
 
   // Everyone except the featured guest, newest episode first
@@ -568,7 +569,7 @@
     });
   }
 </script>
-<script src="assets/nav.js"></script>
+<script src="/assets/nav.js"></script>
 
 </body>
 </html>

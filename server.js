@@ -305,7 +305,28 @@ const server = http.createServer(async (req, res) => {
     res.writeHead(405, { 'Content-Type': 'text/plain; charset=utf-8' });
     return res.end('Method not allowed');
   }
+  // Same addresses as the live site: /episodes/<address> pages, the old /episode?ep=N links, the sitemap
+  const epMatch = /^\/episodes\/([^/]+)\/?$/.exec(pathname);
+  if (pathname === '/episode' || pathname === '/episode.html' || epMatch) {
+    const content = JSON.parse(fs.readFileSync(path.join(ROOT, 'content.json'), 'utf-8'));
+    const { route, render, notFoundPage } = require('./lib/episode-page');
+    const to = route(content, epMatch ? epMatch[1] : '', Object.fromEntries(url.searchParams));
+    if (to.location) { res.writeHead(to.permanent ? 301 : 302, { Location: to.location }); return res.end(); }
+    res.writeHead(to.idx >= 0 ? 200 : 404, { 'Content-Type': 'text/html; charset=utf-8' });
+    return res.end(to.idx >= 0 ? render(content, to.idx, {}) : notFoundPage());
+  }
+  if (pathname === '/sitemap.xml') {
+    const { sitePaths, absolute } = require('./lib/site-urls');
+    const content = JSON.parse(fs.readFileSync(path.join(ROOT, 'content.json'), 'utf-8'));
+    res.writeHead(200, { 'Content-Type': 'application/xml; charset=utf-8' });
+    return res.end('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+      + sitePaths(content).map(p => `  <url><loc>${absolute(p)}</loc></url>`).join('\n') + '\n</urlset>\n');
+  }
   if (pathname === '/') pathname = '/index.html';
+  // Clean URLs: /about serves about.html
+  if (!path.extname(pathname) && fs.existsSync(path.join(ROOT, pathname.replace(/\/+$/, '') + '.html'))) {
+    pathname = pathname.replace(/\/+$/, '') + '.html';
+  }
 
   const filePath = path.normalize(path.join(ROOT, pathname));
   if (!filePath.startsWith(ROOT + path.sep) && filePath !== ROOT) {

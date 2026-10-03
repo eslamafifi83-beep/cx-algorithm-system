@@ -5,6 +5,7 @@
 // Only ids that appear in the site's own episode list are looked up, so this can't be
 // used as an open Spotify proxy. Responses are cached at the edge for hours.
 const { supabase } = require('../lib/supabase');
+const { fromEmbedPage, oembed } = require('../lib/spotify-meta');
 
 const ID = /^[A-Za-z0-9]{22}$/;
 
@@ -45,32 +46,6 @@ async function episodeDetails(id, token, status) {
   return r.ok ? r.json() : null;
 }
 
-// Without API keys: Spotify's public embed page carries the duration and release date
-async function fromEmbedPage(id) {
-  try {
-    const r = await fetch('https://open.spotify.com/embed/episode/' + id, { headers: { 'User-Agent': 'Mozilla/5.0 (compatible; TheCXAlgorithm/1.0)' } });
-    if (!r.ok) return {};
-    const html = await r.text();
-    const d = /"duration":(\d+)/.exec(html);
-    const rel = /"releaseDate":\{"isoString":"(\d{4}-\d{2}-\d{2})/.exec(html);
-    return { durationMs: d ? Number(d[1]) : 0, releaseDate: rel ? rel[1] : '' };
-  } catch (e) {
-    return {};
-  }
-}
-
-// oEmbed says whether Spotify has a video version, and gives its first frame
-async function oembed(id) {
-  try {
-    const r = await fetch('https://open.spotify.com/oembed?url=' + encodeURIComponent('spotify:episode:' + id));
-    if (!r.ok) return {};
-    const j = await r.json();
-    return { video: j.type === 'video', frame: j.thumbnail_url || '' };
-  } catch (e) {
-    return {};
-  }
-}
-
 module.exports = async (req, res) => {
   try {
     const asked = String((req.query && req.query.ids) || '').split(',').map(s => s.trim()).filter(s => ID.test(s));
@@ -98,13 +73,13 @@ module.exports = async (req, res) => {
     });
 
     const missing = ids.filter(id => !episodes[id].durationMs);
-    const pages = await Promise.all(missing.map(fromEmbedPage));
+    const pages = await Promise.all(missing.map(id => fromEmbedPage(id)));
     missing.forEach((id, i) => {
       if (pages[i].durationMs) episodes[id].durationMs = pages[i].durationMs;
       if (pages[i].releaseDate && !episodes[id].releaseDate) episodes[id].releaseDate = pages[i].releaseDate;
     });
 
-    const looks = await Promise.all(ids.map(oembed));
+    const looks = await Promise.all(ids.map(id => oembed(id)));
     ids.forEach((id, i) => Object.assign(episodes[id], looks[i]));
 
     // Cache a complete answer for hours; an incomplete one only briefly so a fix shows up fast

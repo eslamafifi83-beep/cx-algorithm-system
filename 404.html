@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Page not found — The CX Algorithm Podcast</title>
+<meta name="description" content="This page doesn't exist. Find every episode, guest and article of The CX Algorithm Podcast with Dr Eslam Afifi." />
+<meta name="robots" content="noindex" />
+<meta name="theme-color" content="#0C1128" />
+<link rel="icon" type="image/png" href="/assets/logo.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --midnight: #0C1128; --panel: #121938; --gold: #E9A33D; --gold-light: #F4C069;
+    --text: #F2F1EC; --muted: #A7ADC9; --hairline: rgba(242, 241, 236, 0.10); --hairline-gold: rgba(233, 163, 61, 0.35);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; min-height: 100%; }
+  body {
+    font-family: "Poppins", system-ui, sans-serif; color: var(--text); background: var(--midnight);
+    background-image: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(233, 163, 61, 0.10), transparent 70%);
+    min-height: 100vh; display: flex; flex-direction: column;
+  }
+  header { padding: 1.25rem clamp(1rem, 5vw, 4.5rem); }
+  .brand { display: inline-flex; align-items: center; gap: .7rem; color: var(--text); text-decoration: none; font-weight: 700; letter-spacing: .02em; }
+  .brand img { width: 40px; height: 40px; object-fit: contain; }
+  main { flex: 1; display: grid; place-items: center; padding: 2rem 1rem 4rem; text-align: center; }
+  .wrap { max-width: 640px; }
+  .code { font-size: clamp(4.5rem, 18vw, 8rem); font-weight: 700; line-height: 1; margin: 0;
+    background: linear-gradient(180deg, var(--gold-light), var(--gold)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .eq { display: inline-flex; gap: 5px; align-items: flex-end; height: 26px; margin: 1rem 0 .5rem; }
+  .eq i { width: 5px; border-radius: 3px; background: var(--gold); opacity: .8; animation: eq 1.2s ease-in-out infinite; }
+  .eq i:nth-child(1) { height: 30%; } .eq i:nth-child(2) { height: 80%; animation-delay: .15s; } .eq i:nth-child(3) { height: 55%; animation-delay: .3s; }
+  .eq i:nth-child(4) { height: 95%; animation-delay: .45s; } .eq i:nth-child(5) { height: 40%; animation-delay: .6s; }
+  @keyframes eq { 50% { transform: scaleY(.35); } }
+  @media (prefers-reduced-motion: reduce) { .eq i { animation: none; } }
+  h1 { font-size: clamp(1.5rem, 4vw, 2.1rem); margin: .5rem 0 .75rem; }
+  p { color: var(--muted); line-height: 1.7; margin: 0 auto 2rem; max-width: 34rem; }
+  .actions { display: flex; flex-wrap: wrap; gap: .75rem; justify-content: center; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: .8rem 1.5rem; border-radius: 999px;
+    font: 600 .95rem/1 "Poppins", system-ui, sans-serif; text-decoration: none; transition: transform .2s ease; }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-gold { background: linear-gradient(180deg, var(--gold-light), var(--gold)); color: #2A1D05; box-shadow: 0 6px 24px rgba(233, 163, 61, 0.28); }
+  .btn-line { border: 1.5px solid var(--hairline-gold); color: var(--text); }
+  .links { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--hairline); display: flex; flex-wrap: wrap; gap: .4rem 1.4rem; justify-content: center; }
+  .links a { color: var(--muted); text-decoration: none; font-size: .9rem; }
+  .links a:hover, .links a:focus-visible { color: var(--gold); }
+</style>
+</head>
+<body>
+<header>
+  <a class="brand" href="/"><img src="/assets/logo.png" alt="" width="40" height="40" />The CX Algorithm</a>
+</header>
+<main>
+  <div class="wrap">
+    <p class="code" aria-hidden="true">404</p>
+    <span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+    <h1>This page has gone off air</h1>
+    <p>The address may have changed or never existed. Every conversation is still here: browse the episodes or start from the homepage.</p>
+    <div class="actions">
+      <a class="btn btn-gold" href="/episodes">Browse episodes</a>
+      <a class="btn btn-line" href="/">Go to the homepage</a>
+    </div>
+    <nav class="links" aria-label="Site pages">
+      <a href="/guests">Guests</a>
+      <a href="/about">The Host</a>
+      <a href="/blog">Articles</a>
+      <a href="/contact">Contact us</a>
+    </nav>
+  </div>
+</main>
+</body>
+</html>

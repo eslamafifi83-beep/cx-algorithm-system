@@ -1,5 +1,5 @@
 /*
- * Shared by episodes.html and episode.html.
+ * Shared by episodes.html and the episode player (templates/episode.html).
  *   CXEp.normalize(content)  -> { episodes, links } with numbers, Spotify ids, guest identity, chapters
  *   CXEp.loadMeta(episodes)  -> Spotify details (duration, release date, description, video) from /api/episode-meta
  *   CXEp.applyMeta(ep, meta) -> fills ep.seconds / ep.released / ep.hasVideo / ep.blurb / ep.aboutParas
@@ -9,6 +9,8 @@
   const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
   const norm = s => String(s || '').trim().toLowerCase();
   const pad = n => String(n).padStart(2, '0');
+  // Content paths like "assets/x.png" must work from /episodes/<address> too
+  const rel = u => u && !/^([a-z][a-z0-9+.-]*:|\/)/i.test(u) ? '/' + String(u).replace(/^\.\//, '') : (u || '');
 
   // Blurbs from the original website template that may still sit on early episodes
   const FILLER = /^(Crafting identities that stand out|Designing seamless digital experiences|Transforming ideas into designs)/i;
@@ -60,8 +62,8 @@
     const num = (v, d) => (v === '' || v == null || isNaN(Number(v))) ? d : Number(v);
     return {
       name: String(src.name || '').trim(),
-      title: id.title, company: id.company, logo: id.logo, accent: id.accent,
-      photo: (g && g.photo) || '',
+      title: id.title, company: id.company, logo: rel(id.logo), accent: id.accent,
+      photo: rel(g && g.photo),
       focus: `${num(g && g.photoX, 50)}% ${num(g && g.photoY, 18)}%`,
       zoom: num(g && g.photoZoom, 100) / 100,
       bio: String((g && g.bio) || ep.guestBio || '').trim(),
@@ -75,16 +77,19 @@
     const guests = c && c.guests && Array.isArray(c.guests.items) ? c.guests.items : [];
     const companies = c && c.marquee && Array.isArray(c.marquee.items) ? c.marquee.items.filter(x => x && typeof x === 'object') : [];
     const seen = new Set();
+    const slugs = window.CXLinks ? window.CXLinks.episodeSlugs(c && c.episodes) : [];
     const episodes = (c && Array.isArray(c.episodes) ? c.episodes : []).map((ep, idx) => {
       const n = epNum(ep, idx);
       const sid = spotifyId(ep.audio) || spotifyId(ep.video);
       const description = FILLER.test(ep.description || '') ? '' : String(ep.description || '').trim();
       const e = {
         idx, n, sid,
+        slug: slugs[idx] || '',
+        url: slugs[idx] ? '/episodes/' + slugs[idx] : '/episodes',
         title: String(ep.title || '').trim() || 'Untitled episode',
-        image: ep.image || '',
-        audioFile: AUDIO_FILE.test(ep.audio || '') ? ep.audio : '',
-        videoFile: VIDEO_FILE.test(ep.video || '') ? ep.video : '',
+        image: rel(ep.image),
+        audioFile: AUDIO_FILE.test(ep.audio || '') ? rel(ep.audio) : '',
+        videoFile: VIDEO_FILE.test(ep.video || '') ? rel(ep.video) : '',
         dateText: ep.date || '',
         durationText: ep.duration || '',
         description,

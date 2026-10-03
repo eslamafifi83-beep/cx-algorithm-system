@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="robots" content="noindex, nofollow" />
 <title>Admin — The CX Algorithm</title>
-<link rel="icon" type="image/png" href="assets/logo.png" />
+<link rel="icon" type="image/png" href="/assets/logo.png" />
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
 <style>
   :root {
@@ -358,7 +358,7 @@
 <div id="loginGate" hidden>
   <form class="login-card" id="loginForm">
     <div class="brand-row">
-      <img src="assets/logo.png" alt="" />
+      <img src="/assets/logo.png" alt="" />
       <div>
         <h1>THE CX ALGORITHM</h1>
         <p class="sub">Admin panel — sign in to continue</p>
@@ -376,7 +376,7 @@
 <header class="bar">
   <div class="wrap bar-inner">
     <div class="bar-brand">
-      <img src="assets/logo.png" alt="" />
+      <img src="/assets/logo.png" alt="" />
       <div>
         <strong>THE CX ALGORITHM</strong>
         <span>ADMIN PANEL</span>
@@ -592,8 +592,8 @@
   </div>
 </div>
 
-<script src="assets/guest-identity.js"></script>
-<script src="assets/platforms.js"></script>
+<script src="/assets/guest-identity.js"></script>
+<script src="/assets/platforms.js"></script>
 <script>
   const PLATFORM_KEYS = ['spotify', 'apple', 'youtube', 'amazon', 'iheart', 'audible', 'pocketcasts', 'deezer', 'tunein', 'pandora'];
   let content = null;
@@ -1374,7 +1374,7 @@
         <label>One-line background</label>
         <textarea data-f="bio"></textarea>
         <div class="row">
-          <div><label>Episode link (optional)</label><input type="url" data-f="episodeUrl" placeholder="episode.html?ep=6 or a URL" /></div>
+          <div><label>Episode link (optional)</label><input type="url" data-f="episodeUrl" placeholder="Leave empty to link the matching episode, or paste a URL" /></div>
           <div><label>LinkedIn URL</label><input type="url" data-f="linkedInUrl" placeholder="https://www.linkedin.com/in/…" /></div>
         </div>
         <label>Headshot photo</label>
@@ -1504,7 +1504,7 @@
     { id: 'home', label: 'Home' }, { id: 'guests', label: 'Guests' }, { id: 'about', label: 'The Host' },
     { id: 'episodes', label: 'Episodes' }, { id: 'blog', label: 'Articles' }, { id: 'contact', label: 'Contact' }
   ];
-  const NAV_FILE = { home: 'index.html', about: 'about.html', episodes: 'episodes.html', guests: 'guests.html', blog: 'blog.html', contact: 'contact.html' };
+  const NAV_FILE = { home: '/', about: '/about', episodes: '/episodes', guests: '/guests', blog: '/blog', contact: '/contact' };
   // Same one-time move as assets/nav.js: a menu still in the original order (saved before
   // navVersion 2) takes the new order with Guests second; saving records navVersion 2.
   function reconcileNav(saved) {
@@ -1545,10 +1545,15 @@
 
   /* ---- Form fill / collect ---- */
   function fillForm() {
-    $('h-line1').value = content.hero.headlineLine1 || '';
-    $('h-line2').value = content.hero.headlineLine2 || '';
+    // The original template's copy is replaced by the current homepage copy (the site already shows it)
+    const legacyHero = /where\s*\*?creativity|meets\s*\*?innovation|^explore how the world's leading brands/i;
+    const oldHeadline = legacyHero.test((content.hero.headlineLine1 || '') + ' ' + (content.hero.headlineLine2 || ''));
+    $('h-line1').value = oldHeadline ? 'Great experiences,' : (content.hero.headlineLine1 || '');
+    $('h-line2').value = oldHeadline ? '*decoded.*' : (content.hero.headlineLine2 || '');
     $('h-onair').value = content.hero.onAir || 'New episode available';
-    $('h-lede').value = content.hero.lede || '';
+    $('h-lede').value = legacyHero.test(content.hero.lede || '')
+      ? '*The CX Algorithm* is the podcast where Dr Eslam Afifi talks with the leaders reshaping customer experience, data and AI.'
+      : (content.hero.lede || '');
     const heroStats = Array.isArray(content.hero.stats) ? content.hero.stats : HERO_STATS_DEFAULT;
     for (let i = 0; i < 3; i++) {
       $('hs-v-' + i).value = (heroStats[i] && heroStats[i].value) || '';

@@ -23,8 +23,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Oswald:wght@500;600&display=swap" rel="stylesheet" />
-<link rel="icon" type="image/png" href="assets/logo.png" />
-<link rel="stylesheet" href="assets/episodes.css" />
+<link rel="icon" type="image/png" href="/assets/logo.png" />
+<link rel="stylesheet" href="/assets/episodes.css" />
 <style>
   :root {
     --midnight: #0C1128;
@@ -172,7 +172,7 @@
 </head>
 <body>
 
-<script src="assets/loader.js"></script>
+<script src="/assets/loader.js"></script>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-head" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M4 15v-3a8 8 0 0 1 16 0v3"/><rect x="3" y="14" width="5" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><rect x="16" y="14" width="5" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
@@ -182,20 +182,20 @@
 
 <header class="site-header">
   <div class="container header-inner">
-    <a class="brand" href="index.html" aria-label="The CX Algorithm Podcast — home">
-      <img class="brand-mark" src="assets/logo.png" alt="" aria-hidden="true" />
+    <a class="brand" href="/" aria-label="The CX Algorithm Podcast — home">
+      <img class="brand-mark" src="/assets/logo.png" alt="" aria-hidden="true" />
       <span class="brand-name">The CX Algorithm<br /><span>Podcast</span></span>
     </a>
     <nav class="site-nav" id="siteNav" data-page="episodes" aria-label="Primary">
-      <a href="index.html">Home</a>
-      <a href="guests.html">Guests</a>
-      <a href="about.html">The Host</a>
-      <a href="episodes.html" aria-current="page">Episodes</a>
-      <a href="blog.html">Articles</a>
-      <a href="contact.html">Contact</a>
+      <a href="/">Home</a>
+      <a href="/guests">Guests</a>
+      <a href="/about">The Host</a>
+      <a href="/episodes" aria-current="page">Episodes</a>
+      <a href="/blog">Articles</a>
+      <a href="/contact">Contact</a>
     </nav>
     <div style="display:flex; align-items:center; gap:0.75rem;">
-      <a class="btn btn-gold header-subscribe" href="contact.html">Contact us</a>
+      <a class="btn btn-gold header-subscribe" href="/contact">Contact us</a>
       <button class="mobile-toggle" id="navToggle" hidden aria-label="Open menu" aria-expanded="false">
         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="3" y1="6" x2="17" y2="6"/><line x1="3" y1="10" x2="17" y2="10"/><line x1="3" y1="14" x2="17" y2="14"/></svg>
       </button>
@@ -239,14 +239,15 @@
 
 <footer class="footer">
   <div class="container footer-inner">
-    <a href="index.html">The CX Algorithm Podcast</a>
+    <a href="/">The CX Algorithm Podcast</a>
     <span class="copy">© 2026 THE CX ALGORITHM PODCAST · HOSTED BY DR ESLAM AFIFI</span>
   </div>
 </footer>
 
-<script src="assets/guest-identity.js"></script>
-<script src="assets/episodes-core.js"></script>
-<script src="assets/platforms.js"></script>
+<script src="/assets/guest-identity.js"></script>
+<script src="/assets/links.js"></script>
+<script src="/assets/episodes-core.js"></script>
+<script src="/assets/platforms.js"></script>
 <script>
 (() => {
   const { esc, smart, avatar, plate, trimLogos, clock, topicKey } = window.CXEp;
@@ -259,7 +260,7 @@
   let pref = store.get('cx-ep-pref') === 'watch' ? 'watch' : 'listen';
   let topic = 'all', query = '', sort = 'newest', shown = PAGE;
 
-  const href = (e, mode) => `episode.html?ep=${e.idx}${mode === 'watch' && e.hasVideo ? '&mode=watch' : ''}`;
+  const href = (e, mode) => e.url + (mode === 'watch' && e.hasVideo ? '?mode=watch' : '');
   const thumbFor = e => (pref === 'watch' && e.frame) || e.image || e.frame;
 
   function cardHTML(e) {
@@ -380,6 +381,6 @@
 })();
 </script>
 
-<script src="assets/nav.js"></script>
+<script src="/assets/nav.js"></script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Blog — The CX Algorithm Podcast</title>
+<title>Articles — The CX Algorithm Podcast</title>
 <meta name="description" content="Notes on CX, AI and the algorithm of loyalty — long-form thinking from Dr Eslam Afifi's LinkedIn. Every piece opens on LinkedIn." />
 <link rel="canonical" href="https://www.thecxalgorithm.com/blog" />
 <meta name="theme-color" content="#0C1128" />
@@ -23,7 +23,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Oswald:wght@500;600&display=swap" rel="stylesheet" />
-<link rel="icon" type="image/png" href="assets/logo.png" />
+<link rel="icon" type="image/png" href="/assets/logo.png" />
 <style>
   :root {
     --midnight: #0C1128;
@@ -276,24 +276,24 @@
 </head>
 <body>
 
-<script src="assets/loader.js"></script>
+<script src="/assets/loader.js"></script>
 
 <header class="site-header">
   <div class="container header-inner">
-    <a class="brand" href="index.html" aria-label="The CX Algorithm Podcast — home">
-      <img class="brand-mark" src="assets/logo.png" alt="" aria-hidden="true" />
+    <a class="brand" href="/" aria-label="The CX Algorithm Podcast — home">
+      <img class="brand-mark" src="/assets/logo.png" alt="" aria-hidden="true" />
       <span class="brand-name">The CX Algorithm<br /><span>Podcast</span></span>
     </a>
     <nav class="site-nav" id="siteNav" data-page="blog" aria-label="Primary">
-      <a href="index.html">Home</a>
-      <a href="guests.html">Guests</a>
-      <a href="about.html">The Host</a>
-      <a href="episodes.html">Episodes</a>
-      <a href="blog.html" aria-current="page">Articles</a>
-      <a href="contact.html">Contact</a>
+      <a href="/">Home</a>
+      <a href="/guests">Guests</a>
+      <a href="/about">The Host</a>
+      <a href="/episodes">Episodes</a>
+      <a href="/blog" aria-current="page">Articles</a>
+      <a href="/contact">Contact</a>
     </nav>
     <div style="display:flex; align-items:center; gap:0.75rem;">
-      <a class="btn btn-gold header-subscribe" href="contact.html">Contact us</a>
+      <a class="btn btn-gold header-subscribe" href="/contact">Contact us</a>
       <button class="mobile-toggle" id="navToggle" hidden aria-label="Open menu" aria-expanded="false">
         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="3" y1="6" x2="17" y2="6"/><line x1="3" y1="10" x2="17" y2="10"/><line x1="3" y1="14" x2="17" y2="14"/></svg>
       </button>
@@ -329,7 +329,7 @@
 
 <footer class="footer">
   <div class="container footer-inner">
-    <a href="episodes.html">All episodes</a>
+    <a href="/episodes">All episodes</a>
     <span class="copy">© 2026 THE CX ALGORITHM PODCAST · HOSTED BY DR ESLAM AFIFI</span>
   </div>
 </footer>
@@ -422,7 +422,7 @@
 
     const cardsEl = document.getElementById('cards');
     if (!articles.length) {
-      cardsEl.innerHTML = '<div class="empty-note" style="grid-column:1/-1">New articles are on the way. Meanwhile, the conversations live on the <a href="episodes.html" style="color:var(--gold-light)">episodes page</a>.</div>';
+      cardsEl.innerHTML = '<div class="empty-note" style="grid-column:1/-1">New articles are on the way. Meanwhile, the conversations live on the <a href="/episodes" style="color:var(--gold-light)">episodes page</a>.</div>';
     } else if (!list.length) {
       cardsEl.innerHTML = '<div class="empty-note" style="grid-column:1/-1">More articles are on the way. The latest one is featured above.</div>';
     } else {
@@ -462,6 +462,6 @@
   }
 </script>
 
-<script src="assets/nav.js"></script>
+<script src="/assets/nav.js"></script>
 </body>
 </html>

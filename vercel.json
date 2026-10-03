@@ -1,4 +1,17 @@
 {
   "framework": null,
-  "cleanUrls": true
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/lib/:path*", "destination": "/", "permanent": false },
+    { "source": "/templates/:path*", "destination": "/episodes", "permanent": false }
+  ],
+  "rewrites": [
+    { "source": "/sitemap.xml", "destination": "/api/sitemap" },
+    { "source": "/episode", "destination": "/api/episode-page" },
+    { "source": "/episodes/:slug", "destination": "/api/episode-page?slug=:slug" }
+  ],
+  "functions": {
+    "api/episode-page.js": { "includeFiles": "{templates/**,404.html}" }
+  }
 }

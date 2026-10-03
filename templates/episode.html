@@ -24,8 +24,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="preconnect" href="https://open.spotify.com" />
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Oswald:wght@500;600&display=swap" rel="stylesheet" />
-<link rel="icon" type="image/png" href="assets/logo.png" />
-<link rel="stylesheet" href="assets/episodes.css" />
+<link rel="icon" type="image/png" href="/assets/logo.png" />
+<link rel="stylesheet" href="/assets/episodes.css" />
 <style>
   /* Listen = a "studio" around the cover art with a waveform to scrub.
      Watch  = the page dims to a cinema around a glowing 16:9 screen. */
@@ -101,7 +101,7 @@
   .playing .onair i { background: #FF5A4E; animation: rec 1.6s ease-out infinite; }
   @keyframes rec { 0% { box-shadow: 0 0 0 0 rgba(255, 90, 78, 0.6); } 80%, 100% { box-shadow: 0 0 0 7px rgba(255, 90, 78, 0); } }
   .deck { min-width: 0; }
-  .deck h1, .under h1 { font-family: var(--display); font-weight: 800; letter-spacing: -0.022em; text-wrap: balance; }
+  .deck h1, .under .under-title { font-family: var(--display); font-weight: 800; letter-spacing: -0.022em; text-wrap: balance; }
   .deck h1 { font-size: clamp(1.6rem, 2.7vw, 2.35rem); line-height: 1.14; margin-top: 0.75rem; }
   .deck .guestline { margin-top: 1.1rem; }
   .wave { position: relative; height: 86px; margin-top: 2.1rem; cursor: pointer; touch-action: none; }
@@ -152,7 +152,7 @@
   .screen.floating .float-ctl { display: flex; position: absolute; top: 8px; right: 8px; z-index: 2; gap: 6px; }
   .float-ctl button { width: 34px; height: 34px; border-radius: 10px; border: 0; background: rgba(0, 0, 0, 0.65); color: #fff; display: grid; place-items: center; cursor: pointer; }
   .under { max-width: 1180px; margin: 1.6rem auto 0; display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 1.1rem 2rem; }
-  .under h1 { font-size: clamp(1.4rem, 2.3vw, 2rem); line-height: 1.18; margin-top: 0.6rem; max-width: 34ch; }
+  .under .under-title { font-size: clamp(1.4rem, 2.3vw, 2rem); line-height: 1.18; margin-top: 0.6rem; max-width: 34ch; }
   .under .guestline { margin-top: 0.9rem; }
   .under-actions { display: flex; flex-wrap: wrap; gap: 0.6rem; }
   .film { max-width: 1180px; margin: 1.9rem auto 0; }
@@ -262,7 +262,7 @@
 </head>
 <body>
 
-<script src="assets/loader.js"></script>
+<script src="/assets/loader.js"></script>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-head" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M4 15v-3a8 8 0 0 1 16 0v3"/><rect x="3" y="14" width="5" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><rect x="16" y="14" width="5" height="7" rx="2" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
@@ -282,20 +282,20 @@
 
 <header class="site-header">
   <div class="container header-inner">
-    <a class="brand" href="index.html" aria-label="The CX Algorithm Podcast — home">
-      <img class="brand-mark" src="assets/logo.png" alt="" aria-hidden="true" />
+    <a class="brand" href="/" aria-label="The CX Algorithm Podcast — home">
+      <img class="brand-mark" src="/assets/logo.png" alt="" aria-hidden="true" />
       <span class="brand-name">The CX Algorithm<br /><span>Podcast</span></span>
     </a>
     <nav class="site-nav" id="siteNav" data-page="episodes" aria-label="Primary">
-      <a href="index.html">Home</a>
-      <a href="guests.html">Guests</a>
-      <a href="about.html">The Host</a>
-      <a href="episodes.html" aria-current="page">Episodes</a>
-      <a href="blog.html">Articles</a>
-      <a href="contact.html">Contact</a>
+      <a href="/">Home</a>
+      <a href="/guests">Guests</a>
+      <a href="/about">The Host</a>
+      <a href="/episodes" aria-current="page">Episodes</a>
+      <a href="/blog">Articles</a>
+      <a href="/contact">Contact</a>
     </nav>
     <div style="display:flex; align-items:center; gap:0.75rem;">
-      <a class="btn btn-gold header-subscribe" href="contact.html">Contact us</a>
+      <a class="btn btn-gold header-subscribe" href="/contact">Contact us</a>
       <button class="mobile-toggle" id="navToggle" hidden aria-label="Open menu" aria-expanded="false">
         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="3" y1="6" x2="17" y2="6"/><line x1="3" y1="10" x2="17" y2="10"/><line x1="3" y1="14" x2="17" y2="14"/></svg>
       </button>
@@ -322,13 +322,14 @@
 
 <footer class="footer">
   <div class="container footer-inner">
-    <a href="episodes.html">All episodes</a>
+    <a href="/episodes">All episodes</a>
     <span class="copy">© 2026 THE CX ALGORITHM PODCAST · HOSTED BY DR ESLAM AFIFI</span>
   </div>
 </footer>
 
-<script src="assets/guest-identity.js"></script>
-<script src="assets/episodes-core.js"></script>
+<script src="/assets/guest-identity.js"></script>
+<script src="/assets/links.js"></script>
+<script src="/assets/episodes-core.js"></script>
 <script>
 (() => {
   const { esc, smart, avatar, plate, trimLogos, clock } = window.CXEp;
@@ -378,6 +379,9 @@
       if (P.pos > 1) opts.startAt = Math.floor(P.pos);
       api.createController(host, opts, c => {
         ctrls[mode] = c;
+        const frame = (mode === 'watch' ? $('screen') : document.querySelector('.source'));
+        const ifr = frame && frame.querySelector('iframe');
+        if (ifr) ifr.title = (mode === 'watch' ? 'Spotify video: ' : 'Spotify player: ') + ep.title;
         c.addListener('playback_update', e => onSpotify(mode, e.data || {}));
         resolve(c);
       });
@@ -481,7 +485,7 @@
     }
     document.querySelectorAll('[data-next]').forEach(a => {
       const x = all.find(e => e.idx === Number(a.dataset.next));
-      a.href = `episode.html?ep=${a.dataset.next}${m === 'watch' && x && x.hasVideo ? '&mode=watch' : ''}`;
+      if (x) a.href = x.url + (m === 'watch' && x.hasVideo ? '?mode=watch' : '');
     });
     if (m === 'listen') requestAnimationFrame(drawWave);
     sync();
@@ -581,7 +585,7 @@
       : P.kind === 'link' ? `<p class="nomedia"><a class="btn btn-gold" href="${esc(ep.linkOut)}" target="_blank" rel="noopener">Open the episode</a></p>` : '';
     return `
       <div class="container ep-top">
-        <a class="back" href="episodes.html">${icon('i-arrow')}All episodes</a>
+        <a class="back" href="/episodes">${icon('i-arrow')}All episodes</a>
         <div class="mode"${P.canListen && P.canWatch ? '' : ' hidden'}>
           <div class="seg" role="radiogroup" aria-label="Listen or watch this episode">
             <button type="button" role="radio" data-mode="listen">${icon('i-head')}Listen</button>
@@ -635,7 +639,7 @@
           <div class="under">
             <div>
               <p class="meta">${meta}</p>
-              <h1>${esc(ep.title)}</h1>
+              <h2 class="under-title">${esc(ep.title)}</h2>
               ${gl(40, false)}
             </div>
             <div class="under-actions">
@@ -675,7 +679,7 @@
           ${next.length ? `
           <div>
             <p class="side-h">Up next</p>
-            <ul class="next">${next.map(x => `<li><a href="episode.html?ep=${x.idx}${P.mode === 'watch' && x.hasVideo ? '&mode=watch' : ''}" data-next="${x.idx}">${smart(x.image, x.title)}<span><b>EP ${esc(x.n)}${x.seconds ? ' · ' + clock(x.seconds) : ''}</b><span class="t">${esc(x.title)}</span></span></a></li>`).join('')}</ul>
+            <ul class="next">${next.map(x => `<li><a href="${x.url}${P.mode === 'watch' && x.hasVideo ? '?mode=watch' : ''}" data-next="${x.idx}">${smart(x.image, x.title)}<span><b>EP ${esc(x.n)}${x.seconds ? ' · ' + clock(x.seconds) : ''}</b><span class="t">${esc(x.title)}</span></span></a></li>`).join('')}</ul>
           </div>` : ''}
         </aside>
       </div>`;
@@ -757,8 +761,15 @@
       const data = window.CXEp.normalize(c);
       const list = data.episodes;
       if (!list.length) throw new Error('none');
-      const want = parseInt(params.get('ep') || String(list[list.length - 1].idx), 10);
-      ep = list.find(e => e.idx === want) || list[list.length - 1];
+      // Which episode: set by the server for /episodes/<address>, else read from the address, else ?ep= (old links)
+      const pathSlug = (location.pathname.match(/^\/episodes\/([^/?#]+)/) || [])[1];
+      const want = Number.isInteger(window.__EP_IDX) ? window.__EP_IDX : parseInt(params.get('ep') || '-1', 10);
+      ep = (pathSlug && list.find(e => e.slug === decodeURIComponent(pathSlug))) || list.find(e => e.idx === want) || list[list.length - 1];
+      // Old ?ep= links: show the episode's own address
+      if (ep.slug && location.pathname.replace(/\/+$/, '') !== ep.url) {
+        const keep = new URLSearchParams(location.search); keep.delete('ep');
+        history.replaceState(null, '', ep.url + (keep.toString() ? '?' + keep : ''));
+      }
       all = list.filter(e => !e.dup || e === ep);
       const meta = await Promise.race([window.CXEp.loadMeta(all), new Promise(r => setTimeout(() => r({}), 2500))]);
       all.forEach(e => window.CXEp.applyMeta(e, meta[e.sid]));
@@ -773,8 +784,8 @@
       if (t0 > 0) { P.pos = t0; P.pendingSeek = t0; }
       wave = makeWave(ep.sid || ep.title);
 
-      document.title = ep.title + ' — The CX Algorithm Podcast';
-      const canon = $('canonicalLink'); if (canon) canon.href = 'https://www.thecxalgorithm.com/episode?ep=' + ep.idx;
+      document.title = ep.title + ' | The CX Algorithm Podcast';
+      const canon = $('canonicalLink'); if (canon) canon.href = 'https://www.thecxalgorithm.com' + ep.url;
       $('page').innerHTML = playerHTML();
       $('dockArt').innerHTML = smart(ep.image, '');
       $('dockEp').textContent = 'Episode ' + ep.n;
@@ -795,7 +806,7 @@
         }).catch(() => {});
       }
     } catch (e) {
-      $('page').innerHTML = '<div class="container notfound"><p class="kicker">Episodes</p><p style="margin-top:1rem">This episode could not be found. <a href="episodes.html">Browse all episodes</a>.</p></div>';
+      $('page').innerHTML = '<div class="container notfound"><p class="kicker">Episodes</p><p style="margin-top:1rem">This episode could not be found. <a href="/episodes">Browse all episodes</a>.</p></div>';
     }
   })();
 
@@ -810,6 +821,6 @@
 })();
 </script>
 
-<script src="assets/nav.js"></script>
+<script src="/assets/nav.js"></script>
 </body>
 </html>

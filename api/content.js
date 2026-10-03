@@ -2,6 +2,7 @@
 // POST /api/content  -> saves the whole site content (admin only)
 const { supabase } = require('../lib/supabase');
 const { isAdmin } = require('../lib/auth');
+const indexNow = require('../lib/indexnow');
 
 // First-run seed: the content you already built, bundled with the app.
 let seed = {};
@@ -39,7 +40,10 @@ module.exports = async (req, res) => {
       const { error } = await supabase.from('site_content')
         .upsert({ id: 1, data: body, updated_at: new Date().toISOString() });
       if (error) throw error;
-      return res.status(200).json({ ok: true });
+      // Let IndexNow search engines (Bing and others) know the pages changed. Live site only;
+      // a slow or failed ping never blocks the save.
+      const indexed = process.env.VERCEL_ENV === 'production' ? await indexNow.ping(body) : 0;
+      return res.status(200).json({ ok: true, indexNow: indexed });
     } catch (e) {
       return res.status(400).json({ error: e.message });
     }

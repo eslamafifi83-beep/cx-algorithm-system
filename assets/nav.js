@@ -5,8 +5,8 @@
  */
 (function () {
   var HREF = {
-    home: 'index.html', about: 'about.html', episodes: 'episodes.html',
-    guests: 'guests.html', blog: 'blog.html', contact: 'contact.html'
+    home: '/', about: '/about', episodes: '/episodes',
+    guests: '/guests', blog: '/blog', contact: '/contact'
   };
   var DEFAULT = [
     { id: 'home', label: 'Home' },

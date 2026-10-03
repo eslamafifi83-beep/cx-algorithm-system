@@ -1,11 +1,29 @@
 {
   "nav": [
-    { "id": "home", "label": "Home" },
-    { "id": "guests", "label": "Guests" },
-    { "id": "about", "label": "The Host" },
-    { "id": "episodes", "label": "Episodes" },
-    { "id": "blog", "label": "Articles" },
-    { "id": "contact", "label": "Contact" }
+    {
+      "id": "home",
+      "label": "Home"
+    },
+    {
+      "id": "guests",
+      "label": "Guests"
+    },
+    {
+      "id": "about",
+      "label": "The Host"
+    },
+    {
+      "id": "episodes",
+      "label": "Episodes"
+    },
+    {
+      "id": "blog",
+      "label": "Articles"
+    },
+    {
+      "id": "contact",
+      "label": "Contact"
+    }
   ],
   "navVersion": 2,
   "hero": {
@@ -14,9 +32,18 @@
     "headlineLine2": "*decoded.*",
     "lede": "*The CX Algorithm* is the podcast where Dr Eslam Afifi talks with the leaders reshaping customer experience, data and AI.",
     "stats": [
-      { "value": "40K+", "label": "Listeners" },
-      { "value": "7", "label": "Countries" },
-      { "value": "7+", "label": "Industries" }
+      {
+        "value": "40K+",
+        "label": "Listeners"
+      },
+      {
+        "value": "7",
+        "label": "Countries"
+      },
+      {
+        "value": "7+",
+        "label": "Industries"
+      }
     ]
   },
   "guests": {
@@ -24,17 +51,86 @@
     "heading": "Voices shaping the future of experience",
     "intro": "Every episode brings a leader with something real to say. Meet the operators, founders and thinkers who've joined me at the mic.",
     "stats": [
-      { "value": "40+", "label": "Guests" },
-      { "value": "18", "label": "Countries" },
-      { "value": "12", "label": "Industries" }
+      {
+        "value": "40+",
+        "label": "Guests"
+      },
+      {
+        "value": "18",
+        "label": "Countries"
+      },
+      {
+        "value": "12",
+        "label": "Industries"
+      }
     ],
     "items": [
-      { "name": "Dr Amina Rahal", "role": "Chief AI Officer, Meridian Bank", "category": "AI & Data", "bio": "Fifteen years turning customer data into trust at scale — and where most banks get it wrong.", "episodeLabel": "Episode 07", "episodeUrl": "", "linkedInUrl": "", "photo": "", "featured": true },
-      { "name": "Marcus Chen", "role": "VP Customer Experience, Novaretail", "category": "AI & Data", "bio": "Rebuilt a 2,000-store loyalty program around real-time personalization.", "episodeLabel": "Episode 12", "episodeUrl": "", "linkedInUrl": "", "photo": "", "featured": false },
-      { "name": "Sofia Marchetti", "role": "Founder & CEO, Bloomkit", "category": "Founders", "bio": "Bootstrapped a customer-onboarding platform to 40M users in four years.", "episodeLabel": "Episode 11", "episodeUrl": "", "linkedInUrl": "", "photo": "", "featured": false },
-      { "name": "David Okonkwo", "role": "Chief Growth Officer, Lumen", "category": "Growth", "bio": "Turned churn into the company's sharpest growth signal.", "episodeLabel": "Episode 10", "episodeUrl": "", "linkedInUrl": "", "photo": "", "featured": false },
-      { "name": "Priya Nair", "role": "Head of Service Design, Aster Health", "category": "Leadership", "bio": "Redesigned patient journeys across 60 clinics with a service-design lens.", "episodeLabel": "Episode 09", "episodeUrl": "", "linkedInUrl": "", "photo": "", "featured": false },
-      { "name": "Thomas Berg", "role": "SVP Digital, Kestrel Airlines", "category": "AI & Data", "bio": "Cut support contacts 38% with a predictive help engine.", "episodeLabel": "Episode 08", "episodeUrl": "", "linkedInUrl": "", "photo": "", "featured": false }
+      {
+        "name": "Dr Amina Rahal",
+        "role": "Chief AI Officer, Meridian Bank",
+        "category": "AI & Data",
+        "bio": "Fifteen years turning customer data into trust at scale — and where most banks get it wrong.",
+        "episodeLabel": "Episode 07",
+        "episodeUrl": "",
+        "linkedInUrl": "",
+        "photo": "",
+        "featured": true
+      },
+      {
+        "name": "Marcus Chen",
+        "role": "VP Customer Experience, Novaretail",
+        "category": "AI & Data",
+        "bio": "Rebuilt a 2,000-store loyalty program around real-time personalization.",
+        "episodeLabel": "Episode 12",
+        "episodeUrl": "",
+        "linkedInUrl": "",
+        "photo": "",
+        "featured": false
+      },
+      {
+        "name": "Sofia Marchetti",
+        "role": "Founder & CEO, Bloomkit",
+        "category": "Founders",
+        "bio": "Bootstrapped a customer-onboarding platform to 40M users in four years.",
+        "episodeLabel": "Episode 11",
+        "episodeUrl": "",
+        "linkedInUrl": "",
+        "photo": "",
+        "featured": false
+      },
+      {
+        "name": "David Okonkwo",
+        "role": "Chief Growth Officer, Lumen",
+        "category": "Growth",
+        "bio": "Turned churn into the company's sharpest growth signal.",
+        "episodeLabel": "Episode 10",
+        "episodeUrl": "",
+        "linkedInUrl": "",
+        "photo": "",
+        "featured": false
+      },
+      {
+        "name": "Priya Nair",
+        "role": "Head of Service Design, Aster Health",
+        "category": "Leadership",
+        "bio": "Redesigned patient journeys across 60 clinics with a service-design lens.",
+        "episodeLabel": "Episode 09",
+        "episodeUrl": "",
+        "linkedInUrl": "",
+        "photo": "",
+        "featured": false
+      },
+      {
+        "name": "Thomas Berg",
+        "role": "SVP Digital, Kestrel Airlines",
+        "category": "AI & Data",
+        "bio": "Cut support contacts 38% with a predictive help engine.",
+        "episodeLabel": "Episode 08",
+        "episodeUrl": "",
+        "linkedInUrl": "",
+        "photo": "",
+        "featured": false
+      }
     ]
   },
   "marquee": {
@@ -119,26 +215,85 @@
     }
   ],
   "about": {
-    "hero": { "image": "assets/stage/hx-sydney.jpg", "caption": "On stage · HX Forum, Sydney" },
+    "hero": {
+      "image": "assets/stage/hx-sydney.jpg",
+      "caption": "On stage · HX Forum, Sydney"
+    },
     "credentials": [
-      { "title": "PhD", "org": "Monash University", "note": "Human-Centred Design and ML/AI-informed CX" },
-      { "title": "Executive MBA", "org": "IE Business School", "note": "Blue Torch Award" },
-      { "title": "2× winner", "org": "Australian CX Awards", "note": "Customer Data & Insights · CX Transformation" }
+      {
+        "title": "PhD",
+        "org": "Monash University",
+        "note": "Human-Centred Design and ML/AI-informed CX"
+      },
+      {
+        "title": "Executive MBA",
+        "org": "IE Business School",
+        "note": "Blue Torch Award"
+      },
+      {
+        "title": "2× winner",
+        "org": "Australian CX Awards",
+        "note": "Customer Data & Insights · CX Transformation"
+      }
     ],
     "results": [
-      { "value": "27%", "label": "Churn reduction", "note": "" },
-      { "value": "$688M", "label": "In funds growth", "note": "" },
-      { "value": "2×", "label": "Australian CX Awards", "note": "Best Use of Customer Data & Insights · Best CX Transformation Project" },
-      { "value": "30+", "label": "Stages spoken on", "note": "" },
-      { "value": "4", "label": "Continents", "note": "Lived and worked" }
+      {
+        "value": "27%",
+        "label": "Churn reduction",
+        "note": ""
+      },
+      {
+        "value": "$688M",
+        "label": "In funds growth",
+        "note": ""
+      },
+      {
+        "value": "2×",
+        "label": "Australian CX Awards",
+        "note": "Best Use of Customer Data & Insights · Best CX Transformation Project"
+      },
+      {
+        "value": "30+",
+        "label": "Stages spoken on",
+        "note": ""
+      },
+      {
+        "value": "4",
+        "label": "Continents",
+        "note": "Lived and worked"
+      }
     ],
-    "story": { "image": "assets/stage/ie-madrid.jpg", "caption": "IE University, Madrid", "detail": "40.42° N · 3.70° W" },
+    "story": {
+      "image": "assets/stage/ie-madrid.jpg",
+      "caption": "IE University, Madrid",
+      "detail": "40.42° N · 3.70° W"
+    },
     "wall": [
-      { "image": "assets/stage/xi-forum-audience.jpg", "title": "With the audience", "sub": "XI Forum, Sydney", "detail": "33.87° S · 151.21° E" },
-      { "image": "assets/stage/xi-forum-2023.jpg", "title": "XI Forum 2023", "sub": "Behind the scenes of legalsuper's award-winning initiative to unlock customer data", "detail": "Sydney · 2023" },
-      { "image": "assets/stage/select-cairo.jpg", "title": "Select Cairo", "sub": "Joined the room live, on screen", "detail": "30.04° N · 31.24° E" }
+      {
+        "image": "assets/stage/xi-forum-audience.jpg",
+        "title": "With the audience",
+        "sub": "XI Forum, Sydney",
+        "detail": "33.87° S · 151.21° E"
+      },
+      {
+        "image": "assets/stage/xi-forum-2023.jpg",
+        "title": "XI Forum 2023",
+        "sub": "Behind the scenes of legalsuper's award-winning initiative to unlock customer data",
+        "detail": "Sydney · 2023"
+      },
+      {
+        "image": "assets/stage/select-cairo.jpg",
+        "title": "Select Cairo",
+        "sub": "Joined the room live, on screen",
+        "detail": "30.04° N · 31.24° E"
+      }
     ],
-    "seenAt": ["HX Forum Sydney", "XI Forum Sydney", "IE University Madrid", "Select Cairo"]
+    "seenAt": [
+      "HX Forum Sydney",
+      "XI Forum Sydney",
+      "IE University Madrid",
+      "Select Cairo"
+    ]
   },
   "blog": {
     "newsletterUrl": "",
@@ -162,13 +317,20 @@
     "photo": "assets/dr-eslam-afifi.png"
   },
   "links": {
-    "apple": "",
-    "spotify": "",
-    "amazon": "",
-    "youtube": "",
+    "apple": "https://podcasts.apple.com/au/podcast/the-cx-algorithm/id1868364883",
+    "spotify": "https://open.spotify.com/show/4jUMZl3zVFcI2uFWaVadQk",
+    "amazon": "https://music.amazon.com.au/podcasts/0a2c3a20-bd08-48cf-891e-ca59f63a76e5/the-cx-algorithm",
+    "youtube": "https://www.youtube.com/@TheCXAlgorithmPodcast",
     "linkedin": "",
     "x": "",
     "instagram": "",
-    "email": "hello@thecxalgorithm.com"
-  }
+    "email": "hello@thecxalgorithm.com",
+    "iheart": "https://www.iheart.com/podcast/1333-the-cx-algorithm-317661171/",
+    "audible": "https://www.audible.com.au/podcast/The-CX-Algorithm/B0GGCF9T5V",
+    "pocketcasts": "https://pocketcasts.com/podcast/the-cx-algorithm/a5fa9820-0fe2-013f-57cf-02366ae7f0f7",
+    "deezer": "",
+    "tunein": "",
+    "pandora": ""
+  },
+  "linksVersion": 2
 }

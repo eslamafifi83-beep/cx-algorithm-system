@@ -137,7 +137,7 @@
   .everywhere small { width: 100%; text-align: center; font-family: var(--display); font-size: 0.66rem; font-weight: 700; letter-spacing: 0.26em; text-transform: uppercase; color: var(--faint); margin-bottom: 0.25rem; }
   .plat { display: inline-flex; align-items: center; gap: 9px; min-height: 44px; padding: 10px 18px; border-radius: 999px; border: 1px solid var(--hairline); text-decoration: none; font-family: var(--display); font-weight: 600; font-size: 0.86rem; transition: border-color 0.2s, color 0.2s; }
   .plat:hover { border-color: var(--gold); color: var(--gold-light); }
-  .plat i { width: 9px; height: 9px; border-radius: 50%; }
+  .plat svg { display: block; flex: none; }
 
   .footer { background: var(--midnight-deep); border-top: 1px solid var(--hairline); padding: 2rem 0; }
   .footer-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; }
@@ -246,6 +246,7 @@
 
 <script src="assets/guest-identity.js"></script>
 <script src="assets/episodes-core.js"></script>
+<script src="assets/platforms.js"></script>
 <script>
 (() => {
   const { esc, smart, avatar, plate, trimLogos, clock, topicKey } = window.CXEp;
@@ -254,7 +255,7 @@
   const store = { get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }, set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} } };
   const PAGE = 9;
 
-  let all = [], latest = null, links = {};
+  let all = [], latest = null, siteContent = null;
   let pref = store.get('cx-ep-pref') === 'watch' ? 'watch' : 'listen';
   let topic = 'all', query = '', sort = 'newest', shown = PAGE;
 
@@ -314,9 +315,9 @@
     $('chips').innerHTML = topics.size > 1
       ? [['all', 'All'], ...topics.entries()].map(([k, label]) => `<button class="chip" type="button" data-topic="${esc(k)}" aria-pressed="${k === topic}">${esc(label)}</button>`).join('')
       : '';
-    const plats = [['spotify', 'Spotify', '#1DB954'], ['apple', 'Apple Podcasts', '#A35BE0'], ['amazon', 'Amazon Music', '#25D1DA']].filter(([k]) => links[k]);
+    const plats = window.CXPlatforms ? CXPlatforms.resolve(siteContent) : [];
     $('everywhere').hidden = !plats.length;
-    $('everywhere').innerHTML = '<small>Also on</small>' + plats.map(([k, label, c]) => `<a class="plat" href="${esc(links[k])}" target="_blank" rel="noopener"><i style="background:${c}"></i>${label}</a>`).join('');
+    $('everywhere').innerHTML = '<small>Also on</small>' + plats.map(p => `<a class="plat" href="${esc(p.url)}" target="_blank" rel="noopener" aria-label="Listen on ${esc(p.name)}">${CXPlatforms.icon(p, 20)}${esc(p.name)}</a>`).join('');
   }
 
   function renderSpot(animate) {
@@ -359,7 +360,7 @@
     let c = {};
     try { c = await (await fetch('/api/content', { cache: 'no-store' })).json(); } catch (e) { /* render the empty state */ }
     const data = window.CXEp.normalize(c);
-    links = data.links;
+    siteContent = c;
     all = data.episodes.filter(e => !e.dup);
     // Spotify details are a nice-to-have: never hold the page up for more than a moment
     const meta = await Promise.race([window.CXEp.loadMeta(all), new Promise(r => setTimeout(() => r({}), 2500))]);

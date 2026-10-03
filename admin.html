@@ -549,12 +549,22 @@
 
       <section class="panel" id="panel-links">
         <h2 class="panel-title">Links</h2>
-        <p class="panel-desc">Podcast platforms and social profiles, used across the footer.</p>
+        <p class="panel-desc">Where to listen, plus social profiles. Every podcast platform with a link here gets its icon on the homepage (next to "Play the latest episode" and in the footer) and on the Episodes page. Leave a box empty to hide that platform.</p>
+        <p class="panel-sub">Podcast platforms</p>
         <div class="row">
-          <div><label for="l-apple">Apple Podcasts URL</label><input type="url" id="l-apple" /></div>
-          <div><label for="l-spotify">Spotify URL</label><input type="url" id="l-spotify" /></div>
-          <div><label for="l-amazon">Amazon Music URL</label><input type="url" id="l-amazon" /></div>
-          <div><label for="l-youtube">YouTube URL (channel is "available soon" on the site)</label><input type="url" id="l-youtube" /></div>
+          <div><label for="l-spotify">Spotify</label><input type="url" id="l-spotify" /></div>
+          <div><label for="l-apple">Apple Podcasts</label><input type="url" id="l-apple" /></div>
+          <div><label for="l-youtube">YouTube</label><input type="url" id="l-youtube" /></div>
+          <div><label for="l-amazon">Amazon Music</label><input type="url" id="l-amazon" /></div>
+          <div><label for="l-iheart">iHeartRadio</label><input type="url" id="l-iheart" /></div>
+          <div><label for="l-audible">Audible</label><input type="url" id="l-audible" /></div>
+          <div><label for="l-pocketcasts">Pocket Casts</label><input type="url" id="l-pocketcasts" /></div>
+          <div><label for="l-deezer">Deezer</label><input type="url" id="l-deezer" placeholder="Paste your Deezer show link once it's live" /></div>
+          <div><label for="l-tunein">TuneIn</label><input type="url" id="l-tunein" placeholder="Paste your TuneIn show link once it's live" /></div>
+          <div><label for="l-pandora">Pandora</label><input type="url" id="l-pandora" placeholder="Paste your Pandora show link once it's live" /></div>
+        </div>
+        <p class="panel-sub" style="margin-top:1.75rem">Social &amp; contact</p>
+        <div class="row">
           <div><label for="l-linkedin">LinkedIn URL</label><input type="url" id="l-linkedin" /></div>
           <div><label for="l-x">X (Twitter) URL</label><input type="url" id="l-x" /></div>
           <div><label for="l-instagram">Instagram URL</label><input type="url" id="l-instagram" /></div>
@@ -583,7 +593,9 @@
 </div>
 
 <script src="assets/guest-identity.js"></script>
+<script src="assets/platforms.js"></script>
 <script>
+  const PLATFORM_KEYS = ['spotify', 'apple', 'youtube', 'amazon', 'iheart', 'audible', 'pocketcasts', 'deezer', 'tunein', 'pandora'];
   let content = null;
   const $ = id => document.getElementById(id);
   const HERO_STATS_DEFAULT = [
@@ -1553,10 +1565,10 @@
     $('host-photo-preview').src = content.host.photo || '';
     $('host-presskit-note').textContent = content.host.pressKit ? ('Uploaded: ' + content.host.pressKit) : 'No press kit uploaded — the button opens an email request instead.';
     fillAbout();
-    $('l-apple').value = content.links.apple || '';
-    $('l-spotify').value = content.links.spotify || '';
-    $('l-amazon').value = content.links.amazon || '';
-    $('l-youtube').value = content.links.youtube || '';
+    // Same rule as assets/platforms.js: before linksVersion 2 an empty platform box shows the
+    // built-in verified link; saving records linksVersion 2, after which empty means hidden
+    const platformDefaults = window.CXPlatforms && !(content.linksVersion >= 2) ? CXPlatforms.defaults : {};
+    PLATFORM_KEYS.forEach(k => { $('l-' + k).value = content.links[k] || platformDefaults[k] || ''; });
     $('l-linkedin').value = content.links.linkedin || '';
     $('l-x').value = content.links.x || '';
     $('l-instagram').value = content.links.instagram || '';
@@ -1594,11 +1606,12 @@
     content.nav = reconcileNav(content.nav);
     content.navVersion = 2;
     content.links = {
-      apple: $('l-apple').value, spotify: $('l-spotify').value, amazon: $('l-amazon').value, youtube: $('l-youtube').value,
       linkedin: $('l-linkedin').value, x: $('l-x').value, instagram: $('l-instagram').value,
       email: $('l-email').value,
       formKey: $('l-formkey').value.trim()
     };
+    PLATFORM_KEYS.forEach(k => { content.links[k] = $('l-' + k).value.trim(); });
+    content.linksVersion = 2;
   }
 
   $('host-photo-file').addEventListener('change', async (e) => {

@@ -229,7 +229,7 @@
   /* ---- Companies: compact rows ---- */
   .co-row {
     display: grid;
-    grid-template-columns: 92px 1fr auto auto;
+    grid-template-columns: 92px 1fr auto auto auto;
     gap: 1rem;
     align-items: center;
     background: var(--card);
@@ -249,6 +249,17 @@
   .co-logo.empty { visibility: hidden; }
   .co-row input[type="text"] { margin: 0; }
   .co-row input[type="file"] { max-width: 200px; }
+  .co-color { display: flex; align-items: center; gap: 0.45rem; font-size: 0.72rem; color: var(--muted); white-space: nowrap; margin: 0; text-transform: none; letter-spacing: 0; }
+  .co-color input[type="color"] { width: 38px; height: 38px; padding: 2px; border-radius: 10px; border: 1px solid var(--hairline); background: transparent; cursor: pointer; }
+
+  /* ---- Guests: photo framing preview ---- */
+  .frame-row { display: flex; flex-wrap: wrap; align-items: center; gap: 1.25rem; margin-top: 0.75rem; }
+  .frame-prev { position: relative; width: 120px; aspect-ratio: 4 / 5; border-radius: 12px; overflow: hidden; background: #1B2550; border: 1px solid var(--hairline); flex: none; }
+  .frame-prev img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .frame-ctrls { flex: 1; min-width: 220px; display: grid; gap: 0.6rem; }
+  .frame-ctrls span { display: flex; align-items: center; gap: 0.75rem; font-size: 0.78rem; color: var(--muted); }
+  .frame-ctrls span b { width: 7.5rem; font-weight: 600; flex: none; }
+  .frame-ctrls input[type="range"] { flex: 1; accent-color: var(--gold); margin: 0; }
   .add-row { margin-top: 0.75rem; }
 
   .savebar {
@@ -525,6 +536,7 @@
   </div>
 </div>
 
+<script src="assets/guest-identity.js"></script>
 <script>
   let content = null;
   const $ = id => document.getElementById(id);
@@ -893,8 +905,12 @@
       <img class="co-logo" data-thumb src="" alt="" />
       <input type="text" data-f="name" placeholder="Company name" value="" />
       <input type="file" data-file accept="image/png,image/jpeg,image/webp,image/gif" title="Upload logo" />
+      <label class="co-color" title="Brand colour used on this company's guest cards">Colour <input type="color" data-color /></label>
       <button class="btn-danger btn-small" type="button" data-del>Remove</button>`;
     div.querySelector('[data-f="name"]').value = co.name || '';
+    const colour = div.querySelector('[data-color]');
+    colour.value = co.color || (window.CXGuest ? CXGuest.accentFor(co.name) : '#E9A33D');
+    colour.addEventListener('input', (e) => { content.marquee.items[index].color = e.target.value; });
     const thumb = div.querySelector('[data-thumb]');
     if (co.logo) { thumb.src = co.logo; } else { thumb.classList.add('empty'); }
 
@@ -1172,8 +1188,12 @@
       <div class="ep-body">
         <label>Name</label>
         <input type="text" data-f="name" />
-        <label>Role &amp; company</label>
-        <input type="text" data-f="role" placeholder="Chief AI Officer, Meridian Bank" />
+        <div class="row">
+          <div><label>Job title</label><input type="text" data-f="role" placeholder="Head of Research" /></div>
+          <div><label>Company (shown under the title)</label><input type="text" data-f="company" placeholder="COX Architecture" /></div>
+        </div>
+        <label>Company logo &amp; colour (from the Companies tab)</label>
+        <select data-company-ref></select>
         <div class="row">
           <div><label>Category (drives the filter buttons)</label><input type="text" data-f="category" placeholder="AI & Data" /></div>
           <div><label>Episode label</label><input type="text" data-f="episodeLabel" placeholder="Episode 07" /></div>
@@ -1190,6 +1210,16 @@
           <div>
             <input type="file" data-file accept="image/png,image/jpeg,image/webp" />
             <p class="file-note" data-note>No photo — a coloured initials badge is shown instead.</p>
+          </div>
+        </div>
+        <label>Photo framing on the guest card</label>
+        <div class="frame-row">
+          <div class="frame-prev"><img data-frame-img alt="" /></div>
+          <div class="frame-ctrls">
+            <span><b>Zoom</b><input type="range" min="100" max="250" step="5" data-frame="photoZoom" aria-label="Zoom" /></span>
+            <span><b>Left ↔ right</b><input type="range" min="0" max="100" data-frame="photoX" aria-label="Horizontal position" /></span>
+            <span><b>Up ↕ down</b><input type="range" min="0" max="100" data-frame="photoY" aria-label="Vertical position" /></span>
+            <button class="btn-ghost btn-small" type="button" data-frame-reset style="justify-self:start">Reset framing</button>
           </div>
         </div>
         <div class="art-row" style="margin-top:0.75rem">
@@ -1212,11 +1242,42 @@
     }
     refreshSummary();
 
-    ['name', 'role', 'category', 'episodeLabel', 'bio', 'episodeUrl', 'linkedInUrl'].forEach(f => {
+    ['name', 'role', 'company', 'category', 'episodeLabel', 'bio', 'episodeUrl', 'linkedInUrl'].forEach(f => {
       const el = det.querySelector(`[data-f="${f}"]`);
       el.value = g[f] || '';
       el.addEventListener('input', (e) => { content.guests.items[index][f] = e.target.value; refreshSummary(); });
     });
+
+    // Logo + colour come from a company in the Companies tab; "automatic" matches it from the text
+    const ref = det.querySelector('[data-company-ref]');
+    const names = content.marquee.items.map(c => (c.name || '').trim()).filter(Boolean);
+    ref.innerHTML = '<option value="">Match automatically from the company name</option>' +
+      names.map(n => `<option value="${n.replace(/"/g, '&quot;')}">${n.replace(/</g, '&lt;')}</option>`).join('');
+    ref.value = names.includes(g.companyRef) ? g.companyRef : '';
+    ref.addEventListener('change', () => { content.guests.items[index].companyRef = ref.value; });
+
+    // Photo framing: zoom + focus point, previewed exactly as the card crops it
+    const frameImg = det.querySelector('[data-frame-img]');
+    const FRAME_DEFAULTS = { photoZoom: 100, photoX: 50, photoY: 18 };
+    const frameVal = k => (g[k] === '' || g[k] == null || isNaN(Number(g[k]))) ? FRAME_DEFAULTS[k] : Number(g[k]);
+    const drawFrame = () => {
+      const x = frameVal('photoX'), y = frameVal('photoY'), z = frameVal('photoZoom') / 100;
+      frameImg.style.objectPosition = `${x}% ${y}%`;
+      frameImg.style.transformOrigin = `${x}% ${y}%`;
+      frameImg.style.transform = `scale(${z})`;
+      frameImg.style.visibility = g.photo ? 'visible' : 'hidden';
+      if (g.photo) frameImg.src = g.photo;
+    };
+    det.querySelectorAll('[data-frame]').forEach(input => {
+      input.value = frameVal(input.dataset.frame);
+      input.addEventListener('input', () => { content.guests.items[index][input.dataset.frame] = Number(input.value); drawFrame(); });
+    });
+    det.querySelector('[data-frame-reset]').addEventListener('click', () => {
+      Object.keys(FRAME_DEFAULTS).forEach(k => { delete content.guests.items[index][k]; });
+      det.querySelectorAll('[data-frame]').forEach(input => { input.value = FRAME_DEFAULTS[input.dataset.frame]; });
+      drawFrame();
+    });
+    drawFrame();
 
     const chk = det.querySelector('[data-f-featured]');
     chk.checked = !!g.featured;
@@ -1236,6 +1297,7 @@
         const p = await uploadImage(file);
         content.guests.items[index].photo = p;
         thumb.src = p; thumb.style.visibility = 'visible';
+        drawFrame();
         det.querySelector('[data-note]').textContent = 'Uploaded.';
         status('Photo uploaded — remember to Save & publish.', 'ok');
       } catch (err) { status('Upload failed: ' + err.message, 'err'); }
@@ -1487,6 +1549,16 @@
       ]).slice(0, 3);
       while (content.guests.stats.length < 3) content.guests.stats.push({ value: '', label: '' });
       content.guests.items = (Array.isArray(content.guests.items) && content.guests.items.length) ? content.guests.items : GUEST_SAMPLES.map(g => Object.assign({}, g));
+      // One-time tidy-up: split "Head of Research, COX Architecture" into job title + company,
+      // and link the company's logo — shown in the form for review, saved on the next publish
+      if (window.CXGuest) content.guests.items.forEach(g => {
+        if ((g.company || '').trim()) return;
+        const s = CXGuest.splitRole(g.role, content.marquee.items);
+        if (!s.company) return;
+        g.role = s.title;
+        g.company = s.company;
+        if (s.match && !g.companyRef) g.companyRef = (s.match.name || '').trim();
+      });
       content.nav = reconcileNav(content.nav);
       fillForm();
       status('Loaded. Edit anything, then Save & publish.');

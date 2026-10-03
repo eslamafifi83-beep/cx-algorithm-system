@@ -90,7 +90,7 @@
   <tr><td>Blog</td><td>Your LinkedIn article cards + the newsletter button link</td></tr>
   <tr><td>Messages</td><td>Contact-form inbox — read &amp; delete enquiries</td></tr>
   <tr><td>Host</td><td>Your name, bio, photo — and the <strong>press kit PDF upload</strong> (powers the "Download press kit" button on the About page; until one is uploaded the button opens an email request)</td></tr>
-  <tr><td>About page</td><td>Stats numbers, conference photo gallery, "As seen at" venue names</td></tr>
+  <tr><td>About page</td><td>Everything on the Host page except name/photo: the stage photo behind your name + its badge, the 3 credentials, up to 5 track-record numbers (they count up), the story photo + caption, the "On stage" photo wall (up to 5, first one is big, reorder with Move up) and the "Seen at" names. Photos are shrunk automatically before upload. "Use the default photo" restores the built-in one.</td></tr>
   <tr><td>Links</td><td>Apple/Spotify/Amazon URLs, socials, contact email (now hello@thecxalgorithm.com)</td></tr>
   <tr><td>Navigation</td><td><strong>Rename and reorder the menu</strong> across the whole site (up/down arrows + label boxes). The page each item links to is fixed, so renaming can never break anything</td></tr>
 </table>
@@ -110,7 +110,7 @@
   <tr><th>File</th><th>What it is</th></tr>
   <tr><td><code>index.html</code></td><td>Homepage: the one-screen "On Air" hero (circular audio-signal animation with the host at the centre, key numbers, latest-episode card, guest logos docked at the bottom), then topics, episodes, platforms footer</td></tr>
   <tr><td><code>episodes.html</code> / <code>episode.html</code></td><td>Episode list / single-episode page with the Video⇄Audio player</td></tr>
-  <tr><td><code>about.html</code></td><td>The Host page (portrait ring, stats, story, photo gallery, six lenses)</td></tr>
+  <tr><td><code>about.html</code> / <code>assets/stage/</code></td><td>The Host page (stage-photo hero, track record, story, four-continents band, "On stage" photo wall, six lenses as an interactive mixing desk, quote, "Work with me") / the default stage photos it uses until you upload others</td></tr>
   <tr><td><code>guests.html</code> / <code>assets/guest-identity.js</code></td><td>Guests page (featured spotlight, topic filters, guest grid with company logos, brand colours and voiceprints) / the shared helper that works out each guest's title, company, logo and colour (used by the page and the admin)</td></tr>
   <tr><td><code>blog.html</code> / <code>contact.html</code></td><td>Articles page / Contact page with the adaptive form</td></tr>
   <tr><td><code>admin.html</code></td><td>The admin panel itself</td></tr>
@@ -167,6 +167,7 @@
   <li>✅ Company logo tiles: uniform sizing with automatic whitespace trimming</li>
   <li>✅ Real episodes 1–6 loaded with Spotify covers</li>
   <li>✅ Site contact email switched to hello@thecxalgorithm.com</li>
+  <li>✅ Host page redesigned (Oct 2026): your real stage photos, real venues (HX Forum Sydney, XI Forum Sydney, IE University Madrid, Select Cairo), no "weekly" wording; fully editable in admin → About page</li>
 </ul>
 <p><strong>Still open:</strong></p>
 <ul class="checklist">
@@ -176,7 +177,6 @@
   <li>Fill remaining platform links in admin → Links: Apple Podcasts, Spotify show page, Amazon Music, LinkedIn, newsletter URL.</li>
   <li>Upload a press kit PDF (admin → Host) so the About-page button downloads it instead of opening email.</li>
   <li>Upload a World Journeys logo (still text-only in the marquee); swap Gamechangers for a transparent-background version if they can provide one.</li>
-  <li>Real "As seen at" venue names + conference gallery photos on the About page (some are placeholders).</li>
   <li>When the YouTube channel launches: add the URL in admin → Links, and ask Claude to switch YouTube from "Available Soon" to a live link.</li>
   <li>When a trailer exists: point the hero's "Watch Trailer" button at it (currently goes to the episodes section).</li>
   <li>Optional: make hello@ the <em>default</em> From address in Gmail; consider a DMARC record / dedicated sending service if you ever start a newsletter from the domain.</li>

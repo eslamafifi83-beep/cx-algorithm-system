@@ -2,6 +2,12 @@
   "framework": null,
   "cleanUrls": true,
   "trailingSlash": false,
+  "images": {
+    "sizes": [64, 128, 256, 384, 640, 828, 1080, 1600, 2048],
+    "domains": ["fuuuhcvwlrfenjfpcymy.supabase.co"],
+    "formats": ["image/webp"],
+    "minimumCacheTTL": 2678400
+  },
   "redirects": [
     { "source": "/lib/:path*", "destination": "/", "permanent": false },
     { "source": "/templates/:path*", "destination": "/episodes", "permanent": false }

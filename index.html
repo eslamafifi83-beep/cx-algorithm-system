@@ -441,15 +441,21 @@
   }
   .marquee-label { flex: none; max-width: 10em; font-family: var(--display); font-size: 0.64rem; font-weight: 600; letter-spacing: 0.3em; line-height: 1.7; text-transform: uppercase; color: #7480A3; }
   .marquee {
+    --mq-gap: 18px;
     flex: 1;
     min-width: 0;
+    position: relative;
     overflow: hidden;
+    contain: paint;
     -webkit-mask-image: linear-gradient(90deg, transparent, black 6%, black 94%, transparent);
     mask-image: linear-gradient(90deg, transparent, black 6%, black 94%, transparent);
   }
-  .marquee-track { display: flex; gap: 18px; width: max-content; animation: marquee 46s linear infinite; }
+  /* Two identical sets side by side, sized by JS to cover the strip; shifting by one set
+     (half the track plus half a gap) loops seamlessly. Kept on its own GPU layer. */
+  .marquee-track { display: flex; gap: var(--mq-gap); width: max-content; animation: marquee 46s linear infinite; will-change: transform; -webkit-backface-visibility: hidden; backface-visibility: hidden; transition: opacity 0.5s var(--ease); }
+  .marquee-track.is-loading { opacity: 0; }
   .marquee:hover .marquee-track { animation-play-state: paused; }
-  @keyframes marquee { to { transform: translateX(calc(-50% - 9px)); } }
+  @keyframes marquee { from { transform: translate3d(0, 0, 0); } to { transform: translate3d(calc(-50% - var(--mq-gap) / 2), 0, 0); } }
   /* Flex (not grid) so the image's 100% height resolves against the tile's fixed
      height — each logo stays inside its padding instead of spilling out */
   .logo-tile { flex: none; width: 206px; height: 92px; padding: 15px 24px; border-radius: 14px; background: #fff; display: flex; align-items: center; justify-content: center; }
@@ -477,6 +483,11 @@
       -webkit-mask-image: radial-gradient(ellipse 80% 34% at 50% 78%, black 30%, transparent 80%);
     }
     .marquee-label { max-width: none; text-align: center; }
+    /* Tablets and phones: tiles sized to fill the strip exactly (3 or 2 across) and moved
+       one logo at a time by JS, so the logos at rest are never sliced by the screen edge */
+    .marquee { --mq-gap: 12px; --mq-per: 3; container-type: inline-size; -webkit-mask-image: none; mask-image: none; }
+    .marquee-track { animation: none; }
+    .logo-tile { height: 84px; width: calc((100cqw - var(--mq-gap) * (var(--mq-per) - 1)) / var(--mq-per)); }
     .hero-stage-cell { padding-block: 2rem 2.75rem; }
     .hero-stage-cell { place-items: stretch; }
     .hero-stage { --viz: min(80vw, 460px); --orbit: 0.43; width: 100%; max-width: 560px; justify-self: center; }
@@ -490,7 +501,9 @@
     .hstat { padding-inline: 12px; }
     .hstat small { font-size: 0.6rem; letter-spacing: 0.1em; }
     .orbit-chip b { font-size: 0.62rem; padding: 5px 9px; }
-    .logo-tile { width: 172px; height: 78px; padding: 12px 18px; }
+    .marquee { --mq-per: 2; }
+    .logo-tile { width: 156px; height: 70px; padding: 11px 16px; border-radius: 12px; }
+    .logo-tile { width: calc((100cqw - var(--mq-gap)) / 2); }
   }
 
   /* ============ SECTION HEADINGS ============ */
@@ -1379,10 +1392,14 @@
   // marks look tiny inside their tile. Trim the uniform background border off
   // each raster logo (transparent or solid — sampled from the corners) so every
   // brand fills its tile equally. Falls back to the original on any failure.
+  // Resolves to the trimmed image (a data URL), or null when the original should stay.
   const trimmedLogos = {};
-  function trimLogo(src, apply) {
-    if (/\.svg(\?|$)/i.test(src)) return; // vectors are already tightly cropped
-    if (trimmedLogos[src]) { if (trimmedLogos[src] !== 'failed') apply(trimmedLogos[src]); return; }
+  function trimLogo(src) {
+    if (/\.svg(\?|$)/i.test(src)) return Promise.resolve(null); // vectors are already tightly cropped
+    if (!trimmedLogos[src]) trimmedLogos[src] = new Promise(resolve => trimInto(src, resolve));
+    return trimmedLogos[src];
+  }
+  function trimInto(src, resolve) {
     const probe = new Image();
     probe.crossOrigin = 'anonymous';
     probe.onload = () => {
@@ -1416,41 +1433,92 @@
         left = Math.max(0, left - pad); top = Math.max(0, top - pad);
         right = Math.min(w - 1, right + pad); bottom = Math.min(h - 1, bottom + pad);
         const cw = right - left + 1, ch = bottom - top + 1;
-        if (cw * ch > w * h * 0.85) { trimmedLogos[src] = 'failed'; return; } // margins already tight
+        if (cw * ch > w * h * 0.85) { resolve(null); return; } // margins already tight
         const out = document.createElement('canvas');
         out.width = cw; out.height = ch;
         out.getContext('2d').drawImage(probe, left, top, cw, ch, 0, 0, cw, ch);
-        trimmedLogos[src] = out.toDataURL('image/png');
-        apply(trimmedLogos[src]);
-      } catch (e) { trimmedLogos[src] = 'failed'; }
+        resolve(out.toDataURL('image/png'));
+      } catch (e) { resolve(null); }
     };
-    probe.onerror = () => { trimmedLogos[src] = 'failed'; };
+    probe.onerror = () => resolve(null);
     probe.src = src;
   }
 
+  let marqueeItems = null, marqueeWidth = 0;
   function renderMarquee(label, items) {
     if (label) document.getElementById('marqueeLabel').textContent = label;
-    if (Array.isArray(items) && items.length) {
-      // Items may be strings (name only) or {name, logo} objects; every company gets
-      // the same white tile, with its logo or, if it has none yet, its name.
-      const one = item => {
-        const name = typeof item === 'string' ? item : (item.name || '');
-        const logo = typeof item === 'object' && item.logo;
-        return logo
-          ? `<span class="logo-tile"><img src="${esc(logo)}" alt="${esc(name)}" /></span>`
-          : `<span class="logo-tile is-text">${esc(name)}</span>`;
-      };
-      const half = items.concat(items).map(one).join('');
-      const track = document.getElementById('marqueeTrack');
-      track.innerHTML = half + half;
-      // Normalize each unique logo once, then swap it into every copy in the loop
-      const bySrc = {};
-      track.querySelectorAll('img').forEach(img => {
-        (bySrc[img.getAttribute('src')] = bySrc[img.getAttribute('src')] || []).push(img);
-      });
-      Object.keys(bySrc).forEach(src => trimLogo(src, url => bySrc[src].forEach(img => { img.src = url; })));
-    }
+    if (!Array.isArray(items) || !items.length) return;
+    marqueeItems = items;
+    // Items may be strings (name only) or {name, logo} objects; every company gets
+    // the same white tile, with its logo or, if it has none yet, its name.
+    const one = item => {
+      const name = typeof item === 'string' ? item : (item.name || '');
+      const logo = typeof item === 'object' && item.logo;
+      return logo
+        ? `<span class="logo-tile"><img src="${esc(logo)}" alt="${esc(name)}" decoding="async" draggable="false" /></span>`
+        : `<span class="logo-tile is-text">${esc(name)}</span>`;
+    };
+    const track = document.getElementById('marqueeTrack');
+    const strip = track.parentElement;
+    track.classList.add('is-loading');
+    // One set has to be wider than the strip or a gap opens mid-loop; repeat the companies
+    // only as often as that needs (a long track is what makes phones drop tiles mid-scroll)
+    const base = items.map(one).join('');
+    marqueeWidth = strip.clientWidth || window.innerWidth;
+    let reps = 1;
+    track.innerHTML = base;
+    while (track.scrollWidth < marqueeWidth + 200 && reps < 8) track.innerHTML = base.repeat(++reps);
+    const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+    const setWidth = track.scrollWidth + gap;
+    track.innerHTML = base.repeat(reps) + base.repeat(reps);
+    track.style.animationDuration = Math.max(18, setWidth / 42).toFixed(1) + 's'; // same pace on every screen
+    startLogoStepper(track, items.length * reps);
+    // Trim every logo first, then show the strip, so nothing changes size while it moves
+    const imgs = [...track.querySelectorAll('img')];
+    const srcs = [...new Set(imgs.map(img => img.getAttribute('src')))];
+    const trims = srcs.map(src => trimLogo(src).then(url => {
+      if (url) imgs.forEach(img => { if (img.getAttribute('src') === src) img.src = url; });
+    }));
+    Promise.race([Promise.all(trims), new Promise(r => setTimeout(r, 1800))])
+      .then(() => track.classList.remove('is-loading'));
   }
+  // Tablets and phones: instead of a continuous scroll, slide one logo at a time and rest,
+  // so whole logos sit in the strip (the CSS sizes the tiles to fill it exactly)
+  const stepMedia = matchMedia('(max-width: 960px)');
+  const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  let stepTimer = 0, dockOnScreen = true;
+  function startLogoStepper(track, setCount) {
+    clearInterval(stepTimer);
+    track.style.transition = '';
+    track.style.transform = '';
+    if (!stepMedia.matches || reduceMotion.matches) return;
+    let step = 0;
+    stepTimer = setInterval(() => {
+      if (document.hidden || !dockOnScreen) return;
+      const tile = track.querySelector('.logo-tile');
+      if (!tile) return;
+      const unit = tile.getBoundingClientRect().width + (parseFloat(getComputedStyle(track).columnGap) || 0);
+      step++;
+      track.style.transition = 'transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.5s ease';
+      track.style.transform = `translate3d(${(-step * unit).toFixed(2)}px, 0, 0)`;
+      if (step >= setCount) {
+        // the second set starts exactly like the first: jump back without anyone seeing it
+        setTimeout(() => { track.style.transition = 'none'; track.style.transform = 'translate3d(0, 0, 0)'; step = 0; }, 850);
+      }
+    }, 2600);
+  }
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(([e]) => { dockOnScreen = e.isIntersecting; }).observe(document.querySelector('.hero-dock'));
+  }
+
+  let marqueeResize = 0;
+  window.addEventListener('resize', () => {
+    clearTimeout(marqueeResize);
+    marqueeResize = setTimeout(() => {
+      const w = document.getElementById('marqueeTrack').parentElement.clientWidth;
+      if (marqueeItems && Math.abs(w - marqueeWidth) > 60) renderMarquee(null, marqueeItems);
+    }, 250);
+  });
 
   function renderEpisodes(eps) {
     const grid = document.getElementById('episodesGrid');

@@ -7,6 +7,18 @@
 const { supabase } = require('../lib/supabase');
 const { fromEmbedPage, oembed } = require('../lib/spotify-meta');
 const { feedItems, matchItem } = require('../lib/podcast-feed');
+const fs = require('fs');
+const path = require('path');
+
+// Chapters that came with a reviewed transcript (transcripts/<id>.json), if there is one
+function transcriptChapters(id) {
+  try {
+    const tx = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'transcripts', id + '.json'), 'utf8'));
+    return Array.isArray(tx.chapters) ? tx.chapters.filter(c => c && c.title && c.t >= 0).map(c => ({ t: Math.round(c.t), title: String(c.title) })) : [];
+  } catch (e) {
+    return [];
+  }
+}
 
 const ID = /^[A-Za-z0-9]{22}$/;
 
@@ -88,6 +100,8 @@ module.exports = async (req, res) => {
       if (!e.durationMs) e.durationMs = item.durationMs;
       if (!e.releaseDate) e.releaseDate = item.releaseDate;
     });
+
+    ids.forEach(id => { const ch = transcriptChapters(id); if (ch.length) episodes[id].chapters = ch; });
 
     const missing = ids.filter(id => !episodes[id].durationMs);
     const pages = await Promise.all(missing.map(id => fromEmbedPage(id)));

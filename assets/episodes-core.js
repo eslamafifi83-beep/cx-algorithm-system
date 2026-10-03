@@ -141,6 +141,10 @@
     // "What you'll learn": the admin list, else the one from the podcast feed
     if (!e.ownLearn) e.ownLearn = e.learn;
     e.learn = e.ownLearn.length ? e.ownLearn : (Array.isArray(m.learn) ? m.learn : []);
+    // Chapters: the admin's, else the ones that came with the episode's reviewed transcript
+    if (!e.ownChapters) e.ownChapters = e.chapters;
+    e.chapters = e.ownChapters.length ? e.ownChapters
+      : (Array.isArray(m.chapters) ? m.chapters.map(c => ({ t: c.t, ts: clock(c.t), label: c.title })).sort((a, b) => a.t - b.t) : []);
     e.dayLabel = dayLabel(e.released, e.dateText);
     e.monthLabel = monthLabel(e.released, e.dateText);
     return e;

@@ -343,9 +343,9 @@
     </a>
     <nav class="site-nav" id="siteNav" data-page="about" aria-label="Primary">
       <a href="index.html">Home</a>
+      <a href="guests.html">Guests</a>
       <a href="about.html" aria-current="page">The Host</a>
       <a href="episodes.html">Episodes</a>
-      <a href="guests.html">Guests</a>
       <a href="blog.html">Articles</a>
       <a href="contact.html">Contact</a>
     </nav>
@@ -499,7 +499,7 @@
         </ul>
         <div class="ctas">
           <a class="btn btn-gold" href="contact.html#speak">Book me to speak</a>
-          <a class="btn btn-outline" id="pressLink" href="mailto:hello@thecxalgorithm.com?subject=Press%20kit%20request">Download press kit</a>
+          <a class="btn btn-outline" id="pressLink" href="contact.html#press">Request press kit</a>
         </div>
         <p class="mail">Or email <a id="mailLink" href="mailto:hello@thecxalgorithm.com">hello@thecxalgorithm.com</a></p>
       </div>
@@ -571,11 +571,12 @@
     if (links.email) {
       $('mailLink').href = 'mailto:' + links.email;
       $('mailLink').textContent = links.email;
-      $('pressLink').href = 'mailto:' + links.email + '?subject=Press%20kit%20request';
     }
+    // With a press kit uploaded the button downloads it; without one it opens the contact form
     if (host.pressKit) {
       const pl = $('pressLink');
       pl.href = host.pressKit; pl.target = '_blank'; pl.rel = 'noopener';
+      pl.textContent = 'Download press kit';
     }
   }
 

@@ -1486,12 +1486,18 @@
 
   /* ---- Navigation (rename + reorder pages) ---- */
   const NAV_DEFAULT = [
-    { id: 'home', label: 'Home' }, { id: 'about', label: 'The Host' }, { id: 'episodes', label: 'Episodes' },
-    { id: 'guests', label: 'Guests' }, { id: 'blog', label: 'Articles' }, { id: 'contact', label: 'Contact' }
+    { id: 'home', label: 'Home' }, { id: 'guests', label: 'Guests' }, { id: 'about', label: 'The Host' },
+    { id: 'episodes', label: 'Episodes' }, { id: 'blog', label: 'Articles' }, { id: 'contact', label: 'Contact' }
   ];
   const NAV_FILE = { home: 'index.html', about: 'about.html', episodes: 'episodes.html', guests: 'guests.html', blog: 'blog.html', contact: 'contact.html' };
+  // Same one-time move as assets/nav.js: a menu still in the original order (saved before
+  // navVersion 2) takes the new order with Guests second; saving records navVersion 2.
   function reconcileNav(saved) {
     const def = {}; NAV_DEFAULT.forEach(d => def[d.id] = d.label);
+    if (!(content.navVersion >= 2) && (saved || []).map(n => n && n.id).join(',') === 'home,about,episodes,guests,blog,contact') {
+      const labels = {}; saved.forEach(n => { labels[n.id] = n.label; });
+      saved = NAV_DEFAULT.map(d => ({ id: d.id, label: labels[d.id] || d.label }));
+    }
     const out = [], seen = {};
     (saved || []).forEach(n => { if (n && NAV_FILE[n.id] && !seen[n.id]) { out.push({ id: n.id, label: n.label || def[n.id] }); seen[n.id] = 1; } });
     NAV_DEFAULT.forEach(d => { if (!seen[d.id]) out.push({ id: d.id, label: d.label }); });
@@ -1582,6 +1588,7 @@
     content.guests.intro = $('g-intro').value;
     content.guests.items = content.guests.items.filter(g => (g.name || '').trim());
     content.nav = reconcileNav(content.nav);
+    content.navVersion = 2;
     content.links = {
       apple: $('l-apple').value, spotify: $('l-spotify').value, amazon: $('l-amazon').value, youtube: $('l-youtube').value,
       linkedin: $('l-linkedin').value, x: $('l-x').value, instagram: $('l-instagram').value,

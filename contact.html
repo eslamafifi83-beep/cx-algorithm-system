@@ -304,9 +304,9 @@
     </a>
     <nav class="site-nav" id="siteNav" data-page="contact" aria-label="Primary">
       <a href="index.html">Home</a>
+      <a href="guests.html">Guests</a>
       <a href="about.html">The Host</a>
       <a href="episodes.html">Episodes</a>
-      <a href="guests.html">Guests</a>
       <a href="blog.html">Articles</a>
       <a href="contact.html" aria-current="page">Contact</a>
     </nav>
@@ -454,11 +454,18 @@
     }
   };
 
-  // Deep-link: guests.html "Pitch yourself" sends visitors to contact.html#guest
+  // Deep links: #speak (Book me to speak), #guest (Pitch yourself), #other / #partner,
+  // and #press (the Host page's "Request press kit"), which opens the general form pre-filled
   const deepLink = (location.hash || '').replace('#', '');
-  let selected = ['speak', 'guest', 'other'].includes(deepLink) ? deepLink : 'speak';
+  let selected = ['speak', 'guest', 'other'].includes(deepLink) ? deepLink : (deepLink === 'press' || deepLink === 'partner') ? 'other' : 'speak';
   let contactEmail = 'hello@thecxalgorithm.com';
   const values = { speak: {}, guest: {}, other: {} }; // preserve typed values per intent
+  if (deepLink === 'press') {
+    values.other['Nature of enquiry'] = 'Press kit request';
+    values.other.__message = "Hi Eslam, could you send me your press kit? It's for: ";
+  } else if (deepLink === 'partner') {
+    values.other['Nature of enquiry'] = 'Partnership';
+  }
 
   function renderIntents() {
     document.getElementById('intents').innerHTML = INTENTS.map(it => `

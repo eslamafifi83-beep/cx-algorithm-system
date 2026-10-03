@@ -10,15 +10,23 @@
   };
   var DEFAULT = [
     { id: 'home', label: 'Home' },
+    { id: 'guests', label: 'Guests' },
     { id: 'about', label: 'The Host' },
     { id: 'episodes', label: 'Episodes' },
-    { id: 'guests', label: 'Guests' },
     { id: 'blog', label: 'Articles' },
     { id: 'contact', label: 'Contact' }
   ];
+  // Menus saved before Guests moved to second place (navVersion < 2) that still have the
+  // original order take the new order; anything the admin has re-arranged since is kept.
+  var OLD_ORDER = 'home,about,episodes,guests,blog,contact';
 
-  function reconcile(saved) {
+  function reconcile(saved, version) {
     var def = {}; DEFAULT.forEach(function (d) { def[d.id] = d.label; });
+    var ids = (saved || []).map(function (n) { return n && n.id; }).join(',');
+    if (!(version >= 2) && ids === OLD_ORDER) {
+      var labels = {}; saved.forEach(function (n) { labels[n.id] = n.label; });
+      saved = DEFAULT.map(function (d) { return { id: d.id, label: labels[d.id] || d.label }; });
+    }
     var out = [], seen = {};
     (saved || []).forEach(function (n) {
       if (n && HREF[n.id] && !seen[n.id]) { out.push({ id: n.id, label: n.label || def[n.id] }); seen[n.id] = 1; }
@@ -51,6 +59,6 @@
   // from saved content (avoids a flash for anyone who hasn't customised the menu).
   fetch('/api/content', { cache: 'no-store' })
     .then(function (r) { return r.json(); })
-    .then(function (c) { if (c && Array.isArray(c.nav) && c.nav.length) render(reconcile(c.nav)); })
+    .then(function (c) { if (c && Array.isArray(c.nav) && c.nav.length) render(reconcile(c.nav, c.navVersion)); })
     .catch(function () {});
 })();

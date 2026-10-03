@@ -1,12 +1,13 @@
 {
   "nav": [
     { "id": "home", "label": "Home" },
+    { "id": "guests", "label": "Guests" },
     { "id": "about", "label": "The Host" },
     { "id": "episodes", "label": "Episodes" },
-    { "id": "guests", "label": "Guests" },
     { "id": "blog", "label": "Articles" },
     { "id": "contact", "label": "Contact" }
   ],
+  "navVersion": 2,
   "hero": {
     "onAir": "New episode available",
     "headlineLine1": "Great experiences,",

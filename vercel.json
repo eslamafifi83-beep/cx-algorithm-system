@@ -38,6 +38,6 @@
     { "source": "/episodes/:slug", "destination": "/api/episode-page?slug=:slug" }
   ],
   "functions": {
-    "api/episode-page.js": { "includeFiles": "{templates/**,404.html}" }
+    "api/episode-page.js": { "includeFiles": "{templates/**,404.html,transcripts/**}" }
   }
 }

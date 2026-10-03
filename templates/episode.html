@@ -729,6 +729,15 @@
   function bind() {
     document.querySelectorAll('[data-mode]').forEach(b => b.addEventListener('click', () => setMode(b.dataset.mode)));
     document.querySelectorAll('[data-seek]').forEach(b => b.addEventListener('click', () => seek(Number(b.dataset.seek), true)));
+    // Transcript timestamps (the transcript section sits below the player): play from that moment
+    const tx = $('transcript');
+    if (tx) tx.addEventListener('click', ev => {
+      const b = ev.target.closest('.tx-t');
+      if (!b) return;
+      seek(Number(b.dataset.t), true);
+      const stage = $('stage');
+      if (stage) stage.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+    });
     const w = $('wave');
     if (w) {
       const tip = $('tip');

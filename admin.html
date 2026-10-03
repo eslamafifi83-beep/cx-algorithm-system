@@ -297,6 +297,17 @@
   .login-card .btn-gold { width: 100%; margin-top: 1.5rem; }
   #loginError { color: var(--danger); font-size: 0.82rem; margin-top: 0.9rem; min-height: 1.2em; }
 
+  /* ---- About page editors ---- */
+  .trio-row { display: grid; grid-template-columns: 1fr 1fr 1.4fr; gap: 0.6rem; background: var(--card); border: 1px solid var(--hairline); border-radius: 12px; padding: 0.75rem 1rem; margin-bottom: 0.6rem; }
+  .trio-row.num { grid-template-columns: 110px 1fr 1.4fr; }
+  .trio-row input[type="text"] { margin: 0; }
+  .wall-row { display: grid; grid-template-columns: 132px minmax(0, 1fr); gap: 1rem; background: var(--card); border: 1px solid var(--hairline); border-radius: 12px; padding: 0.85rem 1rem; margin-bottom: 0.6rem; }
+  .wall-row.feature { border-color: rgba(233, 163, 61, 0.35); }
+  .wall-fields { display: grid; gap: 0.5rem; }
+  .wall-fields input[type="text"] { margin: 0; }
+  .wall-tag { font-family: "JetBrains Mono", monospace; font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-top: 0.45rem; }
+  .wall-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem; }
+
   /* ---- Mobile section picker (replaces the sidebar below 900px) ---- */
   .tab-select-wrap { display: none; }
   #tabSelect {
@@ -335,6 +346,7 @@
     .card { padding: 1rem; }
     .ep-body { padding: 0 1rem 1rem; }
     .art-row input[type="file"] { max-width: 100%; }
+    .trio-row, .trio-row.num, .wall-row { grid-template-columns: 1fr; }
     .savebar-inner { flex-direction: column-reverse; align-items: stretch; gap: 0.5rem; }
     .savebar .btn-gold { width: 100%; padding: 0.9rem; }
     #status { text-align: center; min-height: 1em; }
@@ -495,13 +507,44 @@
 
       <section class="panel" id="panel-about">
         <h2 class="panel-title">About page</h2>
-        <p class="panel-desc">The stats strip, the "On stage" conference photo gallery, and the "As seen at" venue names on the About page. Visitors only ever see the photos you upload here.</p>
-        <label>Stats strip (4 numbers)</label>
-        <div id="aboutStats"></div>
-        <label style="margin-top:1.5rem">Conference gallery (5 frames — the first is the tall feature)</label>
-        <div id="aboutGallery"></div>
-        <label for="a-venues" style="margin-top:1.5rem">"As seen at" venues — one per line</label>
-        <textarea id="a-venues"></textarea>
+        <p class="panel-desc">Everything on the Host page (about.html) apart from your name and photo, which come from the Host tab. Leave a field empty to use the page's built-in wording.</p>
+
+        <p class="panel-sub">Stage photo behind your name</p>
+        <div class="art-row">
+          <img id="ab-hero-thumb" class="thumb" src="" alt="" />
+          <input type="file" id="ab-hero-file" accept="image/png,image/jpeg,image/webp" />
+          <button class="btn-ghost btn-small" type="button" id="ab-hero-reset">Use the default photo</button>
+        </div>
+        <p class="hint">A dark stage shot with you on the right works best: your name sits over the left side.</p>
+        <label for="ab-hero-cap">Photo badge (top right)</label>
+        <input type="text" id="ab-hero-cap" placeholder="On stage · HX Forum, Sydney" />
+
+        <p class="panel-sub" style="margin-top:2rem">Credentials under the buttons</p>
+        <p class="hint" style="margin:-0.4rem 0 0.75rem">Big gold word · bold line · small note. Rows with no gold word are hidden.</p>
+        <div id="abCreds"></div>
+
+        <p class="panel-sub" style="margin-top:2rem">Track record numbers (up to 5)</p>
+        <p class="hint" style="margin:-0.4rem 0 0.75rem">Number · label · optional small note. Numbers count up on the page (e.g. 27%, $688M, 30+).</p>
+        <div id="abResults"></div>
+
+        <p class="panel-sub" style="margin-top:2rem">Story photo</p>
+        <div class="art-row">
+          <img id="ab-story-thumb" class="thumb" src="" alt="" />
+          <input type="file" id="ab-story-file" accept="image/png,image/jpeg,image/webp" />
+          <button class="btn-ghost btn-small" type="button" id="ab-story-reset">Use the default photo</button>
+        </div>
+        <div class="row">
+          <div><label for="ab-story-cap">Caption</label><input type="text" id="ab-story-cap" placeholder="IE University, Madrid" /></div>
+          <div><label for="ab-story-detail">Detail on the right (optional)</label><input type="text" id="ab-story-detail" placeholder="40.42° N · 3.70° W" /></div>
+        </div>
+
+        <p class="panel-sub" style="margin-top:2rem">"On stage" photo wall (up to 5)</p>
+        <p class="hint" style="margin:-0.4rem 0 0.75rem">The first photo is the big one. The rest arrange themselves around it.</p>
+        <div id="abWall"></div>
+        <button class="btn-ghost btn-small" type="button" id="ab-wall-add">+ Add a photo</button>
+
+        <label for="ab-seen" style="margin-top:2rem">"Seen at" names, one per line</label>
+        <textarea id="ab-seen"></textarea>
       </section>
 
       <section class="panel" id="panel-links">
@@ -1103,59 +1146,174 @@
     content.blog.articles.forEach((a, i) => box.appendChild(articleCard(a, i, i === openIndex)));
   }
 
-  /* ---- About page: stats + gallery ---- */
-  function renderAboutStats() {
-    const box = $('aboutStats');
+  /* ---- About page (about.html) ---- */
+  // Mirrors the defaults baked into about.html, so the form shows what the page shows.
+  const ABOUT_DEFAULTS = {
+    hero: { image: 'assets/stage/hx-sydney.jpg', caption: 'On stage · HX Forum, Sydney' },
+    credentials: [
+      { title: 'PhD', org: 'Monash University', note: 'Human-Centred Design and ML/AI-informed CX' },
+      { title: 'Executive MBA', org: 'IE Business School', note: 'Blue Torch Award' },
+      { title: '2× winner', org: 'Australian CX Awards', note: 'Customer Data & Insights · CX Transformation' }
+    ],
+    results: [
+      { value: '27%', label: 'Churn reduction', note: '' },
+      { value: '$688M', label: 'In funds growth', note: '' },
+      { value: '2×', label: 'Australian CX Awards', note: 'Best Use of Customer Data & Insights · Best CX Transformation Project' },
+      { value: '30+', label: 'Stages spoken on', note: '' },
+      { value: '4', label: 'Continents', note: 'Lived and worked' }
+    ],
+    story: { image: 'assets/stage/ie-madrid.jpg', caption: 'IE University, Madrid', detail: '40.42° N · 3.70° W' },
+    wall: [
+      { image: 'assets/stage/xi-forum-audience.jpg', title: 'With the audience', sub: 'XI Forum, Sydney', detail: '33.87° S · 151.21° E' },
+      { image: 'assets/stage/xi-forum-2023.jpg', title: 'XI Forum 2023', sub: "Behind the scenes of legalsuper's award-winning initiative to unlock customer data", detail: 'Sydney · 2023' },
+      { image: 'assets/stage/select-cairo.jpg', title: 'Select Cairo', sub: 'Joined the room live, on screen', detail: '30.04° N · 31.24° E' }
+    ],
+    seenAt: ['HX Forum Sydney', 'XI Forum Sydney', 'IE University Madrid', 'Select Cairo']
+  };
+  const clone = v => JSON.parse(JSON.stringify(v));
+  const listOr = (v, def) => (Array.isArray(v) && v.length ? v : clone(def));
+
+  // Phone photos can exceed the upload limit; stage photos never need more than ~2000px.
+  async function uploadStagePhoto(file) {
+    let toSend = file;
+    try {
+      const bmp = await createImageBitmap(file);
+      const scale = Math.min(1, 2000 / Math.max(bmp.width, bmp.height));
+      if (scale < 1 || file.size > 1.5e6) {
+        const cv = document.createElement('canvas');
+        cv.width = Math.round(bmp.width * scale);
+        cv.height = Math.round(bmp.height * scale);
+        cv.getContext('2d').drawImage(bmp, 0, 0, cv.width, cv.height);
+        const blob = await new Promise(res => cv.toBlob(res, 'image/jpeg', 0.85));
+        if (blob) toSend = new File([blob], file.name.replace(/\.\w+$/, '') + '.jpg', { type: 'image/jpeg' });
+      }
+    } catch (e) { /* unsupported format for canvas: send the original */ }
+    return uploadImage(toSend);
+  }
+
+  function bindPhoto(fileId, thumbId, resetId, target, def) {
+    $(fileId).addEventListener('change', async (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      try {
+        status('Uploading photo…');
+        target().image = await uploadStagePhoto(file);
+        $(thumbId).src = target().image;
+        status('Photo uploaded — remember to Save & publish.', 'ok');
+      } catch (err) { status('Upload failed: ' + err.message, 'err'); }
+      e.target.value = '';
+    });
+    $(resetId).addEventListener('click', () => {
+      target().image = def;
+      $(thumbId).src = def;
+    });
+  }
+  bindPhoto('ab-hero-file', 'ab-hero-thumb', 'ab-hero-reset', () => content.about.hero, ABOUT_DEFAULTS.hero.image);
+  bindPhoto('ab-story-file', 'ab-story-thumb', 'ab-story-reset', () => content.about.story, ABOUT_DEFAULTS.story.image);
+
+  function renderTrio(boxId, list, size, cls, fields) {
+    while (list.length < size) list.push({});
+    const box = $(boxId);
     box.innerHTML = '';
-    content.about.stats.forEach((s, i) => {
+    list.slice(0, size).forEach(item => {
       const div = document.createElement('div');
-      div.className = 'co-row';
-      div.style.gridTemplateColumns = '140px 1fr';
-      div.innerHTML = `
-        <input type="text" data-sf="value" placeholder="15+" />
-        <input type="text" data-sf="label" placeholder="Years of global experience" />`;
-      div.querySelector('[data-sf="value"]').value = s.value || '';
-      div.querySelector('[data-sf="label"]').value = s.label || '';
-      div.querySelector('[data-sf="value"]').addEventListener('input', e => { content.about.stats[i].value = e.target.value; });
-      div.querySelector('[data-sf="label"]').addEventListener('input', e => { content.about.stats[i].label = e.target.value; });
+      div.className = 'trio-row' + (cls ? ' ' + cls : '');
+      fields.forEach(([key, ph]) => {
+        const inp = document.createElement('input');
+        inp.type = 'text';
+        inp.placeholder = ph;
+        inp.value = item[key] || '';
+        inp.addEventListener('input', () => { item[key] = inp.value; });
+        div.appendChild(inp);
+      });
       box.appendChild(div);
     });
   }
+  function renderAboutCreds() {
+    renderTrio('abCreds', content.about.credentials, 3, '', [['title', 'PhD'], ['org', 'Monash University'], ['note', 'Small note (optional)']]);
+  }
+  function renderAboutResults() {
+    renderTrio('abResults', content.about.results, 5, 'num', [['value', '27%'], ['label', 'Churn reduction'], ['note', 'Small note (optional)']]);
+  }
 
-  function renderAboutGallery() {
-    const box = $('aboutGallery');
+  function renderAboutWall() {
+    const wall = content.about.wall;
+    const box = $('abWall');
     box.innerHTML = '';
-    content.about.gallery.forEach((g, i) => {
+    wall.forEach((t, i) => {
       const div = document.createElement('div');
-      div.className = 'co-row';
+      div.className = 'wall-row' + (i === 0 ? ' feature' : '');
       div.innerHTML = `
-        <img class="co-logo" data-thumb src="" alt="" style="object-fit:cover;" />
-        <input type="text" data-gf="label" placeholder="Caption (e.g. Keynote / main stage)" />
-        <input type="file" data-gfile accept="image/png,image/jpeg,image/webp" title="Upload photo" />
-        <button class="btn-danger btn-small" type="button" data-clear>Clear photo</button>`;
+        <div><img class="thumb" data-thumb src="" alt="" /><p class="wall-tag">${i === 0 ? 'Big photo' : 'Photo ' + (i + 1)}</p></div>
+        <div class="wall-fields">
+          <div class="row">
+            <input type="text" data-k="title" placeholder="Title (e.g. XI Forum 2023)" />
+            <input type="text" data-k="sub" placeholder="Small line under the title" />
+          </div>
+          <input type="text" data-k="detail" placeholder="Detail on the right (optional, e.g. Sydney · 2023)" />
+          <div class="wall-actions">
+            <input type="file" data-file accept="image/png,image/jpeg,image/webp" title="Replace photo" />
+            ${i > 0 ? '<button class="btn-ghost btn-small" type="button" data-up>Move up</button>' : ''}
+            <button class="btn-danger btn-small" type="button" data-remove>Remove</button>
+          </div>
+        </div>`;
       const thumb = div.querySelector('[data-thumb]');
-      if (g.image) { thumb.src = g.image; } else { thumb.classList.add('empty'); }
-      div.querySelector('[data-gf="label"]').value = g.label || '';
-      div.querySelector('[data-gf="label"]').addEventListener('input', e => { content.about.gallery[i].label = e.target.value; });
-      div.querySelector('[data-gfile]').addEventListener('change', async (e) => {
+      thumb.src = t.image || '';
+      div.querySelectorAll('[data-k]').forEach(inp => {
+        inp.value = t[inp.dataset.k] || '';
+        inp.addEventListener('input', () => { t[inp.dataset.k] = inp.value; });
+      });
+      div.querySelector('[data-file]').addEventListener('change', async (e) => {
         const file = e.target.files[0];
         if (!file) return;
         try {
           status('Uploading photo…');
-          const p = await uploadImage(file);
-          content.about.gallery[i].image = p;
-          thumb.src = p;
-          thumb.classList.remove('empty');
+          t.image = await uploadStagePhoto(file);
+          thumb.src = t.image;
           status('Photo uploaded — remember to Save & publish.', 'ok');
         } catch (err) { status('Upload failed: ' + err.message, 'err'); }
       });
-      div.querySelector('[data-clear]').addEventListener('click', () => {
-        content.about.gallery[i].image = '';
-        thumb.src = '';
-        thumb.classList.add('empty');
-      });
+      const up = div.querySelector('[data-up]');
+      if (up) up.addEventListener('click', () => { wall.splice(i - 1, 0, wall.splice(i, 1)[0]); renderAboutWall(); });
+      div.querySelector('[data-remove]').addEventListener('click', () => { wall.splice(i, 1); renderAboutWall(); });
       box.appendChild(div);
     });
+    $('ab-wall-add').hidden = wall.length >= 5;
+  }
+  $('ab-wall-add').addEventListener('click', () => {
+    if (content.about.wall.length >= 5) return;
+    content.about.wall.push({ image: '', title: '', sub: '', detail: '' });
+    renderAboutWall();
+  });
+
+  function fillAbout() {
+    const a = content.about;
+    a.hero = Object.assign(clone(ABOUT_DEFAULTS.hero), a.hero || {});
+    a.story = Object.assign(clone(ABOUT_DEFAULTS.story), a.story || {});
+    a.credentials = listOr(a.credentials, ABOUT_DEFAULTS.credentials);
+    a.results = listOr(a.results, ABOUT_DEFAULTS.results);
+    a.wall = listOr(a.wall, ABOUT_DEFAULTS.wall);
+    a.seenAt = listOr(a.seenAt, ABOUT_DEFAULTS.seenAt);
+    $('ab-hero-thumb').src = a.hero.image || ABOUT_DEFAULTS.hero.image;
+    $('ab-hero-cap').value = a.hero.caption || '';
+    $('ab-story-thumb').src = a.story.image || ABOUT_DEFAULTS.story.image;
+    $('ab-story-cap').value = a.story.caption || '';
+    $('ab-story-detail').value = a.story.detail || '';
+    $('ab-seen').value = a.seenAt.join('\n');
+    renderAboutCreds();
+    renderAboutResults();
+    renderAboutWall();
+  }
+
+  function collectAbout() {
+    const a = content.about;
+    a.hero.caption = $('ab-hero-cap').value.trim();
+    a.story.caption = $('ab-story-cap').value.trim();
+    a.story.detail = $('ab-story-detail').value.trim();
+    a.credentials = a.credentials.filter(x => (x.title || '').trim());
+    a.results = a.results.filter(x => (x.value || '').trim());
+    a.wall = a.wall.filter(x => x.image);
+    a.seenAt = $('ab-seen').value.split('\n').map(s => s.trim()).filter(Boolean);
   }
 
   /* ---- Guests ---- */
@@ -1385,9 +1543,7 @@
     $('host-bio2').value = content.host.bio2 || '';
     $('host-photo-preview').src = content.host.photo || '';
     $('host-presskit-note').textContent = content.host.pressKit ? ('Uploaded: ' + content.host.pressKit) : 'No press kit uploaded — the button opens an email request instead.';
-    renderAboutStats();
-    renderAboutGallery();
-    $('a-venues').value = (content.about.venues || []).join('\n');
+    fillAbout();
     $('l-apple').value = content.links.apple || '';
     $('l-spotify').value = content.links.spotify || '';
     $('l-amazon').value = content.links.amazon || '';
@@ -1418,7 +1574,7 @@
     content.host.name = $('host-name').value;
     content.host.bio1 = $('host-bio1').value;
     content.host.bio2 = $('host-bio2').value;
-    content.about.venues = $('a-venues').value.split('\n').map(s => s.trim()).filter(Boolean);
+    collectAbout();
     content.blog.newsletterUrl = $('b-newsletter').value;
     content.blog.articles = content.blog.articles.filter(a => (a.title || '').trim() || (a.linkedInUrl || '').trim());
     content.guests.kicker = $('g-kicker').value;
@@ -1523,20 +1679,6 @@
       content.host = content.host || {};
       content.links = content.links || {};
       content.about = content.about || {};
-      content.about.stats = (Array.isArray(content.about.stats) && content.about.stats.length ? content.about.stats : [
-        { value: '15+', label: 'Years of global experience' },
-        { value: '4', label: 'Continents lived & worked' },
-        { value: '30+', label: 'Stages spoken on' },
-        { value: '$688M', label: 'In funds growth' }
-      ]).slice(0, 4);
-      content.about.gallery = (Array.isArray(content.about.gallery) && content.about.gallery.length ? content.about.gallery : [
-        { image: '', label: 'Keynote / main stage' },
-        { image: '', label: 'Panel' },
-        { image: '', label: 'Workshop' },
-        { image: '', label: 'Backstage' },
-        { image: '', label: 'With the audience' }
-      ]).slice(0, 5);
-      content.about.venues = content.about.venues || [];
       content.blog = content.blog || {};
       content.blog.newsletterUrl = content.blog.newsletterUrl || '';
       content.blog.articles = Array.isArray(content.blog.articles) ? content.blog.articles : [];

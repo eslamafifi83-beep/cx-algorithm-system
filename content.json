@@ -118,53 +118,26 @@
     }
   ],
   "about": {
-    "stats": [
-      {
-        "value": "15+",
-        "label": "Years of global experience"
-      },
-      {
-        "value": "4",
-        "label": "Continents lived & worked"
-      },
-      {
-        "value": "30+",
-        "label": "Stages spoken on"
-      },
-      {
-        "value": "$688M",
-        "label": "In funds growth"
-      }
+    "hero": { "image": "assets/stage/hx-sydney.jpg", "caption": "On stage · HX Forum, Sydney" },
+    "credentials": [
+      { "title": "PhD", "org": "Monash University", "note": "Human-Centred Design and ML/AI-informed CX" },
+      { "title": "Executive MBA", "org": "IE Business School", "note": "Blue Torch Award" },
+      { "title": "2× winner", "org": "Australian CX Awards", "note": "Customer Data & Insights · CX Transformation" }
     ],
-    "gallery": [
-      {
-        "image": "",
-        "label": "Keynote / main stage"
-      },
-      {
-        "image": "",
-        "label": "Panel"
-      },
-      {
-        "image": "",
-        "label": "Workshop"
-      },
-      {
-        "image": "",
-        "label": "Backstage"
-      },
-      {
-        "image": "",
-        "label": "With the audience"
-      }
+    "results": [
+      { "value": "27%", "label": "Churn reduction", "note": "" },
+      { "value": "$688M", "label": "In funds growth", "note": "" },
+      { "value": "2×", "label": "Australian CX Awards", "note": "Best Use of Customer Data & Insights · Best CX Transformation Project" },
+      { "value": "30+", "label": "Stages spoken on", "note": "" },
+      { "value": "4", "label": "Continents", "note": "Lived and worked" }
     ],
-    "venues": [
-      "CX Summit",
-      "ForrData",
-      "NextGen CX",
-      "ExperienceLive",
-      "The Loyalty Forum"
-    ]
+    "story": { "image": "assets/stage/ie-madrid.jpg", "caption": "IE University, Madrid", "detail": "40.42° N · 3.70° W" },
+    "wall": [
+      { "image": "assets/stage/xi-forum-audience.jpg", "title": "With the audience", "sub": "XI Forum, Sydney", "detail": "33.87° S · 151.21° E" },
+      { "image": "assets/stage/xi-forum-2023.jpg", "title": "XI Forum 2023", "sub": "Behind the scenes of legalsuper's award-winning initiative to unlock customer data", "detail": "Sydney · 2023" },
+      { "image": "assets/stage/select-cairo.jpg", "title": "Select Cairo", "sub": "Joined the room live, on screen", "detail": "30.04° N · 31.24° E" }
+    ],
+    "seenAt": ["HX Forum Sydney", "XI Forum Sydney", "IE University Madrid", "Select Cairo"]
   },
   "blog": {
     "newsletterUrl": "",

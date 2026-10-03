@@ -5,6 +5,7 @@
 const { supabase } = require('../lib/supabase');
 const { route, render, notFoundPage, spotifyId } = require('../lib/episode-page');
 const { fromEmbedPage } = require('../lib/spotify-meta');
+const { feedItems, matchItem } = require('../lib/podcast-feed');
 
 module.exports = async (req, res) => {
   const q = req.query || {};
@@ -41,9 +42,16 @@ module.exports = async (req, res) => {
     return res.status(404).send(notFoundPage());
   }
 
+  // Release date, duration and notes from the podcast feed; Spotify's embed page as a fallback
   const ep = content.episodes[to.idx] || {};
+  const number = parseInt((/\d+/.exec(ep.eyebrow || '') || [to.idx + 1])[0], 10);
+  const item = matchItem(await feedItems(2000), ep.title, number);
+  let meta = item ? { durationMs: item.durationMs, releaseDate: item.releaseDate, notes: item.notes, learn: item.learn } : {};
   const sid = spotifyId(ep.audio) || spotifyId(ep.video);
-  const meta = sid ? await fromEmbedPage(sid, 1500) : {};
+  if (sid && !(meta.durationMs && meta.releaseDate)) {
+    const emb = await fromEmbedPage(sid, 1500);
+    meta = Object.assign({}, meta, { durationMs: meta.durationMs || emb.durationMs || 0, releaseDate: meta.releaseDate || emb.releaseDate || '' });
+  }
   res.setHeader('Content-Type', 'text/html; charset=utf-8');
   res.setHeader('Cache-Control', 'public, s-maxage=300, stale-while-revalidate=86400');
   return res.status(200).send(render(content, to.idx, meta));

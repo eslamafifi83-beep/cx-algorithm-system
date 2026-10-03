@@ -8,9 +8,10 @@
 (function () {
   if (document.getElementById('loading-screen')) return;
 
-  // The logo, resized and in WebP on the live site (the original PNG is 370 KB)
+  // The logo, resized and in WebP on the live site (the original PNG is 370 KB). Same address as
+  // the <link rel="preload"> in each page's <head>, so it's already downloading when this runs.
   var LOGO = /(^|\.)thecxalgorithm\.com$/.test(location.hostname)
-    ? '/_vercel/image?url=%2Fassets%2Flogo.png&w=' + ((window.devicePixelRatio || 1) >= 1.5 ? 828 : 640) + '&q=80'
+    ? '/_vercel/image?url=%2Fassets%2Flogo.png&w=828&q=80'
     : '/assets/logo.png';
 
   var css = [

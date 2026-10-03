@@ -1,11 +1,12 @@
 // GET /api/episode-meta?ids=<spotifyEpisodeId>,<id>,...   (public, cached)
 // Spotify details the episode pages need but the admin doesn't store:
 //   { ok, spotify: { keys, token, api }, episodes: { <id>: { durationMs, releaseDate, description, video, frame } } }
-// Descriptions need SPOTIFY_CLIENT_ID/SECRET in Vercel; duration and date fall back to the public embed page.
+// Notes come from the podcast RSS feed; duration and date from the feed, Spotify's API (with keys) or its public embed page.
 // Only ids that appear in the site's own episode list are looked up, so this can't be
 // used as an open Spotify proxy. Responses are cached at the edge for hours.
 const { supabase } = require('../lib/supabase');
 const { fromEmbedPage, oembed } = require('../lib/spotify-meta');
+const { feedItems, matchItem } = require('../lib/podcast-feed');
 
 const ID = /^[A-Za-z0-9]{22}$/;
 
@@ -70,6 +71,22 @@ module.exports = async (req, res) => {
         releaseDate: ep.release_date || '',
         description: String(ep.description || '').trim()
       });
+    });
+
+    // The podcast feed: each episode's own notes and learning points (cleaner than Spotify's
+    // description, which repeats the show boilerplate), plus date and duration
+    const feed = ids.length ? await feedItems(2500) : [];
+    ((data && data.data && data.data.episodes) || []).forEach((ep, i) => {
+      const m = /episode[/:]([A-Za-z0-9]{22})/.exec(String((ep && ep.audio) || '') + ' ' + String((ep && ep.video) || ''));
+      const e = m && episodes[m[1]];
+      if (!e || e.fromFeed) return;
+      const item = matchItem(feed, ep.title, parseInt((/\d+/.exec(ep.eyebrow || '') || [i + 1])[0], 10));
+      if (!item) return;
+      e.fromFeed = true;
+      if (item.notes.length) e.description = item.notes.join('\n\n');
+      if (item.learn.length) e.learn = item.learn;
+      if (!e.durationMs) e.durationMs = item.durationMs;
+      if (!e.releaseDate) e.releaseDate = item.releaseDate;
     });
 
     const missing = ids.filter(id => !episodes[id].durationMs);

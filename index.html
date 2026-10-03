@@ -67,12 +67,17 @@
       "name": "Dr Eslam Afifi",
       "url": "https://www.thecxalgorithm.com/about",
       "image": "https://www.thecxalgorithm.com/assets/dr-eslam-afifi.png",
-      "jobTitle": "Podcast host, speaker, CX & AI leader"
+      "jobTitle": "Podcast host, speaker, CX & AI leader",
+      "sameAs": [
+        "https://www.linkedin.com/in/eslam-afifi/"
+      ]
     }
   ]
 }
 </script>
 <script defer src="/_vercel/insights/script.js"></script>
+<link rel="alternate" type="application/rss+xml" title="The CX Algorithm Podcast" href="https://anchor.fm/s/10dcc5b9c/podcast/rss" />
+<link rel="preload" as="image" href="/_vercel/image?url=%2Fassets%2Flogo.png&amp;w=828&amp;q=80" fetchpriority="high" />
 <link rel="preload" href="/assets/fonts/poppins-400-latin.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="preload" href="/assets/fonts/poppins-700-latin.woff2" as="font" type="font/woff2" crossorigin />
 <style>
@@ -1460,12 +1465,16 @@
     probe.crossOrigin = 'anonymous';
     probe.onload = () => {
       try {
-        const w = probe.naturalWidth, h = probe.naturalHeight;
-        if (!w || !h || w * h > 16e6) throw 0;
+        const w0 = probe.naturalWidth, h0 = probe.naturalHeight;
+        if (!w0 || !h0 || w0 * h0 > 16e6) throw 0;
+        // Work on a copy at most 640px across: the same crop for a fraction of the work
+        // (scanning a 2,700px logo pixel by pixel froze the page for ~0.4 s on phones)
+        const k = Math.min(1, 640 / Math.max(w0, h0));
+        const w = Math.max(1, Math.round(w0 * k)), h = Math.max(1, Math.round(h0 * k));
         const cv = document.createElement('canvas');
         cv.width = w; cv.height = h;
         const cx = cv.getContext('2d', { willReadFrequently: true });
-        cx.drawImage(probe, 0, 0);
+        cx.drawImage(probe, 0, 0, w, h);
         const d = cx.getImageData(0, 0, w, h).data;
         const px = (x, y) => { const i = (y * w + x) * 4; return [d[i], d[i+1], d[i+2], d[i+3]]; };
         // Background = what the corners agree on (white, transparent, navy…)
@@ -1492,7 +1501,7 @@
         if (cw * ch > w * h * 0.85) { resolve(null); return; } // margins already tight
         const out = document.createElement('canvas');
         out.width = cw; out.height = ch;
-        out.getContext('2d').drawImage(probe, left, top, cw, ch, 0, 0, cw, ch);
+        out.getContext('2d').drawImage(cv, left, top, cw, ch, 0, 0, cw, ch);
         resolve(out.toDataURL('image/png'));
       } catch (e) { resolve(null); }
     };

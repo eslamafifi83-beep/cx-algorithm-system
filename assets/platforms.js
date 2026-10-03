@@ -54,5 +54,7 @@
 
   const icon = (p, size) => `<svg viewBox="0 0 24 24" width="${size || 24}" height="${size || 24}" aria-hidden="true" focusable="false">${p.svg}</svg>`;
 
-  window.CXPlatforms = { list: PLATFORMS, defaults: DEFAULTS, resolve, icon };
+  const api = { list: PLATFORMS, defaults: DEFAULTS, resolve, icon };
+  // Pages use window.CXPlatforms; the server (llms.txt) requires this file
+  if (typeof module === 'object' && module.exports) module.exports = api; else window.CXPlatforms = api;
 })();

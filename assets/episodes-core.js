@@ -120,7 +120,7 @@
     const ids = [...new Set(episodes.map(e => e.sid).filter(Boolean))].sort();
     if (!ids.length) return {};
     try {
-      const r = await fetch('/api/episode-meta?v=3&ids=' + ids.join(','));
+      const r = await fetch('/api/episode-meta?v=4&ids=' + ids.join(','));
       if (!r.ok) return {};
       const j = await r.json();
       return (j && j.episodes) || {};
@@ -137,7 +137,10 @@
     e.hasVideo = !!e.videoFile || (!!e.sid && m.video !== false);
     e.frame = m.frame || '';
     e.blurb = e.description || shorten(m.description, 240);
-    e.aboutParas = e.about.length ? e.about : (e.description ? paras(e.description) : (m.description ? [String(m.description).trim()] : []));
+    e.aboutParas = e.about.length ? e.about : (e.description ? paras(e.description) : paras(m.description));
+    // "What you'll learn": the admin list, else the one from the podcast feed
+    if (!e.ownLearn) e.ownLearn = e.learn;
+    e.learn = e.ownLearn.length ? e.ownLearn : (Array.isArray(m.learn) ? m.learn : []);
     e.dayLabel = dayLabel(e.released, e.dateText);
     e.monthLabel = monthLabel(e.released, e.dateText);
     return e;
@@ -181,12 +184,15 @@
       const probe = new Image();
       probe.crossOrigin = 'anonymous';
       probe.onload = () => {
-        const w = probe.naturalWidth, h = probe.naturalHeight;
-        trimmed[src] = { url: src, ratio: w && h ? w / h : 4 };
+        const w0 = probe.naturalWidth, h0 = probe.naturalHeight;
+        trimmed[src] = { url: src, ratio: w0 && h0 ? w0 / h0 : 4 };
         try {
-          if (/\.svg(\?|$)/i.test(src) || !w || !h || w * h > 16e6) throw 0;
+          if (/\.svg(\?|$)/i.test(src) || !w0 || !h0 || w0 * h0 > 16e6) throw 0;
+          // Scan a copy at most 480px across (logo plates are ~120px): same crop, far less work
+          const sc = Math.min(1, 480 / Math.max(w0, h0));
+          const w = Math.max(1, Math.round(w0 * sc)), h = Math.max(1, Math.round(h0 * sc));
           const cv = document.createElement('canvas'); cv.width = w; cv.height = h;
-          const cx = cv.getContext('2d', { willReadFrequently: true }); cx.drawImage(probe, 0, 0);
+          const cx = cv.getContext('2d', { willReadFrequently: true }); cx.drawImage(probe, 0, 0, w, h);
           const d = cx.getImageData(0, 0, w, h).data;
           const px = (x, y) => { const k = (y * w + x) * 4; return [d[k], d[k + 1], d[k + 2], d[k + 3]]; };
           const cs = [px(0, 0), px(w - 1, 0), px(0, h - 1), px(w - 1, h - 1)];
@@ -201,7 +207,7 @@
           trimmed[src].ratio = cw / ch;
           if (cw * ch <= w * h * 0.85) {
             const o = document.createElement('canvas'); o.width = cw; o.height = ch;
-            o.getContext('2d').drawImage(probe, l, t, cw, ch, 0, 0, cw, ch);
+            o.getContext('2d').drawImage(cv, l, t, cw, ch, 0, 0, cw, ch);
             trimmed[src].url = o.toDataURL('image/png');
           }
         } catch (err) { /* keep the original */ }

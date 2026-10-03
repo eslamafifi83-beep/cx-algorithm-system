@@ -1,6 +1,7 @@
 // GET /api/episode-meta?ids=<spotifyEpisodeId>,<id>,...   (public, cached)
 // Spotify details the episode pages need but the admin doesn't store:
-//   { ok, episodes: { <id>: { durationMs, releaseDate, description, video, frame } } }
+//   { ok, spotify: { keys, token, api }, episodes: { <id>: { durationMs, releaseDate, description, video, frame } } }
+// Descriptions need SPOTIFY_CLIENT_ID/SECRET in Vercel; duration and date fall back to the public embed page.
 // Only ids that appear in the site's own episode list are looked up, so this can't be
 // used as an open Spotify proxy. Responses are cached at the edge for hours.
 const { supabase } = require('../lib/supabase');
@@ -44,6 +45,20 @@ async function episodeDetails(id, token, status) {
   return r.ok ? r.json() : null;
 }
 
+// Without API keys: Spotify's public embed page carries the duration and release date
+async function fromEmbedPage(id) {
+  try {
+    const r = await fetch('https://open.spotify.com/embed/episode/' + id, { headers: { 'User-Agent': 'Mozilla/5.0 (compatible; TheCXAlgorithm/1.0)' } });
+    if (!r.ok) return {};
+    const html = await r.text();
+    const d = /"duration":(\d+)/.exec(html);
+    const rel = /"releaseDate":\{"isoString":"(\d{4}-\d{2}-\d{2})/.exec(html);
+    return { durationMs: d ? Number(d[1]) : 0, releaseDate: rel ? rel[1] : '' };
+  } catch (e) {
+    return {};
+  }
+}
+
 // oEmbed says whether Spotify has a video version, and gives its first frame
 async function oembed(id) {
   try {
@@ -80,6 +95,13 @@ module.exports = async (req, res) => {
         releaseDate: ep.release_date || '',
         description: String(ep.description || '').trim()
       });
+    });
+
+    const missing = ids.filter(id => !episodes[id].durationMs);
+    const pages = await Promise.all(missing.map(fromEmbedPage));
+    missing.forEach((id, i) => {
+      if (pages[i].durationMs) episodes[id].durationMs = pages[i].durationMs;
+      if (pages[i].releaseDate && !episodes[id].releaseDate) episodes[id].releaseDate = pages[i].releaseDate;
     });
 
     const looks = await Promise.all(ids.map(oembed));

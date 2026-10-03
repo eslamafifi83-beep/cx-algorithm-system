@@ -305,6 +305,12 @@ const server = http.createServer(async (req, res) => {
     res.writeHead(405, { 'Content-Type': 'text/plain; charset=utf-8' });
     return res.end('Method not allowed');
   }
+  // Vercel's image optimiser (/_vercel/image?url=...): locally, just the original file
+  if (pathname === '/_vercel/image') {
+    const src = url.searchParams.get('url') || '';
+    if (/^https:\/\//.test(src)) { res.writeHead(302, { Location: src }); return res.end(); }
+    pathname = src;
+  }
   // Same addresses as the live site: /episodes/<address> pages, the old /episode?ep=N links, the sitemap
   const epMatch = /^\/episodes\/([^/]+)\/?$/.exec(pathname);
   if (pathname === '/episode' || pathname === '/episode.html' || epMatch) {

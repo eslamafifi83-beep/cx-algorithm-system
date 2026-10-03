@@ -1,12 +1,17 @@
 /*
  * Shared loading screen for The CX Algorithm site.
- * Include right after <body> on every page:  <script src="assets/loader.js"></script>
+ * Include right after <body> on every page:  <script src="/assets/loader.js"></script>
  * Shows the animated logo overlay on every page load, dismisses on window load
  * (min display 1.1s, hard cap 6s), then dispatches "cx-loader-done" and sets
  * window.__cxLoaderDone so pages can sequence their entrance animations.
  */
 (function () {
   if (document.getElementById('loading-screen')) return;
+
+  // The logo, resized and in WebP on the live site (the original PNG is 370 KB)
+  var LOGO = /(^|\.)thecxalgorithm\.com$/.test(location.hostname)
+    ? '/_vercel/image?url=%2Fassets%2Flogo.png&w=' + ((window.devicePixelRatio || 1) >= 1.5 ? 828 : 640) + '&q=80'
+    : '/assets/logo.png';
 
   var css = [
     '#loading-screen .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }',
@@ -34,7 +39,7 @@
     '.eq-bar.b7 { left: 251.5px; top: 98px;    width: 18px;   height: 130.5px; background: linear-gradient(180deg, rgba(255,255,255,0.16), rgba(255,255,255,0) 32%), rgb(243,131,37);  animation-delay: 0.6s; }',
     '.eq-bar.b8 { left: 283.75px; top: 122.5px; width: 15.5px; height: 78.5px; background: linear-gradient(180deg, rgba(255,255,255,0.16), rgba(255,255,255,0) 32%), rgb(242,124,33);  animation-delay: 0.7s; }',
     '.eq-bar.b9 { left: 302.5px; top: 140.5px; width: 13px;   height: 43.5px;  background: linear-gradient(180deg, rgba(255,255,255,0.16), rgba(255,255,255,0) 32%), rgb(237,109,32);  animation-delay: 0.8s; }',
-    '.load-shine { position: absolute; inset: 0; pointer-events: none; mix-blend-mode: screen; background: linear-gradient(108deg, transparent 42%, rgba(255,255,255,0) 46%, rgba(255,255,255,0.42) 50%, rgba(255,255,255,0) 54%, transparent 58%); background-size: 220% 100%; background-repeat: no-repeat; -webkit-mask: url("/assets/logo.png") center / contain no-repeat; mask: url("/assets/logo.png") center / contain no-repeat; animation: cxShine 3.8s cubic-bezier(0.4, 0, 0.2, 1) infinite; z-index: 3; }',
+    '.load-shine { position: absolute; inset: 0; pointer-events: none; mix-blend-mode: screen; background: linear-gradient(108deg, transparent 42%, rgba(255,255,255,0) 46%, rgba(255,255,255,0.42) 50%, rgba(255,255,255,0) 54%, transparent 58%); background-size: 220% 100%; background-repeat: no-repeat; -webkit-mask: url("' + LOGO + '") center / contain no-repeat; mask: url("' + LOGO + '") center / contain no-repeat; animation: cxShine 3.8s cubic-bezier(0.4, 0, 0.2, 1) infinite; z-index: 3; }',
     '.load-progress { display: flex; flex-direction: column; align-items: center; gap: 16px; animation: cxRiseIn 0.9s ease 0.15s both; }',
     '.load-track { position: relative; width: 220px; height: 4px; border-radius: 4px; background: rgba(255, 255, 255, 0.08); overflow: hidden; }',
     '.load-fill { position: absolute; width: 40%; height: 100%; border-radius: 4px; background: linear-gradient(90deg, #4a9dd6 0%, #eaf0f6 50%, #f47a1e 100%); animation: cxBarSlide 1.5s cubic-bezier(0.65, 0, 0.35, 1) infinite; }',
@@ -64,7 +69,7 @@
     '<span class="sr-only">Loading The CX Algorithm Podcast</span>' +
     '<div class="load-badge-fit" aria-hidden="true"><div class="load-badge">' +
     '<div class="load-halo"></div>' +
-    '<img class="load-logo" src="/assets/logo.png" alt="" />' +
+    '<img class="load-logo" src="' + LOGO + '" alt="" />' +
     '<div class="load-bars">' +
     '<div class="eq-bar b1"></div><div class="eq-bar b2"></div><div class="eq-bar b3"></div>' +
     '<div class="eq-bar b4"></div><div class="eq-bar b5"></div><div class="eq-bar b6"></div>' +

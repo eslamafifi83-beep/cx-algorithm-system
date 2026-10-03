@@ -20,10 +20,26 @@
 <meta name="twitter:description" content="Book Dr Eslam Afifi to speak, pitch yourself as a guest, or start a partnership conversation." />
 <meta name="twitter:image" content="https://www.thecxalgorithm.com/assets/og-image.png" />
 <script defer src="/_vercel/insights/script.js"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Oswald:wght@500;600&display=swap" rel="stylesheet" />
-<link rel="icon" type="image/png" href="/assets/logo.png" />
+<link rel="preload" href="/assets/fonts/poppins-400-latin.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/assets/fonts/poppins-700-latin.woff2" as="font" type="font/woff2" crossorigin />
+<style>
+/* Fonts are served from this site (no render-blocking Google Fonts request). "Poppins Fallback" is Arial resized to Poppins' proportions, so text barely moves when the real font arrives. */
+@font-face{font-family:'Oswald';font-style:normal;font-weight:500 600;font-display:swap;src:url(/assets/fonts/oswald-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Oswald';font-style:normal;font-weight:500 600;font-display:swap;src:url(/assets/fonts/oswald-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:400;font-display:swap;src:url(/assets/fonts/poppins-400-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:400;font-display:swap;src:url(/assets/fonts/poppins-400-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:500;font-display:swap;src:url(/assets/fonts/poppins-500-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:500;font-display:swap;src:url(/assets/fonts/poppins-500-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:600;font-display:swap;src:url(/assets/fonts/poppins-600-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:600;font-display:swap;src:url(/assets/fonts/poppins-600-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:700;font-display:swap;src:url(/assets/fonts/poppins-700-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:700;font-display:swap;src:url(/assets/fonts/poppins-700-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:800;font-display:swap;src:url(/assets/fonts/poppins-800-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:800;font-display:swap;src:url(/assets/fonts/poppins-800-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Poppins Fallback';src:local('Arial');ascent-override:92.33%;descent-override:30.78%;line-gap-override:8.79%;size-adjust:113.73%}
+</style>
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/favicon-64.png" />
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
 <style>
   :root {
     --midnight: #0C1128;
@@ -39,9 +55,9 @@
     --muted: #A7ADC9;
     --hairline: rgba(242, 241, 236, 0.10);
     --hairline-gold: rgba(233, 163, 61, 0.35);
-    --display: "Poppins", system-ui, sans-serif;
-    --body: "Poppins", system-ui, sans-serif;
-    --mono: "Poppins", system-ui, sans-serif;
+    --display: "Poppins", "Poppins Fallback", system-ui, sans-serif;
+    --body: "Poppins", "Poppins Fallback", system-ui, sans-serif;
+    --mono: "Poppins", "Poppins Fallback", system-ui, sans-serif;
     --ease: cubic-bezier(0.22, 1, 0.36, 1);
     --gutter: clamp(1.25rem, 5vw, 4.5rem);
   }
@@ -291,6 +307,7 @@
     .intent:hover, .btn-gold:hover, .host-socials a:hover { transform: none; }
   }
 </style>
+<script src="/assets/img.js"></script>
 </head>
 <body>
 
@@ -299,7 +316,7 @@
 <header class="site-header">
   <div class="container header-inner">
     <a class="brand" href="/" aria-label="The CX Algorithm Podcast — home">
-      <img class="brand-mark" src="/assets/logo.png" alt="" aria-hidden="true" />
+      <img class="brand-mark" src="/_vercel/image?url=%2Fassets%2Flogo.png&amp;w=128&amp;q=80" alt="" aria-hidden="true" />
       <span class="brand-name">The CX Algorithm<br /><span>Podcast</span></span>
     </a>
     <nav class="site-nav" id="siteNav" data-page="contact" aria-label="Primary">
@@ -350,7 +367,7 @@
 
       <div class="host-card">
         <div class="host-id">
-          <img id="hostPhoto" src="/assets/dr-eslam-afifi.png" alt="Dr Eslam Afifi" />
+          <img id="hostPhoto" src="/_vercel/image?url=%2Fassets%2Fdr-eslam-afifi.png&amp;w=128&amp;q=75" data-src="/assets/dr-eslam-afifi.png" alt="Dr Eslam Afifi" />
           <div>
             <div class="n" id="hostName">Dr Eslam Afifi</div>
             <div class="r">Host · Speaker · CX &amp; AI</div>
@@ -618,7 +635,7 @@
       const res = await fetch('/api/content', { cache: 'no-store' });
       const c = await res.json();
       if (c.host) {
-        if (c.host.photo) document.getElementById('hostPhoto').src = c.host.photo;
+        if (c.host.photo) CXImg.set(document.getElementById('hostPhoto'), c.host.photo, 64);
         if (c.host.name) document.getElementById('hostName').textContent = c.host.name;
       }
       if (c.links) {

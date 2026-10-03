@@ -143,14 +143,18 @@
     return e;
   }
 
-  const smart = (src, alt, eager) => src
-    ? `<span class="smart"><img class="sb" src="${esc(src)}" alt="" aria-hidden="true"${eager ? '' : ' loading="lazy"'} /><img class="sf" src="${esc(src)}" alt="${esc(alt || '')}"${eager ? '' : ' loading="lazy"'} /></span>`
+  // Resized, WebP copies on the live site (assets/img.js); the original elsewhere
+  const sized = (src, width) => window.CXImg ? window.CXImg(src, width) : src;
+
+  // Cover art: a tiny blurred copy fills the frame behind the sharp one (`width` = shown size in px)
+  const smart = (src, alt, eager, width) => src
+    ? `<span class="smart"><img class="sb" src="${esc(sized(src, 40))}" alt="" aria-hidden="true"${eager ? '' : ' loading="lazy"'} /><img class="sf" src="${esc(sized(src, width || 480))}" alt="${esc(alt || '')}"${eager ? '' : ' loading="lazy"'} decoding="async" /></span>`
     : `<span class="smart empty" aria-hidden="true"><span class="eqmark"><i></i><i></i><i></i><i></i><i></i></span></span>`;
 
   function avatar(g, size) {
     if (!g) return '';
     const inner = g.photo
-      ? `<img src="${esc(g.photo)}" alt="" loading="lazy" style="object-position:${g.focus};transform-origin:${g.focus};transform:scale(${g.zoom})" />`
+      ? `<img src="${esc(sized(g.photo, Math.round(size * Math.max(1, g.zoom))))}" alt="" loading="lazy" style="object-position:${g.focus};transform-origin:${g.focus};transform:scale(${g.zoom})" />`
       : `<b>${esc(g.name.split(/\s+/).filter(Boolean).slice(-2).map(w => w[0]).join('').toUpperCase())}</b>`;
     return `<span class="av" style="width:${size}px;height:${size}px">${inner}</span>`;
   }
@@ -208,5 +212,5 @@
     });
   }
 
-  window.CXEp = { esc, normalize, loadMeta, applyMeta, smart, avatar, plate, trimLogos, clock, minutes, toSeconds, topicKey, shorten };
+  window.CXEp = { esc, normalize, loadMeta, applyMeta, smart, sized, avatar, plate, trimLogos, clock, minutes, toSeconds, topicKey, shorten };
 })();

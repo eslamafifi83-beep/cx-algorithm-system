@@ -20,10 +20,26 @@
 <meta name="twitter:description" content="Notes on CX, AI and the algorithm of loyalty — long-form thinking from Dr Eslam Afifi." />
 <meta name="twitter:image" content="https://www.thecxalgorithm.com/assets/og-image.png" />
 <script defer src="/_vercel/insights/script.js"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Oswald:wght@500;600&display=swap" rel="stylesheet" />
-<link rel="icon" type="image/png" href="/assets/logo.png" />
+<link rel="preload" href="/assets/fonts/poppins-400-latin.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/assets/fonts/poppins-700-latin.woff2" as="font" type="font/woff2" crossorigin />
+<style>
+/* Fonts are served from this site (no render-blocking Google Fonts request). "Poppins Fallback" is Arial resized to Poppins' proportions, so text barely moves when the real font arrives. */
+@font-face{font-family:'Oswald';font-style:normal;font-weight:500 600;font-display:swap;src:url(/assets/fonts/oswald-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Oswald';font-style:normal;font-weight:500 600;font-display:swap;src:url(/assets/fonts/oswald-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:400;font-display:swap;src:url(/assets/fonts/poppins-400-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:400;font-display:swap;src:url(/assets/fonts/poppins-400-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:500;font-display:swap;src:url(/assets/fonts/poppins-500-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:500;font-display:swap;src:url(/assets/fonts/poppins-500-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:600;font-display:swap;src:url(/assets/fonts/poppins-600-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:600;font-display:swap;src:url(/assets/fonts/poppins-600-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:700;font-display:swap;src:url(/assets/fonts/poppins-700-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:700;font-display:swap;src:url(/assets/fonts/poppins-700-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:800;font-display:swap;src:url(/assets/fonts/poppins-800-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:800;font-display:swap;src:url(/assets/fonts/poppins-800-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Poppins Fallback';src:local('Arial');ascent-override:92.33%;descent-override:30.78%;line-gap-override:8.79%;size-adjust:113.73%}
+</style>
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/favicon-64.png" />
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
 <style>
   :root {
     --midnight: #0C1128;
@@ -40,9 +56,9 @@
     --muted: #A7ADC9;
     --hairline: rgba(242, 241, 236, 0.10);
     --hairline-gold: rgba(233, 163, 61, 0.35);
-    --display: "Poppins", system-ui, sans-serif;
-    --body: "Poppins", system-ui, sans-serif;
-    --mono: "Poppins", system-ui, sans-serif;
+    --display: "Poppins", "Poppins Fallback", system-ui, sans-serif;
+    --body: "Poppins", "Poppins Fallback", system-ui, sans-serif;
+    --mono: "Poppins", "Poppins Fallback", system-ui, sans-serif;
     --ease: cubic-bezier(0.22, 1, 0.36, 1);
     --gutter: clamp(1.25rem, 5vw, 4.5rem);
   }
@@ -230,6 +246,10 @@
   .footer a:hover { color: var(--gold-light); }
   .footer .copy { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.12em; color: var(--muted); }
 
+  /* Hold space for content that arrives after the page loads, so nothing jumps (layout shift) */
+  main { min-height: 100vh; }
+  #featuredSlot:empty { min-height: 346px; }
+  @media (max-width: 1024px) { #featuredSlot:empty { min-height: calc(660px - 4vw); } }
   @media (max-width: 1024px) {
     .featured { grid-template-columns: 1fr; }
     .cards { grid-template-columns: repeat(2, 1fr); }
@@ -273,6 +293,7 @@
   }
   @media (max-width: 640px) { .cards { grid-template-columns: 1fr; } }
 </style>
+<script src="/assets/img.js"></script>
 </head>
 <body>
 
@@ -281,7 +302,7 @@
 <header class="site-header">
   <div class="container header-inner">
     <a class="brand" href="/" aria-label="The CX Algorithm Podcast — home">
-      <img class="brand-mark" src="/assets/logo.png" alt="" aria-hidden="true" />
+      <img class="brand-mark" src="/_vercel/image?url=%2Fassets%2Flogo.png&amp;w=128&amp;q=80" alt="" aria-hidden="true" />
       <span class="brand-name">The CX Algorithm<br /><span>Podcast</span></span>
     </a>
     <nav class="site-nav" id="siteNav" data-page="blog" aria-label="Primary">
@@ -343,16 +364,16 @@
   let activeTag = 'All';
   let shown = 9;
 
-  function thumbHTML(a, cls) {
+  function thumbHTML(a, width) {
     if (!a.thumbnail) {
       return `<div class="ph" aria-hidden="true">
         <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"><rect x="3" y="5" width="18" height="14" rx="2.5"/><circle cx="9" cy="10" r="1.8"/><path d="M3.5 17 L9 12.5 L13 15.5 L16.5 12.5 L20.5 16"/></svg>
       </div>`;
     }
     if (isVideo(a.thumbnail)) {
-      return `<video src="${escAttr(a.thumbnail)}" muted loop autoplay playsinline aria-hidden="true"></video>`;
+      return `<video data-src="${escAttr(a.thumbnail)}" muted loop playsinline preload="none" aria-hidden="true"></video>`;
     }
-    return `<img src="${escAttr(a.thumbnail)}" alt="" />`;
+    return `<img src="${escAttr(CXImg(a.thumbnail, width || 400))}" alt="" loading="lazy" decoding="async" />`;
   }
 
   const linkAttrs = a => a.linkedInUrl ? `href="${escAttr(a.linkedInUrl)}" target="_blank" rel="noopener noreferrer"` : 'role="article"';
@@ -368,7 +389,7 @@
     return `
       <a class="featured" ${linkAttrs(a)}>
         <div class="featured-thumb">
-          ${thumbHTML(a)}
+          ${thumbHTML(a, 680)}
           <span class="feat-chip"><span class="in-mark">in</span>FEATURED ARTICLE</span>
         </div>
         <div class="featured-body">
@@ -429,6 +450,27 @@
       cardsEl.innerHTML = list.slice(0, shown).map(cardHTML).join('');
     }
     document.getElementById('loadWrap').hidden = list.length <= shown;
+    watchVideos();
+  }
+
+  // Article videos are large (13–19 MB each), so each one only loads once the page has finished
+  // loading and the video is on screen, and pauses when scrolled away. With reduced motion,
+  // the first frame shows without playing.
+  const stillOnly = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let videoWatch = null;
+  function watchVideos() {
+    const vids = document.querySelectorAll('video[data-src]');
+    if (!vids.length) return;
+    if (document.readyState !== 'complete') { window.addEventListener('load', watchVideos, { once: true }); return; }
+    const start = v => {
+      if (!v.getAttribute('src')) { v.preload = stillOnly ? 'metadata' : 'auto'; v.src = v.dataset.src; }
+      if (!stillOnly) v.play().catch(() => {});
+    };
+    if (!('IntersectionObserver' in window)) { vids.forEach(start); return; }
+    if (!videoWatch) videoWatch = new IntersectionObserver(entries => entries.forEach(en => {
+      if (en.isIntersecting) start(en.target); else en.target.pause();
+    }), { rootMargin: '200px 0px' });
+    vids.forEach(v => videoWatch.observe(v));
   }
 
   document.getElementById('loadMore').addEventListener('click', () => { shown += 9; render(); });

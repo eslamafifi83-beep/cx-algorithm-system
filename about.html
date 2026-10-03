@@ -57,11 +57,29 @@
 }
 </script>
 <script defer src="/_vercel/insights/script.js"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Allura&family=Oswald:wght@500;600&display=swap" rel="stylesheet" />
-<link rel="icon" type="image/png" href="/assets/logo.png" />
-<link rel="preload" as="image" href="/assets/stage/hx-sydney.jpg" />
+<link rel="preload" href="/assets/fonts/poppins-400-latin.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/assets/fonts/poppins-700-latin.woff2" as="font" type="font/woff2" crossorigin />
+<style>
+/* Fonts are served from this site (no render-blocking Google Fonts request). "Poppins Fallback" is Arial resized to Poppins' proportions, so text barely moves when the real font arrives. */
+@font-face{font-family:'Allura';font-style:normal;font-weight:400;font-display:swap;src:url(/assets/fonts/allura-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Allura';font-style:normal;font-weight:400;font-display:swap;src:url(/assets/fonts/allura-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Oswald';font-style:normal;font-weight:500 600;font-display:swap;src:url(/assets/fonts/oswald-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Oswald';font-style:normal;font-weight:500 600;font-display:swap;src:url(/assets/fonts/oswald-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:400;font-display:swap;src:url(/assets/fonts/poppins-400-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:400;font-display:swap;src:url(/assets/fonts/poppins-400-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:500;font-display:swap;src:url(/assets/fonts/poppins-500-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:500;font-display:swap;src:url(/assets/fonts/poppins-500-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:600;font-display:swap;src:url(/assets/fonts/poppins-600-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:600;font-display:swap;src:url(/assets/fonts/poppins-600-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:700;font-display:swap;src:url(/assets/fonts/poppins-700-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:700;font-display:swap;src:url(/assets/fonts/poppins-700-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:800;font-display:swap;src:url(/assets/fonts/poppins-800-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:800;font-display:swap;src:url(/assets/fonts/poppins-800-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Poppins Fallback';src:local('Arial');ascent-override:92.33%;descent-override:30.78%;line-gap-override:8.79%;size-adjust:113.73%}
+</style>
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/favicon-64.png" />
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+<link rel="preload" as="image" href="/_vercel/image?url=%2Fassets%2Fstage%2Fhx-sydney.jpg&amp;w=1080&amp;q=72" imagesrcset="/_vercel/image?url=%2Fassets%2Fstage%2Fhx-sydney.jpg&amp;w=640&amp;q=72 640w, /_vercel/image?url=%2Fassets%2Fstage%2Fhx-sydney.jpg&amp;w=1080&amp;q=72 1080w, /_vercel/image?url=%2Fassets%2Fstage%2Fhx-sydney.jpg&amp;w=1600&amp;q=72 1600w" imagesizes="100vw" fetchpriority="high" />
 <style>
   :root {
     --midnight: #0C1128;
@@ -76,8 +94,8 @@
     --faint: #7480A3;
     --hairline: rgba(242, 241, 236, 0.10);
     --hairline-gold: rgba(233, 163, 61, 0.35);
-    --display: "Poppins", system-ui, sans-serif;
-    --body: "Poppins", system-ui, sans-serif;
+    --display: "Poppins", "Poppins Fallback", system-ui, sans-serif;
+    --body: "Poppins", "Poppins Fallback", system-ui, sans-serif;
     --script: "Allura", cursive;
     --ease: cubic-bezier(0.22, 1, 0.36, 1);
     --gutter: clamp(1.25rem, 5vw, 4.5rem);
@@ -352,6 +370,7 @@
     .ring.r3 { transform: translate(-50%, -50%) scale(2); opacity: 0.1; }
   }
 </style>
+<script src="/assets/img.js"></script>
 </head>
 <body>
 
@@ -360,7 +379,7 @@
 <header class="site-header">
   <div class="container header-inner">
     <a class="brand" href="/" aria-label="The CX Algorithm Podcast — home">
-      <img class="brand-mark" src="/assets/logo.png" alt="" aria-hidden="true" />
+      <img class="brand-mark" src="/_vercel/image?url=%2Fassets%2Flogo.png&amp;w=128&amp;q=80" alt="" aria-hidden="true" />
       <span class="brand-name">The CX Algorithm<br /><span>Podcast</span></span>
     </a>
     <nav class="site-nav" id="siteNav" data-page="about" aria-label="Primary">
@@ -383,12 +402,12 @@
 <main>
   <!-- HERO -->
   <section class="hero" aria-labelledby="heroName">
-    <div class="hero-bg"><img id="heroImg" src="/assets/stage/hx-sydney.jpg" alt="Dr Eslam Afifi on stage" fetchpriority="high" /></div>
+    <div class="hero-bg"><img id="heroImg" src="/_vercel/image?url=%2Fassets%2Fstage%2Fhx-sydney.jpg&amp;w=1080&amp;q=72" srcset="/_vercel/image?url=%2Fassets%2Fstage%2Fhx-sydney.jpg&amp;w=640&amp;q=72 640w, /_vercel/image?url=%2Fassets%2Fstage%2Fhx-sydney.jpg&amp;w=1080&amp;q=72 1080w, /_vercel/image?url=%2Fassets%2Fstage%2Fhx-sydney.jpg&amp;w=1600&amp;q=72 1600w" sizes="100vw" data-src="/assets/stage/hx-sydney.jpg" alt="Dr Eslam Afifi on stage" fetchpriority="high" /></div>
     <div class="hero-top"><div class="container"><p class="stage-cap"><i aria-hidden="true"></i><span id="heroCap">On stage · HX Forum, Sydney</span></p></div></div>
     <div class="container hero-inner">
       <div class="hero-copy">
         <div class="hero-id">
-          <span class="hero-id-ring"><img class="host-photo" src="/assets/dr-eslam-afifi.png" alt="" /></span>
+          <span class="hero-id-ring"><img class="host-photo" src="/_vercel/image?url=%2Fassets%2Fdr-eslam-afifi.png&amp;w=384&amp;q=75" data-src="/assets/dr-eslam-afifi.png" alt="" /></span>
           <div>
             <p class="kicker">The host</p>
             <p class="roles">Podcast host · Keynote speaker · Board member · CX &amp; AI leader</p>
@@ -434,7 +453,7 @@
   <!-- STORY -->
   <section class="container story" aria-labelledby="story-title">
     <figure id="storyFig">
-      <img id="storyImg" src="/assets/stage/ie-madrid.jpg" alt="Dr Eslam Afifi speaking at IE University, Madrid" loading="lazy" />
+      <img id="storyImg" src="/_vercel/image?url=%2Fassets%2Fstage%2Fie-madrid.jpg&amp;w=1080&amp;q=72" srcset="/_vercel/image?url=%2Fassets%2Fstage%2Fie-madrid.jpg&amp;w=640&amp;q=72 640w, /_vercel/image?url=%2Fassets%2Fstage%2Fie-madrid.jpg&amp;w=1080&amp;q=72 1080w" sizes="(max-width: 760px) 90vw, 520px" data-src="/assets/stage/ie-madrid.jpg" alt="Dr Eslam Afifi speaking at IE University, Madrid" loading="lazy" />
       <figcaption><span id="storyCap">IE University, Madrid</span><span class="coord" id="storyDetail">40.42° N · 3.70° W</span></figcaption>
     </figure>
     <div class="story-text">
@@ -466,15 +485,15 @@
     </header>
     <div class="bento" id="wall">
       <figure class="tile tile-a">
-        <img src="/assets/stage/xi-forum-audience.jpg" alt="With the audience — XI Forum, Sydney" loading="lazy" />
+        <img src="/_vercel/image?url=%2Fassets%2Fstage%2Fxi-forum-audience.jpg&amp;w=1080&amp;q=72" srcset="/_vercel/image?url=%2Fassets%2Fstage%2Fxi-forum-audience.jpg&amp;w=640&amp;q=72 640w, /_vercel/image?url=%2Fassets%2Fstage%2Fxi-forum-audience.jpg&amp;w=1080&amp;q=72 1080w" sizes="(max-width: 760px) 90vw, 610px" alt="With the audience — XI Forum, Sydney" loading="lazy" />
         <figcaption><span><b>With the audience</b><small>XI Forum, Sydney</small></span><span class="coord">33.87° S · 151.21° E</span></figcaption>
       </figure>
       <figure class="tile tile-w">
-        <img src="/assets/stage/xi-forum-2023.jpg" alt="XI Forum 2023" loading="lazy" />
+        <img src="/_vercel/image?url=%2Fassets%2Fstage%2Fxi-forum-2023.jpg&amp;w=1080&amp;q=72" srcset="/_vercel/image?url=%2Fassets%2Fstage%2Fxi-forum-2023.jpg&amp;w=640&amp;q=72 640w, /_vercel/image?url=%2Fassets%2Fstage%2Fxi-forum-2023.jpg&amp;w=1080&amp;q=72 1080w" sizes="(max-width: 760px) 90vw, 610px" alt="XI Forum 2023" loading="lazy" />
         <figcaption><span><b>XI Forum 2023</b><small>Behind the scenes of legalsuper's award-winning initiative to unlock customer data</small></span><span class="coord">Sydney · 2023</span></figcaption>
       </figure>
       <figure class="tile tile-w">
-        <img src="/assets/stage/select-cairo.jpg" alt="Select Cairo" loading="lazy" />
+        <img src="/_vercel/image?url=%2Fassets%2Fstage%2Fselect-cairo.jpg&amp;w=1080&amp;q=72" srcset="/_vercel/image?url=%2Fassets%2Fstage%2Fselect-cairo.jpg&amp;w=640&amp;q=72 640w, /_vercel/image?url=%2Fassets%2Fstage%2Fselect-cairo.jpg&amp;w=1080&amp;q=72 1080w" sizes="(max-width: 760px) 90vw, 610px" alt="Select Cairo" loading="lazy" />
         <figcaption><span><b>Select Cairo</b><small>Joined the room live, on screen</small></span><span class="coord">30.04° N · 31.24° E</span></figcaption>
       </figure>
     </div>
@@ -527,7 +546,7 @@
       </div>
       <div class="book-art" aria-hidden="true">
         <span class="ring"></span><span class="ring r2"></span><span class="ring r3"></span>
-        <span class="book-face"><img class="host-photo" src="/assets/dr-eslam-afifi.png" alt="" loading="lazy" /></span>
+        <span class="book-face"><img class="host-photo" src="/_vercel/image?url=%2Fassets%2Fdr-eslam-afifi.png&amp;w=384&amp;q=75" data-src="/assets/dr-eslam-afifi.png" alt="" loading="lazy" /></span>
         <span class="book-tag"><i></i>Your stage</span>
       </div>
     </div>
@@ -560,10 +579,10 @@
       $('nameFirst').textContent = parts.length && parts[0] !== last ? parts.join(' ') : '';
       $('nameLast').textContent = last.replace(/\.$/, '') + '.';
     }
-    if (host.photo) document.querySelectorAll('.host-photo').forEach(img => { img.src = host.photo; });
+    if (host.photo) document.querySelectorAll('.host-photo').forEach(img => CXImg.set(img, host.photo, 200));
 
     const hero = about.hero || {};
-    if (hero.image) $('heroImg').src = hero.image;
+    if (hero.image) CXImg.set($('heroImg'), hero.image, window.innerWidth);
     if (hero.caption) $('heroCap').textContent = hero.caption;
 
     const creds = filled(about.credentials, 'title');
@@ -579,7 +598,7 @@
     }
 
     const story = about.story || {};
-    if (story.image) $('storyImg').src = story.image;
+    if (story.image) CXImg.set($('storyImg'), story.image, 520);
     if (story.caption) { $('storyCap').textContent = story.caption; $('storyImg').alt = story.caption; }
     if (typeof story.detail === 'string' && (story.image || story.caption)) $('storyDetail').textContent = story.detail;
 
@@ -614,7 +633,7 @@
     };
     $('wall').innerHTML = items.slice(0, 5).map((t, i) => `
       <figure class="tile ${cls(i)}">
-        <img src="${escAttr(t.image)}" alt="${escAttr(t.title || 'On stage')}" loading="lazy" />
+        <img src="${escAttr(CXImg(t.image, 610))}" alt="${escAttr(t.title || 'On stage')}" loading="lazy" decoding="async" />
         ${t.title || t.sub || t.detail ? `<figcaption><span>${t.title ? `<b>${esc(t.title)}</b>` : ''}${t.sub ? `<small>${esc(t.sub)}</small>` : ''}</span>${t.detail ? `<span class="coord">${esc(t.detail)}</span>` : ''}</figcaption>` : ''}
       </figure>`).join('');
   }

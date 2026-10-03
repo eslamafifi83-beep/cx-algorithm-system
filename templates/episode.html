@@ -20,11 +20,27 @@
 <meta name="twitter:description" content="Conversations on customer experience, data, AI and leadership with Dr Eslam Afifi." />
 <meta name="twitter:image" content="https://www.thecxalgorithm.com/assets/og-image.png" />
 <script defer src="/_vercel/insights/script.js"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="preconnect" href="https://open.spotify.com" />
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Oswald:wght@500;600&display=swap" rel="stylesheet" />
-<link rel="icon" type="image/png" href="/assets/logo.png" />
+<link rel="preload" href="/assets/fonts/poppins-400-latin.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/assets/fonts/poppins-700-latin.woff2" as="font" type="font/woff2" crossorigin />
+<style>
+/* Fonts are served from this site (no render-blocking Google Fonts request). "Poppins Fallback" is Arial resized to Poppins' proportions, so text barely moves when the real font arrives. */
+@font-face{font-family:'Oswald';font-style:normal;font-weight:500 600;font-display:swap;src:url(/assets/fonts/oswald-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Oswald';font-style:normal;font-weight:500 600;font-display:swap;src:url(/assets/fonts/oswald-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:400;font-display:swap;src:url(/assets/fonts/poppins-400-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:400;font-display:swap;src:url(/assets/fonts/poppins-400-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:500;font-display:swap;src:url(/assets/fonts/poppins-500-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:500;font-display:swap;src:url(/assets/fonts/poppins-500-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:600;font-display:swap;src:url(/assets/fonts/poppins-600-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:600;font-display:swap;src:url(/assets/fonts/poppins-600-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:700;font-display:swap;src:url(/assets/fonts/poppins-700-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:700;font-display:swap;src:url(/assets/fonts/poppins-700-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:800;font-display:swap;src:url(/assets/fonts/poppins-800-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:800;font-display:swap;src:url(/assets/fonts/poppins-800-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Poppins Fallback';src:local('Arial');ascent-override:92.33%;descent-override:30.78%;line-gap-override:8.79%;size-adjust:113.73%}
+</style>
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/favicon-64.png" />
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
 <link rel="stylesheet" href="/assets/episodes.css" />
 <style>
   /* Listen = a "studio" around the cover art with a waveform to scrub.
@@ -42,8 +58,8 @@
     --faint: #7480A3;
     --hairline: rgba(242, 241, 236, 0.10);
     --hairline-gold: rgba(233, 163, 61, 0.35);
-    --display: "Poppins", system-ui, sans-serif;
-    --body: "Poppins", system-ui, sans-serif;
+    --display: "Poppins", "Poppins Fallback", system-ui, sans-serif;
+    --body: "Poppins", "Poppins Fallback", system-ui, sans-serif;
     --ease: cubic-bezier(0.22, 1, 0.36, 1);
     --gutter: clamp(1.25rem, 5vw, 4.5rem);
     --bg: var(--midnight);
@@ -225,6 +241,8 @@
   .notfound { padding-top: 4rem; padding-bottom: 6rem; color: var(--muted); }
   .notfound a { color: var(--gold-light); }
 
+  /* Hold space for content that arrives after the page loads, so nothing jumps (layout shift) */
+  main#page { min-height: 100vh; }
   .footer { background: var(--midnight-deep); border-top: 1px solid var(--hairline); padding: 2rem 0; transition: background 0.7s; }
   body.cinema .footer { background: #03050B; }
   .footer-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; }
@@ -259,6 +277,7 @@
     *, *::before, *::after { animation-duration: 0.001s !important; animation-iteration-count: 1 !important; transition-duration: 0.001s !important; }
   }
 </style>
+<script src="/assets/img.js"></script>
 </head>
 <body>
 
@@ -283,7 +302,7 @@
 <header class="site-header">
   <div class="container header-inner">
     <a class="brand" href="/" aria-label="The CX Algorithm Podcast — home">
-      <img class="brand-mark" src="/assets/logo.png" alt="" aria-hidden="true" />
+      <img class="brand-mark" src="/_vercel/image?url=%2Fassets%2Flogo.png&amp;w=128&amp;q=80" alt="" aria-hidden="true" />
       <span class="brand-name">The CX Algorithm<br /><span>Podcast</span></span>
     </a>
     <nav class="site-nav" id="siteNav" data-page="episodes" aria-label="Primary">
@@ -332,7 +351,7 @@
 <script src="/assets/episodes-core.js"></script>
 <script>
 (() => {
-  const { esc, smart, avatar, plate, trimLogos, clock } = window.CXEp;
+  const { esc, smart, sized, avatar, plate, trimLogos, clock } = window.CXEp;
   const $ = id => document.getElementById(id);
   const icon = (id, style) => `<svg class="ico"${style ? ` style="${style}"` : ''} aria-hidden="true"><use href="#${id}"/></svg>`;
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -595,10 +614,10 @@
       </div>
 
       <section class="stage" id="stage" aria-label="Player">
-        <div class="ambient" aria-hidden="true">${ep.image ? `<img src="${esc(ep.image)}" alt="" />` : ''}</div>
+        <div class="ambient" aria-hidden="true">${ep.image ? `<img src="${esc(sized(ep.image, 64))}" alt="" />` : ''}</div>
 
         <div class="container studio" id="studio">
-          <div class="art">${smart(ep.image, ep.title, true)}<span class="onair"><i></i><span id="onairTxt">Episode ${esc(ep.n)}</span></span></div>
+          <div class="art">${smart(ep.image, ep.title, true, 560)}<span class="onair"><i></i><span id="onairTxt">Episode ${esc(ep.n)}</span></span></div>
           <div class="deck">
             <p class="meta">${meta}</p>
             <h1>${esc(ep.title)}</h1>
@@ -627,9 +646,9 @@
 
         <div class="container cinema" id="cinema" hidden>
           <div class="screen-wrap">
-            <div class="glow" aria-hidden="true">${ep.frame || ep.image ? `<img src="${esc(ep.frame || ep.image)}" alt="" />` : ''}</div>
+            <div class="glow" aria-hidden="true">${ep.frame || ep.image ? `<img src="${esc(sized(ep.frame || ep.image, 64))}" alt="" />` : ''}</div>
             <div class="screen" id="screen">
-              ${P.kind === 'spotify' ? `${ep.frame || ep.image ? `<img class="poster" src="${esc(ep.frame || ep.image)}" alt="" />` : ''}<div id="videoHost"></div>` : ep.videoFile ? `<video id="videoEl" controls playsinline preload="metadata" ${ep.image ? `poster="${esc(ep.image)}"` : ''} src="${esc(ep.videoFile)}"></video>` : ''}
+              ${P.kind === 'spotify' ? `${ep.frame || ep.image ? `<img class="poster" src="${esc(sized(ep.frame || ep.image, 960))}" alt="" />` : ''}<div id="videoHost"></div>` : ep.videoFile ? `<video id="videoEl" controls playsinline preload="metadata" ${ep.image ? `poster="${esc(ep.image)}"` : ''} src="${esc(ep.videoFile)}"></video>` : ''}
               <div class="float-ctl">
                 <button type="button" data-act="top" aria-label="Back to the full player">${icon('i-full')}</button>
                 <button type="button" data-act="unfloat" aria-label="Close the mini player">${icon('i-close')}</button>
@@ -665,7 +684,7 @@
         <aside class="side">
           ${g ? `
           <article class="gcard${g.photo ? '' : ' nophoto'}">
-            ${g.photo ? `<div class="gphoto"><img src="${esc(g.photo)}" alt="${esc(g.name)}" loading="lazy" style="object-position:${g.focus};transform-origin:${g.focus};transform:scale(${g.zoom})" /></div>` : ''}
+            ${g.photo ? `<div class="gphoto"><img src="${esc(sized(g.photo, Math.round(420 * Math.max(1, g.zoom))))}" alt="${esc(g.name)}" loading="lazy" style="object-position:${g.focus};transform-origin:${g.focus};transform:scale(${g.zoom})" /></div>` : ''}
             ${plate(g)}
             <div class="gbody">
               <p class="kicker">The guest</p>
@@ -679,7 +698,7 @@
           ${next.length ? `
           <div>
             <p class="side-h">Up next</p>
-            <ul class="next">${next.map(x => `<li><a href="${x.url}${P.mode === 'watch' && x.hasVideo ? '?mode=watch' : ''}" data-next="${x.idx}">${smart(x.image, x.title)}<span><b>EP ${esc(x.n)}${x.seconds ? ' · ' + clock(x.seconds) : ''}</b><span class="t">${esc(x.title)}</span></span></a></li>`).join('')}</ul>
+            <ul class="next">${next.map(x => `<li><a href="${x.url}${P.mode === 'watch' && x.hasVideo ? '?mode=watch' : ''}" data-next="${x.idx}">${smart(x.image, x.title, false, 180)}<span><b>EP ${esc(x.n)}${x.seconds ? ' · ' + clock(x.seconds) : ''}</b><span class="t">${esc(x.title)}</span></span></a></li>`).join('')}</ul>
           </div>` : ''}
         </aside>
       </div>`;
@@ -787,7 +806,7 @@
       document.title = ep.title + ' | The CX Algorithm Podcast';
       const canon = $('canonicalLink'); if (canon) canon.href = 'https://www.thecxalgorithm.com' + ep.url;
       $('page').innerHTML = playerHTML();
-      $('dockArt').innerHTML = smart(ep.image, '');
+      $('dockArt').innerHTML = smart(ep.image, '', false, 100);
       $('dockEp').textContent = 'Episode ' + ep.n;
       $('dockTitle').textContent = ep.title;
       bind();

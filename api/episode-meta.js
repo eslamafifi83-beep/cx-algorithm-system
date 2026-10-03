@@ -18,20 +18,30 @@ function idsInContent(content) {
   return out;
 }
 
-async function getToken() {
+// `status` collects HTTP status codes only (never keys), so a missing detail can be traced
+// from the response.
+async function getToken(status) {
   const id = process.env.SPOTIFY_CLIENT_ID;
   const secret = process.env.SPOTIFY_CLIENT_SECRET;
+  status.keys = !!(id && secret);
   if (!id || !secret) return null;
   const r = await fetch('https://accounts.spotify.com/api/token', {
     method: 'POST',
     headers: {
-      'Authorization': 'Basic ' + Buffer.from(id + ':' + secret).toString('base64'),
+      'Authorization': 'Basic ' + Buffer.from(id.trim() + ':' + secret.trim()).toString('base64'),
       'Content-Type': 'application/x-www-form-urlencoded'
     },
     body: 'grant_type=client_credentials'
   });
+  status.token = r.status;
   if (!r.ok) return null;
   return (await r.json()).access_token || null;
+}
+
+async function episodeDetails(id, token, status) {
+  const r = await fetch('https://api.spotify.com/v1/episodes/' + id + '?market=US', { headers: { 'Authorization': 'Bearer ' + token } });
+  status.api = status.api && status.api !== 200 ? status.api : r.status;
+  return r.ok ? r.json() : null;
 }
 
 // oEmbed says whether Spotify has a video version, and gives its first frame
@@ -60,29 +70,25 @@ module.exports = async (req, res) => {
     const episodes = {};
     ids.forEach(id => { episodes[id] = {}; });
 
-    const token = ids.length ? await getToken() : null;
-    if (token) {
-      const r = await fetch('https://api.spotify.com/v1/episodes?market=US&ids=' + ids.join(','), {
-        headers: { 'Authorization': 'Bearer ' + token }
+    const status = { keys: false, token: 0, api: 0 };
+    const token = ids.length ? await getToken(status) : null;
+    const details = token ? await Promise.all(ids.map(id => episodeDetails(id, token, status).catch(() => null))) : [];
+    details.forEach(ep => {
+      if (!ep || !episodes[ep.id]) return;
+      Object.assign(episodes[ep.id], {
+        durationMs: ep.duration_ms || 0,
+        releaseDate: ep.release_date || '',
+        description: String(ep.description || '').trim()
       });
-      if (r.ok) {
-        const j = await r.json();
-        (j.episodes || []).forEach(ep => {
-          if (!ep || !episodes[ep.id]) return;
-          Object.assign(episodes[ep.id], {
-            durationMs: ep.duration_ms || 0,
-            releaseDate: ep.release_date || '',
-            description: String(ep.description || '').trim()
-          });
-        });
-      }
-    }
+    });
 
     const looks = await Promise.all(ids.map(oembed));
     ids.forEach((id, i) => Object.assign(episodes[id], looks[i]));
 
-    res.setHeader('Cache-Control', 'public, s-maxage=21600, stale-while-revalidate=86400');
-    return res.status(200).json({ ok: true, episodes });
+    // Cache a complete answer for hours; an incomplete one only briefly so a fix shows up fast
+    const complete = ids.every(id => episodes[id].durationMs);
+    res.setHeader('Cache-Control', complete ? 'public, s-maxage=21600, stale-while-revalidate=86400' : 'public, s-maxage=300');
+    return res.status(200).json({ ok: true, spotify: status, episodes });
   } catch (e) {
     return res.status(500).json({ error: e.message });
   }

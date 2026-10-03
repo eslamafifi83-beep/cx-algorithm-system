@@ -1,0 +1,89 @@
+// GET /api/episode-meta?ids=<spotifyEpisodeId>,<id>,...   (public, cached)
+// Spotify details the episode pages need but the admin doesn't store:
+//   { ok, episodes: { <id>: { durationMs, releaseDate, description, video, frame } } }
+// Only ids that appear in the site's own episode list are looked up, so this can't be
+// used as an open Spotify proxy. Responses are cached at the edge for hours.
+const { supabase } = require('../lib/supabase');
+
+const ID = /^[A-Za-z0-9]{22}$/;
+
+function idsInContent(content) {
+  const out = new Set();
+  (content && Array.isArray(content.episodes) ? content.episodes : []).forEach(ep => {
+    [ep && ep.audio, ep && ep.video].forEach(v => {
+      const m = /episode[/:]([A-Za-z0-9]{22})/.exec(String(v || ''));
+      if (m) out.add(m[1]);
+    });
+  });
+  return out;
+}
+
+async function getToken() {
+  const id = process.env.SPOTIFY_CLIENT_ID;
+  const secret = process.env.SPOTIFY_CLIENT_SECRET;
+  if (!id || !secret) return null;
+  const r = await fetch('https://accounts.spotify.com/api/token', {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Basic ' + Buffer.from(id + ':' + secret).toString('base64'),
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    body: 'grant_type=client_credentials'
+  });
+  if (!r.ok) return null;
+  return (await r.json()).access_token || null;
+}
+
+// oEmbed says whether Spotify has a video version, and gives its first frame
+async function oembed(id) {
+  try {
+    const r = await fetch('https://open.spotify.com/oembed?url=' + encodeURIComponent('spotify:episode:' + id));
+    if (!r.ok) return {};
+    const j = await r.json();
+    return { video: j.type === 'video', frame: j.thumbnail_url || '' };
+  } catch (e) {
+    return {};
+  }
+}
+
+module.exports = async (req, res) => {
+  try {
+    const asked = String((req.query && req.query.ids) || '').split(',').map(s => s.trim()).filter(s => ID.test(s));
+    const unique = [...new Set(asked)].slice(0, 50);
+    if (!unique.length) return res.status(400).json({ error: 'Pass ?ids= with Spotify episode ids.' });
+
+    const { data, error } = await supabase.from('site_content').select('data').eq('id', 1).maybeSingle();
+    if (error) throw error;
+    const known = idsInContent(data && data.data);
+    const ids = unique.filter(id => known.has(id));
+
+    const episodes = {};
+    ids.forEach(id => { episodes[id] = {}; });
+
+    const token = ids.length ? await getToken() : null;
+    if (token) {
+      const r = await fetch('https://api.spotify.com/v1/episodes?market=US&ids=' + ids.join(','), {
+        headers: { 'Authorization': 'Bearer ' + token }
+      });
+      if (r.ok) {
+        const j = await r.json();
+        (j.episodes || []).forEach(ep => {
+          if (!ep || !episodes[ep.id]) return;
+          Object.assign(episodes[ep.id], {
+            durationMs: ep.duration_ms || 0,
+            releaseDate: ep.release_date || '',
+            description: String(ep.description || '').trim()
+          });
+        });
+      }
+    }
+
+    const looks = await Promise.all(ids.map(oembed));
+    ids.forEach((id, i) => Object.assign(episodes[id], looks[i]));
+
+    res.setHeader('Cache-Control', 'public, s-maxage=21600, stale-while-revalidate=86400');
+    return res.status(200).json({ ok: true, episodes });
+  } catch (e) {
+    return res.status(500).json({ error: e.message });
+  }
+};

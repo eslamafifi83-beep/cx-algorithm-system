@@ -1,0 +1,52 @@
+/* Shared by episodes.html and episode.html (page tokens such as --gold come from each page's :root) */
+.ico { width: 18px; height: 18px; flex: none; }
+.btn-ghost { background: rgba(255, 255, 255, 0.04); color: var(--text); border: 1.5px solid rgba(255, 255, 255, 0.18); }
+.btn-ghost:hover { border-color: var(--gold); color: var(--gold-light); }
+
+.seg { display: inline-flex; padding: 4px; border-radius: 999px; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--hairline); }
+.seg button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 10px 20px; border-radius: 999px; border: 0; background: transparent; color: var(--muted); font-family: var(--display); font-weight: 700; font-size: 0.76rem; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: background 0.3s var(--ease), color 0.3s var(--ease); }
+.seg button:hover { color: var(--text); }
+.seg button[aria-checked="true"] { background: linear-gradient(180deg, var(--gold-light), var(--gold)); color: #2A1D05; }
+
+/* Cover art shown whole: non-16:9 artwork sits on a blurred copy of itself */
+.smart { position: relative; display: block; overflow: hidden; aspect-ratio: 16 / 9; background: #0B1022; }
+.smart .sb { position: absolute; inset: -12%; width: 124%; height: 124%; object-fit: cover; filter: blur(22px) brightness(0.55) saturate(1.2); }
+.smart .sf { position: relative; display: block; width: 100%; height: 100%; object-fit: contain; }
+.smart.empty { display: grid; place-items: center; background: radial-gradient(120% 120% at 40% 30%, #1C2F57, #0E1C3B); }
+.eqmark { display: flex; align-items: flex-end; gap: 5px; height: 34%; }
+.eqmark i { width: 7px; border-radius: 4px; height: 60%; background: #79B9DE; }
+.eqmark i:nth-child(2) { height: 85%; background: #EAF0F6; }
+.eqmark i:nth-child(3) { height: 100%; background: #F4C069; }
+.eqmark i:nth-child(4) { height: 70%; background: #E9A33D; }
+.eqmark i:nth-child(5) { height: 45%; background: #C9862A; }
+
+.av { display: inline-grid; place-items: center; flex: none; border-radius: 50%; overflow: hidden; background: linear-gradient(135deg, #F4C069, #E9A33D); color: #12203C; font-size: 0.72rem; }
+.av img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.plate { display: inline-flex; align-items: center; justify-content: center; flex: none; background: #fff; border-radius: 7px; padding: 4px 8px; height: 28px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25); }
+.plate img { height: 18px; width: auto; max-width: 78px; object-fit: contain; display: block; }
+.plate:has(img.stack) { padding-block: 2px; }
+.plate img.stack { height: 24px; }
+
+.meta { font-family: var(--display); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-variant-numeric: tabular-nums; }
+.meta .dim { color: #7480A3; margin-inline: 0.4em; }
+.meta .topic { color: var(--blue-light); }
+
+.guestline { display: flex; align-items: center; gap: 12px; }
+.guestline .av { box-shadow: 0 0 0 2px var(--midnight), 0 0 0 3px rgba(233, 163, 61, 0.7); }
+.guestline b { display: block; font-family: var(--display); font-size: 0.92rem; font-weight: 600; line-height: 1.3; }
+.guestline small { display: block; font-size: 0.78rem; color: var(--muted); line-height: 1.35; }
+.guestline .plate { margin-left: auto; }
+
+.durb { position: absolute; right: 10px; bottom: 10px; z-index: 2; display: inline-flex; align-items: center; gap: 5px; font-family: var(--display); font-size: 0.7rem; font-weight: 600; font-variant-numeric: tabular-nums; color: var(--text); background: rgba(8, 11, 28, 0.85); border-radius: 6px; padding: 3px 7px; }
+.durb .ico { width: 12px; height: 12px; opacity: 0.8; }
+.durb .ico + .ico { margin-right: 2px; }
+.playdot { position: absolute; left: 50%; top: 50%; z-index: 2; width: 64px; height: 64px; border-radius: 50%; display: grid; place-items: center; transform: translate(-50%, -50%) scale(0.85); opacity: 0; background: linear-gradient(180deg, var(--gold-light), var(--gold)); color: #2A1D05; box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45); transition: opacity 0.3s var(--ease), transform 0.3s var(--ease); }
+
+.swap { animation: cxswap 0.6s var(--ease); }
+@keyframes cxswap { from { opacity: 0; transform: scale(0.985); } }
+@media (max-width: 640px) {
+  .guestline .plate { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .swap { animation: none; }
+}

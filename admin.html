@@ -754,8 +754,8 @@
           <div><label>Guest role &amp; company</label><input type="text" data-f="role" /></div>
         </div>
         <div class="row">
-          <div><label>Date (e.g. Jan 14, 2026)</label><input type="text" data-f="date" /></div>
-          <div><label>Duration (e.g. 47 min)</label><input type="text" data-f="duration" /></div>
+          <div><label>Date (optional for Spotify episodes — read from Spotify)</label><input type="text" data-f="date" placeholder="e.g. Jan 14, 2026" /></div>
+          <div><label>Duration (optional for Spotify episodes — read from Spotify)</label><input type="text" data-f="duration" placeholder="e.g. 47 min" /></div>
         </div>
 
         <label>Cover image / thumbnail</label>
@@ -774,8 +774,8 @@
           <p class="file-note" data-media-note="audio"></p>
         </div>
 
-        <label>Video — Spotify video link OR uploaded file</label>
-        <input type="url" data-f="video" placeholder="https://open.spotify.com/episode/… or upload below" />
+        <label>Video — only for an uploaded video file (Spotify video episodes get “Watch” automatically from the audio link)</label>
+        <input type="url" data-f="video" placeholder="Leave empty for Spotify episodes, or upload a video file below" />
         <div class="art-row">
           <input type="file" data-media="video" accept=".mp4,.webm,.mov,video/*" />
           <p class="file-note" data-media-note="video"></p>
@@ -785,7 +785,7 @@
         <textarea data-f="about"></textarea>
         <label>Key takeaways (one per line)</label>
         <textarea data-f="takeaways"></textarea>
-        <label>Show notes / chapters (one per line: 02:15 | What the customer actually wants)</label>
+        <label>Chapters (one per line: 02:15 | What the customer actually wants) — shown as jump points on the player</label>
         <textarea data-f="chapters"></textarea>
         <label>Resources mentioned (one per line: Label | https://link)</label>
         <textarea data-f="resources"></textarea>

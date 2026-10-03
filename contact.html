@@ -556,13 +556,19 @@
     btn.disabled = true;
     btn.firstChild.textContent = 'Sending… ';
     try {
-      const res = await fetch('/api/contact', {
+      const message = document.getElementById('msgField').value.trim();
+      const res = fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ intent: selected, fields, message: document.getElementById('msgField').value.trim() })
+        body: JSON.stringify({ intent: selected, fields, message })
+      }).then(async r => {
+        const out = await r.json().catch(() => ({}));
+        if (!r.ok || !out.ok) throw new Error(out.error || 'Something went wrong');
       });
-      const out = await res.json();
-      if (!res.ok || !out.ok) throw new Error(out.error || 'Something went wrong');
+      // Saved for the admin Messages tab, and (with a key set) emailed to hello@ as well;
+      // the visitor sees success if either one gets through
+      const results = await Promise.allSettled(formKey ? [res, emailCopy(fields, message)] : [res]);
+      if (!results.some(r => r.status === 'fulfilled')) throw results[0].reason;
       values[selected] = {};
       document.getElementById('formCard').innerHTML = `
         <div class="success-card">
@@ -579,6 +585,31 @@
     }
   }
 
+  // Email copy of a message via Web3Forms (key set in admin → Links). The visitor's email
+  // becomes the reply-to, so replying from the hello@ inbox answers them directly.
+  let formKey = '';
+  function emailCopy(fields, message) {
+    const c = CONFIG[selected];
+    const pick = re => (Object.entries(fields).find(([k]) => re.test(k)) || [])[1] || '';
+    const name = pick(/^(your |full )?name$/i);
+    const email = pick(/email/i);
+    const details = Object.entries(fields).filter(([, v]) => v).map(([k, v]) => `${k}: ${v}`).join('\n');
+    return fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        access_key: formKey,
+        subject: `${c.formTitle} from ${name || 'the website'}`,
+        from_name: 'The CX Algorithm website',
+        name, email,
+        message: `${details}\n\n${message || '(no message)'}`
+      })
+    }).then(async r => {
+      const out = await r.json().catch(() => ({}));
+      if (!out.success) throw new Error(out.message || 'Email copy failed');
+    });
+  }
+
   renderIntents();
   renderForm();
 
@@ -591,6 +622,7 @@
         if (c.host.name) document.getElementById('hostName').textContent = c.host.name;
       }
       if (c.links) {
+        formKey = String(c.links.formKey || '').trim();
         if (c.links.email) {
           contactEmail = c.links.email;
           const pe = document.getElementById('preferEmail');

@@ -560,6 +560,9 @@
           <div><label for="l-instagram">Instagram URL</label><input type="url" id="l-instagram" /></div>
           <div><label for="l-email">Contact email</label><input type="email" id="l-email" /></div>
         </div>
+        <label for="l-formkey" style="margin-top:1.5rem">Contact form → email (Web3Forms access key)</label>
+        <input type="text" id="l-formkey" placeholder="Paste the access key Web3Forms emailed you" autocomplete="off" spellcheck="false" />
+        <p class="hint">With a key here, every contact-form message is also emailed to the address the key was created for (use hello@thecxalgorithm.com), with the sender as the reply-to. Get a free key at web3forms.com. Messages always stay in the Messages tab too. This key is meant to be public, so it is safe here.</p>
       </section>
 
       <section class="panel" id="panel-navigation">
@@ -1558,6 +1561,7 @@
     $('l-x').value = content.links.x || '';
     $('l-instagram').value = content.links.instagram || '';
     $('l-email').value = content.links.email || '';
+    $('l-formkey').value = content.links.formKey || '';
     $('g-kicker').value = content.guests.kicker || '';
     $('g-heading').value = content.guests.heading || '';
     $('g-intro').value = content.guests.intro || '';
@@ -1592,7 +1596,8 @@
     content.links = {
       apple: $('l-apple').value, spotify: $('l-spotify').value, amazon: $('l-amazon').value, youtube: $('l-youtube').value,
       linkedin: $('l-linkedin').value, x: $('l-x').value, instagram: $('l-instagram').value,
-      email: $('l-email').value
+      email: $('l-email').value,
+      formKey: $('l-formkey').value.trim()
     };
   }
 

@@ -285,5 +285,47 @@
    "t": 1726,
    "title": "Where CX leaders should start"
   }
+ ],
+ "takeaways": [
+  "Why AI agents are re-intermediating brands, as Google did in the 2000s",
+  "How to cut through AI hype by returning to the value exchange with customers",
+  "Why large companies start with internal agents while smaller firms take more risks",
+  "Why emotional relevance decides whether agents disintermediate your brand",
+  "How AI search shifts investment from paid media to problem-solving content",
+  "Why AI expands SEO rather than replacing it, from keywords to conversations",
+  "What generative web and agent-to-agent commerce could mean for brands"
+ ],
+ "quote": {
+  "text": "We need to see the fundamental relationship between your brand and your customer. What incredible problem you are solving. So the higher the problem you are solving is, the higher your relevance is in their lives.",
+  "t": 1748
+ },
+ "resources": [
+  {
+   "label": "Samsung Electronics Iberia",
+   "note": "David's company, where he leads direct-to-consumer online sales for Spain and Portugal",
+   "url": "https://www.samsung.com/es/"
+  },
+  {
+   "label": "AI Forum Spain (ForoIA)",
+   "note": "The executive learning community on AI in marketing and CX that David belongs to"
+  },
+  {
+   "label": "Jeff Bezos's \"empty chair\" and \"Day 1\" principles at Amazon",
+   "note": "Cited for keeping the customer in the room and starting fresh every morning",
+   "url": "https://en.wikipedia.org/wiki/Jeff_Bezos"
+  },
+  {
+   "label": "Amazon Dash Button",
+   "note": "David's metaphor for replenishment purchases where brands get disintermediated",
+   "url": "https://en.wikipedia.org/wiki/Amazon_Dash"
+  },
+  {
+   "label": "Google's agentic commerce protocol for merchants and consumers",
+   "note": "Cited as Google's new tools letting agents check retail stock and prices, even by phone"
+  },
+  {
+   "label": "OpenAI's agentic checkout",
+   "note": "Cited alongside Google's protocol as a step towards agent-to-agent commerce"
+  }
  ]
 }

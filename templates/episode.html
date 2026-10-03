@@ -205,6 +205,11 @@
   .chaps button.now::after { content: "Playing"; font-family: var(--display); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-light); }
   .resource { display: flex; gap: 0.75rem; align-items: center; padding: 0.55rem 0.25rem; color: var(--blue-light); text-decoration: none; font-size: 0.95rem; }
   .resource:hover { color: var(--gold-light); }
+  .resource > span { display: grid; gap: 2px; }
+  .resource small { color: var(--muted); font-size: 0.8rem; line-height: 1.45; }
+  .resource.plain { color: var(--text); }
+  .resource.plain:hover { color: var(--text); }
+  .resource .rdot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex: none; margin: 0 4px; align-self: flex-start; margin-top: 0.55em; }
   .side { display: grid; gap: 1.75rem; align-content: start; }
   .gcard { position: relative; border-radius: 22px; overflow: hidden; background: var(--card); border: 1px solid var(--hairline); }
   .gphoto { position: relative; aspect-ratio: 5 / 4; overflow: hidden; background: #1B2550; }
@@ -701,7 +706,12 @@
           ${about.length ? `<section class="block"><h2>About this episode</h2>${about.map(p => `<p>${esc(p)}</p>`).join('')}</section>` : ''}
           ${ep.learn.length ? `<section class="block"><h2>What you'll learn</h2><ol class="learn">${ep.learn.map(l => `<li><span>${esc(l)}</span></li>`).join('')}</ol></section>` : ''}
           ${ep.chapters.length ? `<section class="block" id="chapBlock"><h2>Chapters</h2><ol class="chaps">${ep.chapters.map((c, i) => `<li><button type="button" data-seek="${c.t}" data-ci="${i}"><b>${esc(c.ts)}</b><span>${esc(c.label)}</span></button></li>`).join('')}</ol></section>` : ''}
-          ${ep.resources.length ? `<section class="block"><h2>Resources mentioned</h2>${ep.resources.map(r => `<a class="resource" href="${esc(r.url || '#')}"${r.url ? ' target="_blank" rel="noopener"' : ''}>${icon('i-link', 'width:14px;height:14px')}${esc(r.label)}</a>`).join('')}</section>` : ''}
+          ${ep.resources.length ? `<section class="block"><h2>Resources mentioned</h2>${ep.resources.map(r => {
+            const inner = `<span>${esc(r.label)}${r.note ? `<small>${esc(r.note)}</small>` : ''}</span>`;
+            return r.url
+              ? `<a class="resource" href="${esc(r.url)}" target="_blank" rel="noopener">${icon('i-link', 'width:14px;height:14px')}${inner}</a>`
+              : `<div class="resource plain"><i class="rdot" aria-hidden="true"></i>${inner}</div>`;
+          }).join('')}</section>` : ''}
         </div>
         <aside class="side">
           ${g ? `

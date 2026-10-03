@@ -21,6 +21,12 @@
   const epNum = (ep, i) => { const m = /\d+/.exec(ep.eyebrow || ''); return (m ? m[0] : String(i + 1)).padStart(2, '0'); };
   const lines = v => String(v || '').split('\n').map(s => s.trim()).filter(Boolean);
   const paras = v => String(v || '').split(/\n\s*\n/).map(s => s.trim()).filter(Boolean);
+  // A resources line in the admin: "Label | https://link | short note" (link and note optional)
+  const resourceLine = l => {
+    const parts = l.split('|').map(s => s.trim());
+    const url = /^https?:\/\//i.test(parts[1] || '') ? parts[1] : '';
+    return { label: parts[0], url, note: parts.slice(url || parts[1] === '' ? 2 : 1).filter(Boolean).join(' | ') };
+  };
   const topicKey = t => String(t || '').toLowerCase().split(/\s*(?:&|\/|,|\band\b)\s*/).map(s => s.trim()).filter(Boolean).sort().join('|');
 
   function toSeconds(ts) {
@@ -100,7 +106,7 @@
           const ts = (i < 0 ? '' : l.slice(0, i)).trim(), t = toSeconds(ts);
           return t == null ? null : { t, ts, label: l.slice(i + 1).trim() };
         }).filter(Boolean).sort((a, b) => a.t - b.t),
-        resources: lines(ep.resources).map(l => { const i = l.indexOf('|'); return i < 0 ? { label: l, url: '' } : { label: l.slice(0, i).trim(), url: l.slice(i + 1).trim() }; }),
+        resources: lines(ep.resources).map(resourceLine).filter(r => r.label),
         guest: guestFor(ep, n, guests, companies)
       };
       e.topic = e.guest ? e.guest.topic : '';
@@ -141,6 +147,14 @@
     // "What you'll learn": the admin list, else the one from the podcast feed
     if (!e.ownLearn) e.ownLearn = e.learn;
     e.learn = e.ownLearn.length ? e.ownLearn : (Array.isArray(m.learn) ? m.learn : []);
+    // Resources and the guest's pull-quote: the admin's, else the ones that came with the transcript
+    if (!e.ownResources) e.ownResources = e.resources;
+    e.resources = e.ownResources.length ? e.ownResources
+      : (Array.isArray(m.resources) ? m.resources.filter(r => r && r.label).map(r => ({ label: r.label, url: r.url || '', note: r.note || '' })) : []);
+    if (e.guest) {
+      if (e.guest.ownQuote === undefined) e.guest.ownQuote = e.guest.quote;
+      e.guest.quote = e.guest.ownQuote || String(m.quote || '');
+    }
     // Chapters: the admin's, else the ones that came with the episode's reviewed transcript
     if (!e.ownChapters) e.ownChapters = e.chapters;
     e.chapters = e.ownChapters.length ? e.ownChapters

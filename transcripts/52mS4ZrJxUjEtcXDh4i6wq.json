@@ -255,5 +255,47 @@
    "t": 1676,
    "title": "Optimism, scepticism and final advice"
   }
+ ],
+ "takeaways": [
+  "Why AI hype outpaces results, and what the AI value paradox really means",
+  "When generative AI boosts productivity, and why novices gain more than experts",
+  "What seniority-biased technical change means for junior hiring and middle management",
+  "Why AI only pays off when paired with new skills and redesigned jobs",
+  "What bank ATMs teach us about augmentation versus substitution of staff",
+  "How to break AI ROI into DuPont-style process metrics you can track",
+  "Why owning customer data may decide who wins at personalisation at scale"
+ ],
+ "quote": {
+  "text": "There is no benefit from IT or from technology if it's not complemented with people and process.",
+  "t": 729
+ },
+ "resources": [
+  {
+   "label": "IE University (IE Business School)",
+   "note": "Kiron chairs the Information Systems and Technology area there",
+   "url": "https://www.ie.edu/"
+  },
+  {
+   "label": "Kiron Ravindran's article ‘Is AI Creating Incompetent Experts?’",
+   "note": "Sparked a LinkedIn debate on AI-assisted writing and who really gains from AI"
+  },
+  {
+   "label": "MIT study reporting that 95% of companies see no benefit from Gen AI",
+   "note": "Cited on the AI value paradox and on benefits hidden in back-end work"
+  },
+  {
+   "label": "Ethan Mollick's studies on AI's jagged frontier, centaurs and cyborgs",
+   "note": "Cited on novices gaining far more than experts on well-scoped tasks"
+  },
+  {
+   "label": "Erik Brynjolfsson's research on AI in call centres and the IT productivity paradox",
+   "note": "Cited on task-level gains and why IT benefits don't show up in the numbers",
+   "url": "https://en.wikipedia.org/wiki/Erik_Brynjolfsson"
+  },
+  {
+   "label": "DuPont analysis, which breaks return on equity into stages",
+   "note": "Kiron's model for splitting AI ROI into process metrics tracked over time",
+   "url": "https://en.wikipedia.org/wiki/DuPont_analysis"
+  }
  ]
 }

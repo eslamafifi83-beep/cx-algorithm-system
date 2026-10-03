@@ -265,5 +265,45 @@
    "t": 1586,
    "title": "Start from the vision, not the data"
   }
+ ],
+ "takeaways": [
+  "How optimisation scales from choosing a route between two points to thousand-node networks",
+  "Why the objective comes first: least cost, maximum profit, or several goals at once",
+  "The three trust layers to verify before relying on a model: data, methodology, governance",
+  "Why choosing between resilience and flexibility is itself an optimisation problem",
+  "What the shift from consumer to prosumer means for how you see your customers",
+  "Why supply-and-demand optimisation works the same in energy, FMCG, logistics and CX",
+  "How to build an optimisation model top-down, from organisational vision to KPIs and constraints"
+ ],
+ "quote": {
+  "text": "The same concept of supply and demand in the energy that we are trying to solve is exactly the same in water, in food, in logistics, in customer experience, in every aspect of life.",
+  "t": 1445
+ },
+ "resources": [
+  {
+   "label": "Energy Exemplar, Mohamed Soliman's company",
+   "note": "Introduced as one of the leading companies in energy optimisation",
+   "url": "https://www.energyexemplar.com/"
+  },
+  {
+   "label": "Multi-objective optimisation",
+   "note": "Balancing system benefit, security of supply, emissions and cost in one model",
+   "url": "https://en.wikipedia.org/wiki/Multi-objective_optimization"
+  },
+  {
+   "label": "Monte Carlo method",
+   "note": "The step beyond deterministic models when many variables change randomly",
+   "url": "https://en.wikipedia.org/wiki/Monte_Carlo_method"
+  },
+  {
+   "label": "Garbage in, garbage out",
+   "note": "Cited to explain why trustworthy data is the foundation layer of any model",
+   "url": "https://en.wikipedia.org/wiki/Garbage_in,_garbage_out"
+  },
+  {
+   "label": "The prosumer concept",
+   "note": "Rooftop solar turns consumers into producers; Mohamed applies the same lens to customers",
+   "url": "https://en.wikipedia.org/wiki/Prosumer"
+  }
  ]
 }

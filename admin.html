@@ -138,6 +138,7 @@
   input:focus, textarea:focus { outline: 2px solid var(--gold); outline-offset: 1px; }
   textarea { min-height: 96px; resize: vertical; }
   .hint { font-size: 0.8rem; color: var(--muted); margin-top: 0.35rem; }
+  .fill-site { margin: 0 0 1.1rem; padding: 0.9rem 1rem; border: 1px dashed var(--hairline); border-radius: 12px; }
   .row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 
   button {
@@ -449,6 +450,10 @@
       <section class="panel" id="panel-episodes">
         <h2 class="panel-title">Episodes</h2>
         <p class="panel-desc">Click an episode to expand and edit it. Each episode gets its own page with a Video/Audio player: paste a Spotify link or upload the media file directly. The listing page and homepage cards update automatically.</p>
+        <div class="fill-site">
+          <button class="btn-ghost" type="button" id="fillFromSite">Fill empty fields from the website</button>
+          <p class="hint">Copies what the episode pages already show (your Spotify notes, what you'll learn, chapters, resources and the guest quote from the transcripts, date and length) into any empty field below, so you can edit it here. Fields you've filled are never changed. Then press Save &amp; publish.</p>
+        </div>
         <div id="episodes"></div>
         <button class="btn-ghost add-row" type="button" id="addEpisode">+ Add episode</button>
       </section>
@@ -803,7 +808,7 @@
         <textarea data-f="takeaways"></textarea>
         <label>Chapters (one per line: 02:15 | What the customer actually wants) — shown as jump points on the player</label>
         <textarea data-f="chapters"></textarea>
-        <label>Resources mentioned (one per line: Label | https://link)</label>
+        <label>Resources mentioned (one per line: Label | https://link | short note; link and note optional)</label>
         <textarea data-f="resources"></textarea>
         <div class="row">
           <div><label>Guest pull-quote</label><input type="text" data-f="guestQuote" /></div>
@@ -1653,6 +1658,47 @@
     renderEpisodes(content.episodes.length - 1);
     updateCounts();
     $('episodes').lastElementChild.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+
+  // Copy what the website already shows for each episode (podcast feed notes, transcript takeaways,
+  // chapters, resources, guest quote, date, length) into any EMPTY field here. Typed fields are never changed.
+  $('fillFromSite').addEventListener('click', async () => {
+    const btn = $('fillFromSite');
+    const sidOf = ep => ((/episode[/:]([A-Za-z0-9]{22})/.exec(String(ep.audio || '') + ' ' + String(ep.video || '')) || [])[1]);
+    const ids = [...new Set(content.episodes.map(sidOf).filter(Boolean))];
+    if (!ids.length) { status('No Spotify episodes to fill from.', 'err'); return; }
+    btn.disabled = true; btn.textContent = 'Filling…';
+    try {
+      const r = await fetch(location.origin + '/api/episode-meta?v=5&ids=' + ids.join(','));
+      const meta = ((await r.json()) || {}).episodes || {};
+      const clock = s => { s = Math.round(s); const m = Math.floor(s / 60), x = String(s % 60).padStart(2, '0'); return m + ':' + x; };
+      const filler = /^(Crafting identities that stand out|Designing seamless digital experiences|Transforming ideas into designs)/i;
+      const empty = v => !String(v || '').trim();
+      let fields = 0, eps = 0;
+      content.episodes.forEach(ep => {
+        const m = meta[sidOf(ep)];
+        if (!m) return;
+        const before = fields;
+        const put = (key, value) => { if (value && empty(ep[key])) { ep[key] = value; fields++; } };
+        const notes = String(m.description || '').trim();
+        put('about', notes);
+        if (filler.test(ep.description || '')) ep.description = '';
+        put('description', notes ? (notes.split(/\n\s*\n/)[0].match(/^[\s\S]{0,240}?[.!?](?=\s|$)/) || [notes.split(/\n\s*\n/)[0].slice(0, 240)])[0].trim() : '');
+        put('takeaways', Array.isArray(m.learn) ? m.learn.join('\n') : '');
+        put('chapters', Array.isArray(m.chapters) ? m.chapters.map(c => clock(c.t) + ' | ' + c.title).join('\n') : '');
+        put('resources', Array.isArray(m.resources) ? m.resources.map(x => [x.label, x.url || '', x.note || ''].join(' | ').replace(/( \| )+$/, '')).join('\n') : '');
+        put('guestQuote', m.quote || '');
+        put('duration', m.durationMs ? Math.round(m.durationMs / 60000) + ' min' : '');
+        if (m.releaseDate) { const d = new Date(m.releaseDate + 'T12:00:00'); put('date', d.toLocaleDateString('en-GB', { month: 'short' }) + ', ' + d.getFullYear()); }
+        if (fields > before) eps++;
+      });
+      renderEpisodes();
+      status(fields ? `Filled ${fields} empty fields across ${eps} episodes. Have a look, then Save & publish.` : 'Every field already has something in it; nothing changed.', 'ok');
+    } catch (e) {
+      status('Could not load the episode details: ' + e.message, 'err');
+    } finally {
+      btn.disabled = false; btn.textContent = 'Fill empty fields from the website';
+    }
   });
 
   $('addCompany').addEventListener('click', () => {

@@ -225,5 +225,33 @@
    "t": 1265,
    "title": "Final advice: optimise the moment of need"
   }
+ ],
+ "takeaways": [
+  "How a refrigerator purchase at Eldorado shows customers think in jobs, not channels",
+  "Why channel thinking lives in the org chart, with separate targets and incentives",
+  "How cross-functional squads, like Openbank's onboarding tribe, own a journey end to end",
+  "What journey metrics look like in practice, from drop-off rate to support contacts",
+  "How to align funding, roadmaps, KPIs and decision rights around customer journeys",
+  "How to build end-to-end journey reporting when legacy systems leave data gaps",
+  "Why AI is accelerating the death of channels, and the risk of automating fragmentation"
+ ],
+ "quote": {
+  "text": "Fall in love with the customer problem. Do not optimize the channel. Optimize the moment of need. Customers don't care where the journey happens. They care whether it works.",
+  "t": 1277
+ },
+ "resources": [
+  {
+   "label": "Openbank, Santander's digital bank",
+   "note": "Sasha leads digital channels at this digital-first bank, where the mobile app is everything",
+   "url": "https://www.openbank.es"
+  },
+  {
+   "label": "Eldorado, a Ukrainian home appliance and electronics retailer",
+   "note": "Where Sasha ran e-commerce and omnichannel, and saw online and store as one journey"
+  },
+  {
+   "label": "The jobs-to-be-done framework",
+   "note": "Sasha's lens for designing around the customer's task rather than the channel"
+  }
  ]
 }

@@ -295,5 +295,48 @@
    "t": 1821,
    "title": "Lessons for CX leaders and the CFO"
   }
+ ],
+ "takeaways": [
+  "Why the servicescape is part of the service, not just its backdrop",
+  "How your nervous system assesses a space before you have a conscious thought",
+  "The ambient and spatial dials designers tune, and why layout is most underestimated",
+  "How the space shapes staff behaviour, and how that flows on to customers",
+  "How eye-tracking, EEG, sentiment surveys and choice modelling measure what a space does",
+  "How an airport study linked natural light and quiet zones to higher spend",
+  "Where enhancing an experience ends and exploiting people's vulnerabilities begins"
+ ],
+ "quote": {
+  "text": "The room is actually participating in the service experience alongside people, technology and other touch points.",
+  "t": 463
+ },
+ "resources": [
+  {
+   "label": "COX Architecture",
+   "note": "Jacqueline's practice, where she leads the research team",
+   "url": "https://www.coxarchitecture.com.au/"
+  },
+  {
+   "label": "COX Architecture's airport study on increasing airport revenue through CX and design",
+   "note": "Linked natural light, greenery, observation areas and quiet zones to dwell time and spend"
+  },
+  {
+   "label": "Servicescape, the concept from service research",
+   "note": "The episode's core idea: the physical setting is part of the service itself",
+   "url": "https://en.wikipedia.org/wiki/Servicescape"
+  },
+  {
+   "label": "Environmental psychology",
+   "note": "The master's degree that moved Jacqueline from architecture into evidence-based design",
+   "url": "https://en.wikipedia.org/wiki/Environmental_psychology"
+  },
+  {
+   "label": "Trauma-informed design",
+   "note": "Her example of a servicescape supporting care in supported accommodation and mental health units"
+  },
+  {
+   "label": "Biophilic design",
+   "note": "One of the quality design features tested in the airport study",
+   "url": "https://en.wikipedia.org/wiki/Biophilic_design"
+  }
  ]
 }

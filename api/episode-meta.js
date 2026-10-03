@@ -10,13 +10,18 @@ const { feedItems, matchItem } = require('../lib/podcast-feed');
 const fs = require('fs');
 const path = require('path');
 
-// Chapters that came with a reviewed transcript (transcripts/<id>.json), if there is one
-function transcriptChapters(id) {
+// What came with a reviewed transcript (transcripts/<id>.json): chapters, takeaways, resources, guest quote
+function transcriptExtras(id) {
   try {
     const tx = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'transcripts', id + '.json'), 'utf8'));
-    return Array.isArray(tx.chapters) ? tx.chapters.filter(c => c && c.title && c.t >= 0).map(c => ({ t: Math.round(c.t), title: String(c.title) })) : [];
+    return {
+      chapters: Array.isArray(tx.chapters) ? tx.chapters.filter(c => c && c.title && c.t >= 0).map(c => ({ t: Math.round(c.t), title: String(c.title) })) : [],
+      takeaways: Array.isArray(tx.takeaways) ? tx.takeaways.filter(Boolean).map(String) : [],
+      resources: Array.isArray(tx.resources) ? tx.resources.filter(r => r && r.label).map(r => ({ label: String(r.label), url: r.url || '', note: r.note || '' })) : [],
+      quote: tx.quote && tx.quote.text ? String(tx.quote.text) : ''
+    };
   } catch (e) {
-    return [];
+    return null;
   }
 }
 
@@ -101,7 +106,15 @@ module.exports = async (req, res) => {
       if (!e.releaseDate) e.releaseDate = item.releaseDate;
     });
 
-    ids.forEach(id => { const ch = transcriptChapters(id); if (ch.length) episodes[id].chapters = ch; });
+    ids.forEach(id => {
+      const x = transcriptExtras(id);
+      if (!x) return;
+      const e = episodes[id];
+      if (x.chapters.length) e.chapters = x.chapters;
+      if (!(e.learn && e.learn.length) && x.takeaways.length) e.learn = x.takeaways;  // the feed's own list wins
+      if (x.resources.length) e.resources = x.resources;
+      if (x.quote) e.quote = x.quote;
+    });
 
     const missing = ids.filter(id => !episodes[id].durationMs);
     const pages = await Promise.all(missing.map(id => fromEmbedPage(id)));

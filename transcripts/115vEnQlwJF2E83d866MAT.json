@@ -355,5 +355,34 @@
    "t": 1935,
    "title": "AI agents and rethinking team skills"
   }
+ ],
+ "takeaways": [
+  "Why the human behind the leader matters more than technical expertise",
+  "How to shift from convergent to divergent thinking to spark innovation under pressure",
+  "Why your first three months depend on reading the company's business cycle",
+  "Why leadership is a physical act, and how breathing and posture regulate stress",
+  "How a daily journal rating energy and engagement helps you find purpose",
+  "How aligning mind, body and soul ultimately creates a better customer experience",
+  "How to rethink team skills and structure when AI agents join your team"
+ ],
+ "quote": {
+  "text": "What I see in my coaching practice is that the real differentiator is not knowledge or technical skill, it's the human behind the leader.",
+  "t": 144
+ },
+ "resources": [
+  {
+   "label": "GameChangers People & Talent, Ana Herranz's company",
+   "note": "Ana's co-founded company supporting leaders, introduced at the start of the episode"
+  },
+  {
+   "label": "Flow: The Psychology of Optimal Experience by Mihaly Csikszentmihalyi",
+   "note": "Ana's source for the flow channel between challenge and skills",
+   "url": "https://en.wikipedia.org/wiki/Mihaly_Csikszentmihalyi"
+  },
+  {
+   "label": "Divergent and convergent thinking",
+   "note": "Core of the mind element: moving from safe answers to exploring many ideas",
+   "url": "https://en.wikipedia.org/wiki/Divergent_thinking"
+  }
  ]
 }

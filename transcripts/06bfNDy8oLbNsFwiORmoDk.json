@@ -385,5 +385,41 @@
    "t": 1754,
    "title": "Closing advice: talk to real users"
   }
+ ],
+ "takeaways": [
+  "Why completely frictionless payments aren't the holy grail, and when friction builds trust",
+  "How behavioural research lets you trust what users do, not what they say",
+  "How to adapt global products to each Asia Pacific market's tech, rules and habits",
+  "Why the payment is table stakes and the services layer is where value lives",
+  "How Mastercard's Carbon Calculator shows cardholders their footprint without shaming them",
+  "Why trust, consent and control will make or break agentic commerce",
+  "Why talking to real users should come before building any AI feature"
+ ],
+ "quote": {
+  "text": "When payments are expected to be 100% secure, 100% successful, what is there left to design?",
+  "t": 142
+ },
+ "resources": [
+  {
+   "label": "Mastercard",
+   "note": "Alexei leads Asia Pacific CX and product experience design at Mastercard",
+   "url": "https://www.mastercard.com/"
+  },
+  {
+   "label": "Click to Pay, the online checkout Mastercard and Visa work on together",
+   "note": "Alexei's example of easing checkout barriers without giving up security"
+  },
+  {
+   "label": "Mastercard Priceless experiences",
+   "note": "Raised as part of the services layer, alongside loyalty points, cashback and lounge passes"
+  },
+  {
+   "label": "Mastercard Carbon Calculator",
+   "note": "Alexei's case study: a tool showing the carbon footprint of each transaction"
+  },
+  {
+   "label": "Figma Make, an AI design tool",
+   "note": "Named among the AI tools his team uses to speed up design and delivery"
+  }
  ]
 }

@@ -1,0 +1,269 @@
+{
+ "episode": 5,
+ "title": "Everything Is an Optimisation Problem — Including Your CX Strategy",
+ "paragraphs": [
+  {
+   "t": 7,
+   "speaker": "Eslam",
+   "text": "Welcome to another episode of The CX Algorithm podcast. I'm Dr Eslam Afifi. Today's episode is a bit of a special one. And the reason for that is optimization is a word that we have been hearing for the last two to three months. With everything going around the world right now, with all the energy crisis that we have in different parts of the world. I thought this is a great case study that we can learn a lot from, especially as a CX practitioner. Optimization is every single meeting to report, or even, or even sometimes on what we call quarterly meetings that we have with our counterparts across the organization. It's something that we always have to think of. And really, I have the pleasure today to host one of the people that inspired me when I spoke to him the first time. We met the first time from Dubai, and in five minutes he explained to me what he's doing in the most amazing way. And when I thought, who else, who of my network can explain what's optimization, I couldn't find more than Mohamed Soliman, Regional Vice President of Energy Exemplar, one of the leading companies in the optimization energy sector."
+  },
+  {
+   "t": 66,
+   "speaker": "Eslam",
+   "text": "So without further ado, Mohamed, welcome to the show."
+  },
+  {
+   "t": 69,
+   "speaker": "Mohamed",
+   "text": "Thank you, Eslam, very much. And thank you for the amazing introduction and for the energy that you bring to any discussion."
+  },
+  {
+   "t": 78,
+   "speaker": "Eslam",
+   "text": "Thank you so much. The first thing I want to start with, and if you don't mind, I would love to know, let's imagine that I have no idea what optimization means. And I would love to strip all this jargon down. If you can just explain to our audience in a simple way, what is optimization actually means? And what does it actually, how does it work in a simple way? And I think this is the best way to describe anything is to start from this point."
+  },
+  {
+   "t": 102,
+   "speaker": "Mohamed",
+   "text": "Simple way is, and describe it, if you're faced to teach a young kid what that means, that means you don't understand it. So in my simple terms, I always start with those two points. How simple it can be to find the way between, between two points. The first thing that you come in mind that you're right, you go from point A to B, right? But actually, it's more than that, because if you add the direction, you can go from A to B, but also from B to C, all right? And this is where optimization starts. If those A and B, one is higher than the other one. Is it better that you go from A to B or from B down to A, right? And this is just two points. Imagine if you have three points now."
+  },
+  {
+   "t": 147,
+   "speaker": "Mohamed",
+   "text": "Do you go from A to B to C, A, C, B, B, C, A, and so on? And imagine if you take that and put it into a wide network of thousands of points, whether it's energy, it's water, it's whatever it is. Imagine the number of decisions that you need to have and what is the best way to reach it. And this is, I think, the core of optimization. And this is where all the science and knowledge and experience behind comes to support those to this very simple question: how the best way to get from a point to another one."
+  },
+  {
+   "t": 180,
+   "speaker": "Eslam",
+   "text": "I love that. I have to say, even thinking about going from two nodes to thousands of nodes, it just gave me a headache. So the fact that you, the way you explain it, isn't really simple, but what I love about that, because again, a lot of people think it's too complex and the algorithms that are really hard to follow, hard to understand. But the way you explain it is really makes a lot of sense. But one of the things that people always kind of wonder that there is a magic happens behind algorithms. And in kind of a more of a simple essence, there is some prerequisites that every company should do. And it's about understanding what actually, what goes into the model to get you those kind of decisions. So if you can elaborate a lot that there's any prerequisites or anything that the company has to do to be able to start implementing some things."
+  },
+  {
+   "t": 226,
+   "speaker": "Mohamed",
+   "text": "Well, let's start again from the original concept, right? How we can simplify that, then we move it the machines that we are utilizing now can only understand ones and zeros. So that means everything needs to go back or down to this level of fundamental, all right, in order to be able to build anything on top of that. So for any systems, any organization, any science behind it that needs first that you're able to represent that in numbers. And this is where the data becomes important, that you create the data, those kind of models or representation to the numbers, and then after that, you'll be able to digest those numbers using mathematical fundamental modeling, in order to be able to find the best way forward, in order to solve this optimization challenge, whether it's a data challenge, whether it's an algorithm behind it to define how you interact or use the natural language or how you define energy system or even financial systems."
+  },
+  {
+   "t": 290,
+   "speaker": "Mohamed",
+   "text": "So I think the base is to have data, then to utilize the data and to transform the data into understandable form of like to machine, then apply the science on top of that and fundamentals in order to get to the optimization. I always stress on the fact that this is also always based on fundamentals, because then you are taking away any bias in the system, whether it's moral bias, whether any kind of bias. Then this is where you build actual optimization, not a trend or something driven by a specific agenda behind it."
+  },
+  {
+   "t": 328,
+   "speaker": "Eslam",
+   "text": "Love that. I would like to expand a bit more, and I would like to understand what types of decisions usually can these kind of algorithms help you as a leader to decide? Are we talking about pricing, infrastructure, or supply chain? If you can give us some examples for all of us to be able to kind of visualize that."
+  },
+  {
+   "t": 347,
+   "speaker": "Mohamed",
+   "text": "Let's dive into the energy, for example. So when you talk about optimization, you actually need to define the objective of the optimization that you're running. Some of the systems assume that you are a central planning entity. You want to define or to reach the minimum or least cost. In this case, your optimization problem becomes around the objective of the least cost and considering all the digital twin as well as also the other constraints that affect the system, right? However, if you are running an asset in a commercial website, then your problem or your objective becomes maximizing the profit, all right? This is where the objective of the optimization problem can vary, can vary from optimization or minimization of cost if we're just taking the cost as an input, but also needs to be considering multi-objective optimization."
+  },
+  {
+   "t": 408,
+   "speaker": "Mohamed",
+   "text": "So if we're talking about running a system, you need to reach the maximum benefit of the system while ensuring security of supply, while achieving minimum, let's say, emission, as well as also minimum cost. So this is where it becomes a multi-objective function, and the optimization problem adds to the complexity, not just the number of nodes, which in this case can be the users and the producers, or the prosumers. In this case, I know that you and I were discussing this earlier, where a consumer can be a producer at the same time, and this means the single node now becomes a load as well as a supplier. So this all comes under the same concept of the more sophisticated systems that we're running. And this is where optimization will have a different aspects and different angles. And this is where science becomes important."
+  },
+  {
+   "t": 464,
+   "speaker": "Mohamed",
+   "text": "Representation is one part of it. Defining the objective is another part of it. But also, you have a lot of variables to the system. This is where you move from deterministic statistics to more Monte Carlo or even stochastic, where you have a lot of variable that is changing randomly and you want to identify what is the best optimum point to operate the system based on all of those constraints, based on all of those representation of the system, as well as also the level of stochastics or statistics method that you're going to use."
+  },
+  {
+   "t": 503,
+   "speaker": "Eslam",
+   "text": "Right. I love the way you kind of build the pyramid. So if your first step is really to try to understand what's going to go into the model, what variables, what kind of features that you're going to include there. And then you have to be very clear about the objectives. I love that. But also then from that, you move to the bottom members, but that's leaving us with one question that people always bring up, which is, when I have as a leader, when I, as a practitioner, and you have a number, how much will you have to have a balance or what was the gap between trusting that number solely and solely just rely on that number, and having that kind of context and experience and also more judgment? And that, because that's an that's kind of a debate that we always have, a, we can, we trust the number solely based on all the work that we have done from the foundation model all the way up, or do we still have to have a mixture of both?"
+  },
+  {
+   "t": 554,
+   "speaker": "Mohamed",
+   "text": "Okay. I think you're talking about a number of aspects of the same question, which are all important and becomes of an increased importance the more we now utilize more advanced, let's say, reasoning, AI, and so on. And this always needs to come down to specific layers. As we just discussed, the data Now it becomes one of those foundation layer, right? So as they say, garbage in, garbage out. So that means first you need to identify the data validity and trustworthy of your data. And this is on its own is one of the exercises that you need to run, right? So trusting the data that is entering the model, this is a crucial part of building any model, right? And not yet at the optimization level, but now we're talking about the foundation, right? So the data accuracy and trustworthiness and also freshness and all of those, there is a lot of like keys to identify the data quality."
+  },
+  {
+   "t": 616,
+   "speaker": "Mohamed",
+   "text": "Right. This is the base. On top of that lies the foundation. What are you what are your objectives? What are the system constraints? A lot of things. So the methodology becomes the second layer to build this trust. So you have the foundation layer of data. Then you have the methodology. Then you have the governance, how you run that, because if we are talking about a lot of like optimization tools, then you have governance around what can be preached or not, what kind of constraints are strict or not. If you're using AI and a lot of, like, the recent, like, models and so on, then there can be some hallucinations, so how you can guardrail that and so on. Only then, when you have all of those trust layers, you can actually say that, all right, This is the model that I can trust. All right."
+  },
+  {
+   "t": 666,
+   "speaker": "Mohamed",
+   "text": "But without having those, first of all, foundation that you understand that the foundation is solid awareness, what type of foundation are running there? Right. And also confidence level of each of those decisions. Only then you can actually rely on the model or not. It's not about the trust of the brand, the trust of of who's bringing you this intelligence or not. But it's all about having the right foundation in order to achieve that. And this also includes a lot of ramp up of knowledge as well as also testing. I think all of us in our, and the more we grow with our experience, we always apply critical thinking. That means you always challenge the models before you can really let your guards down where you can really get the model. But imagine that. If you choose not to trust any model, you're actually limiting yourself."
+  },
+  {
+   "t": 724,
+   "speaker": "Mohamed",
+   "text": "Because as we say in the sales-like domain, if you never ask, the answer will always be no. So imagine or consider the optimization is one of the tools that you may have that can provide you with some insights. How much you decide to trust that is built on all of those different foundation layers and trust layers. But without it, you're losing a lot and you are missing a lot, especially with the complex domains and the complex ecosystem that we operate now with the availability of the data and availability of all of those different tools that were not available before. You will be left behind if you're not utilizing the tools that are available now at your disposal. Imagine going to a war with a knife. No matter how ill you are with using the knife, it will never be sufficient in a different kind of war."
+  },
+  {
+   "t": 776,
+   "speaker": "Mohamed",
+   "text": "So you need to be utilized with the right tools, set of tools."
+  },
+  {
+   "t": 781,
+   "speaker": "Eslam",
+   "text": "Right, I love that. I love the way how you kind of layered out each layer to be able to, from foundations all the way up, to be able to trust the model and trust the outcomes. One of the things that always comes up when we speak about any type of algorithm solution and the solution sits, and the kind of the math that sits behind it, is when we have a new like new, something new that happens, or new veterans, or new partners. How often do you usually in your domain, do you guys change or refresh and some of these partners? Is that something that you do as a part of your governance model that you just spoke about in a second, or that's something that you have to be kind of decided with SMEs in your business? Well, let's narrow the question just"
+  },
+  {
+   "t": 823,
+   "speaker": "Mohamed",
+   "text": "Like on an applicable level, let's say just for the energy now, right? How often the energy system change and how often do you need now the modeling to evolve, to adapt with those dynamics of the changes, right? You'd be surprised how dynamic it becomes, the energy model or the energy systems. Because in the past, you can say, right, I have, let's say, a power generation. I will turn it on. It takes a few hours to ramp up, right? then it will remain on for a day or for 12 hours. And considering the system, you will have some seasonality, but eventually let's assume that you have two seasons or day and night. But the numbers of variables becomes, I would say, it was simple. Imagine now that you are operating in a system where the speed of the wind decides the output of the generation."
+  },
+  {
+   "t": 877,
+   "speaker": "Mohamed",
+   "text": "If it's cloudy or not, it decides the output of your solar system. If your machine or if the AI that you're using is dispatching or requesting a lot of computational power or not depends on the type of the question you ask. So imagine all of those different variables now are adding to the complexity of that energy system that used to be, yes, complex, but used to be predictable. So now you have a lot of those aspects coming just for one domain, which is energy, that affects hundreds of thousands of variables, not only on the number of variables, but also the resolution and the frequency of the change of those variables. This is how complex it becomes, the systems that we are operating, not just for the energy, consider the same for logistics, consider the same for water, consider the same."
+  },
+  {
+   "t": 929,
+   "speaker": "Mohamed",
+   "text": "It's almost everywhere, right? Even our working patterns, and it is changing. We used to work with one country where the sun goes up, everyone is working, though then it goes down, everyone is sleeping, but now working remotely, different time zones, and all across the globe. Even your working habits as a human is changing and this is where all the, the system elements are becoming variable, right? And becomes more and more, not just challenging, but on its own, it represents as well a lot of potential optimization benefits that is waiting to be unlocked."
+  },
+  {
+   "t": 968,
+   "speaker": "Eslam",
+   "text": "I love that. And this is kind of a great segue for something that I'm really keen to understand from you. Is that kind of challenge whenever we talk about optimization from efficiency versus resilience? And how do you have that balance on that trade-off? If you can give us one of your examples, maybe in the energy sector or in other sectors that you have, how can you actually do that trade-off?"
+  },
+  {
+   "t": 989,
+   "speaker": "Mohamed",
+   "text": "It's a great question. And it's actually, this is where it's not just about the resilience versus the flexibility, but it also becomes the regulations becomes very crucial here. Because imagine if you are just talking about the flexibility and all of the generators, right, the companies, the GenCos decided that, all right, you know what, we'll just only generate in this high peak. That means you will have zero power actually away from this high prices or peak. So this is where becomes, right? If you think that you just need the light from seven to eight, but you need the airports, you need the communication, you need the security systems, you have a lot of requirements for the security of supply, but the security of life. This is where resilience becomes a crucial part. This is where regulations becomes crucial. This is where you need the steady loads, the steady generation. You need also to balance between the commercial benefits and the system resilience and security of supply. This will need to always be guided by governments who also use a modeling and optimization practice in a different scale, right? But this is again another optimization problem where you have the resilience and security of the systems versus the flexibility, and you need to find the optimum way between the two."
+  },
+  {
+   "t": 1081,
+   "speaker": "Mohamed",
+   "text": "So in its own, to decide between the resilience and the flexibility is an optimization problem."
+  },
+  {
+   "t": 1087,
+   "speaker": "Eslam",
+   "text": "Fantastic. Are there any other aspects of what we call limitational optimization that, as a leader, you need to be aware of?"
+  },
+  {
+   "t": 1096,
+   "speaker": "Mohamed",
+   "text": "There's definitely infrastructure limitations, right? You can have unlimited numbers of variables. You can have resolution up to second by second. But that means the volume on the number of computational power and the data that you'll be requiring to run will be tremendous. That means also you need to be aware of any limitation that you may have of the modeling aspects and tools and methodology that you're using. Because if you will need to wait a year for a resolution solution, based on your limited infrastructure, this becomes a deciding factor and so on. So it's also need to be a balance between the level of details that you need to achieve, and the level of infrastructure and technology availability that you have. This is where now becomes critical, the data centers, the computational powers, the flexibility of the technology and the availability of the technology becomes crucial."
+  },
+  {
+   "t": 1160,
+   "speaker": "Mohamed",
+   "text": "And this is where all the global leaders are now racing towards that, because with more computational powers, you unlock actually a lot of optimization and insights in your data. And this is where you can get to better decisions that can worth billions of dollars and actually a lot of impact to a lot of lives."
+  },
+  {
+   "t": 1181,
+   "speaker": "Eslam",
+   "text": "That's fantastic. There's one term that I am not sure we related this to, something that I was reading is this kind of idea of what we call optimal optimization. And is that it's actually real, or is that just a kind of a fancy word or a marketing word that"
+  },
+  {
+   "t": 1195,
+   "speaker": "Mohamed",
+   "text": "To kind of to get more attraction? Well, regardless of the term that you're using, this is, this will always be my passion, right? I always challenge every single system aspects for more, because I am a, I'm a laborer, so I always try to find the perfect balance in all aspects of life. So the same applies for the optimization. How far is far, right? How optimum is optimum enough? And we have like some, there are a lot of science and methods to measure that, but eventually it's a haunting, I would say, decision for me in order to decide that."
+  },
+  {
+   "t": 1240,
+   "speaker": "Eslam",
+   "text": "That's great. And again, I'd say something that we can always debate for a very long time, but it's a great, I love the way you love your idea for you can always push for more. It makes me feel like it's more of a moving target. It's not a static target, it's never going to be optimal, for the sake of optimal. It's always going to be something that once you reach it, it's going to be what's next, what's next? I would like to move away from the supply side, and then go to the demand side, I'm actually looking at the customer experience per se, and there is a kind of that kind of view that especially in the energy sector used to be one way but now with all these data points that we have was an optimization that we can do."
+  },
+  {
+   "t": 1280,
+   "speaker": "Eslam",
+   "text": "How is that changing? Is it actually changing now from one way to two ways? And I would love to know more of you, based on your experience. How does that change for the customers on the receiving end?"
+  },
+  {
+   "t": 1292,
+   "speaker": "Mohamed",
+   "text": "Well, let's just like, I'll take just to continue the flow of the idea of the energy. All right. You and I as consumers, now we have the freedom or the opportunity to generate whether solar roof, solar panels or whatever it is. So this changed the nature of us, of our like node as a demand node to become a prosumer where you can be producing, but also consume. And this has a fundamental change or shift in how the energy systems are being considered and planned and optimization also. The same way also, if you're talking about customer perspective, customers as consumers of your services is a way to see it. But every customer is also a driver for your business strategy and how you drive your business. So if you move from the energy angle to the fact that every customer is a consumer of your services, but also a driver of your business growth and so on, this changes also how you should look at your customers from an optimization point of view."
+  },
+  {
+   "t": 1369,
+   "speaker": "Mohamed",
+   "text": "Because more customers, more revenues, more tools to drive the business, more influence on how you drive the business in this direction, that direction, and so on. And I hope this answers this angle of your question."
+  },
+  {
+   "t": 1381,
+   "speaker": "Eslam",
+   "text": "It does, it does in an amazing way, but it also opens the door that we're not talking about only dynamic pricing. It's way more than that. Because again, it's that kind of stereotype when you think about energy and CX, oh yeah, I'm using it only for dynamic pricing, peak and off-peak. But there is way more than that, especially with, as you said, because I love the term that you used and how did you actually combine that consumer can also be a producer. I love that. It's a really, just an idea for how as leaders we need to think about that, because in the CX space what we call a co-design is actually looking not looking anymore at the receiving end as a customer but actually as a producer of that moment of their experience and how do we move just from looking at the bill, who is offering the off-peak, and you know, the peak times pricing to something way more than that, something more dynamic."
+  },
+  {
+   "t": 1430,
+   "speaker": "Eslam",
+   "text": "I wanted to kind of getting more slightly out of the energy, but I still stay in the energy, but in a different way. I would love to learn if there's any more lessons from optimization, especially in the energy sector, that you can think they are applicable to other sectors?"
+  },
+  {
+   "t": 1445,
+   "speaker": "Mohamed",
+   "text": "Yes, and it's actually not just energy, because the energy for me is one of those possible applications, right? But the same concept of supply and demand in the energy that we are trying to solve is exactly the same in water, in food, in logistics, in customer experience, in every aspect of life. Right, so if you are in FMCG, it's again a supply and demand optimization problem that you're trying to solve. So you have your demand, which is in this case your consumers. You have your supply, which in this case will be, can be your factories. Then you have in between the channels, all the supply chains, right, and their limitation to be there to the customer when it's right, when the demand is correct, when the price point is correct, but also with the freshness. Then you have a lot of other different aspects of those constraints. Imagine that you are distributing yogurt or milk, then you have the expiry date as one of the constraints and so many other aspects, right? The supply chain in the global supply chain, right, on its own becomes part of your optimization. Imagine if you want to hit 1 million gallon a day, all right, but you don't have enough resources for that, all right, to run that, then your resources becomes a constraint, right? And you can apply that on every aspect of life. So the, the concept of optimization, all right, it's not related just for energy, it's very universal term, all right? We try, we are wired as human to run an optimization problem based on benefits, or maximizing the benefits or leisure and minimizing the pain."
+  },
+  {
+   "t": 1557,
+   "speaker": "Mohamed",
+   "text": "So we as human beings are wired to solve this optimization problem, right, in every aspect of life."
+  },
+  {
+   "t": 1565,
+   "speaker": "Eslam",
+   "text": "Great analogy and a great way, a great segue for my, for my next part, because it just gives you gives you the idea of how important diet to understand optimization, because everyone thinks so optimization is just limited to a few aspects, but this has, as you said, it has a lot of potential and a lot of applications that you need, people need to see beyond that. The last thing I would love, I would love to end up with, and it's something that we always look to end the kind of the show is, there is one tip, advice about building models in-house, or maybe getting it from off the shelf. Any tips for any CX leaders talking about, how to build an optimization model within the organizations, any final tips, as a final source that you have?"
+  },
+  {
+   "t": 1608,
+   "speaker": "Mohamed",
+   "text": "Start from the vision of the organization, right? Because your vision should be the objective of your model. So the North Star or the vision, let's say the vision is to create an impact. This becomes the objective of the model. And by doing that, you have the vision statement. And when you go down and divide those into KPIs, living organization, architecture, and so on, this should reflect, this should be reflected and this should reflect your model, because the model should always and eventually serve the same objective that you have, your vision of the organization. Otherwise, you'll be drifting into a lot of details without actually going towards the vision and objective of your organization. So if your vision is to provide the best service for a customer, then it moves down from being the best provider for this kind of service to the KPIs of this service, then this becomes your optimization objectives."
+  },
+  {
+   "t": 1674,
+   "speaker": "Mohamed",
+   "text": "You want to optimize those one, two, three, four KPIs. Then it moves down to how you measure those KPIs, what is the inputs and the constraints for those KPIs. It should always follow that because if you start from down, you may lose track and lose focus. So always start from here and then drive the optimization objective from there. Otherwise, there will always be a disconnect."
+  },
+  {
+   "t": 1697,
+   "speaker": "Eslam",
+   "text": "What a great way. Thank you so much, Mohamed. I can't thank you enough. And I'm sure that our audience would find this one of the most fascinating. And the most, I would have to say, most easy to understand how you took a very complex idea and you made it so simple. So we cannot thank you enough. And for our audience, as usual, you're going to find Mohamed details on his LinkedIn and his bio on the show notes. Please feel free. He's a very social guy and an amazing person to speak to. So I encourage each one of you to get to connect and just hand him his questions. He loves questions. He loves to chat. And if you ever are going to be in Dubai or a region, please, please go reach out to him. He's an amazing guy."
+  },
+  {
+   "t": 1732,
+   "speaker": "Eslam",
+   "text": "Mohamed, thank you again. And we really had a pleasure of having you on the show. Thank you so much."
+  },
+  {
+   "t": 1736,
+   "speaker": "Mohamed",
+   "text": "Thank you very much, Eslam. And the pleasure is mine. And please feel free to connect. I would love to hear the different aspects of that. And we'd love to have your questions and to explore how we can drive more value and impact across the globe."
+  }
+ ],
+ "chapters": [
+  {
+   "t": 0,
+   "title": "Welcome and introducing Mohamed Soliman"
+  },
+  {
+   "t": 78,
+   "title": "Optimisation explained from first principles"
+  },
+  {
+   "t": 329,
+   "title": "Objectives, constraints and multi-objective optimisation"
+  },
+  {
+   "t": 519,
+   "title": "Data, methodology and governance as trust layers"
+  },
+  {
+   "t": 790,
+   "title": "How dynamic energy systems have become"
+  },
+  {
+   "t": 970,
+   "title": "Resilience, efficiency and the limits of optimisation"
+  },
+  {
+   "t": 1257,
+   "title": "From consumers to prosumers"
+  },
+  {
+   "t": 1430,
+   "title": "Supply and demand beyond energy"
+  },
+  {
+   "t": 1586,
+   "title": "Start from the vision, not the data"
+  }
+ ]
+}

@@ -1,0 +1,229 @@
+{
+ "episode": 6,
+ "title": "Channels Are Delivery Mechanisms. Journeys Are the Product.",
+ "paragraphs": [
+  {
+   "t": 7,
+   "speaker": "Eslam",
+   "text": "Welcome to another episode of The CX Algorithm Podcast. I'm Dr Eslam Afifi, and today is a bit of a unique, unique episode. And the reason for that is, for quite some time, one of those ideas has been always in my mind. Why businesses cannot get the most basic, simple tasks, especially digitally, not correct. We always, as a CX practitioner, speak about this idea of easily doing business, either for customers in the B2C space or even in the B2B space for other organizations. And I've been looking and reading and reading, and I thought, who can I speak to? Who can actually discuss this matter the most? And I found, I saw my network, and I reached out to an amazing, amazing Sasha. Is not, Oleksandr is not only an incredible person with digital expertise and UX and UI."
+  },
+  {
+   "t": 53,
+   "speaker": "Eslam",
+   "text": "No, no, no. We're talking about someone who understands the entire digital experience from one end to another end. We're talking about someone who started his career in e-commerce, then moved to telecom, then right now in financial services. So he understands the incredible challenges with everything from legacy systems all the way to personalization, how it can be done. So without further ado, Sasha, it's a pleasure to have you on the show."
+  },
+  {
+   "t": 76,
+   "speaker": "Sasha",
+   "text": "Eslam, and thank you for having me. Super happy to be here. Not only because I love this topic, it's close to my professional heart, but also it's always a pleasure to have this conversation with a friend."
+  },
+  {
+   "t": 88,
+   "speaker": "Eslam",
+   "text": "Thank you. Sasha, before we dig in, what I would love to do is let me know about your role. I know Openbank is one of the most digital-first banks in Europe. I know you guys operate in the Netherlands, in Spain, and also Portugal. But if you can tell me about your role to the audience about what you do day-to-day, that'd be fantastic."
+  },
+  {
+   "t": 105,
+   "speaker": "Sasha",
+   "text": "Well, basically, I'm taking care of the people who are taking care of the digital channel. And by digital channels, I mean basically the mobile app, because for the branchless bank like Openbank or Digital First Bank, the mobile app is everything. But of course, we do have other channels like the contact center, the website and two branches."
+  },
+  {
+   "t": 129,
+   "speaker": "Eslam",
+   "text": "Right. Now, I'm going to straight away start with a question that is controversial. Especially the word is whenever, every time, if I can, if I can tell myself I'm going to reward myself with a treat every time I hear the word channels in a boardroom, in an executive report, I'm going to tell you right now, I'll be the, the most heavyweight person ever, and I need to ask you that, what's kind of, how logical is that we still, every company right now, want to be a customer center, however, we are still using technology of channel strategy. Is that still relevant in your"
+  },
+  {
+   "t": 158,
+   "speaker": "Sasha",
+   "text": "Right? And if not, why? Well, first of all, I would say I don't hear the phrase channel strategy in a boardroom very often lately. But of course, it depends on the, on the specific organization. But when I hear that phrase, I would usually listen very carefully to, to, to what comes next. So sometimes it means like, how do we, we serve customers, how do we serve customers across different touch points, but also very often it really means how do we optimize our app, our website, our branch, store, or contact center separately. And I believe that is already the problem. I do think customers don't wake up thinking, today I want to use a channel. Customers have a job to be done. So they want to buy, I don't know, a refrigerator, open a bank account, replace SIM card, basically solve a problem, get help or get reassurance or complete something they started earlier."
+  },
+  {
+   "t": 223,
+   "speaker": "Sasha",
+   "text": "So that is the way of thinking, I believe, is the right one. Then this kind of triggers the next question, which is if customers think in tasks and outcomes, not channels, then how organizations should actually think about it? Well, I do believe we should think in journeys, not channels. But when we say customer-centric, that means we should take care of end-to-end journey overall. And I believe I first understood this over 10 years ago, I believe, in Eldorado, which is a home appliances electronics retail chain in Ukraine, a big one. And I was responsible for e-commerce and omni-channel. And at that time, many companies still treated online and physical retail as separate worlds, but customers didn't. So that's the point. Again, a simple example, so a customer might research a refrigerator online, then compare prices, check reviews, check availability, visit a physical store to see it physically, to check it, and then ask a consultant some questions, then go home and complete the purchase online, or the order can be different, right?"
+  },
+  {
+   "t": 296,
+   "speaker": "Sasha",
+   "text": "And for the customer, this is one journey. So I need to choose the right refrigerator and get it delivered, right? For the organization, it could look like several different channels competing for attribution, and that is a threat. And I think that experience shaped a lot of my thinking. I believe the real unit of design should not be the channel. It should be the customer task or the customer job to be done. So the outcome, the journey around it. And yeah, this is basically where jobs to be done is very useful. It kind of forces us to ask, what is the customer really trying to accomplish?"
+  },
+  {
+   "t": 345,
+   "speaker": "Eslam",
+   "text": "Love that. That's going to take me to my next kind of side of the coin. If customers see it more as tasks to be done or a job to be completed, it, why organizations cannot see it the same way, what stops from inside the organization, why"
+  },
+  {
+   "t": 357,
+   "speaker": "Sasha",
+   "text": "Organizations don't see it in that format? Well, it's a good one, uh, I believe it's, it's, it's also kind of linked to the, to the org chart. I think the, the issue is, is that kind of channel-centric thinking, it lives inside the, the organizational chart in, in the specific company. So it's, it's kind of a governance problem, I would say. So many organizations say they are omni-channel, but you can see the truth in how decisions are made. If, for example, if the app team optimizes the app, the web team takes care of the website, the contact center optimizes call handling, et cetera, and each area has its own targets, roadmap, and incentives, then I believe the organization is still channeled. It may look omnichannel from the outside, but internally it's still a kind of collection of silos."
+  },
+  {
+   "t": 409,
+   "speaker": "Eslam",
+   "text": "True. So that's going to lead to how can, what can we do differently, basically? How can we do it differently? Because right now the question is going to be, so who should own that journey? Who should own the experience or that, what we say, outcome-based experience?"
+  },
+  {
+   "t": 423,
+   "speaker": "Sasha",
+   "text": "Yeah, that's a great challenge to tackle. So in my previous life, we sold it through cross-functional squads. So the idea was simple. You bring product, design, tech, analytics, business, legal, customer support. I mean, everything you need around the same customer problem. So not around the channel, but around a journey or around outcome. So, for example, instead of having one team responsible for the website and then another one responsible for that, for example. So you create a team, a squad, cross-functional squad responsible for customer onboarding or digital acquisition. And then the question changes, right? So it is no longer, how do I improve my channel? It becomes, how do we help the customer complete this journey successfully wherever or whenever they start? And we are currently using kind of similar approach at Openbank. We also have this logic in some areas."
+  },
+  {
+   "t": 487,
+   "speaker": "Sasha",
+   "text": "For example, we have an onboarding tribe, as we call it, and that is a cross-functional team focused on one of the most important journeys in digital banking, which is becoming a customer. And that journey cannot belong only to app or only to website or only to compliance or technology. It kind of cuts across all of them."
+  },
+  {
+   "t": 510,
+   "speaker": "Eslam",
+   "text": "That's a great way of doing it. And it's a really good way of how to bring those expertise that you need to be able to ensure that you got a 360 view of the journey, only from the front end all the way to the back end. And also, of course, especially in financial services, clients are going to be a critical role in that. Now, this is going to lead to another aspect that we need to speak about, measurements. Because right now, you're asking multiple teams, how can you benchmark their performance? And how can you look at the reporting? Because we know each of these teams that you just mentioned at Rockhorse Function, they can have their own target usually. So how do you bring all of them across that journey? And most importantly, how you make sure accountability across those teams?"
+  },
+  {
+   "t": 549,
+   "speaker": "Sasha",
+   "text": "Well, if we measure only, let's say, app sessions or website conversion or call handle time or, I don't know, email open rate, teams will naturally optimize for those numbers. Well, those metrics are not useless. They tell us whether a specific touchpoint performs well. That is fine. But I believe they do tell us where the customer actually achieved what they came to do. And that is where journey metrics become much more important. So, again, example, in onboarding, I would not look only at app conversion or web conversions separately. I would look at the full journey. How many customers start? How many complete? Where they drop? How long it takes? How many need support, et cetera? And well, eventually, whether they become active customers after onboarding. So this is not about only the completion. Customer can technically complete a journey, but still feel confused or kind of unsupported."
+  },
+  {
+   "t": 619,
+   "speaker": "Sasha",
+   "text": "Yeah, I would say journey completion, time to complete, drop-off rate, support contact rate. These are the things that we should take into account, but also qualitative feedback to understand how the experience actually works."
+  },
+  {
+   "t": 637,
+   "speaker": "Eslam",
+   "text": "I love how you, Kenneth, indirectly did a 360 view of the entire journey. So you talked first about things like satisfaction or even ease, which is basically the emotions. How did I feel around going through these things? The CX metrics. But besides that, you looked at also the ops metrics in the same decision times. And finally, you're going to overlay that with an outcome metric that drives business outcomes, which is a great way to look at those three. And this is a great way because there's one of the questions that always go, you go around CX meetings, conferences, they inform. There's always, for example, around digital engagement. Once you always say, sometimes digital engagement is a bad thing or a good thing. And it's really hard to tell because, as you said, looking at that from one angle, it's really difficult to have."
+  },
+  {
+   "t": 680,
+   "speaker": "Eslam",
+   "text": "Because if the time session is too long and it's a great for engagement, yeah, but this engagement sometimes does not correlate with digital ease and how easy it is to complete a task. Now, this leads me to something that I would love to take your brain on. For example, in your function, how can you guys do your own reporting around that? Because right now we have a lot of metrics. So are you responsible for subject of these metrics? Are you actually responsible for the entire journey?"
+  },
+  {
+   "t": 707,
+   "speaker": "Sasha",
+   "text": "Well, again, I believe this is very much linked to how the organization is organized. I think the key is to have shared goals among the teams, like across the organization, and then to make the teams work together, basically trying to achieve the same goal. And, well, the report tells us the story. So the report, for example, on onboarding, shows the whole journey. And this is very much kind of cross-functional activity, as I mentioned before. So it includes a lot of steps. Ideally, it should be completed within one channel, but sometimes happens that the customer should interact with the second channel, for example. That's how the things are kind of organized inside. side. So we work cross-functionally, people from different channels, but we work as one team to"
+  },
+  {
+   "t": 766,
+   "speaker": "Eslam",
+   "text": "Take care of the whole journey. That's great. So in that context, and now I'm going back to the customer. So Sasha, in your opinion, because I love the fact that how you described it from the customer side and also from organization side, but this leads to a fundamental question around the idea of omnichannel. So right now, omnichannel, it looks like it exists on the organization side, but on the customer side, the customer don't think of an omnichannel. So is that still correct that we're using that terminology right now and we still have an omnichannel strategy?"
+  },
+  {
+   "t": 795,
+   "speaker": "Sasha",
+   "text": "Well, for me, channels are delivery mechanisms. So they matter, of course. The app has to be good. The website has to be good. The contact center has to work, etc. But they're not the customer's mental model. I believe the customer's mental model is kind of, Can I achieve what I came here to do with minimum friction, without starting from zero, every time I move between touch points? That is how I believe the customer thinks. And that is what organizations should design around. Not channels first, but journeys and customer intent and, well, measurable outcome."
+  },
+  {
+   "t": 836,
+   "speaker": "Eslam",
+   "text": "Sasha, this is great, but I want to give our audience more context. What are the key challenges for organizations to do this kind of cross-functional journey outcome-based structure?"
+  },
+  {
+   "t": 847,
+   "speaker": "Sasha",
+   "text": "Well, indeed, sometimes you do have to challenge teams defending their channel. So that is something that I kind of observe quite often. And those conversations are not always easy. People just naturally protect what they own and what they are measured on. Usually, I try to bring the discussion back to the customer outcome. Are we making this easier for the customers or are we just protecting our internal work structure? And yeah, the first, I believe, kind of solution would be to stop organizing only around platforms. Start organizing around customer journeys. Then we align on funding, roadmaps, KPIs, decision rights to those journeys, etc. And that actually helps to solve this challenge. Otherwise, journey-centric, it stays kind of a nice phrase in a presentation. But I believe it should be supported by the org chart and by the way the teams are organized inside of the company."
+  },
+  {
+   "t": 923,
+   "speaker": "Eslam",
+   "text": "Sasha, I would love to kind of challenge this bit more. So let's imagine if the company is already in the old way of what we call the old org structure. It's purely on channel based on completely that idea of channel only, not to do with outcomes. And now they're trying to kind of go through your way, which is transformation towards more of an outcome-based journey. What about systems? Because we know in financial tips, there's a lot of legacy everywhere. And there is silos across that type, especially from data and technology. So what's the best way for them to overcome that challenge?"
+  },
+  {
+   "t": 956,
+   "speaker": "Sasha",
+   "text": "Yeah, absolutely. Great point. And this is kind of a challenge where we are trying to currently overcome in an Openbank. So as we discussed, for me, the customer journey should be owned by a cross-functional structure. I also believe there should be a clear product leadership. And well, product is usually best place to connect customer needs, business outcomes, technology, like constraints, data and execution, but product cannot own it alone. And journey centricity only works when the team has real decision-making power across functions, but also has the tools in place, like kind of simple things like reports, But they become not that simple as soon as you want to kind of combine different channels into a cohesive end-to-end journey. That is a challenge you have to solve. And sometimes this is just kind of a technology challenge. So sometimes you don't have APIs to connect or to get all the data you want to complete the report."
+  },
+  {
+   "t": 1024,
+   "speaker": "Sasha",
+   "text": "But that is the way to go. And initially, you might have, let's say, partial data, but then you work on it and your report becomes better and better until you have the full end-to-end visibility on the whole customer journey. Like end-to-end within your report, which enables the team to use this data for decision making."
+  },
+  {
+   "t": 1050,
+   "speaker": "Eslam",
+   "text": "Love that. Now, this is a time to kind of speak about data. One of the things I would love to know your opinion about is to do with AI and especially GenAI, and one of the things that I think is coming to all of us as practitioners. Can actually AI resolve customer needs, especially if we're talking about a chatbot and moving to a call center and then moving to email, all these channels through one single conversation. While we're single-plant, does that kind of futuristic exist or is it too far away from that?"
+  },
+  {
+   "t": 1077,
+   "speaker": "Sasha",
+   "text": "I do believe it exists, but it's too early. Maybe it sounds controversial, but I would say AI is kind of accelerating the death of channels because it changes the customer interface, right? So if a customer can express a need in natural language and then the system can understand, guide, and eventually execute the task, then the starting point becomes less important. So the customer doesn't care whether the interaction begins in the app or on the website or through a contact center, they hear whether the needs or the need was understood and resolved. For example, at Openbank, we already use AI in the contact center. And we are also developing, I would say, a very smart chatbot inside the app. And for me, this is not just about automation. I believe that the real opportunity is to make the customer journey more continuous, like more contextual and more personal."
+  },
+  {
+   "t": 1142,
+   "speaker": "Sasha",
+   "text": "I can easily imagine the future where we have, for example, a banking app with one button only, like use your voice, that's it."
+  },
+  {
+   "t": 1153,
+   "speaker": "Eslam",
+   "text": "That's also quite fascinating and it's really kind of encouraging to look at the future. It kind of adds another layer of risk, you know, and this is what I would love to get your opinion because whenever we talk about GenAI, we talk about its potential applications. One of the things that we always have to bring to the conversation is risk. How can you, as a leader, manage the risk of GenAI, especially when you're talking about a complete autonomous in the background? With me as a customer, I don't know what's happening in the background because everything that is agentic AI wasn't in the background."
+  },
+  {
+   "t": 1181,
+   "speaker": "Sasha",
+   "text": "Yeah, I mean, it can also make the problem worse, to be honest. So if we simply put AI on top of existing silos, we may automate fragmentation instead of solving it. So the customer may get faster, faster answers, but still face the same kind of broken handovers, you know, missing context, internal boundaries, et cetera. So I think AI makes journey centricity easier, but only if the organization is ready to redesign around journeys. So it can connect dots across touch points, you know, reduce effort, make experiences more proactive. It also forces a kind of very important leadership question. Are we using AI to improve the customer outcome or just to make each silo more efficient? I think in the near future, channels will kind of still exist technically, but they will matter much less to the customer."
+  },
+  {
+   "t": 1247,
+   "speaker": "Sasha",
+   "text": "For the customer, they will become kind of invisible. So, the winning experience will feel like unintelligent, continuous relationships. So, not a set of disconnected places where the customer has to repeat themselves."
+  },
+  {
+   "t": 1264,
+   "speaker": "Eslam",
+   "text": "Sasha, my last question, and it's a question that I usually ask at the end of every episode that I have with all my guests. If there is one advice that you can give to CX practitioners or digital leaders across the world, what would that be?"
+  },
+  {
+   "t": 1277,
+   "speaker": "Sasha",
+   "text": "I would say fall in love with the customer problem. Do not optimize the channel. Optimize the moment of need. Customers don't care where the journey happens. They care whether it works. So my advice is start with the customer job. Remove the friction one by one, piece by piece. It's a journey. And let the channel become invisible for the customer."
+  },
+  {
+   "t": 1304,
+   "speaker": "Eslam",
+   "text": "I love that. Thank you, Yanov. Enough, this has been a great discussion. Thank you so much for sharing all your insights and being just amazing, conversation about it. Thank you for our audience, this has been the wrap-up for a great episode. Sasha's bio and also his LinkedIn link is going to be in the, in the notes. Please be free to connect, reach out, he's a great guy to chat, and I'm sure you're going to be more than happy to take any of your questions. Thank you so much, and we'll see you guys in the next episode. Thank you, Sasha,"
+  },
+  {
+   "t": 1330,
+   "speaker": "Sasha",
+   "text": "And have a great day. Thank you very much, Aslam. Thank you again for inviting me. Okay."
+  }
+ ],
+ "chapters": [
+  {
+   "t": 0,
+   "title": "Welcome and Sasha's role at Openbank"
+  },
+  {
+   "t": 129,
+   "title": "Why customers never think in channels"
+  },
+  {
+   "t": 346,
+   "title": "The org chart as the real obstacle"
+  },
+  {
+   "t": 410,
+   "title": "Cross-functional squads that own journeys"
+  },
+  {
+   "t": 525,
+   "title": "Journey metrics beyond channel metrics"
+  },
+  {
+   "t": 766,
+   "title": "Omnichannel and channels as delivery mechanisms"
+  },
+  {
+   "t": 836,
+   "title": "Overcoming channel turf and legacy systems"
+  },
+  {
+   "t": 1051,
+   "title": "How AI accelerates the death of channels"
+  },
+  {
+   "t": 1265,
+   "title": "Final advice: optimise the moment of need"
+  }
+ ]
+}

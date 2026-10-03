@@ -1,0 +1,299 @@
+{
+ "episode": 8,
+ "title": "Before You Think, the Room Has Already Spoken — The Psychology of Space in Customer Experience",
+ "paragraphs": [
+  {
+   "t": 0,
+   "speaker": "Eslam",
+   "text": "Hi. When was the last time you were in a great conversation and you were like, oh my God, that was the best discussion I've ever had? Maybe it was a great venue or a great place, but the memory that you always have of that conversation is always about the people, the interaction. But what subconsciously you never thought about, what is the impact of the place, where you've been, how the environment impacted you, consciously or subconsciously? And that's what we're going to be talking about today. I'm Dr. Eslam Afifi, and welcome to another episode of the CX Podcast Algorithm, where we speak about how people, connections, data, everything fits together to be able to make a unique experience. Welcome to the show."
+  },
+  {
+   "t": 50,
+   "speaker": "Eslam",
+   "text": "Today's episode is going to be unique because we're going to speak about something that for a very long time, I believe it's been the backseat of CX Design. When you look at service design, usually whenever we do any mapping, We never do any customer journey, empathy map even. We speak about everything. We speak about how the emotions from customers looks like. How do we have what we call the back end and the front end blueprint looks like. But what usually takes a back seat, which is really interesting, is actually the environment. And that's what I would like to speak about today. Who I would like to welcome today is Dr. Jacqueline Baker, a great friend of mine that I thought, who can explain this better than anyone? And Dr. Jacqueline Baker, welcome to the show."
+  },
+  {
+   "t": 90,
+   "speaker": "Jacqueline",
+   "text": "Thank you, Eslam."
+  },
+  {
+   "t": 93,
+   "speaker": "Eslam",
+   "text": "Great to have you. Dr. Jacqueline, I'm going to just, the way to describe Dr. Jacqueline is a very simple way. This is someone who spent 20 years in an amazing career, which I can tell you about in a minute, studying how buildings in different formats, different shapes, from stadiums and venues, we're talking about buildings, corporate or leisure, how does it actually change and impact people's behavior? And it's incredible how her work and her research, her background in both corporate and academia, drives Deadseeds. So, Dr. Jacqueline, we would love to know more about you. If you can tell our audience, walk us through your path, your career, how did you come to develop that passion about your experience? It would be fantastic."
+  },
+  {
+   "t": 136,
+   "speaker": "Jacqueline",
+   "text": "Thanks, Eslam. I started my career actually studying to be an architect. So during my training and early years, I became increasingly interested in how people actually experience the built environment. And so I realized that this kind of deviated from the path I was on, which was really about how to design a building, how to put buildings together and thinking about how they would perform technically. So I started to wonder more and more about what the places and spaces I was designing were doing to people. So for example, were these spaces making them linger? What were they looking at while they were in the spaces? Were they exploring or were they moving quickly through spaces? Were they feeling calm? Were they feeling connected? What were they choosing to do? Were they able to concentrate? And did, you know, importantly, did they come back to these spaces? So while I was studying architecture, I started dreaming about utilizing design to influence experience, not, not just on a hunch, but, and intuition, but through science, through evidence. So eventually after doing my training, and I think I had about three or four years experience in the field of architecture, I found a really great master's degree called environmental psychology. And that's where I learned how places and spaces actually shape how people think, feel and behave. And I also learned a bunch of techniques that measure and manipulate experience to achieve very targeted responses. So I'm really lucky today, my work is back in the architecture field, and it takes me across very different environments such as you mentioned. So for example, airports, law courts, active transport corridors, museums and apartments. And although the settings are all very different, my task is always the same. So it's about how can I help designers to deliberately shape and optimize human response and behavior to those environments, and how can I help the organizations that we work for to achieve their service goals through environmental cues and nudges, and then overall, how can I actually improve well-being"
+  },
+  {
+   "t": 282,
+   "speaker": "Eslam",
+   "text": "And quality of life through design? Wow, this is great, amazing. I would love to kind of, there is one thing that I would love to understand more. When you say, uh, you measure how space change behavior, when say that to people, what actually people imagine, was the picture, and what does"
+  },
+  {
+   "t": 302,
+   "speaker": "Jacqueline",
+   "text": "That actually involve? I think that people often imagine that I'm measuring something really obvious, like whether people move faster through spaces or they spend more time in spaces, but we can actually look more closely at how our brains and our bodies respond to different environmental stimuli. And we can look at things like attention, movement, how long a person stays in a space, what they choose to do, and we can also look at their interaction. So the important shift is from designing based on what we think people will respond to. So the important shift is from moving from a place of intuition. to doing five main things. So first of all, we design based on evidence. So we go to the literature. Then we measure what people have actually responded to. After that, we try to replicate those same conditions in future design iterations. And then what we try and do is innovate by experimenting with new ways of creating those same conditions. And after that, we measure the outcomes of those to keep building on the research."
+  },
+  {
+   "t": 377,
+   "speaker": "Eslam",
+   "text": "I love that. It's amazing methodology, and it just gives you the complete stack all the way from evidence all the way to innovation. Now, in the CX space, there is a lot of talk about environmental, but it's incredible that the term that you use, and I would love to explain, is when you say servicescape, it's actually all decayed based on the research that we know. However, a lot of CX people hardly hear about it. What does it actually mean to you and what should it mean to our audience?"
+  },
+  {
+   "t": 409,
+   "speaker": "Jacqueline",
+   "text": "So, servicescape is actually a well-established concept in service research. It's essentially the physical environment or the setting in which the service is experienced. But the important shift is to recognize that the environment is actually part of the service, not just a backdrop to the service. So a servicescape, if you think of a landscape, for example, or a setting, it includes everything in that setting from light to sound to temperature, materials, signage, and even how you would navigate a space."
+  },
+  {
+   "t": 449,
+   "speaker": "Eslam",
+   "text": "Right. But isn't that kind of, because you're saying the environment is a part of the surface, right? It's not just a sitting for it. Why is the room doing the work, not just holding"
+  },
+  {
+   "t": 463,
+   "speaker": "Jacqueline",
+   "text": "The space then? That's because the environmental features or the design features actually research shows that they impact how we think, feel and behave. So they can make us, the environmental features can make us feel calm or rushed. They can encourage us to explore or they can help us to move through a space quickly, just depending on how they're configured. And they can also influence what we look at, where we sit and whether we interact or linger. So the room is actually participating in the service experience alongside people, technology and other touch points."
+  },
+  {
+   "t": 504,
+   "speaker": "Eslam",
+   "text": "That's amazing. Staying in this line, do you think it's more important for a service design more than a product design to think about the servicescape concept?"
+  },
+  {
+   "t": 517,
+   "speaker": "Jacqueline",
+   "text": "I do, Eslam, because with a service, the experience is actually inseparable from the environment in which it happens. So you don't just consume a service, you experience it in real time and, and that usually happens in a physical setting. So if you think about health care, for example, the environment becomes part of your perception of that"
+  },
+  {
+   "t": 543,
+   "speaker": "Eslam",
+   "text": "Service, right? So let's go with that. So I would love to give more of an example more to be give the audience how does it actually work. So let's say when someone walks into a space, and what is already happening to them before they actually frame an opinion about that? How does it actually work? So, so what happens is our nervous system"
+  },
+  {
+   "t": 563,
+   "speaker": "Jacqueline",
+   "text": "Is already taking in information as soon as we enter a room. So light and sound and temperature and spatial openness, movement, and other people, all of that, um, our nervous system forms an assessment of the environment, environment before we have a conscious thought. So that can then influence their physiological state and attention. So before they even have a conscious thought, their nervous system is already taking in information, say information like light and sound and spatial openness and movement and information about other people in that space. So before they even think, I like this place or I don't like this place, their nervous system is already assessing it. And a really good example of this is if you think about a healthcare environment, and most of us have been into a hospital. So something as fundamental as an unpleasant scent, you know, that really strong smell of a cleaning agent, because everything has to be so sterile in hospitals, and also noisy and visually cluttered waiting areas can really influence how stressful you feel. So before you've consciously thought, oh, I don't like that smell or this waiting area just making me feel stressed, your nervous system has already registered that information and you would already be feeling stressed by the time you had that thought."
+  },
+  {
+   "t": 661,
+   "speaker": "Eslam",
+   "text": "That's a great way of framing it. So in other terms, like servicescape is not actually a mode, it's more of set of controls, which is incredible, amazing that you can have these conditions in terms of light, sound, temperature, scent even, and how does that, this is really important because sometimes most of the CX teams forget to touch base on these elements in their design. I would like to dig deeper to actually understand more around this. So if surface design can be designed on purpose, what are the actual dials? If you can walk us through an example for how do you actually fine tune that servicescape and how does that look like? I think there are a"
+  },
+  {
+   "t": 700,
+   "speaker": "Jacqueline",
+   "text": "Few elements to a servicescape. So, um, you would think about the ambient conditions so for example, I was just saying before, the light, the sound, the temperature, the air quality, textures, and, and even smell, scents, but also spatial and visual conditions. So, and these are often not, not as thought about. So layout and how that impacts movement, visibility, density of spaces, materials, signage, and cues about how you're supposed to behave in a space. So importantly, the ambient conditions and spatial and visual conditions, they're not isolated. They interact together. That's amazing. So out of all this,"
+  },
+  {
+   "t": 752,
+   "speaker": "Eslam",
+   "text": "What would you say that people usually underestimate because you're not trained to see it? What are the things that is always there, has an impact, but people usually underestimate"
+  },
+  {
+   "t": 759,
+   "speaker": "Jacqueline",
+   "text": "Estimated? Which one of these elements? I think the spatial layout and movement. So people seem tend to think of a plan as solving circulation issues, but the way that you're moved through space can actually fundamentally change whether you're in a rush, whether you pause, or whether you explore or interact with people. So people, and even sometimes designers, underestimate how much those seemingly small spatial decisions actually influence our behavior."
+  },
+  {
+   "t": 797,
+   "speaker": "Eslam",
+   "text": "Right, but that means they're also going to impact both sides, customers and also employees. How would that, if you can tell us how does that actually work from both sides, that'd be fantastic."
+  },
+  {
+   "t": 808,
+   "speaker": "Jacqueline",
+   "text": "I think for us as designers, we spend a lot of our time thinking about the staff, not just the customers, is because the staff actually experience the environment for much longer and at a much higher frequency than the customers. So the design can influence staff stress and also their concentration and the way they interact and they move. And then that feeds back, that impacts the customer experience because if the environment is influencing the person that's delivering the service, then that will then impact the customer, impact the person who's receiving it."
+  },
+  {
+   "t": 850,
+   "speaker": "Eslam",
+   "text": "That's great. Do you have an example for our audience to see how there was a one single lever or maybe two that you changed or altered that actually shifted the behavior from a customer perspective or employee perspective?"
+  },
+  {
+   "t": 864,
+   "speaker": "Jacqueline",
+   "text": "We did a recent research piece in airports, and this was called Increasing Airport Revenue you through CX and design. And we actually found that the relationships between higher quality features, so things like natural light, greenery and observation areas, and even quiet zones, increased dwell time and increased spending in food and beverage, retail and duty-free areas. But what's interesting about this study is that these are relatively simple qualities, But they all have implications for how people feel and engage. So they have implications on a person's level of stress, whether they feel bored and their level of comfort, but they also then impact the bottom line for airports."
+  },
+  {
+   "t": 917,
+   "speaker": "Eslam",
+   "text": "Reports. That's an amazing study. I'm going to make sure if that's okay with you, we can maybe leave some notes for our audience to be able to look at it and see more, read more about the study because I'm sure you want to be able to find out more. One of the things you mentioned, Jackie, at the beginning, all those five things that you spoke about was always how do you start with data? How do you start with evidence? And that's something that I'm very keen because one of the biggest challenges that the CX practitioners always face is, are we doing great design based on a hunch or a feeling, or is that actually baked by data? So my first question to you is, how do you actually measure what a space does to a person? What can you see now that used to be just pure"
+  },
+  {
+   "t": 958,
+   "speaker": "Jacqueline",
+   "text": "Intuitions. So some of the measurement tools of the trade, not all of them, include surveys, so sentiment surveys, eye tracking, EEG, and also choice modeling, but there are many others. And we use these tools to measure perceptions and sentiment. We measure intended and actual behavior, what people pay attention to, and how our nervous system responds to stimuli. So what the interesting part is about all of these is that when you bring them together, you can add to the evidence base. So what people tell you, what they actually do, and what their physiological response suggests. And what I can see now is that by deliberately designing in evidence-based strategies related to user behavior, architecture and design can shift from a position of making empty claims about how their designs make people feel, which are based on intuition and experience, to confidently being able to back up their claims with evidence."
+  },
+  {
+   "t": 1030,
+   "speaker": "Jacqueline",
+   "text": "But more than that, I think that the end user benefits from the better design, the more research-led design."
+  },
+  {
+   "t": 1038,
+   "speaker": "Eslam",
+   "text": "That's a great way of landing it. And I know there's so many people who want to know more about these tools, but I would love to kind of more know about what does the research reliability show that surprises people?"
+  },
+  {
+   "t": 1049,
+   "speaker": "Jacqueline",
+   "text": "So I think that people often think that experience is primarily about what you consciously think about a space. But I think our responses are much more immediate and embodied than that. And what surprises people is that architecture, landscapes, interiors and precincts, so all physical settings, are not neutral. So what that means is that the setting either positively or negatively impacts us. So our nervous system takes in things like light and temperature and sound before we've formed that conscious thought, and next we experience a physiological response through our body, and after that, some of our behaviors are formed. So the thing to understand here is that small environmental qualities can influence feelings and behavior without people being necessarily able to articulate why."
+  },
+  {
+   "t": 1110,
+   "speaker": "Eslam",
+   "text": "Right. That's amazing. But it also kind of forms a challenge because now the question I have is, where does data diverge from what a talented designer would have guessed? Because you always have these great ideas you want to put in your design and how does that"
+  },
+  {
+   "t": 1126,
+   "speaker": "Jacqueline",
+   "text": "Data plays a role in that? I think that's a great question. So I don't necessarily see that the data diverges, I see that it provides a lot more strength and more support to what designers already know and what they intuitively think. So even very experienced designers are working with hypotheses about how people will respond. And research allows us to test them rather than entirely relying on their expertise and intuition. But what I mean about the data more strongly supporting the hypotheses, I see more that data, less that data diverges from what a talented designer would guess and more that the data can very strongly support what a talented designer intuitively knows. And the airport research I was talking about a moment ago is a great case in point. So the reason why we did that research initially was because we were going through value management processes. And during these processes, often clients, they'll look at the cost of the cost of a design and they'll think about how could we potentially swap out some of these really expensive materials for cheaper alternatives, and for us it's like, well, no, you can't do that, because if you take away the natural light and the observational areas, that's going to actually impact the way people feel. They'll probably start to feel more stressed, more bored, and not, not as happy, and that will also decrease their time in the airport and decrease their spending. But as architects, we don't always have the data to defend that kind of an argument. So we did this study to actually be able to give our clients this data. So, so what we did is we looked at the impact of really good quality materials and elements, such as natural light and biophilic design, observational areas, and quiet zones, and we looked at the impact of those elements on the amount of time that a person would be willing to spend in an airport and the amount of money that they spend as well. And what we found was, like, far exceeded our expectation."
+  },
+  {
+   "t": 1290,
+   "speaker": "Jacqueline",
+   "text": "And we found a really strong correlation between those quality design elements and the bottom line for airports. So I think this is a case of the data being able to support our hypotheses and being able to help us defend our designs in front of these types of clients like airports."
+  },
+  {
+   "t": 1313,
+   "speaker": "Eslam",
+   "text": "That's amazing. And this is a great example for how value management works well with principle of design. And how does that bottom line and top line are actually both backed by real data that support your hypothesis and show the real values throughout the CX design. Incredible. This is a great way of looking at how the importance of actually looking at what I call it sometimes a blind spot. My question is right now is we understand in CX how it's really important to map everything out. But sometimes CX map almost everywhere. I don't want to say everywhere. I would say most of the places, to be honest. They always keep that physical environment. So, Jackie, I want to know from your own perspective, why that blind spot exists nowadays?"
+  },
+  {
+   "t": 1359,
+   "speaker": "Jacqueline",
+   "text": "So I think CX has become very good at mapping journeys and interactions and things like digital touch points. but the physical environment often sits out of the CX remit. So you end up with a strange situation where everyone's carefully designing the journey but the room that the journey happens in is being designed by someone else or it's simply inherited or even ignored. So I actually see an opportunity here to treat the environment as a measurable, manageable part of CX. So instead of arrive, queue, interact, buy and leave, what does the person see and hear and feel and how do they navigate and interact at each stage? So that makes the physical environment another designable variable in the customer journey rather than something that sits out of the CX remit."
+  },
+  {
+   "t": 1422,
+   "speaker": "Eslam",
+   "text": "That's a great way to lay out to our audiences. But what I would love to know more is what does actually leaving it out might cost us as a stage practitioner and also as businesses?"
+  },
+  {
+   "t": 1433,
+   "speaker": "Jacqueline",
+   "text": "In my view, ignore the servicescape at your peril because when the service design and the servicescape work together, the physical environment can actually reinforce the service design experience and goals. But if you don't consider the servicescape, the service design might actually be undermined by the servicescape. So what I mean is, you know, you might have put a lot of investment in optimizing the service or the technology, but that could be wasted if the physical environment is inadvertently working against you. I'm going to try and think of an example to help you imagine this. So if you imagine you're delivering the service of trauma-informed care, so imagine a setting like supported accommodation or a secure mental health unit. So we have a concept called trauma-informed design, which utilizes the built environment to resist re-traumatization and also to mitigate triggers."
+  },
+  {
+   "t": 1505,
+   "speaker": "Jacqueline",
+   "text": "Now, if you think of the goal of trauma-informed design, it's to provide an optimal servicescape to support the service goals and the activities that occur related to those goals. Now, working together with service design means that the tangible design elements can enhance and reinforce the intangible qualities of service goals. So if you think of what we work with, with trauma-informed design, we try to use a domestic scale and have a domestic look and feel. We try to soften edges. We use muted colors. We provide comfortable sensations. But the cost of not having these could mean that you have something like you might have visual clutter, unpleasant sense, you might have an institutional look and feel of the setting around you. So the actual cost is that these are quite triggering for people that have lived experience"
+  },
+  {
+   "t": 1574,
+   "speaker": "Eslam",
+   "text": "Of trauma. So the cost is huge. Great way, a great example as well. It's impacting for all the patients and how does every small detail can make such an impact on the experience. Earlier in one of your comments, you referred to digital touch points and I'm very keen, how does the servicescape survive the digital revolution that we're having right now with AI and everything grabbing digital and digital became the front and center of almost every experience? Does it actually survive that evolution that we are witnessing right now with AI?"
+  },
+  {
+   "t": 1608,
+   "speaker": "Jacqueline",
+   "text": "So there is a concept called e-servicescape, but it's much less known and it's really not my area. But I think the difference is that the physical servicescape acts through our nervous systems and helps us to experience it through our nervous systems or our bodies, whereas the e-servicescape acts primarily through our attention and our thinking and interaction."
+  },
+  {
+   "t": 1637,
+   "speaker": "Eslam",
+   "text": "Right. But what I would love to know more about, and this is, I'm going to go to, move to an area right now. There, it might be a better sense of area, because it's to do with ethics and the idea comes in that sometimes, when back to marketing classes, you know, master classes, or even sometimes when you read more about service design, especially in the retail space, the idea around ethics comes straight away. And where is that? I would love to know your opinion about where is that fine line between enhancing experience and manipulating it, you know, and who do you think in the room is working for, and how do we actually see that? How do you see that fine line from perspective of the customers, but also more importantly, from expected kind of the perspective"
+  },
+  {
+   "t": 1676,
+   "speaker": "Jacqueline",
+   "text": "Of the employees? So this is a really good question, um, and something I have thought long and hard about as well through my career. So we've established that design influences behavior, but the question is who benefits from that behavior that we're trying to create. And for me, in my work, I see multiple beneficiaries. So, um, for me it's about ensuring that the experience is positive and also achieving organizational goals, rather than designing a negative experience to achieve those goals. So I think what, what we need to make sure we're not doing is exploiting the vulnerabilities of people to make them achieve a certain behavioral goal, for example, like spending money. We have to really work with the positive impact, so making people feel better, improving their well-being, improving their quality of life, and also achieving an organization's goals."
+  },
+  {
+   "t": 1738,
+   "speaker": "Eslam",
+   "text": "Great. And I would love to know an example, if you have an example, on a case where that ethical edge existed, One week you can show us the difference between enhancement versus extraction."
+  },
+  {
+   "t": 1748,
+   "speaker": "Jacqueline",
+   "text": "I think the airport study that we spoke of earlier is a really good case study to talk about. So whilst the study focused on the bottom line, so how can we increase airport revenue for airports through time people would spend in airports and increase spending. We did that not by working on the vulnerabilities of passengers, but we did that by enhancing their sense of well-being. So when people feel less stressed, more comfortable, more relaxed, that does also have an outcome where they would spend more time and more money. So we're not preying on them being vulnerable. We're not trying to make them feel more bored to spend more money. We're trying to help them feel less bored. We're not trying to make them feel more stressed. We're actually relieving that stress. So that would be a good example where you actually have multiple beneficiaries."
+  },
+  {
+   "t": 1811,
+   "speaker": "Jacqueline",
+   "text": "You have the travelers, you have the staff, and you also have the airport."
+  },
+  {
+   "t": 1819,
+   "speaker": "Eslam",
+   "text": "This is incredible. Now what I would love to kind of wrap around this and if there is one thing every CX leader should steal from how the design space, the architect design space looks like, what that would"
+  },
+  {
+   "t": 1832,
+   "speaker": "Jacqueline",
+   "text": "Be? I think for CX, I would definitely think of the design of the environment to actually support the experience you're designing. And so either if you find that it's not supporting the experience, then think about how you might change it. And I think for architecture, I think the discipline of always measuring experience after we've built something is really something that we can borrow so that we can iterate and do things better next time."
+  },
+  {
+   "t": 1867,
+   "speaker": "Eslam",
+   "text": "Right. And another one that I always ask my guests to speak about is if you're in a conversation with the CFO and you need to convince the CFO for more funding thing to be able to do something else with your CX design. And in our case, it's going to be more like let's redesign our environment, our space, or the service design going to take place. What would be the single number that you're going to start the competition with?"
+  },
+  {
+   "t": 1892,
+   "speaker": "Jacqueline",
+   "text": "So I would probably not have a number, but what I would do is I would always start by putting the organization's own goals on the table first, right? And so whether that's to increase dwell time, to increase staff productivity, to help patient recovery or decrease nursing staff burnout, what we then would like to show is how quality design features can actually relate to that metric."
+  },
+  {
+   "t": 1923,
+   "speaker": "Eslam",
+   "text": "It's a great, great segue of how do we actually should get the buy-in for all the CX projects. Love that. My final question, Dr. Jacqueline, I'm so excited about this. Any final thoughts or anything you want to share with us?"
+  },
+  {
+   "t": 1939,
+   "speaker": "Jacqueline",
+   "text": "I think we need to include the room as part of the service of CX because it isn't just where the experience happens, but it helps to create the experience that you're designing."
+  },
+  {
+   "t": 1957,
+   "speaker": "Eslam",
+   "text": "Dr. Jacqueline, I can't thank you enough. This has been a great conversation, and I'm sure our audiences will reach out. But we're going to leave Dr. Jacqueline Baker details and link and bio in the description and the notes of the show. Please, she's an amazing person. She's more than happy to connect and to know more about your work and even to answer a few questions. So please feel free to reach out. Dr. Jacqueline, we cannot thank you enough. It's been a great conversation and we hope to talk to you soon. Thank you."
+  },
+  {
+   "t": 1983,
+   "speaker": "Jacqueline",
+   "text": "Thank you, Eslam."
+  }
+ ],
+ "chapters": [
+  {
+   "t": 0,
+   "title": "Welcome and the overlooked physical environment"
+  },
+  {
+   "t": 125,
+   "title": "From architecture to evidence-based design"
+  },
+  {
+   "t": 387,
+   "title": "Servicescape and the nervous system's response"
+  },
+  {
+   "t": 662,
+   "title": "The dials of ambient and spatial design"
+  },
+  {
+   "t": 851,
+   "title": "The airport study and measurement tools"
+  },
+  {
+   "t": 1111,
+   "title": "When data backs a designer's intuition"
+  },
+  {
+   "t": 1330,
+   "title": "The CX blind spot and its cost"
+  },
+  {
+   "t": 1638,
+   "title": "Enhancement versus manipulation in designed space"
+  },
+  {
+   "t": 1821,
+   "title": "Lessons for CX leaders and the CFO"
+  }
+ ]
+}

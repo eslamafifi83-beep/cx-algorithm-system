@@ -1,0 +1,389 @@
+{
+ "episode": 7,
+ "title": "You Don't Remember Your Last Payment — The Art of Invisible CX",
+ "paragraphs": [
+  {
+   "t": 0,
+   "speaker": "Eslam",
+   "text": "Hi, what I would like you to do this today is to recall the last time you've been to a cafe, you've been to a supermarket, and just to try to remember what did you buy? How was the experience looks like inside the store? I can't bet if that was in the last couple of days, you might remember how did that look like. But if I asked you about your payment process and how the experience looked like, in terms of how did the device look like? What colors? What screens? How did you feel after? The recall might be almost close to zero. And that's what we're going to be talking about today. How to design an invisible experience. Welcome to to another episode of the CX podcast. I'm Dr Eslam Afifi, and let's get cracking. Today I'm really, uh, I have a pleasure today. This is an episode that I want to do for a very long time, and, and I have to say, Alexei is one of a great friend of mine, but he's also one of the people that I reach out to whenever I need to understand anything about payments. And I think, thankfully, finally, after long, long weeks of back and forth, we finally looked at the time and I cannot speak enough for Alexei. I'm going to give him a minute right now to do it himself, but I'm talking about someone who brings an amazing experience."
+  },
+  {
+   "t": 67,
+   "speaker": "Eslam",
+   "text": "And not only in Asia Pacific, he worked more than 22 years in the CX space, in the design space, in the payment space as well across US, across Europe and across Asia Pacific. And he now leads the Asia Pacific CX design for Mastercard. So Alexei, welcome to the show."
+  },
+  {
+   "t": 82,
+   "speaker": "Alexei",
+   "text": "Thank you, Eslam. Thank you for having me here. Pleasure to be here."
+  },
+  {
+   "t": 85,
+   "speaker": "Eslam",
+   "text": "I always start to like to start with that question. And if you ask you in the street, do people see an elevator? I say, Alex, what do you actually do? What do you design for? How do you describe that?"
+  },
+  {
+   "t": 93,
+   "speaker": "Alexei",
+   "text": "Yeah, it's a very good question because working at Mastercard, people are like, oh, okay. So you just try to design waste for people to spend more money. I was like, no, that's not entirely true. Well, no, it's not true at all. But yeah, it's, I basically tell people I design for payments for customer experiences and their eyes glaze over. And it's right."
+  },
+  {
+   "t": 113,
+   "speaker": "Eslam",
+   "text": "I love that. I couldn't ask for more. I love the definition of how simplistic it is. Now, I need to start with this idea of invisibility because your playbook might be different from a lot of people. For a very long time, when you start in this space, the first thing they tell you when you're a CX designer, delight, memory, experience, attention, all of the things as elements of the customer experience has to be there. Yours is a very different one. So I would love if you could talk to the audience about how do you actually design such a seamless, but also how in kind of invisible experience, how does that look like to you as a designer?"
+  },
+  {
+   "t": 142,
+   "speaker": "Alexei",
+   "text": "Yeah, it's a very good question. Eslam. In our design, as you say, friction and designing for frictionless experience is so important. But when payments are expected to be 100% secure, 100% successful, what is there left to design? It's something that is always on our minds. And it really is a bit of a balancing act. We want to understand where users have any problems. We talk to users. We need to understand what companies are looking for, and we need to ensure that our core product, which is payments, works 100 as I said, and it's seamless. So designing for payments often is about what else is, goes above it, you know, not just the experience of tapping or, you know, using your card, but it's really how do we make the customers remember the good parts, the memorable things, you know, and that, it varies."
+  },
+  {
+   "t": 200,
+   "speaker": "Alexei",
+   "text": "It varies depending who our customers are and who do we talk to."
+  },
+  {
+   "t": 203,
+   "speaker": "Eslam",
+   "text": "No, I love that. I love that. And that's a great segue. But that complexity of ecosystem that you build in, what is your starting point? Where do you start? How kind of the customer needs the ecosystem of the terminal? Or how does that work? How does that look like if you can give us a high level of that in your own environment?"
+  },
+  {
+   "t": 216,
+   "speaker": "Alexei",
+   "text": "Yeah, I think we, first of all, when we're looking at cardholders is understanding, well, what does that experience look like? Where are they transacting? How are they transacting? Is it at home? Is it in the shop? Is it, you know, while they're on a train? A lot of this comes into then focus to understand, well, what are the vehicles that we're using to make the experience better and make sure it's 100% accurate? So what happens is we talk to people. We go in and we actually then sit down and understand, well, what is it? And we're doing both with in-person interviews and also with market research to understand where people are coming from. But for us, it's still all about the user. You know, how do we make sure that your experience is top-notch, that we're delivering the best-in-class experience in payments?"
+  },
+  {
+   "t": 263,
+   "speaker": "Alexei",
+   "text": "And that is everyone's expectation is, I just want it to work."
+  },
+  {
+   "t": 267,
+   "speaker": "Eslam",
+   "text": "That's great. So that idea of seamless friction experience is great. But I can imagine there's a lot of nuances here and there, especially with that region, big region like Asia Pacific with different cultures, different groups. And I don't envy you because how can you, there's always a saying there, how can you bake all these cultures into one process? Or do you actually have to customize for each collide, for each region, a different process with a different journey?"
+  },
+  {
+   "t": 287,
+   "speaker": "Alexei",
+   "text": "Yeah, look, it's an interesting one because with Mastercard, we are a global company, but we are also an American company. You know, here I am in Australia. I am in a regional role in a market that's the local market is Australasia. But global products are dictated from New York. You know, New York, US, Europe are the main markets where a lot of these products usually come from. not always, but usually. So it's an interesting challenge for us in region to make sure that we actually, we don't just take products from global and say, here it is, region, here it is, you know, whether you are in China, in Malaysia, in Singapore, in Australia, we do a lot of customization. We do a lot of thinking because as you mentioned, every market has different nuances. Every market has its own expectations, its own technologies, tech varies so much market to market, you know, and every time we go out and talk to people in Southeast Asia, I often am surprised by like, wow, we don't have this in Australia, right?"
+  },
+  {
+   "t": 351,
+   "speaker": "Alexei",
+   "text": "So I'm learning along being based here as we're talking to users and what their expectations of how they transact and what tools they use, what applications, what, you know, what tech is out there, you know, paying via QR code versus tapping. There's things that are very different and bespoke, which means we have to look at it in a similar way from a lens of what are those customers, what are they accustomed to, what is that regulatory market, what is the actual customer market, what does the tech market look like, and then adjust."
+  },
+  {
+   "t": 382,
+   "speaker": "Eslam",
+   "text": "Right. I love that. I love that. But it's, again, I don't envy you. It's a very complicated ecosystem that it's incredible. But that leads me to my next point that I, there's a stereotype in the industry, in the CX industry, that sometimes people don't know what they want. So when the customers come to you and they say to you, hey, we would like to have a friction experience. Does it actually mean friction across the way? Even if it's a small amount of payment, which is like a band, what's the role of friction? That's my question in your design. Is that always remove friction or sometimes do you need friction? Yeah, it's a great question. And"
+  },
+  {
+   "t": 415,
+   "speaker": "Alexei",
+   "text": "There's always that balance of, you know, friction versus, you know, best in class and security, you know, being part of it. So do you remove friction and then how is it secure? We often think about it and we vary it depending who we talk to or what the scenario is. It varies by customer, but usually what it means that it is that in that completely frictionless scenario for us might mean less security. And if one thing you should know about Mastercard is that we're paranoid about security. Is the most important thing. And that is often when we as designers might say, hey, this is what we want to design. I would then, you know, get confronted by product and technology teams and be like, no, no, no, no. You cannot do that because X, Y, Z, you know, there's a reason why this might elevate a certain risk."
+  },
+  {
+   "t": 467,
+   "speaker": "Alexei",
+   "text": "Okay. So it's definitely a push pull, but completely frictionless is, I wouldn't say it's the holy grail because again, customers do expect that security. They need that peace of mind. They do understand that if it's completely frictionless, it could potentially open them up to certain risks."
+  },
+  {
+   "t": 484,
+   "speaker": "Eslam",
+   "text": "I agree more. If you're asking me if I'm transferring a lump sum or buying something online lump sum and all of a sudden I have no confirmation screen, I'll be really worried to click that. Or I wouldn't have it happen again. And I have to say, trust is, you're absolutely right, spot on on that because that element of trust, if there's no kind of that kind of screen, that friction moment that tells me, are you sure you want to do this, I wouldn't be able to do that. I wouldn't be recommending anyone to go through the experience myself, because you wouldn't, you don't want to feel that, like, wait for a few seconds. Oh, my God, what have I done? Have I spent the, I sent the money in the wrong place? Which is fantastic. But so the question for you is, because this creates another challenge, and I, I love how your job is getting from a challenge to a bigger challenge. So I can feel that you're basically, in a big bottle of puzzles and you're trying to fix all these things."
+  },
+  {
+   "t": 528,
+   "speaker": "Eslam",
+   "text": "Usually in a nature of CX environment, both survey, both interaction surveys are the tool for us to encounter. But in your case, you don't have sometimes because you're working in a B2B environment with access to customers through third party, you're not going to get sometimes direct to that interaction. So what would you do? How do you get those kind of feedback about the experience? Are you relying more of CX data or more of a behavior data? I'm keen to know about that."
+  },
+  {
+   "t": 551,
+   "speaker": "Alexei",
+   "text": "Yeah, so my team is really focusing on designing and using behavioral research as our main backbone to know about the customers. We have a lot of, you know, data and attitudes and research based on basically what people are telling us. That's all well and good. But like from our perspective, we want to trust what users do, not what they say. And that requires us to observe what they do, because they might tell us one thing and we've come to find out in reality, they act different. Not because they lie to us, just because they have certain assumptions and certain mindsets, but often the reality differs and we want to make sure we observe that reality and design for that reality."
+  },
+  {
+   "t": 594,
+   "speaker": "Eslam",
+   "text": "That's a beautiful analogy because I couldn't agree more how many projects that we even design I've seen, especially across financial services, when people say, I want to have seamless experience, I want to have X, Y, and Z. But when it gets to the behavior, no, no, no, they still have the behavior completely contradicts what they're trying to do. That leads to another thing that I'm really keen to know. So for you, when you just look at this behavioral data, what does engagement look like to you? Because in all of our CX channels, let's push engagement. I want to have more time. I want to have more spend here. So for you, is it actually the opposite? Do you want to see less taps, less clicks, less hassle?"
+  },
+  {
+   "t": 626,
+   "speaker": "Alexei",
+   "text": "It's a very good point. I think the easiest one is like, well, how can it be any easier than you paying by Apple Pay, right? It's one tap, right? So what are we completing here with and how do we make sure that whatever we do is still seamless, offers the security, but also the benefits to the customer? So, yes, to a certain point is you're looking for the seamless experience, but there is definitely we're looking for any confusion, any moments where there's pause, any moments where the user might be missing something or misinterpreting something. And it might be something simple, like you just buying something online, but are they actually things that we can make better for them, right? To improve that overall process. But again, there's a product, like for instance, a product called Click to Pay. And that's something that, you know, Visa, Mastercard, we all work on together. And it's basically to help customers seamlessly check out without having to store their card data."
+  },
+  {
+   "t": 689,
+   "speaker": "Alexei",
+   "text": "That has certain barriers, and we're trying to make sure that those barriers are, you know, not so onerous, but still, you know, there's security involved. So it's, it's always going to be a"
+  },
+  {
+   "t": 700,
+   "speaker": "Eslam",
+   "text": "For us. That's a great way. Can I ask you a very stereotype question, and I'm sure you might be getting that question like million times a year? I'm not sure who actually your real customers are Mastercard, because people, like, sometimes don't actually, everyone knows about Mastercard. Yes. But you, from the inside, who are actually your customers?"
+  },
+  {
+   "t": 720,
+   "speaker": "Alexei",
+   "text": "Yeah, it's an interesting, it's a very good question. And when you look at it, really, our customers, Mastercard customers, are banks and merchants. We are not a B2C company. We are a B2B2C company, which means that our customers are the banks. But one question I always get is like, oh, so you guys make the credit cards. We're like, no, we do not make the credit cards. Banks issue credit cards. So in our world, you know, banks are issuers. So they are the ones that are our customers who then use our products, our services, our core payment network. But with that, the challenge is obviously, well, a lot of the stuff, sometimes we design obviously products for the business, for the small businesses or for the big enterprises. But often it's for the cardholders, which is the bank's customers, not ours."
+  },
+  {
+   "t": 768,
+   "speaker": "Eslam",
+   "text": "Fantastic. But I have to ask a lot of questions. But from what I'm hearing right now, I think there is more beyond payments. Is that correct me if I'm wrong? So what other kind of services or other experiences do you actually design at Mastercard?"
+  },
+  {
+   "t": 780,
+   "speaker": "Alexei",
+   "text": "Yeah, yeah, no, for sure. The thing with payments, obviously, what we're trying to grow and make sure it's absolutely 100% spot on is the core payment infrastructure, right? We have that in place. We have that working. You know, again, as I mentioned, Mastercard, we want to make sure there's no breaches. There's no, you know, it takes one breach to, you know, completely sink a brand. So obviously we have to be doing everything we can to make sure that doesn't happen. So payments being one thing, the thing that Mastercard is growing a lot more now year over year, and you'll hear it in, you know, the quarterly reports, is the services layer. And the services layer is everything that we can do for our customers and for our customers' customers. So for both the banks and merchants and also for the cardholders."
+  },
+  {
+   "t": 827,
+   "speaker": "Alexei",
+   "text": "And services really is where we see a lot of interesting and fun things that we could do on the design part, because this is where most of my time is actually dedicated, not to the just, hey, payment, tap, done. It's what happens, why would the customer select our product, our bank's, you know, customer's product versus another one? What is it that we can provide in that services layer? And, you know, some people might think it's boring, but really, I think it's quite exciting from our point of view because it's where we can provide things like what are the benefits for the Priceless experiences? We do have the whole thing Priceless, obviously tied with Mastercard. And that could be loyalty points, that could be cashback from your favorite stores, that could be a dining or entertainment experience that is baked into it, a lounge pass, etc."
+  },
+  {
+   "t": 875,
+   "speaker": "Alexei",
+   "text": "Et cetera. There's lots and lots of different services that are something that we consider every day when we're talking about, hey, yes, there's a payment product, but what is it that the customers want? Because they all know payment should work. They're not expecting that. That's table stakes. They're not expecting that to fail. So when they choose a product, what else is being offered for them? What is the value that we're delivering? And that's where I think most of my"
+  },
+  {
+   "t": 898,
+   "speaker": "Eslam",
+   "text": "Time is. I love this. And I don't think it's boring at all. I think it's extremely exciting adding, because what you're doing is you're moving from a static to a more of a flywheel effect, where you have the core value of your process and how amazing Mastercard provides this value for all your B2B customers, and then how that translates into more value through other add value, or what you call loyalty benefit, security solutions, that you provide also for our customers that we feel at the end. Do you mind actually, if I know, if this okay or not okay with you, if we could share an example for one of the services? You don't have to mention the name of the company, of course. I understand that. But if you can just walk our audience of a client that you worked with and actually how did you actually help them through that journey and what was the impact look like?"
+  },
+  {
+   "t": 937,
+   "speaker": "Eslam",
+   "text": "That'd be fascinating to hear."
+  },
+  {
+   "t": 939,
+   "speaker": "Alexei",
+   "text": "Yeah, for sure. So for, I'm trying to think what's a good one. Fascinating one that was completely different was I got to work on a product that was completely designed by myself and my team from a global perspective, which was Carbon Calculator. And that was something that you think about, well, how does that relate to payments?"
+  },
+  {
+   "t": 958,
+   "speaker": "Eslam",
+   "text": "Exactly. I wasn't going to ask you that."
+  },
+  {
+   "t": 959,
+   "speaker": "Alexei",
+   "text": "Has nothing to do with payments. And that was what was an exciting and fond proposition is that we had to forget everything we knew about payments. Well, not everything, but really say, hey, we have this ability to calculate carbon footprint for any transaction. So what this was, we were, and usually what happens is we're trying to figure out, well, is this a product? Is this something people are interested in? So we go through the whole product lifecycle. We go from framing a problem to creating a concept to prototyping. And one of those things was that, hey, well, who is this for? And what we found out is there was actually quite a lot of customers and people who are concerned about the environment. You might be one of them. You might believe in global warming, which a lot of people do, obviously."
+  },
+  {
+   "t": 1002,
+   "speaker": "Alexei",
+   "text": "And you might be concerned like, hey, well, what do I do about my carbon footprint? What is my carbon footprint? And the idea was that we have a product that can tell you what it is. And it's not to shame you. It's not to try and sell you something. It's only informational. It's just for you to know, if you wanted to know, and we had to do a lot of research, and the customers we talked to understand that, hey, a bank might say, we actually have a very sustainability-focused business model. Banks do that. So if you, as a bank, as a company, believe in sustainability, believe in doing better for the environment, and your cardholders fall into the same category, we found that this product is something that we designed for those specific cardholders, for those people who may not be necessarily, you know, very, you know, oh, I want to do everything I can for the environment, but they're concerned and they want to know what their impact is."
+  },
+  {
+   "t": 1053,
+   "speaker": "Alexei",
+   "text": "And we have a product that can tell them that without necessarily telling them to be like, oh, you should be concerned. But we tell them what it is. And if you want to do more about it, we can tell you specific actions you can take."
+  },
+  {
+   "t": 1064,
+   "speaker": "Eslam",
+   "text": "Wow. I'm impressed. That's all I can say. Honestly. It's something different. It's something different. Completely different. I don't think myself or any of our audience would have even guessed in a million years kind of how amazing a kind of level of innovation to find a need, that niche that you actually can calculate something with that amount of detail on that kind of a level. It's incredible. I'm sure that we can spend another separate podcast."
+  },
+  {
+   "t": 1087,
+   "speaker": "Alexei",
+   "text": "I can tell you a lot more about it, but I don't want to go into too much detail here. This is too long."
+  },
+  {
+   "t": 1091,
+   "speaker": "Eslam",
+   "text": "I agree, but I'm sure that'll be the first thing I'm going to be doing after this episode is trying to look it up and trying to find more and more about it. One of the things that I think we have to address, and I think the big elephant in the room, not only payments, but in the entire ecosystem, AI space. How's AI changing the industry? It's changing everybody's industry, changing all the sectors right now, and it's coming thick and fast. And I just wanted to know first and foremost, your intake on the whole debate. Is it actually a threat? Is that something going to replace or is that a tool that we can leverage? Keen to know your thoughts."
+  },
+  {
+   "t": 1124,
+   "speaker": "Alexei",
+   "text": "Yeah, no, it's a fantastic question. And I'm sure as lots of people are currently looking into it, we also have been very interested in understanding, well, what role do we play as designers? What role do we play as a company in making sure we deliver products that are augmented by AI and making sure that if the products have AI, people know they do? And what does consent mean? What does trust mean? what levels of control the customers, the cardholders may have to make sure that they're comfortable with any AI interruptions. So I feel like most people and myself included, we're still in the experimentation phase. We've done a lot of thinking, a lot of testing, a lot of concepts that we can see can do a lot of... It's a two-sided coin, I feel like. On one on end, we are doing things that improve our processes. When we're talking about AI, we're talking about us as designers, what can AI do for us? So we do a lot of work now, obviously using Claude, using Figma Make, using tools that are available to us to make our processes hopefully more streamlined, quicker to deliver, and easier to bring to the market because it's easier for developers to use production-ready code that we can produce with the help of AI. That's one side of the coin. The other side of the coin is, where does AI fit into the customer's life, and are they comfortable with it, right? And again, it comes back to us looking and talking to people and realizing people's comfort levels vary, and they are different, you know, it may not be just demographically, but just very different culturally as well, that some people are quite open to it, others are saying, I'll never use that in anything I do for my payments, let's say, right? So the biggest, I think, debate we have now is, we have the tools, we're continuing to develop tools, because we still see there is a lot of potential, and we're already seeing a lot of, you know, times when we actually see the rubber hit the road, people actually using AI products. It's no longer theoretical, it's only just experimentation. We do have a lot of experimentation, but we're also seeing actual products, and we're designing actual products that have agentic capabilities to then help both consumers and businesses make better decisions or make payments better."
+  },
+  {
+   "t": 1265,
+   "speaker": "Eslam",
+   "text": "That's fantastic. I have a follow-up question on that because you mentioned it. I couldn't agree more around the variance that we have in terms of how some people feel. I want to give consent to the machine or the agent to do whatever she wants to do versus, no, no, I want to always be in control. I couldn't agree more. Demographics, culture backgrounds, a lot of other factors that play in here. But I'm really keen to hear from your clients because you have a mass of clients. I'm sure the number is not only a high number, but also across different regions. Why are you hearing back from the clients? Is there a pushback? Is there resistance? Or is actually there is more of like, oh, let's do this. It's more kind of encouragement to adopt this new technology."
+  },
+  {
+   "t": 1299,
+   "speaker": "Alexei",
+   "text": "Yeah, I think there's maybe not so much resistance and so much fatigue, you know, with AI slop. People say, well, what does this actually do for me? And is your product actually going to do something thing that I care about or my customers care about. For us, a lot of it comes back to that we in Mastercard have, you know, used AI for decades, you know, LLMs were things we've used for many years. In fact, our fraud systems, our fraud security controls and products have been using AI, what would be called now, for many years, so it's not like we knew it to the whole idea. It's more that the tools have evolved. The speed to market has evolved. the breadth of options have widened to say, well, we have a lot more opportunities and there's a lot more access to AI systems that customers have on their phones, in their lives, that adds that extra layer of complexity and just more opportunities for us to explore. So I think when we're talking, if you're talking to end users, I think there's very strong feelings for and against. When you're talking to companies, I think I still see there's a lot of, you know, optimism and expectations that obviously with everything we do now, with the tools we deliver, is to make people's lives easier."
+  },
+  {
+   "t": 1374,
+   "speaker": "Alexei",
+   "text": "You know, things like if we have agents that help small businesses give them correct and very simple explanations what's happening with their data, you know, because a small business may not afford a CFO, you know, that is a win, right? And we want to make sure that any product that we have helps a particular use case. You know, it shows like, hey, it's not just there because it's everyone talking about AI, but it delivers something that this person or this business couldn't do before through the suite of our AI products. Love that. Now I'm going to go to"
+  },
+  {
+   "t": 1407,
+   "speaker": "Eslam",
+   "text": "Benefit of a tangent area. I hope you don't mind me going there. But when we speak about, I love the way you explained a little about friction and I love the way you explained the intake of AI. But the feeling that I have, and correct me if I'm wrong, is we're going to be, if we go with the customers who actually would like to opt-in, but with a level of security for AI, we're going to start reducing those barriers that we spent 10, 20 years removing. Because basically what you amazingly in your job and in your company through Mastercard did is a very seamless, frictionless experience from the backend. So with all this gate rail consent, with all this kind of regard that we want to have, are we going to now have to go back and reverse engineer everything that we have done?"
+  },
+  {
+   "t": 1445,
+   "speaker": "Alexei",
+   "text": "No, I don't think so. I don't, I don't think it's, it's a matter of that, but it is a matter of, especially now with agentic commerce, what we're talking about, you know, this is whole new field is the biggest one is trust. So it can be seamless, but if it's not trustworthy, you know, it's not going to work. So a lot of what we're thinking about now is understanding what level of trust do people need and how do we communicate that trust so they can be confident, that the customers can be confident using these payment instructions and then not being surprised or not saying, well, wait, did I do that? Did I make that transaction? Did my agent do something I didn't tell it to do? That is a huge just conundrum for us to make sure that when we are unpacking this relationship between you as a customer, AI agent acting on your behalf, and we're devising a flow, a process that says, hey, you can do this stuff and offload it to your agent and they can transact on your behalf."
+  },
+  {
+   "t": 1502,
+   "speaker": "Alexei",
+   "text": "What happens when things go wrong, right? That's the first thing we've got to think of, right? You know, because in the end, it's like, how do you, is AI responsible for it? Who's going to be blamed for it, right? Or did you as a customer say that, yes, I'm okay with this. And we want to make sure that there's zero guesswork of saying like, hey, if you want to use this agent, are you comfortable with allowing certain access to X, Y, Z? You know, your payment data, your historical data, your transaction data, maybe your health data. Like imagine if you want an agent to recommend, hey, I've seen that you've been running for the last three months. You're up due for a new pair of sneakers. Speakers, it can only do that if you're comfortable giving that data to the agent, and having the peace"
+  },
+  {
+   "t": 1546,
+   "speaker": "Eslam",
+   "text": "Of mind that nothing wrong is going to go with it. I love that analogy, but what I love about what you just said right now, because when you're speaking, two things struck to me straight away, is the idea that how you want to make sure that the user has full control, despite the fact that you were designing a very invisible, like, for us, would, you know, what happened in the back end, but what you're saying, most importantly, is that kind of use that friction, use those moments, even in the moments it's what we call failure experience that you still want to gain the trust of the customers, even to tell them, hey, this is what went wrong, or this is what happened because X, Y and Z, that level of transparency is, I couldn't agree more, this is the main driver for trust, for even digital adoption in general."
+  },
+  {
+   "t": 1583,
+   "speaker": "Eslam",
+   "text": "I would only go for the new tool if I know exactly how it's used, what it's used for, and I have full control of these options. Couldn't agree more on that. Yeah. I have to go more with one more question on the AI. I promise I can stop, but it's a hot topic. It's a hot topic. When you're talking about... Do you see deployments if agents and payment agents going across similarly across all the industries or you think it's going to be a converse will be the first one? And how long till we tell financial services to follow on? Because sometimes there is a legacy around and the challenges of adoption from financial services in not only Australia, but in Asia Pacific."
+  },
+  {
+   "t": 1614,
+   "speaker": "Alexei",
+   "text": "Yeah, there's a regulatory landscape is probably the biggest friction point at the moment because tech can do a lot of things, but we've got to be very careful. And obviously, just because it can be done doesn't mean it should be. You know, that's always been, everyone kind of looks at, well, why did you do that? Why did you develop that? You know, did you not think about the repercussions of that particular feature or product, right? Like everyone's very aware of it these days. And that's why it takes a village when we go to, hey, you go to a country where you might have on-sale data requirements. So they're very stringent consumer data requirements. You know, all of those things play into, well, how do we design a product that works for this market? You know, so it's, I, it's really, I think it's always going to be a work in progress, because it takes more than one company or one team, it takes us all to be like, well, what are we designing, why are we designing, and how do we make sure that this fits that market, and, you know, obviously abides by the rules and regulation, but it's also something that's useful for that particular market, because if you, you know, chop it down to something that's, you know, only half baked, well, why are you even been doing that, right? So I think agentic, we've done a lot of the thinking, experimentation, you know, agent to agent, I think, is what you're mentioning as well, like, you know, how does the engine interact? The tech is there, the technology is there, the capabilities are there, but we also have, we're dealing with customers, and at multiple levels, you know, big companies, small companies, who's gonna do what, and who's gonna come with their own agents and their own framework ready to go versus others that are saying, well, I don't have that. And what are you going to do for me?"
+  },
+  {
+   "t": 1715,
+   "speaker": "Alexei",
+   "text": "And how can you help me? It's again, the scale, even when we're talking about the businesses is so vast and what we provide differs, you know, depending on who the customer is. But yeah, agent to agent is something we've done a lot of testing just to see, well, how can that look? And what would that, I think a lot of it is just educating the consumers to say, well, what does that mean when we're talking about agentic commerce? So a lot of it is trying to figure out and develop experiences that they understand."
+  },
+  {
+   "t": 1743,
+   "speaker": "Eslam",
+   "text": "That is fantastic. I couldn't agree more. And I'm really keen to know what's going to happen in that space. So I'm sure I have a feeling."
+  },
+  {
+   "t": 1749,
+   "speaker": "Alexei",
+   "text": "Me too."
+  },
+  {
+   "t": 1750,
+   "speaker": "Eslam",
+   "text": "We're going to be speaking very soon about what's happening in your world. I like to kind of go back to the CX space. And you are someone who has an amazing experience in dealing with complexity. And something that we'd like to do in the show toward the end of the episode is always give some key tips around how to deal with complexity. And I couldn't find anyone that has more complex environment than you, Alexei. And I would love to know what kind of, how would you advise sales leaders to go about designing such a complex journey or process?"
+  },
+  {
+   "t": 1780,
+   "speaker": "Alexei",
+   "text": "Yeah, it's a good question, Eslam. I feel like now, again, as I mentioned, it's the age of experimentation. So a lot of the frameworks and things that have always been true are being questioned. A lot of our tools are now evolving. A lot of the interfaces are now evolving. thing. I feel like, you know, it's like the grounds keep shifting, right? Every week something new comes on. So I feel like we are experimenting a lot with technology, but my question is, have we done enough experiments with the actual users? So when we're talking about complex flows, when we're talking about what is still real and matters, like to me, it's a boring thing, but I think it's a thing to kind of come back to is like, we need to talk to actual users. Who are they and will they be using it?"
+  },
+  {
+   "t": 1824,
+   "speaker": "Alexei",
+   "text": "Because to give one example with agentic commerce and AI, you know, we would be designing, we could be designing a AI chat for travel for your bank that will just pop in and say, hey, Eslam, you're going to America. You know, would you like us to do, you know, get your full itinerary? You might query like, yeah, give me an itinerary. I want to do this. Is what I like. This is what I don't like. You already know a lot about me. Go do it. But what we find out is that also a lot of people don't want that. A lot of people enjoy the act of going and searching for flights, of searching for hotels, of searching and finding interesting place they get enjoyment out of it. So unless you talk to users, how do you know, right? How do you know that they will be even interested in this particular feature, you know, just because you have it, you know, now you're trying to find a customer for it. I don't think it's the right"
+  },
+  {
+   "t": 1875,
+   "speaker": "Eslam",
+   "text": "Approach. I love it. I always say that follow-up was a user problem rather than the technology itself or the feature itself. I think that's the great one. I'm keen to also know if you have any kind of advice or any thoughts or any tips for CX leaders outside. What would you take? What would you say that something very beneficial in the CX space designing for payments that you should think the other CX users in other industries or other functions should think about? In payments"
+  },
+  {
+   "t": 1900,
+   "speaker": "Alexei",
+   "text": "Specifically, I think users are very sophisticated. So my advice, again, is to make sure that we're designing for very sophisticated users, no matter where they are. You know, it could be, again, Indonesia, it could be Singapore, it could be Australia. That sophistication is hard to design for when you try and pigeonhole a customer and you can't do that. You know, it's very hard. So we, like my advice, again, is to figure out, well, who do you need to talk to and who are you designing for, because I'm not the user, because I'm designing it, I may be, you know, a user of some system, but in the end, I still don't see a better way than trying to figure out, well, who are these people and what are they used to and what are we trying to accomplish for them? Love that. I love to"
+  },
+  {
+   "t": 1945,
+   "speaker": "Eslam",
+   "text": "End with one last thing, and it might be a bit weird question, but I'm really keen to know outside of payments, because payments, I, with your experiences, guys, it's really hard to talk about what was the experience that you went through and you're like, oh, my God, this is a such a great experience. It can be visible or invisible. Just keen to know if there's something..."
+  },
+  {
+   "t": 1959,
+   "speaker": "Alexei",
+   "text": "Outside payments."
+  },
+  {
+   "t": 1960,
+   "speaker": "Eslam",
+   "text": "Outside payments. Or even in payments, happy to, but I'm just keen to know something that struck you and you were like, this is such a great experience and why."
+  },
+  {
+   "t": 1968,
+   "speaker": "Alexei",
+   "text": "Very good question. Let me think about it for a second."
+  },
+  {
+   "t": 1971,
+   "speaker": "Eslam",
+   "text": "Take your time. Take your time."
+  },
+  {
+   "t": 1973,
+   "speaker": "Alexei",
+   "text": "You know what? I do play video games sometimes and I've had an incredible experience with payments where it just took my money and there was so real friction, prediction, but on purpose planned in that, hey, I was like, wow, I thought I was gonna have to take out my credit card and, uh, put all this and like, no, no, we got you, you know, we, you have this account already linked to, you know, your, your, your card account, and it was like the most seamless experience which is worrisome sometimes, but I'm like, no, it's okay, because I am in control, I am the one who's logging into the system, and it was something where it's not tactile, you're not punching numbers and you're like, how am I going to do this? So yeah, for me, it was something with video games."
+  },
+  {
+   "t": 2012,
+   "speaker": "Alexei",
+   "text": "You know, just getting something like that, getting the payment seamlessly done was actually like, oh, this is easy. This is great."
+  },
+  {
+   "t": 2019,
+   "speaker": "Eslam",
+   "text": "Fantastic. I say, I cannot thank you enough. This has been one of the most fun conversations we had on the podcast. I'm sure listeners are going to be like overjoyed by amazing information. The simplicity of how you have been able to simplify concepts in an amazing way. So I can't thank you enough for being a part of the show."
+  },
+  {
+   "t": 2036,
+   "speaker": "Alexei",
+   "text": "Thank you, Eslam. No, much appreciated. Always happy to chat. I hope there was some interesting bits here."
+  },
+  {
+   "t": 2043,
+   "speaker": "Eslam",
+   "text": "I'm sure our audience will find plenty more. And please, we're going to be adding Alexei's also by you and also his LinkedIn profile. He's an amazing person. He's really happy to chat. So please feel free to touch on TunchPay. We're also going to leave his contact details. Thank you so much for a great episode and we'll see you in the next one."
+  },
+  {
+   "t": 2060,
+   "speaker": "Alexei",
+   "text": "Thank you, Eslam."
+  },
+  {
+   "t": 2060,
+   "speaker": "Eslam",
+   "text": "Thank you."
+  }
+ ],
+ "chapters": [
+  {
+   "t": 0,
+   "title": "Welcome and designing invisible payments"
+  },
+  {
+   "t": 268,
+   "title": "Adapting global products for Asia Pacific"
+  },
+  {
+   "t": 390,
+   "title": "When friction is good design"
+  },
+  {
+   "t": 516,
+   "title": "Trust what users do, not say"
+  },
+  {
+   "t": 700,
+   "title": "B2B2C customers and the services layer"
+  },
+  {
+   "t": 922,
+   "title": "Case study: the Carbon Calculator"
+  },
+  {
+   "t": 1099,
+   "title": "How AI is changing payments design"
+  },
+  {
+   "t": 1407,
+   "title": "Agentic commerce and the trust question"
+  },
+  {
+   "t": 1754,
+   "title": "Closing advice: talk to real users"
+  }
+ ]
+}

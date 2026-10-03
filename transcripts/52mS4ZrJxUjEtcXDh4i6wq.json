@@ -1,0 +1,259 @@
+{
+ "episode": 1,
+ "title": "Beyond the Hype: AI, Attention, and Why Augmentation — Not Automation — Creates Real Value",
+ "paragraphs": [
+  {
+   "t": 6,
+   "speaker": "Eslam",
+   "text": "Welcome to another episode of The CX Algorithm podcast. I'm Dr Eslam Afifi, and today it's a pleasure, a real pleasure to have Professor Kiron. I'm not going to give you the real intro that we usually speak about, but what I would like to actually give you an impression of who I speak to. Someone, the moment that I spoke to, his words straight away impacted every single project from a digital information perspective. He made me question every ROI metric that we ever had. Not only that, for more than three years, everything that I've learned from him during my MBA, day, Professor Kiron had a great impact on that and I'll keep learning that. So Professor Kiron, with no further to do, welcome to the show."
+  },
+  {
+   "t": 42,
+   "speaker": "Kiron",
+   "text": "Thank you. Thank you so much, Eslam. Thank you. It's an honor and I'm very happy to be here."
+  },
+  {
+   "t": 46,
+   "speaker": "Eslam",
+   "text": "Thank you so much for agreeing to be here. I know how busy you are and how high demand you are, so it's great to have you. In a nutshell, I just want to give you an idea for all of the listeners who Professor Kiron is. Not only someone who has an amazing experience as a professor at IE University, he's also an expert who has more than 20 years advising clients all over the world, I would say, Asia, Africa, and Europe as well. He's an expert in digital transformation, AI governance, and his insights and perspective on digital transformation is going to lead something that we're all looking forward to understand right now. What are we going to do about this whole AI hype? So I'm going to start straight away with this, Professor Kiron."
+  },
+  {
+   "t": 88,
+   "speaker": "Kiron",
+   "text": "Thank you."
+  },
+  {
+   "t": 89,
+   "speaker": "Eslam",
+   "text": "Why the hype doesn't match the results? Why organizations are struggling to get results out of this AI hype that we have right now?"
+  },
+  {
+   "t": 98,
+   "speaker": "Kiron",
+   "text": "I think the statement itself is kind of, it sets it up, right? We are hyped up by this technology and it's easy to be hyped up by this technology, because it really is impressive. It's fascinating. It is very convincing in the quality of its output until you kind of dig deep. But at the first instance, the output is just very, very impressive. So it's easy to fall for this hype. And in addition, the user interface is so accessible that it convinces everybody that there is magic behind this. We've had transformers for about two, three years before ChatGPT was a thing, but nobody knew about it until it became ChatGPT, GPT was not noticed, right? So once it became accessible, like in many technologies, once it became accessible, it went literally viral. So what then I think happens is because everybody sees a surface level productivity boost, everybody's expecting more and more out of this."
+  },
+  {
+   "t": 155,
+   "speaker": "Kiron",
+   "text": "And like all hypes, once it passes through Gartner's peak of inflated expectations, it hits that trough of dissolution. So I think we are in that state where about 80% of the companies seem to be investing in Gen AI, and also 80% claim, or if you ask MIT, 95% claim to be getting no benefit from it, right? So this, I think, is what is the AI productivity paradox, or AI value paradox, as McKinsey calls it. I think they're going to resolve it, but right now, I think what is happening is people are just expecting too much from it, you know?"
+  },
+  {
+   "t": 191,
+   "speaker": "Eslam",
+   "text": "Let's kind of dig deeper into these expectations."
+  },
+  {
+   "t": 193,
+   "speaker": "Kiron",
+   "text": "Sure."
+  },
+  {
+   "t": 193,
+   "speaker": "Eslam",
+   "text": "And I want to take it on two levels because you kind of touch it on the individual level, but I want to go as an organization level. If you're a leader of a CX or a digital transformation function or any kind of function, right now there's a lot of expectation that you can just build an AI. And then, as you said, it's like the magic bullet or the magic bill that's going to solve all of your problems."
+  },
+  {
+   "t": 211,
+   "speaker": "Kiron",
+   "text": "Yes."
+  },
+  {
+   "t": 212,
+   "speaker": "Eslam",
+   "text": "So how are we approaching this in the wrong way from an organization perspective?"
+  },
+  {
+   "t": 216,
+   "speaker": "Kiron",
+   "text": "So I think there are various nuances to this. So recently there was a study, I think, from PwC or Deloitte, which talked about CFO priorities and one of the CFO top three priorities or top five priorities was Gen AI projects, and I found this fascinating because generally in the CFO surveys you don't find technology as their top priority, right? But the fact that technology, this technology is so accessible makes CFOs also think that they might have a say in governing this. Now the difference in priority in that survey, at least, between Gen AI and cost cutting was about one percent or two percent. So which means it's as important for them in the general cost cutting, uh, universe to also consider Gen AI projects for cost cutting. So on one hand, everybody is looking at this, hoping for short-term gains. The second is this short-term gains. So this year, Amazon laid off, at least in the most recent firing, something like 14,000 employees. Is Amazon doing bad? No, they're doing actually really well. So it looks like what's happening is there is this unreal expectation from Gen AI to keep constantly delivering value, and it's, there's no way, there's no technology that can give that kind of growth, right? And therefore I think there is this mismatched expectation now in an organizational perspective. Where are we seeing benefits? In particular kind of tasks, so programming tasks for instance. There is a study that came out of Stanford, I think, recently. The paper is not yet published, but the, the researchers were giving this as a, as a talk, and they studied something like a hundred thousand projects, I think. Their data set is from GitHub, and what they find is that the value, the promised value from Gen AI in coding tasks, exists only when there are three conditions met: when the task is low complexity, when the language that they're programming is popular, like Java or Python but not COBOL, which is less popular, and when they're doing new projects where there aren't experience coders available, right? Because if they were experience coders, then the experience trumps the AI productivity. The same kind of a pattern is seen in the Ethan Mollick studies on the jagged frontier and, you know, I think cybernetic centaur and cyborg, something like that. And he finds that, look, if the task is very scope defined, then the novice can do much better than the novice did before, and it's a great skill leveler, but the expert doesn't really get a huge jump, right? So what, what are we seeing? I mean, in general, there's another version of this in call center operators that Brynjolfsson from MIT has shown. So in specific tasks, you get productivity gains, but we're not replacing jobs. But I think this nuance is not yet as widely understood, and people are kind of expecting jobs in general to be replaced and the future of jobs to be AI enabled and stuff like that. I don't think that's happening, right? That's, I think, the big"
+  },
+  {
+   "t": 407,
+   "speaker": "Eslam",
+   "text": "Difference in the organizational perspective. That's a great way to look at it, and also, I think it's kind of a great bridge to the idea of how to look at the individual level. If, how do you actually, how to look at AI, is it as a kind of an enabler tool rather than a transformational tool? How to get me from a novice to, not, not to, I wouldn't say an expert, but to more of an intermediary user, and how to get that kind of skill gap and how to reduce that skill gap? I would love if you can illustrate a little bit more around that. Yeah, so actually the timing is perfect because"
+  },
+  {
+   "t": 439,
+   "speaker": "Kiron",
+   "text": "Last night I was having this LinkedIn battle. Uh, there was a researcher that called out an article that I wrote a few months ago. The article is called \"Is AI Creating Incompetent Experts?\" And the criticism, and I think it's a very justified criticism, the criticism was, in the article it says, \"This article was written with the help of AI, and so I dismiss it outright.\" And I think that's genuine, because when I read anything now that to me sounds like AI, I instantly dismiss the content and I judge the content creator as being lazy, right? So I have reached a point where I don't want AI content anymore. Yet my argument was, I am better at using AI tools than most people, right? So I get certain value from AI that many novices are not necessarily able to exploit world. So my argument is, if I know how to use a tool better, I would probably get a little bit more out of it than just anybody giving, expecting Gen AI to create the first draft that's magical."
+  },
+  {
+   "t": 501,
+   "speaker": "Kiron",
+   "text": "Okay, so I think what's happening, or what was likely to happen, is as people get better at using it, and the whole idea of prompting and prompt engineering, I think all of that is already outdated. But the idea of, you know, what the limitation is, you know, why a hallucination is not a defect but it's a feature. If you do not allow GPTs to hallucinate, it cannot create content, right? That's how it becomes creative. Unless we understand the limitations, unless we understand how it actually works, unless we understand how to wheel this tool, we won't be able to get productivity benefit. It's kind of like, you know, the first time you learn to ride a bicycle, you know, you kept falling, and you keep falling until you figured it out, or you learn to drive a stick shift, right? You figured it out, at some point it became smooth, right? I think we are at that phase. So if I, if I abstract away to an organization level, we're having the same issues. So agentic AI, everybody wants agentic AI, it's not working. It's not working. We have not been able to replace robotic process automation, right? So I think we are really in that space where we still need domain expertise, we need skills to discern good from bad quality, and we need to know how to use this tool."
+  },
+  {
+   "t": 570,
+   "speaker": "Kiron",
+   "text": "Now, there is a flip side again to this. So this is the argument of seniority bias technical change. So with computation, academics, we notice something called skill-biased technological change, which means the technical change favored those who were skilled enough to exploit the technology. So let's say there were typist pools and then desktop publishing came about. Those who could use their typing skills better got better at using the computers and laptops at work. Those who had college degrees did better in knowledge economies than those who were working in blue collar jobs. So this is the skill-biased technical change. Today we are possibly seeing something called a seniority bias technical change. What does that mean? You are better off exploiting this Gen AI movement if you have seniority or if you have domain expertise. That's kind of weird because normally the senior people are the ones that are replaced with junior, younger better equipped skill sets."
+  },
+  {
+   "t": 630,
+   "speaker": "Kiron",
+   "text": "The task that is done by the intern, the task that's done by the junior analyst is the one that's being done by Gen AI, which is why there is a structural hiring slowdown of young people. There is a layoff of the middle management because that's considered, you know, fat. And then the senior staff are kept behind and hoping that they will improve productivity with the use of AI tools. And that's this experience gap that I mentioned earlier, right? So there is a hollowing out of this middle in terms of skills. So I think the same behavior that you see when you, when you work with ChatGPT on your own, you're probably seeing, like, you know, it looks great, and then you kind of poke it, and then something's not right, and then you spend so much time kind of fixing it, and then you say, you know, I should have just started it from the beginning, I should just done it by hand from the beginning, right? And so that little, I think, that inefficiency still exists as a result of that. And if not appreciating that inefficiency, we think we can replace younger skills with, you know, just AI. But we are soon likely to see that that is not as smooth as anticipated, and we probably need this, you know, the whole funnel of skills once again, right? But we need to have organizational changes that can exploit this, uh, tool. That's a really fascinating point, and I"
+  },
+  {
+   "t": 705,
+   "speaker": "Eslam",
+   "text": "Really love the idea, but right now what I would like to do is, I would like to combine these two together, is that idea from the perspective of the video level but also on the organization level. But now let's go back to your example of the CFO. And if I'm the CFO and I have that pressure right now, and it's a mandate coming from the board that I have to AI, how can I look at that with the pressure in the short term to deliver on quarter after quarter comes every single day?"
+  },
+  {
+   "t": 729,
+   "speaker": "Kiron",
+   "text": "So I think there is one part which I don't know will be in the control of the CFO's hands and one part which would be possibly a combination of the CFO and other leadership. So the part that might not be in the control is this constant pressure from the investment, investors for short-term returns, and that I don't know if there is a short-term fix for it. I think this is a, we might have to wait for, like, a structural change in how companies are valued and, you know, performances measured, because if you think about last year, there was a Nvidia stock dip or, I'm forgetting which one now. There was a, there's a company recently, the stock Oracle, Oracle stock dropped by 12 percent or something like that, despite having a 14.93 billion dollar revenue, but their target was 15.04, right? So how can it be that this fractional drop caused such a big drop in stock prices? I think this is just unreal. It's not realistic, it's not fair, it's not meaningful, right? So I think these things might not be within the hands of the leadership within an organization that requires a structural change. But within the organization, there are some lessons which we've learned from the IT's booms that we, IT benefits that we've had a few decades ago. So there is no benefit from IT or from technology if it's not complemented with people and process. So what are we doing with the AI that learns from this past wisdom. Are we changing the people in the organization or equipping them with skills to make AI work for them? And are we changing the job design? Are we changing tasks such that productivity gains can be measured? If we can do all three at the same time, then I think we will get the benefits. And this we've seen time and time again with all kinds of technological shifts, right? But I think, once again, as we discussed in the beginning, Meaning, because there's so much expectation from AI, my thinking is that companies are trying to short-circuit this process and hoping that technology alone will be the magic bullet."
+  },
+  {
+   "t": 852,
+   "speaker": "Eslam",
+   "text": "Love that. And it's great, again, it's going to kind of, for every CX leader or even any leader in the organization, in the C-suite or even the senior leadership team, to rethink maybe what is the problem before thinking about the technology. Because I think what we are, the theme that's coming out right now is we're actually starting with the technology rather than focusing on the problem, which is the mandate was always, is let's find out what is the problem we're trying to solve and then try to find the right technology for it. However, because of the hype and how big the hype is right now, everyone is kind of forced to use the technology and then going back to the process, to the people, to the skills gap and trying to find out what kind of problem can I solve, which is, again, that kind of human thinking or design thinking process we used to have, especially in the CX space, I think it's completely overhead right now."
+  },
+  {
+   "t": 898,
+   "speaker": "Kiron",
+   "text": "Yeah. It's the hammer in the, you know, if you have a hammer in your hand, every problem looks like a nail kind of situation, right?"
+  },
+  {
+   "t": 905,
+   "speaker": "Eslam",
+   "text": "Absolutely, absolutely right. But I'm going to have to keep the hammer on and I'm going to have to keep the eye on it. ROI is ROI. By the end of the day, we always judge by ROI. The first question around ROI, what are we getting wrong in ROI? And the second one, the follow-up, how are we going to tie AI with ROI if we're having this problem of short to mid to long-term planning?"
+  },
+  {
+   "t": 927,
+   "speaker": "Kiron",
+   "text": "So ROI, and we've talked about this at length, right? So ROI is flawed in multiple ways. So in the sense, there's a big gap between actually investment and getting the returns. And we're hoping that there is a one-to-one relationship between investment and returns. And that's not the case, especially in something like technology, because it creates options and it creates changes. There is the substitution of staff with technology, and then there's an augmentation. The augmentation problem is very interesting. And the example that might make sense is from many years ago, when banks invested in ATMs, the idea was we would be able to lay off bank tellers and have only machines that did this work, right? But what we noticed is that actually consumers who interacted with the ATMs started asking for more services from the banks, which required more human hand holding requirements, right? As a result, substitute, or you substituted some skills, but you also ended up augmenting. So might, it might look like the returns are dropping from investment, even though you're actually getting benefits, right? There is a study from this, the same MIT study that came out a few months ago, which said that 95% don't get benefits. What they find is, companies try to measure the top line in terms of benefits, and they're showing that they're not getting benefits, but they are getting benefits in the back end, which is that their sales people can, for instance, respond faster. That is not easily measurable to an invoice, that's not measurable to an output. So it doesn't appear in the ROI numbers, right? So, and actually all of this stuff, we've known this for decades now. There's a whole literature on IT productivity paradox."
+  },
+  {
+   "t": 1026,
+   "speaker": "Kiron",
+   "text": "Again, Brynjolfsson at MIT has kind of led the forefront of the research and they talk about mismanagement, mismeasurement, lag effects. There are all these arguments why the numbers don't show up. So how does one therefore measure this benefit, right? So the way I like to think about this is to think about, so in finance, there's something called DuPont analysis. DuPont analysis says, I've taken equity from the market. What am I doing with this? How do I get the benefit? And it breaks down this ROE, return on equity, to three numbers. It says, with this equity, what kind of assets am I buying? From these assets, how much sales can I generate? Off the sales, how much is margin? So now I take this outcome measure called return on equity. I break it down into process metrics of these three stages, and then I can track it over time to see if my performance is getting better. So this I think is an approach that makes sense for IT. So let's think about this for let's say I'm using AI in improving my sales process. So I've used Gen AI to create the first output which is let's say the number of campaigns. Then of these campaigns, how many are converting, or what is some kind of a metric that will show that the campaigns are working, and third, of the users or the consumers that I've contacted, how much have I converted to sales or margins or whatever, right? And I can chain this along any number of steps, but what I'm doing is I'm taking this big number called ROI of Gen AI in marketing to process metrics and tracking their performance over time. That way, I would know if, in fact, AI is not generating efficient ideas, or the AI-generated ideas are great, but I'm not able to convert this into campaigns or the campaigns are also working, but nobody really wants to buy my product. It's a product fit argument, right? So then I can allocate the blame or the credit to the right stage in this process. And I think this part is still kind of not commonly done. And as a result, we don't know"
+  },
+  {
+   "t": 1150,
+   "speaker": "Eslam",
+   "text": "Why it's breaking or why it's working literally. Love that. Now it's a great idea that return on equity is a beautiful way. The way that you actually also explain how the number should be broken down rather than one sort of number that usually how it goes into a scorecard somewhere in a board report. Break that number to actually to see what kind of aspect of the process. Did we improve? Did we make it right? Or actually maybe it could be a different problem because that's something that we have been struggling for a very long time, especially in the CX space. Especially with transformation projects that maybe didn't have the right quota or the right impact at the beginning, but had an other positive that you can see along the way. This is, once we look at this number now, this leads me to my next question is, what's the future going to look like?"
+  },
+  {
+   "t": 1195,
+   "speaker": "Eslam",
+   "text": "Because again, if you're looking, if you are a C-suite and you start to planning is, the speed that the technology and the hype is going is more than anybody could even imagine. And that's the idea of organization re-readiness is an idea that every C-suite right now has in the back of their mind. How can I make sure when there's a new trend, not only that I capitalize on it, how can I actually use the benefits? So what do you think the future looks like, and what's the"
+  },
+  {
+   "t": 1219,
+   "speaker": "Kiron",
+   "text": "Next wave of tools should look like? So Gen AI is here to stay, no doubt about it. We have to figure out how to make it work, but it's here to stay. If you think about the internet boom, right? So we had the dot-com boom, and then it kind of crashed. In about three to five years, we started kind of recovering once again, right? And we knew the benefits. One of the arguments that is made is Cisco invested in so much infrastructure around the world that after the dot-com boom, the infrastructure existed for the next, more sensible business models to kind of exist and bloom faster, right? So that's one argument. Even historically, people got displaced. I think it is called the Engels pause. So people got displaced with the, with, with technology in the industrial revolution solution with automation. And it took about, I think, 30-40 years for the workers to kind of get back or for their salaries to increase again. So there was clearly a disruption. There's no doubt about it. Hopefully, we won't have a disruption that long. I think we will have a disruption."
+  },
+  {
+   "t": 1278,
+   "speaker": "Kiron",
+   "text": "We will have a lot of companies that say, okay, you know, this doesn't work. And then we will have a few companies that are kind of getting it right. How will they get it right? I think with the right combination of training, the right combination of job design, the right combination of realizing that certain tasks can be done really well and therefore how do you allocate tasks between humans and the machine such that you get the better output? Can you allocate tasks between senior and junior in such a way that the junior gets a bigger boost, but the senior gets a critical thinking, or the critical say on the output, right? I think the companies that get this right are likely the ones to succeed. Now, what has also been shown in the past is that companies that get other things right tend to get many things right, which means companies that have been doing things right in the past, for instance, the Procter and Gambles, the GE's, the large companies that have been successfully navigating technology shifts over the last decades are likely to have the culture that allows them to exploit this new technology faster, and therefore I anticipate that once again we will see the winners being bigger winners. Now, this also has been shown in the past that with IT, with the internet, what happened was there was more turbulence in the industry, which means the winners won bigger and the losers lost bigger. However, this victory was not as durable as it was before because shifts were sudden. And the argument that one could make is, I think, before the iPhone came out, there were, like, six or seven mobile phone leaders, and then the iPhone comes out, in about eight years, 92 of the market is all, uh, you know, iPhone ecosystem right? So it is possible that we will see disruption. It's possible that the winners today will be the bigger winners in the future, but I think it's also worthwhile to look for these disruptors that might have the next breakthrough. So I don't know, seven years ago, we didn't think about Nvidia as the one that would be leading this race now, right? What is their value? Because they figured out the right spade to sell during this gold rush. And so it's likely that we will find the next one that has figured out the right deployment model for AI at scale. And organizations today, everybody talks about Salesforce as the channel for CRM because they figured out the interface, they figured out the work process, they figured out the rolling out process, they figured out how to implement in organizations and with less disruption, and therefore Sales becomes, become Salesforce becomes a leader. I think we will see, and I don't know if that's going to be ChatGPT or Gemini or Claude or any of these guys. But I think the ones that will figure out how to make it all work together are the ones that are likely to lead. So I don't know if I give you the answer for which is going to be the, that will take over the world. I think you're absolutely right. This is going to be"
+  },
+  {
+   "t": 1457,
+   "speaker": "Eslam",
+   "text": "The big question for 10X at least, five to 10 years with that wave that we have right now. But I need to ask you about this idea around again. There's a concept of where we've been in CX, which we call it the personalization. And is that also, I've been for a very long time in debate about how the app that I, what we call, I have a personalized experience is to lead by digital and have the human interaction. But in your mind, looking now and then, from the consumer side, do you still see that as something that's going to happen there or is it going to be more, is going to be AI-driven to reduce that fat and to reduce cost as much as possible."
+  },
+  {
+   "t": 1494,
+   "speaker": "Kiron",
+   "text": "I don't think there is a way we can not personalize. I rely on a couple of data points to make this case. So many of the traditional IT companies, the Indian IT outsourcing companies, for instance, they were the ones that provided the back end of solutions. Many of them have gone up the value chain in offering design consulting. Why? Because my consumers want UX. They want customer experience along the entire value chain, right? From the interface looking good, from the interface interacting well, from the app or the service having a good icon such that my phone doesn't look ugly if I install this app, right? And I'm not making this up. This is from a survey from a few years ago. So I think design is absolutely essential. Now, that is one thing that AI gets well because it does know me better than I often know myself, right? And when I say AI, I don't mean Gen AI. AI has been doing this for a while with recommender systems. Netflix knows what movie I'd like, Amazon knows what I'm going to buy, and so on, right? So I think we are getting better at being able to personalize at scale, and now even more with voice and image and so on, right? So now I can, if I get spam which is not addressed to my preference, it's outdated already. I want my bank to address me by name and know what I'm likely to look for, and this is available today."
+  },
+  {
+   "t": 1581,
+   "speaker": "Kiron",
+   "text": "This kind of personalization at scale is available today. It's going to cost us. There is this energy cost and all of that stuff exists, which also, going back slightly to the point that you're making earlier, which also might predict who might win and who might not, by who controls the data. So if you think about the battle today between Gemini and OpenAI and Meta and all that, Meta has data from Facebook, Instagram, and perhaps some aspects of WhatsApp. Gemini or Google has all the data that I've used on the Google ecosystem. OpenAI, on the other hand, doesn't have any of this data, which is why they need to scrape the internet, right? Everybody scrapes the internet, but OpenAI really doesn't have its own captive data source. So notice how companies are creating avenues for data to be used. So Meta is not only interested in the Meta glasses because it's a cool device, but that's another kind of data that can potentially feed their LLMs, right? So personalization is going to happen. The ones that are likely to do better at this are the ones that know more about me, therefore the ones that give me an opportunity to offer it data."
+  },
+  {
+   "t": 1650,
+   "speaker": "Kiron",
+   "text": "And I think that might be the determinant of where personalization goes and how well it's going to be deployed."
+  },
+  {
+   "t": 1658,
+   "speaker": "Eslam",
+   "text": "That's a great point of how to look at personalization, especially with the time right now, as you said, we have high expectations and whether we like it or not like it, they always compare brands, compare digital experiences to each other. And that idea, if the experience doesn't match my needs, why would I even download the app? Why would I even consider logging in? That leads me to my, one of kind of my final questions towards the end. And it's a question that is a bit of a, I would say stereotype questions. So based on everything that we judged right now, are you more of optimistic or are you on the other side? Because whenever you scrub the internet, you look at the AI help, it's either one side of the fence. Either you are a pro that type or when everything's going to be better, be beautiful, and we're going to make a, you know, Gen AI and it's going to take our life, make it better, or the other way, it's going to take our life, destroy everything, and have a disruption that we've never seen before."
+  },
+  {
+   "t": 1710,
+   "speaker": "Kiron",
+   "text": "So again, multi-part answer. So I'm Indian, and there's this cliche about India. Everything that you say about India is true, and so is the opposite, right? So everything that I say, I might contradict myself. I'm also trained as an applied econometrist. So I do economics of information systems. So I cannot answer this without saying, on the other hand, right? So I don't know if I will stick with one position, but I don't think we are doomed. because we've seen bigger disruptions in the history of humanity, and we've kind of survived that. Will it be disruptive? Yes, it will be. Will it be uncomfortable to many? Yes, it will be. Will we come out on top surfing this wave? Yes, we will. In the process, what would be the collateral damage? That's not very clear. There's all this research that's coming out with, saying, you know, mental health and children are possibly at greater risk because children are talking to ChatGPT for advice. In Australia, you've banned social media for kids, which I think is a response after what, 15 years, right? So we've had social media for about 10, 12 years now, right? So now is when we're realizing the dangers of social media. So I think we will suffer the consequences, but we will come out better. Now, I think everybody agrees with this. Now, the question is, what is the timeframe, right? Are we looking at a two-year window? Are we looking at a 20-year window? I feel that given how regulators are catching up on Amazon and Google and Microsoft and so on. I think they might keep their eyes open a little wider this time around, so that we are likely to catch bad behavior sooner. This is, this is my, my optimistic viewpoint, and I'm not a pessimist, but I'm a skeptic in the sense I don't like to believe this hype, which is why I, for every for all these articles that I read, which says, you know, McKinsey says that there's a seven percent and growth, and Capgemini or JP Morgan says it's a four trillion dollar business. I'm also reading academics and Nobel Prize economists say, forget about this, the next 10 years we might see a 0.1 percent GDP gain, right? So I try to keep my perspective balanced between academic, what do you call it, skepticism and exuberance from industry. And also, I mean, industry needs to be exuberant. They need to, you know, show a promising world, otherwise nobody would invest in it. And it's a job of academics to kind of tone down that exuberance, right? So I think, you know, depending on your ability to read and understand research, it's worthwhile to look at what's happening on the research side to know how much of this is hype and how much of this is actually"
+  },
+  {
+   "t": 1867,
+   "speaker": "Eslam",
+   "text": "Realistic. Love that. And again, it's a great view, and I love your, your example of there's always a but at the end of the sentence."
+  },
+  {
+   "t": 1875,
+   "speaker": "Kiron",
+   "text": "There is always."
+  },
+  {
+   "t": 1876,
+   "speaker": "Eslam",
+   "text": "There's always. But there was always however. I love that. Professor Kiron, I can't really thank you enough. This has been a great, July conversation. Love your views. Love everything that we have. And I just want to know if you have any final comments, anything that would you like to add around the idea of the AI hype and how to use it in the workplace."
+  },
+  {
+   "t": 1895,
+   "speaker": "Kiron",
+   "text": "It's like drinking from a fire hose. There's so much content out there. So my advice would be to, I don't know, to develop a healthy skepticism, approach as many sources of information as possible, but kind of, you know, be a little wary about the experts. They tend to be either one pole, one peak or the other in terms of their position. But so try and develop this critical thinking balance between the two. This is my, I don't know, my words of wisdom."
+  },
+  {
+   "t": 1923,
+   "speaker": "Eslam",
+   "text": "That was great, Wayne. A great takeaway for this. Again, we can't thank you enough."
+  },
+  {
+   "t": 1927,
+   "speaker": "Kiron",
+   "text": "Thank you very much."
+  },
+  {
+   "t": 1928,
+   "speaker": "Eslam",
+   "text": "Everyone, thank you so much for joining. And Professor Kiron on LinkedIn, then please feel free to reach out. He's an amazing social person, and also you can see all of his articles are going to be also in the show notes as well, and also a link to it, to his bio and his LinkedIn. Professor Kiron has been a pleasure. Thank you one more time, and hopefully we connect soon"
+  },
+  {
+   "t": 1946,
+   "speaker": "Kiron",
+   "text": "In the future. Look forward to it. Thank you very much. Thank you. Thank you. Thank you."
+  }
+ ],
+ "chapters": [
+  {
+   "t": 0,
+   "title": "Welcome and introducing Professor Kiron"
+  },
+  {
+   "t": 90,
+   "title": "Why AI hype outpaces results"
+  },
+  {
+   "t": 192,
+   "title": "Unrealistic expectations and where gains appear"
+  },
+  {
+   "t": 407,
+   "title": "From incompetent experts to seniority bias"
+  },
+  {
+   "t": 705,
+   "title": "Short-term pressure and redesigning work"
+  },
+  {
+   "t": 906,
+   "title": "Measuring AI ROI with process metrics"
+  },
+  {
+   "t": 1190,
+   "title": "Who will win the next AI wave"
+  },
+  {
+   "t": 1463,
+   "title": "Personalisation at scale and data ownership"
+  },
+  {
+   "t": 1676,
+   "title": "Optimism, scepticism and final advice"
+  }
+ ]
+}

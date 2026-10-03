@@ -1,0 +1,289 @@
+{
+ "episode": 2,
+ "title": "Back to the Middle: AI Agents and the Re-Intermediation of Customer Experience",
+ "paragraphs": [
+  {
+   "t": 6,
+   "speaker": "Eslam",
+   "text": "Welcome to another episode of The CX Algorithm podcast. I'm Dr Eslam Afifi. Today's episode is a bit of a different one. Today we have an amazing guest, David Carro. David is someone that I met and he had a great impact right away from the first conversation. The way that he actually came to the conversation, his perspective on digital transformation on a lot of things is incredible. But before I go further, David, welcome to the show."
+  },
+  {
+   "t": 28,
+   "speaker": "David",
+   "text": "Thank you very much for having me."
+  },
+  {
+   "t": 29,
+   "speaker": "Eslam",
+   "text": "David, I'm really excited about this because the way you bring value is incredible to the conversation. I remember our very first conversation, we spoke about something about personalization, which we're going to touch on in today's episode. You also, David, you have an amazing experience, more than 20 years across different industries. Mainly in telecom, starting in telecom, going things like digital transformation, TX, customer care, omnichannel, which you're a wealth of treasure to speak to. And not only that, you're also one of the leading voices of AI in Spain, leading a forum that I would love to speak about at some point. But the first thing I'm going to start straight away is this question. The whole idea of the hype of AI, how do leaders cut through all of this hype, all these tools, all this technology that we wake up every 30 minutes and we have a new tool?"
+  },
+  {
+   "t": 72,
+   "speaker": "Eslam",
+   "text": "And how do we actually look for real value creation for CX?"
+  },
+  {
+   "t": 76,
+   "speaker": "David",
+   "text": "It's a very good question because we are in the middle of the fog, I would say. And it's very difficult to create a strategy when you are in the middle of the fog. Many things happening, many tools happening, technology everywhere, solutions everywhere, consultants everywhere. So a lot of hype. So I think we need to look at the fundamentals. And the fundamentals for many brands is to the interchange of value between your business and your customers. So we need to look at the customers. We need to look at how they evolve, how they are changing their habits, and also how the customer mental model is changing because of this new technology disruption. For me, there is nothing new regarding what we did during digital transformation. Digital transformation was, you know, an era where we were just trying to understand why the customer is moving so fast and we are not going so fast."
+  },
+  {
+   "t": 133,
+   "speaker": "David",
+   "text": "And now it's happening the same, but it is faster. And that's the big thing. So in my opinion, we need to look at the fundamentals and the fundamentals is what incredible benefit can I give to the customer if I use this technology? And what incredible benefit can I also give to my own company, my shareholders, if I use this technology to save cost? In my opinion, and this is what I share with my teams every day, is that we need to make an impact with the customer first. Of course, you need to look at your shareholders and your business. And eventually what you have to look at is how we are going to move the needle. Moving the needle is very simple. You need to go with cash in or reducing cost, you know, reducing cash out."
+  },
+  {
+   "t": 177,
+   "speaker": "David",
+   "text": "This is very important. At the end of the day, it's all about the customer. If you do the things, the basic rights with the customer and using the technology and their benefits, then you will see how the needle is moving very easily. This is the summary. I mean, Jeff Bezos said many times that when they had a question or a discussion in the board, they had an empty chair. That's the empty chair is for the customer. They were looking at that empty chair and say, OK, what should we do?"
+  },
+  {
+   "t": 206,
+   "speaker": "Eslam",
+   "text": "Love that."
+  },
+  {
+   "t": 206,
+   "speaker": "David",
+   "text": "It's easy to say, it's very difficult to navigate."
+  },
+  {
+   "t": 209,
+   "speaker": "Eslam",
+   "text": "Absolutely. But it's a great point. So let me stay there. Let me say I'm the customer in that chair. And now we have this new technology that everyone speaks about. Not only I, I'm specifically keen to speak about agents and the role of agents. Because right now, every article you read, every news update has the word agent in it. So what's first, what's your view on it?"
+  },
+  {
+   "t": 226,
+   "speaker": "David",
+   "text": "I mean, agents are, let's say, I would say consolidation of the AI technology. Because at the end of the day, it's so difficult to navigate the hype with so many words and technology and terms and solutions that finally we found this concept that is easy to understand for everyone, for technologies, people, marketeers, even the customer understand what is an agent software. For me, it's really the personal, it's how you impersonate, you know, the AI technology in a concept that is understandable for everything. And also, it's also a great way to break down the technology into different pieces so that you can embed them into your working process, business process, and customer journeys is the best way to do that. Agents are now the pillar because, how can I tell you, it's just probably the best way to approach the technology because it's similar to what we are as human beings."
+  },
+  {
+   "t": 283,
+   "speaker": "Eslam",
+   "text": "Yeah. No, I love that perspective. And I like the idea of looking at them, at agents, as more of an augmenting the skills inside from a blueprinting perspective or inside the organization. But I want to start on looking at the journey itself because there is a bit of a debate right now that's going right now is how can you fit an agent, if you're talking about brand equity, brand loyalty. How does that kind of connection, how do you view an agent between an organization, an intermediary between the organization and the customer?"
+  },
+  {
+   "t": 311,
+   "speaker": "David",
+   "text": "Yeah, I think this is an interesting point because we probably need to see this as a platform, you know, where you have a demand side and a supply side. And then from a demand side, customers may, well, they are now having tools to create their own agents so that they have more productivity and more convenience, and brands are doing the same, they are creating their audience just to deal with customers and also to deal with internal processes that eventually will impact customers. Um, there are two different discussions. Uh, from the customer point of view this means that brands have a risk of being, again, having a someone in the middle again. And I say again because in the year 2000 Google did it. Google has disintermediated men, all brands really. And now you want to have traffic in the digital era, and even, even not only digital traffic, food traffic as well. In your physical retail store, you need to go and you need to pay a commission to get that traffic into your business. And now it's happening the same. We don't know who is going to be the winner or the winner in plural in this battle, but I'm sure that eventually people will start using free agents or paid agents to do most of the consumer activity that we are doing now manually. This is one thing. And on the other side, in business, we are just doing as usual, as we did in the digital transformation, we have a double tool strategy. One is cost efficiency, which means let's create internal agents to reduce the workload, the head count or the overheads. This is happening, it's happening. And on the other side, how can I increase or expand experience with my customers? I have someone in the middle, let's call it a helper or agent or concierge or whatever you want to call it. Okay, so this is the, the two situations that we are seeing so far, and we are starting to see this a lot in customer care. We are starting to see this in outbound and inbound interactions, or calls, or emails, or whatever."
+  },
+  {
+   "t": 437,
+   "speaker": "David",
+   "text": "And we are seeing how customers are now comparing products, tracking price. And even if you have a look at the latest developments that were announced this week in the National Retail Forum in New York, Google is now launching what they call the Universal Agentic Commerce Protocol. And one of the things they have is a lot of tools for merchants and some tools for people as well, for consumers. And now they are claiming that they can even, you know, create agents to call retail stores to check for stocks or to check for prices. I'm talking about making calls, not just, you know, checking websites. This is something that, you know, this is kind of a common thing now. There is a huge disruption out there. Remember, demand side, supply side. We need to see how we navigate this as brands."
+  },
+  {
+   "t": 488,
+   "speaker": "Eslam",
+   "text": "I love that. But can I be on what we call the other side? And I want to see if we're talking about efficiency, we're talking about reducing cost, and we're talking about growth. But from the customer perspective or from a CX perspective, the idea of empathy that lies in two things, trust and authenticity. Don't you feel that this is maybe a road for you as a leader, as a CX leader? How would you treat that? Because at the end of the day, you need to have a balance. Because where does authenticity come from? Or in that kind of scenario where we have agents, or most importantly, trust. Because at the end of the day, trust is a massive element that you build a new brand."
+  },
+  {
+   "t": 520,
+   "speaker": "David",
+   "text": "I mean, large companies are not exposing many of these agents to final customers yet. Let's be clear. They are just doing small things. Especially, they are starting with internal processes, internal tasks to increase productivity, to free up capacity, and then use that capacity to improve the customer experience. You know, um, this is because especially large companies, they, they, they have a reputation. They, they cannot totally control the experience. It's still that we are in early days with AI. There are a lot of, let's say, you know, um, limits that you need to create for agents to work using common sense and common sense is not easy to replicate with algorithms. So common sense is not that common."
+  },
+  {
+   "t": 565,
+   "speaker": "Eslam",
+   "text": "Yeah."
+  },
+  {
+   "t": 565,
+   "speaker": "David",
+   "text": "Large companies are really focusing now on internal efficiency. Most of the time we are starting seeing things on call centers and probably we are seeing agents for human agents, you know what I mean? Things like that. Small and medium companies are doing differently. They have less to lose, so they can risk more. And this means that they are now starting to do interesting things, especially in the startup world, where you can see agents negotiating prices, where you can see agents making calls, where you can see agents managing schedules on behalf of the customer, you know, in the brand side. And this is happening. This is happening right now. I think the approach is like that. I mean, big companies are learning. They are trying to understand what is their ROI, because this is another point. CFOs are really scared of spending too much, investing too much, and nothing happens."
+  },
+  {
+   "t": 614,
+   "speaker": "David",
+   "text": "The cash is not moving. And there are dual-fold strategies here. Some companies are just trying to free up capacity. So they are not looking for cash. They are just, I'm going to free up capacity to do other premium things, and then eventually the cash will appear, and other companies are trying really to move the needle with this agent's technology. But that's very difficult yet. Very, very difficult."
+  },
+  {
+   "t": 637,
+   "speaker": "Eslam",
+   "text": "Again, I'm going to go back to the CX space because I love the idea that you speak about looking at the P&L and always looking at the money in and the money out. But I would like to challenge this a little bit, another layer. Do you see a future where the entire experience is going to be completely automated via agents, or are you always going to see a view where it's more of a hybrid? There's going to be always layers of human, like more digital first, then led after that or led by digital and then complemented by human interaction."
+  },
+  {
+   "t": 667,
+   "speaker": "David",
+   "text": "Yeah, I think it will be gradual for sure. But I think there will be a rule that will happen, which is how relevant is your product in the lives of your customers and how have you worked out the emotional engagement between the brand and the customer. Because if you are irrelevant to me, I will probably want to be in charge and I will probably want to, you know, I will delegate for sure, but I will delegate with part of the process, but I will be really, really in charge. But when you are just a commodity or just convenient shopping or something that is just pure replenishment, then I think we're going to see a full revolution in that area. You know, I remember when Amazon had, not that many people remember this, but when Amazon launched this, the Amazon button that was just a Wi-Fi thing that you had just stick to your fridge and you click."
+  },
+  {
+   "t": 722,
+   "speaker": "David",
+   "text": "And then you had toilet paper or coffee or, you know, and this is just the metaphor, what is coming when you are not important in the lives of your customer, that you will be disintermediated again. So the question here is, how can we create a strong bonds, emotional bonds between our customers and brands so that they do it by themselves or they delegate in their agents, but thinking on our brands, not thinking on anyone."
+  },
+  {
+   "t": 749,
+   "speaker": "Eslam",
+   "text": "I love that. And I can see this as a fundamental change in the way that you implement CX strategies based on that. It was really clear for me when you spoke about low involvement or a competitive product. I would love for you to touch base. How is that going to look like in high involvement, something that is required me to have a really big decision and there's more of emotions, and I would love to see how the AI agent would live in the CX journey. Can you give me an example or two? That would be fantastic for high involvement. I mean,"
+  },
+  {
+   "t": 774,
+   "speaker": "David",
+   "text": "Nowadays we don't have or we don't still have technology to delegate the whole customer journey, that's clear. We don't have that. So the point is, if for instance, I'm telling you about areas where I have to be connected emotionally like fashion, the fashion industry, even travel as well, even all the experience economy will be, you know, I'm not saying that agents will not be able to do the tasks that usually we allocate in the upper funnel, which is about, you know, discovery and consideration. Probably we will have some kind of alter ego that will look into that. But I think for the final or the last mile, everything which is connected with human experience will have a higher level of involvement for sure. And it doesn't mind the price ticket. I mean, it doesn't mind the price ticket."
+  },
+  {
+   "t": 828,
+   "speaker": "David",
+   "text": "It's just about how you connect with things and how important are they for you. The other day I was discussing with one of the executives in a big hotel operator here in Spain. Hospitality has been disintermediated for many fronts, many players, Booking, eDreams, even Google and things like that. They have a new opportunity to be back in the customer relationship because if they connect with people and with agents of people, Aish, that agent should go to Booking if that agent can just browse 110,000 of references by itself. So you may have your own Booking.com for yourself. And then there is an opportunity for brands to connect at that level so that they are relevant again in the eyes of customers."
+  },
+  {
+   "t": 877,
+   "speaker": "Eslam",
+   "text": "I love the way that through your lens, you see it not as a challenge, but as an opportunity, and to actually not only, you know, to kind of not a barrier for change, but it's actually an enabler for change, not only for change, but also for growth as well in a great way, which leads me to my follow-up question. If agents is an intermediary per se, what about ads? How's advertising going to look like then in the future? Because that's, again, that's maybe the $1 million question. It's a massive industry and we all, regardless of which industry we're in, we all rely on ads to reach our customers."
+  },
+  {
+   "t": 912,
+   "speaker": "David",
+   "text": "Well, it's clearly that something has to change and we are seeing how Google and Meta are doing their own disruption process on their own. Just the AI mode that you can see in Google is giving you the idea what Google is trying to do. So, but this is going to be a transition period where we will have to live with the click streams and the classic funnel from, you know, attention to impression, to click, to lead, to order and blah, blah, blah. We will see that. But in parallel, we're going to see how the channel, how the funnel is going to, is going to change. In fact, we see that. I mean, we have lost brands, we're losing a lot of organic traffic and paid traffic as well, around 24, 25%, 30%, it depends on the industry for sure, but conversions are higher, we're compensating the revenue with higher conversions, and this is because we are having less visits, but more qualified visits, and this is because AI is doing the job, AI is doing, so that is happening."
+  },
+  {
+   "t": 974,
+   "speaker": "David",
+   "text": "What does it mean for the paid media industry? Okay, so we will start to look at the customer journey again, and we'll start to understand where should I invest in order to get more qualified visits, because the battle is not in my website anymore. The battle is outside, and I need to position a new area of content marketing where, instead of attracting people with keywords, I will have to attract people with content that clarifies questions from customers and communicate the value of our product. So giving solutions to their problems. How can I communicate my product is helping you in your daily life or in your daily whatever you need? And this is the point, you know. I think we will be a shift from paid media into content generation. And we will learn how to be, let's say, more sexy for new way of crawling information as well."
+  },
+  {
+   "t": 1033,
+   "speaker": "David",
+   "text": "And probably things like PR, people talking about your brand, about your products, people recommending you from different sites, and also forums, discussion forums, are becoming very interesting now to invest in content creation. And then you need to, of course, balance that with some kind of pay media, because the world is not"
+  },
+  {
+   "t": 1051,
+   "speaker": "Eslam",
+   "text": "Changing so fast as we think. That's a great way of looking at it, and it's more of a different way to, to reach a different level of persuasion where previously it used to be creativity, but right now it's all about problem solving through content. But this is, leads to another point. Right now we all have to speak about what is the yoga gonna look like in this new world? Yeah, well, I think I"
+  },
+  {
+   "t": 1071,
+   "speaker": "David",
+   "text": "Mean, eventually what I think AI is doing is not to replace SEO, but to expand SEO. Expand means to build something new on top of what we did. Because if you have a look at what SEO was doing, it's just to trying to improve our content and our communication, content communication offer in a way that a bot is able to understand, to crawl and to, you know, give us merit it. So this is really what the LLMs are doing as well. At the end of the day, we are just building content for agents. So exactly what we did with SEO. So the only thing is that some rules will change. And what I see is that we need to transition from a position where we were focused on keywords and we're focused on link building and we're focused on other levers. Some of them will remain relevant, like doing a good technical SEO, for instance, but we need to enhance that with other sources of content and information and probably the SEO ecosystem, because I see SEO strategy as an ecosystem where you have your business purpose, which at the end is to solve a problem to your customers, you know, where you interchange a value and you get a benefit and the customer gets a benefit, which is what brands do. And on the other side, you have your dictionary of topics, themes, keywords, that keyword will become not only relevant, but you will have to add other topics on that so that you are more relevant because agents will want to answer questions, not find products, which is a different thing."
+  },
+  {
+   "t": 1164,
+   "speaker": "David",
+   "text": "It's more a conversation rather than click through. And on the other side, technical SEO will still be relevant. So at the end of the day, it's just an expansion of the SEO ecosystem into new players coming into it, which are the AI players. I think Google is doing well. I think Google is just keeping the SEO effort that they have in order to crawl your website because you are given an assignment, a credit to be crawlable. Now that credit will also have to live with another credit that is how strong are you so that I can visit you to index your content so that you're not only in organic SEO, but also in my LLMs answering questions. And then we need to find on a different way. It's not about keywords, it's about conversations, it's about answering questions, it's about finding, explaining why your product is so good to solve problems and then it works."
+  },
+  {
+   "t": 1219,
+   "speaker": "Eslam",
+   "text": "I love the idea of SEO ecosystem. So this leads me to a point that I kind of always remember, we talked about this, you and I a lot, which is this idea of personalization, because a lot of companies for a very long time, and it's still till today. And whenever you speak about an organization or a brand that's trying to be customer-centric, they'll say, oh, no, we're doing everything that we can because we want to make sure that we are personalized, we have a personalized customer experience. But your view is slightly different. You always look at personalization as a north star. And I would love to know more about that view and how do you actually view personalization to have that ecosystem starting?"
+  },
+  {
+   "t": 1253,
+   "speaker": "David",
+   "text": "You mean, I mean, because with AI, things are really changing because the point is that personalization, I mean, high-volume personalization or hyper-personalization, it's been like a holy grail, like a vision, like a north star that brands are trying to do it. Not even Amazon is able to do it, let's be clear, because it's very difficult for many reasons, for legal constraints, for technical constraints, for many. Because the customer journey, in a sense, is just a metaphor. It's not real. And there is not a linear customer journey. This doesn't exist today. There is a pretzel, you know, the customer is jumping from one touch point to another. That's it. So I think with AI, we're going to see, uh, how can we, we need to take into account the, the, I mean, essentially at the same rules, look at the customer needs, look at the customer behavior and look at the customer steps, and then try to, uh, get the data you need because data is the voice of the customer and then add with that. With AEMs, we can see that now we will have to, let's say, we have more tools to process data and to analyze data and then to make decisions, which is great. So we're going to approach to have higher levels of personalization for sure. But also we are going to get more challenges, which is consents, privacy. We are exposing more technology and more data out there, which means that we have more risks as well. So we have to manage all that, and from a customer point of view, I mean, what I think is that in the, in the future they will build their own agents and the agents will have some, let's say, orders or some kind of instructions that we'll have to learn and we'll have to, to adapt the content on the, on the, the offering to them, you know, I, I think just to give you an example, generative web. Generative web means that instead of having to visit a fixed web, a static web, you or your agent will just declare what you are looking for and the web will be created for yourself."
+  },
+  {
+   "t": 1377,
+   "speaker": "David",
+   "text": "The web will be different from the way you see, the way I see, because it will be a conversation. I think these search engines that have been in a corner of the web with no importance will become more and more important because you start a conversation having this dialog box. And as soon as you tell the web, I'm interested in this and that, and your customer or existing customer visiting you again, you will have a different experience. Shorter, larger, more informative, more offer-oriented, more discount-oriented, different product categories. This is happening now. There are now prototypes of generative web search where you have an interface very similar to ChatGPT. You just have a conversation. You can add products to your cart, and then you will have a cart that is created. And then we can call it that we are creating ephemeral webs every time you write a query."
+  },
+  {
+   "t": 1436,
+   "speaker": "David",
+   "text": "Imagine that that goes between agents, the customer agent with the brand agent. Then it may be that finally we'll have a new channel, which will be a backend to backend channel, where there is not customer facing a channel. I think most brands will have both. You know, we'll end up having both, where agents are just talking to APIs in the backend of the brand, and they will be negotiating and making decisions. Probably this is very futuristic. We are still far away from that. But there are a lot of initiatives. I mean, OpenAI is just launching agent checkout. As I said before, Google is launching this Universal Agentic Commerce Protocol. We have agent to agent protocol as well. I mean, all protocols are in that direction because at the end of the day, the highest scalers are investing where the money is and the money is there."
+  },
+  {
+   "t": 1488,
+   "speaker": "Eslam",
+   "text": "Love that. Let's stay with this idea of trends, right? Because we spoke a lot in this episode about agents, but what other trends in the market that you see coming that's going to play also a really important role and you would like to bring up for a CX leader we need to be aware of?"
+  },
+  {
+   "t": 1502,
+   "speaker": "David",
+   "text": "Well, as I said, generative web will be something that it will happen eventually, for sure. I also think that perhaps the hyperscalers like Meta and Google will change into a more, let's say, powerful subscription model where instead of you being the product, you will have to pay for your agents. Because so far we have had a lot of help from Google to find and compare products using our data. At the end of the day, that service is free because you allow Google to use your own data to give you. And then it's fine. I mean, it's a value interchange, and I'm not criticizing that, to give you more value in terms of, okay, having a faster search and discovery process. But now in the future, if we are going to, let's say, delegate some decisions on agents, why Google is not just proposing you and I to have our own personal agents on this subscription model so that you don't, you don't need to navigate any Google search full of, you know, sponsored ads. You know, this is, I think, is, is moving probably part of the business that we see the click, the click and impression business into a subscription model where there will be less traffic in the first all world and more traffic in an agro-sufficient model. And that will happen I think brands will also want to get some space, uh, creating agents for buying helpers, of course."
+  },
+  {
+   "t": 1590,
+   "speaker": "David",
+   "text": "It will depend on the industries, of course, but why are not going to create a brand concierge that helps you to choose and helps you to make the best decision? That will happen again. And we are going to see that side by side with generative web. The agent is just creating the web for you when you are having a dialogue. And then the third time or the third step is when And agents will talk between themselves and they will become an API to API economy where agent backends will talk to brand backends and then we'll see what happens. And that will probably happen for low involvement products with less emotional connection, more focused on replenishment."
+  },
+  {
+   "t": 1635,
+   "speaker": "Eslam",
+   "text": "I love that. I know you're also the founder of one of the biggest AI forums in Spain, and I would love to know more about it."
+  },
+  {
+   "t": 1642,
+   "speaker": "David",
+   "text": "Just one of the members from there."
+  },
+  {
+   "t": 1645,
+   "speaker": "Eslam",
+   "text": "Yes, but I would love to know more about the vision of you guys all as a group and what does it actually form brings to the table?"
+  },
+  {
+   "t": 1652,
+   "speaker": "David",
+   "text": "Yes, ForoIA, it's a forum for artificial intelligence in Spain. It's a community, a learning community where many executives from big brands, Siemens, Toyota, Repsol, Santander, also Samsung are present. The focus is on, first of all, understanding the technology, the AI technology, from a marketing, communication, and customer experience side. So it's not a technology forum. It's a forum to understand the technology, to see the impact. Then we also try to communicate and to give away our learnings. So we create papers, we create documentation, we create events as well, so that we help other people to navigate this wave of disruption. But at the same time, we learn by doing that, and this has a human and a social focus in terms of social leaderships. How can we navigate this technology disruption from a human and social orientation, which I think is important as well, to think of people."
+  },
+  {
+   "t": 1715,
+   "speaker": "David",
+   "text": "And this is the point, and at the end of the day, it's really needed because everything goes so fast and it's a space where you can stop and think."
+  },
+  {
+   "t": 1725,
+   "speaker": "Eslam",
+   "text": "Love this, is, leads me to one of the things I want to actually always end up with. And in my broadcast, and is to do, if there's one advice that you can give to CX leaders through all of this hype, all this noise, all of this data that's right now we have, where you can divide value, what's the starting point? So, yeah, where should CX leader start from? I think we studied the, the podcast"
+  },
+  {
+   "t": 1748,
+   "speaker": "David",
+   "text": "Talking about the customer, and I think it's really the customer, I know, sometimes we forget it. And we talked a lot about the customers, but then in our daily actions, sometimes we forget it. And we need to be very focused on that because the customer is moving faster and faster. Of course, always you have early adopters and then an adoption curve, the classic adoption curve. But they are moving very fast. And the wave of disruption is getting faster and faster. So, I mean, we need to see the fundamental relationship between your brand and your customer. What incredible problem you are solving. So the higher the problem you are solving is, the higher your relevance is in their lives. And we need to think like that. And then we use technology to cover that gap, which is important."
+  },
+  {
+   "t": 1797,
+   "speaker": "David",
+   "text": "And the other thing I would say is, as again, Jeff Bezos says, it's always day one. It doesn't matter what you did yesterday or two days ago. It doesn't matter. It's fast. It's always day one. So we need to wake up in this new technology direction era, thinking that it's always a one and we need to start fresh every morning and learn and be humble because we don't know everything and learn from others and make the most of the technology and all our resources and investments in companies and businesses."
+  },
+  {
+   "t": 1828,
+   "speaker": "Eslam",
+   "text": "David, I can't thank you enough. This has been a great conversation that I've learned so much and I've seen all our listeners would be connecting with you if you don't mind. We're going to put David's bio information in LinkedIn because I think you bring a lot of value in your amazing insights and amazing experience with this. So again, David, thank you so much. And it has been a great, great honor to have you on the podcast."
+  },
+  {
+   "t": 1852,
+   "speaker": "David",
+   "text": "It's been a real pleasure and thank you for having me."
+  }
+ ],
+ "chapters": [
+  {
+   "t": 0,
+   "title": "Welcome and introductions"
+  },
+  {
+   "t": 60,
+   "title": "Cutting through the AI hype"
+  },
+  {
+   "t": 211,
+   "title": "Agents as the new intermediaries"
+  },
+  {
+   "t": 489,
+   "title": "Trust and how companies adopt agents"
+  },
+  {
+   "t": 637,
+   "title": "Emotional bonds versus full automation"
+  },
+  {
+   "t": 895,
+   "title": "Advertising and SEO in an agent world"
+  },
+  {
+   "t": 1219,
+   "title": "Personalization, generative web and agent commerce"
+  },
+  {
+   "t": 1635,
+   "title": "Inside AI Forum Spain"
+  },
+  {
+   "t": 1726,
+   "title": "Where CX leaders should start"
+  }
+ ]
+}

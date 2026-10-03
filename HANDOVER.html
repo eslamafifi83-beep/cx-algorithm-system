@@ -91,7 +91,7 @@
   <tr><td>Messages</td><td>Contact-form inbox — read &amp; delete enquiries. Every message lands here; with a Web3Forms key in Links it is also emailed to hello@</td></tr>
   <tr><td>Host</td><td>Your name, bio, photo — and the <strong>press kit PDF upload</strong> (powers the "Download press kit" button on the Host page; until one is uploaded the button reads "Request press kit" and opens the contact form pre-filled with a press-kit request)</td></tr>
   <tr><td>About page</td><td>Everything on the Host page except name/photo: the stage photo behind your name + its badge, the 3 credentials, up to 5 track-record numbers (they count up), the story photo + caption, the "On stage" photo wall (up to 5, first one is big, reorder with Move up) and the "Seen at" names. Photos are shrunk automatically before upload. "Use the default photo" restores the built-in one.</td></tr>
-  <tr><td>Links</td><td>Apple/Spotify/Amazon URLs, socials, contact email (hello@thecxalgorithm.com — the only email shown anywhere on the site), and the <strong>Web3Forms access key</strong> that makes the contact form email you</td></tr>
+  <tr><td>Links</td><td><strong>Podcast platforms</strong> (Spotify, Apple Podcasts, YouTube, Amazon Music, iHeartRadio, Audible, Pocket Casts, Deezer, TuneIn, Pandora): every platform with a link shows its icon on the homepage and Episodes page; empty box = hidden. Plus socials, contact email (hello@thecxalgorithm.com — the only email shown anywhere on the site), and the <strong>Web3Forms access key</strong> that makes the contact form email you</td></tr>
   <tr><td>Navigation</td><td><strong>Rename and reorder the menu</strong> across the whole site (up/down arrows + label boxes). The page each item links to is fixed, so renaming can never break anything</td></tr>
 </table>
 <div class="callout">🎬 <strong>Video tip:</strong> for video episodes, paste a Spotify link rather than uploading huge files — free storage is 1 GB (fine for images + many audio episodes, not for video).</div>
@@ -114,6 +114,7 @@
   <tr><td><code>guests.html</code> / <code>assets/guest-identity.js</code></td><td>Guests page (featured spotlight, topic filters, guest grid with company logos, brand colours and voiceprints) / the shared helper that works out each guest's title, company, logo and colour (used by the page and the admin)</td></tr>
   <tr><td><code>blog.html</code> / <code>contact.html</code></td><td>Articles page / Contact page with the adaptive form. Links can open a specific form: <code>contact.html#speak</code> (speaking), <code>#guest</code> (guest pitch), <code>#press</code> (press kit request, pre-filled), <code>#partner</code> / <code>#other</code> (general). The gold "Contact us" button at the top of every page opens it</td></tr>
   <tr><td><code>admin.html</code></td><td>The admin panel itself</td></tr>
+  <tr><td><code>assets/platforms.js</code></td><td>The list of podcast platforms (icon, name, built-in verified link) used by the homepage hero row, the homepage footer and the Episodes page</td></tr>
   <tr><td><code>assets/loader.js</code> / <code>assets/nav.js</code></td><td>The animated logo <strong>loading screen</strong> / the shared <strong>menu</strong> (reads names &amp; order set in admin → Navigation) — both used by every page</td></tr>
   <tr><td><code>api/spotify.js</code></td><td>The "Auto-fill from Spotify" engine (admin-only)</td></tr>
   <tr><td><code>assets/</code></td><td>Logo, host portrait, company logos committed with the site</td></tr>
@@ -161,6 +162,7 @@
   <li>✅ SEO layer (OG cards, sitemap, robots, structured data, Vercel analytics)</li>
   <li>✅ Guests page (replaced "Themes" in the menu) + admin Guests tab</li>
   <li>✅ Menu renaming &amp; reordering (admin → Navigation). Since Oct 2026 the order is Home, Guests, The Host, Episodes, Articles, Contact</li>
+  <li>✅ Listen-on icons (Oct 2026): Spotify, Apple Podcasts, YouTube, Amazon Music, iHeartRadio, Audible and Pocket Casts on the homepage and Episodes page; YouTube is live (no longer "Available Soon")</li>
   <li>✅ Button review (Oct 2026): the top-right button on every page is now "Contact us"; broken homepage "Learn more" links fixed (now the real LinkedIn newsletter); empty social icons hidden; press-kit and email-icon buttons open the Contact page</li>
   <li>✅ Spotify auto-fill for episodes (+ duplicate-link warning)</li>
   <li>✅ Homepage curation: "Fresh this season" episode picker + Load more</li>
@@ -184,7 +186,8 @@
   <li>Spotify keys: the live site can't see <code>SPOTIFY_CLIENT_ID</code> / <code>SPOTIFY_CLIENT_SECRET</code>. In Vercel → Settings → Environment Variables, check both exist and are ticked for <strong>Production</strong>, then Redeploy. Until then the Episodes pages still get durations and dates, but not Spotify descriptions, and admin auto-fill only fills title and cover.</li>
   <li>Episode descriptions: Episodes 01 and 02 still carry the old template text (hidden on the site now), and 04–06 have none. Paste each episode's Spotify description into admin → Episodes.</li>
   <li>Episode 03 is still a copy of Episode 01's Spotify link (listed once on the site). Replace it with Ana Herranz's episode link, and set Ana's guest label to Episode 03.</li>
-  <li>When the YouTube channel launches: add the URL in admin → Links, and ask Claude to switch YouTube from "Available Soon" to a live link.</li>
+  <li><strong>Get on more platforms</strong> (free, each takes your feed address <code>https://anchor.fm/s/10dcc5b9c/podcast/rss</code>): Deezer (podcasters.deezer.com), TuneIn (podcaster submission form), Pandora/SiriusXM (Simplecast Creator Connect). Deezer and Pandora send a code to the feed email. When each goes live, paste its show link in admin → Links and the icon appears.</li>
+  <li><strong>YouTube:</strong> the channel @TheCXAlgorithmPodcast has only Episodes 01–03. Upload 04–08 and set it up as a podcast in YouTube Studio (that also puts it on YouTube Music).</li>
   <li>When a trailer exists: point the hero's "Watch Trailer" button at it (currently goes to the episodes section).</li>
   <li>Optional: make hello@ the <em>default</em> From address in Gmail; consider a DMARC record / dedicated sending service if you ever start a newsletter from the domain.</li>
 </ul>

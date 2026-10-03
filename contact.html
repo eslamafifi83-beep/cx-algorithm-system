@@ -158,7 +158,7 @@
     display: grid; place-items: center;
     margin-bottom: 1.375rem;
   }
-  .intent h3 { font-family: var(--display); font-size: 1.3rem; font-weight: 700; margin-bottom: 0.6rem; }
+  .intent .intent-title { display: block; font-family: var(--display); font-size: 1.3rem; font-weight: 700; margin-bottom: 0.6rem; }
   .intent p { color: var(--muted); font-size: 0.9rem; line-height: 1.6; }
 
   /* Form + sidebar */
@@ -489,7 +489,7 @@
       <button type="button" class="intent${it.key === selected ? ' active' : ''}" role="radio" aria-checked="${it.key === selected}" data-key="${it.key}">
         <span class="tick"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#12203C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-11"/></svg></span>
         <span class="icon-tile"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#E9A33D" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${ICONS[it.icon]}</svg></span>
-        <h3>${it.title}</h3>
+        <span class="intent-title">${it.title}</span>
         <p>${it.desc}</p>
       </button>`).join('');
     document.querySelectorAll('.intent').forEach(b => b.addEventListener('click', () => {

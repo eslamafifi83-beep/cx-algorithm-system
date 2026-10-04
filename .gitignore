@@ -17,3 +17,5 @@ scripts/transcripts/drafts/
 scripts/transcripts/extras/
 scripts/transcripts/manifest.json
 scripts/transcripts/transcript-review.html
+scripts/presskit/content.json
+scripts/presskit/*.html

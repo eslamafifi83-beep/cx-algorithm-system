@@ -85,7 +85,7 @@
   <tr><th>Admin tab</th><th>Controls</th></tr>
   <tr><td>Home page</td><td>The "On Air" hero (Oct 2026): the <strong>on-air line</strong> next to the red light, the two headline lines (*asterisks* = gold; the last gold word plays the "decoding" animation), the intro (*asterisks* = bold) and the <strong>three key numbers</strong> (e.g. 40K+ / Listeners — they count up on the page). Plus the <strong>"Fresh this season" checklist</strong>: tick which episodes lead the homepage (unticked ones sit behind "Load more"; none ticked = first three). The hero's "Latest episode" card and Play button follow the <em>last</em> episode in the Episodes tab automatically, and the Listen-on icons follow the Links tab</td></tr>
   <tr><td>Companies</td><td>The "Featuring guests from" logos. Upload any logo file — the site auto-trims its empty margins and shows it on a uniform white tile (transparent PNGs look best). Each company also has a <strong>brand colour</strong>, used on its guests' cards</td></tr>
-  <tr><td>Episodes</td><td>Everything per episode. ⚡ <strong>Auto-fill from Spotify:</strong> paste the episode's Spotify link → Fetch → title, cover, description, date &amp; duration fill in automatically (add the guest name yourself). Warns you if another episode already uses the same link. Audio/video via Spotify link or file upload; show notes, takeaways, chapters, resources</td></tr>
+  <tr><td>Episodes</td><td>Everything per episode. ⚡ <strong>Auto-fill from Spotify:</strong> paste the episode's Spotify link → Fetch → title and cover fill in (Spotify's API needs Premium, see section 9), then <strong>"Fill empty fields from the website"</strong> adds the notes, learning points, date and length from your podcast feed (add the guest name yourself). Warns you if another episode already uses the same link. Audio/video via Spotify link or file upload; show notes, takeaways, chapters, resources</td></tr>
   <tr><td>Guests</td><td>The Guests page: intro + three stats, and a card per guest: name, <strong>job title</strong>, <strong>company</strong>, <strong>company logo</strong> (picked from the Companies tab; its brand colour tints the card), topic, bio, photo with <strong>framing sliders</strong> (zoom / left-right / up-down, previewed live), episode number &amp; link, LinkedIn, and the "featured" spotlight toggle. Topics become the filter buttons ("AI &amp; Data" and "Data &amp; AI" count as one). Cards sort newest episode first</td></tr>
   <tr><td>Blog</td><td>Your LinkedIn article cards + the newsletter button link</td></tr>
   <tr><td>Messages</td><td>Contact-form inbox — read &amp; delete enquiries. Every message lands here; with a Web3Forms key in Links it is also emailed to hello@</td></tr>
@@ -95,9 +95,23 @@
   <tr><td>Navigation</td><td><strong>Rename and reorder the menu</strong> across the whole site (up/down arrows + label boxes). The page each item links to is fixed, so renaming can never break anything</td></tr>
 </table>
 <div class="callout">🎬 <strong>Video tip:</strong> for video episodes, paste a Spotify link rather than uploading huge files — free storage is 1 GB (fine for images + many audio episodes, not for video).</div>
-<div class="callout warn">👥 <strong>Guests page note:</strong> the site shipped with six <em>sample</em> guests (Dr Amina Rahal, Marcus Chen…). They show publicly until replaced — edit or delete them in the Guests tab and add your real guests.</div>
+<h2>5. New episode checklist</h2>
+<p>You only upload to <strong>Spotify for Creators</strong>. Your feed (<code>https://anchor.fm/s/10dcc5b9c/podcast/rss</code>) does the rest for the apps; only your website and YouTube need you.</p>
+<p><strong>Automatic, nothing to do</strong> (usually within a few hours to a day): Apple Podcasts, Amazon Music, iHeartRadio, Audible, Pocket Casts, Castbox, Overcast, Goodpods, Deezer, TuneIn, Pandora and SiriusXM all read the feed. The sign-ups were one-time.</p>
+<p><strong>Each new episode:</strong></p>
+<ul class="checklist">
+  <li><strong>Spotify for Creators:</strong> upload, write the description (it feeds every app and your website's notes), publish. Never write "weekly".</li>
+  <li><strong>Website, about 5 minutes:</strong> admin → Episodes → add an episode → paste its Spotify link → Fetch (title and cover) → <strong>Fill empty fields from the website</strong> (notes, "What you'll learn", date, length) → add the guest name → <strong>Save &amp; publish</strong>. The episode gets its own page at <code>thecxalgorithm.com/episodes/&lt;title-in-lowercase-with-dashes&gt;</code>, the sitemap updates and Bing is pinged automatically. Give it about 90 seconds to show.</li>
+  <li><strong>Homepage:</strong> admin → Home page → tick the new episode in "Fresh this season" (and untick the oldest) so the newest three lead the homepage. The hero's "Latest episode" card follows the last episode automatically.</li>
+  <li><strong>New guest:</strong> admin → Guests → add a card (name, title, company, photo, bio, episode number and link, LinkedIn). If their company is new, add its logo in admin → Companies first.</li>
+  <li><strong>Link back in Spotify (recommended):</strong> once the website page exists, edit the Spotify description and add at the end: <em>Full episode notes, transcript and chapters: thecxalgorithm.com</em>, linked to the episode's page. In the editor's HTML view, switch back to the normal view before Save, or the change is lost.</li>
+  <li><strong>Transcript, chapters, takeaways, guest quote:</strong> not automatic. Open Claude Code in the project folder and ask it to "add the transcript for the new episode". It runs the same process as the first 8 and gives you a page to review before publishing.</li>
+  <li><strong>YouTube:</strong> upload the video yourself to @TheCXAlgorithmPodcast.</li>
+  <li><strong>Optional:</strong> Google Search Console → "Inspect any URL" → paste the new episode page → Request indexing, so Google finds it within a day instead of a week.</li>
+  <li><strong>Share it:</strong> LinkedIn and your newsletter as usual.</li>
+</ul>
 
-<h2>5. Changing DESIGN (UX/UI) — the code route</h2>
+<h2>6. Changing DESIGN (UX/UI) — the code route</h2>
 <p>Design lives in the code. The workflow is always the same three steps:</p>
 <ol>
   <li><strong>Edit</strong> the files on your computer: <code>C:\Users\eslam\MOCKUPS\cx-algorithm-system</code> — easiest way: open Claude Code in that folder and describe the change ("make the hero headline bigger", "change the gold to a warmer tone"). Claude has memory notes about this project's whole history.</li>
@@ -138,7 +152,7 @@
   <li><strong>Old homepage backup:</strong> <code>index.backup-2026-07-05.html</code> — the pre-redesign version, kept for reference.</li>
 </ul>
 
-<h2>6. Things that will bite if forgotten ⚠️</h2>
+<h2>7. Things that will bite if forgotten ⚠️</h2>
 <ul>
   <li><strong>Git author identity:</strong> code pushed to GitHub must be authored as <code>298448529+eslamafifi83-beep@users.noreply.github.com</code> or Vercel <strong>blocks the deployment</strong> ("commit author does not have access"). This is already configured inside the project folder — but if the project is ever copied to a new computer, set it again first thing.</li>
   <li><strong>Don't delete <code>vercel.json</code>:</strong> it pins the project type ("Other") — without it Vercel hunts for a server file and the build fails with "No entrypoint found."</li>
@@ -150,7 +164,7 @@
   <li><strong>Vercel free plan</strong> is for non-commercial use — fine for the podcast; if you start selling sponsorships through the site, upgrade to Pro (~$20/mo).</li>
 </ul>
 
-<h2>7. If something breaks — first aid</h2>
+<h2>8. If something breaks — first aid</h2>
 <table>
   <tr><th>Symptom</th><th>Do this</th></tr>
   <tr><td>Site is down / broken after a change</td><td>Vercel → Deployments → find the last <strong>working</strong> deployment → ⋯ menu → <strong>"Promote to Production"</strong> (or "Instant Rollback"). Instantly restores the previous version.</td></tr>
@@ -163,7 +177,7 @@
   <tr><td>Anything else</td><td>Open Claude Code in the project folder and describe/screenshot the problem — the project history is in its memory.</td></tr>
 </table>
 
-<h2>8. Done since launch ✅ &amp; still to do ☐</h2>
+<h2>9. Done since launch ✅ &amp; still to do ☐</h2>
 <p><strong>Completed since the July handover:</strong></p>
 <ul>
   <li>✅ Domain connected + HTTPS (thecxalgorithm.com, www, green in Vercel)</li>

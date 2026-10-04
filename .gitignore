@@ -6,3 +6,14 @@ node_modules/
 
 # Old local-only runtime data (now lives in Supabase)
 messages.json
+# transcript pipeline working files (local only)
+scripts/transcripts/.venv/
+scripts/transcripts/audio/
+scripts/transcripts/raw/
+scripts/transcripts/seg/
+scripts/transcripts/punct/
+scripts/transcripts/review/
+scripts/transcripts/drafts/
+scripts/transcripts/extras/
+scripts/transcripts/manifest.json
+scripts/transcripts/transcript-review.html

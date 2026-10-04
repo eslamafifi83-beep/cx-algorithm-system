@@ -1,0 +1,210 @@
+<title>CX Algorithm Transcripts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+  /* Layout: one reading column; each episode is a review card: flagged lines first, then fixes,
+     chapters and the full transcript, with the decision at the foot of the card. */
+  :root {
+    --bg: #F3F4F8; --surface: #FFFFFF; --ink: #0C1128; --muted: #586079; --line: rgba(12, 17, 40, 0.12);
+    --gold: #9A6412; --gold-soft: rgba(201, 134, 42, 0.14); --ok: #1F7A4D; --ok-soft: rgba(31, 122, 77, 0.12);
+    --warn: #B4431A; --warn-soft: rgba(180, 67, 26, 0.12); --quote: #EEF0F6;
+    --display: "Poppins", "Segoe UI", system-ui, sans-serif;
+    --read: "Source Serif 4", Georgia, "Times New Roman", serif;
+    --mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0B1026; --surface: #131A3A; --ink: #F2F1EC; --muted: #A7ADC9; --line: rgba(242, 241, 236, 0.12);
+      --gold: #E9A33D; --gold-soft: rgba(233, 163, 61, 0.14); --ok: #5CC98A; --ok-soft: rgba(92, 201, 138, 0.14);
+      --warn: #F08A5D; --warn-soft: rgba(240, 138, 93, 0.14); --quote: #1A2249; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0B1026; --surface: #131A3A; --ink: #F2F1EC; --muted: #A7ADC9; --line: rgba(242, 241, 236, 0.12);
+    --gold: #E9A33D; --gold-soft: rgba(233, 163, 61, 0.14); --ok: #5CC98A; --ok-soft: rgba(92, 201, 138, 0.14);
+    --warn: #F08A5D; --warn-soft: rgba(240, 138, 93, 0.14); --quote: #1A2249; color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  body { background: var(--bg); color: var(--ink); font: 15px/1.55 var(--display); }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 28px 16px 64px; display: grid; gap: 22px; }
+  a { color: var(--gold); }
+  .eyebrow { font: 600 0.72rem/1 var(--display); letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin: 0; }
+  h1 { font: 800 clamp(1.7rem, 5vw, 2.3rem)/1.1 var(--display); margin: 8px 0 10px; text-wrap: balance; }
+  .lede { color: var(--muted); margin: 0; max-width: 60ch; }
+  .tally { display: grid; gap: 8px; }
+  .tally-row { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 0.9rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .tally-row b { color: var(--ink); }
+  .bar { display: flex; height: 8px; border-radius: 99px; overflow: hidden; background: var(--line); }
+  .bar i { display: block; height: 100%; transition: width 0.4s ease; }
+  .bar .a { background: var(--ok); } .bar .c { background: var(--warn); }
+  .notice { border: 1px solid var(--line); background: var(--surface); border-radius: 12px; padding: 12px 14px; font-size: 0.9rem; color: var(--muted); }
+
+  .ep { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+  .ep > summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 14px; align-items: center; padding: 16px 18px; }
+  .ep > summary::-webkit-details-marker { display: none; }
+  .ep > summary:focus-visible { outline: 2px solid var(--gold); outline-offset: -2px; }
+  .num { font: 800 1.6rem/1 var(--display); color: var(--gold); font-variant-numeric: tabular-nums; min-width: 2ch; }
+  .head { min-width: 0; }
+  .head h2 { font: 700 1rem/1.3 var(--display); margin: 0; text-wrap: balance; }
+  .head p { margin: 3px 0 0; font-size: 0.82rem; color: var(--muted); }
+  .pill { font: 600 0.72rem/1 var(--display); padding: 6px 10px; border-radius: 99px; white-space: nowrap; border: 1px solid var(--line); color: var(--muted); }
+  .pill.approved { background: var(--ok-soft); color: var(--ok); border-color: transparent; }
+  .pill.changes { background: var(--warn-soft); color: var(--warn); border-color: transparent; }
+  .body { padding: 0 18px 18px; display: grid; gap: 20px; border-top: 1px solid var(--line); padding-top: 16px; }
+  h3 { font: 700 0.78rem/1 var(--display); letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin: 0 0 10px; }
+  .flags { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+  .flags li { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 10px; align-items: baseline; }
+  .t { font: 500 0.75rem/1 var(--mono); color: var(--gold); background: var(--gold-soft); border-radius: 6px; padding: 5px 7px; text-decoration: none; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .t:hover, .t:focus-visible { outline: 1px solid var(--gold); }
+  .flags q { font: 400 0.98rem/1.45 var(--read); quotes: "“" "”"; }
+  .flags .why { grid-column: 2; font-size: 0.84rem; color: var(--muted); }
+  .note { margin: 0; background: var(--quote); border-radius: 10px; padding: 10px 12px; font-size: 0.9rem; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip { font-size: 0.8rem; border: 1px solid var(--line); border-radius: 8px; padding: 4px 8px; }
+  .chip s { color: var(--muted); }
+  .chapters { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; }
+  .chapters li { display: flex; gap: 10px; align-items: baseline; }
+  .tx > summary { cursor: pointer; font-weight: 600; color: var(--gold); }
+  .tx-body { margin-top: 12px; display: grid; gap: 12px; max-height: 70vh; overflow-y: auto; padding-right: 4px; }
+  .tx-body p { margin: 0; font: 400 1.02rem/1.65 var(--read); max-width: 68ch; }
+  .tx-body b { font: 600 0.82rem/1 var(--display); margin-right: 6px; }
+  .tx-body .host b { color: var(--gold); }
+  .decide { display: grid; gap: 10px; border-top: 1px dashed var(--line); padding-top: 16px; }
+  .decide label { font-weight: 600; font-size: 0.9rem; }
+  .decide textarea { width: 100%; min-height: 84px; resize: vertical; font: 400 0.95rem/1.5 var(--display); color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; }
+  .decide textarea:focus-visible { outline: 2px solid var(--gold); outline-offset: 1px; }
+  .btns { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  button { font: 600 0.9rem/1 var(--display); border-radius: 10px; padding: 12px 16px; cursor: pointer; border: 1px solid transparent; }
+  button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+  button:disabled { opacity: 0.5; cursor: not-allowed; }
+  .approve { background: var(--ok); color: var(--surface); }
+  .changes-btn { background: transparent; color: var(--warn); border-color: var(--warn); }
+  .saved { font-size: 0.84rem; color: var(--muted); }
+  footer { font-size: 0.82rem; color: var(--muted); }
+  @media (max-width: 520px) {
+    .ep > summary { grid-template-columns: auto minmax(0, 1fr); }
+    .ep > summary .pill { grid-column: 2; justify-self: start; }
+  }
+  @media (prefers-reduced-motion: reduce) { .bar i { transition: none; } }
+</style>
+
+<main class="wrap">
+  <header>
+    <p class="eyebrow">The CX Algorithm podcast</p>
+    <h1>Episode transcripts for your review</h1>
+    <p class="lede">Every episode was transcribed from its audio, with speakers marked, misheard names corrected and chapters suggested. Nothing goes on the website until you approve it. For each episode, check the flagged lines first (the time opens that moment on the episode page), then approve it or note what to change.</p>
+  </header>
+
+  <section class="tally" aria-label="Review progress">
+    <div class="tally-row" id="tally"></div>
+    <div class="bar" aria-hidden="true"><i class="a" id="barA" style="width:0"></i><i class="c" id="barC" style="width:0"></i></div>
+  </section>
+
+  <p class="notice" id="offline" hidden>Saving isn't available in this view. You can still read everything; reply in the chat with the episodes you approve and any changes.</p>
+
+  <div id="list" style="display:grid;gap:14px"></div>
+
+  <footer>Transcribed with Whisper large-v3 on your laptop, then checked for speakers, names and punctuation. Wording is the machine transcript; only names, capitals and punctuation were corrected.</footer>
+</main>
+
+<script>
+(() => {
+  const EPISODES = /*__DATA__*/[];
+  const $ = id => document.getElementById(id);
+  const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const clock = s => { s = Math.max(0, Math.round(s || 0)); const m = Math.floor(s / 60), x = String(s % 60).padStart(2, '0'); return m + ':' + x; };
+  const at = (ep, t) => ep.url ? `<a class="t" href="${esc(ep.url)}?t=${Math.floor(t)}" target="_blank" rel="noopener" aria-label="Listen from ${clock(t)}">${clock(t)}</a>` : `<span class="t">${clock(t)}</span>`;
+  const decisions = {};   // key -> { status, note, updatedAt }
+  let db = null, canSave = false;
+
+  function card(ep) {
+    const flags = ep.unsure.length ? `<ul class="flags">${ep.unsure.map(u => `<li>${at(ep, u.t)}<q>${esc(u.text)}</q><span class="why">${esc(u.why)}</span></li>`).join('')}</ul>` : '<p class="note">Nothing flagged.</p>';
+    const fixes = ep.fixes.length ? `<div class="chips">${ep.fixes.map(f => `<span class="chip"><s>${esc(f.from)}</s> → ${esc(f.to)}</span>`).join('')}</div>` : '<p class="note">None needed.</p>';
+    const chapters = `<ol class="chapters">${ep.chapters.map(c => `<li>${at(ep, c.t)}<span>${esc(c.title)}</span></li>`).join('')}</ol>`;
+    const tx = ep.paragraphs.map(p => `<p class="${p.speaker === 'Eslam' ? 'host' : 'guest'}">${at(ep, p.t)} <b>${esc(p.speaker)}</b>${esc(p.text)}</p>`).join('');
+    return `<details class="ep" id="${ep.key}">
+      <summary>
+        <span class="num">${String(ep.n).padStart(2, '0')}</span>
+        <span class="head"><h2>${esc(ep.title)}</h2><p>${esc(ep.guest)} · ${ep.minutes} min · ${ep.words.toLocaleString('en-GB')} words</p></span>
+        <span class="pill" data-pill="${ep.key}">To review</span>
+      </summary>
+      <div class="body">
+        <section><h3>Check these first · ${ep.unsure.length}</h3>${flags}</section>
+        ${ep.notes ? `<section><h3>Reviewer's note</h3><p class="note">${esc(ep.notes)}</p></section>` : ''}
+        <section><h3>Names and terms corrected · ${ep.fixes.length}</h3>${fixes}</section>
+        <section><h3>Suggested chapters</h3>${chapters}</section>
+        <details class="tx"><summary>Read the full transcript</summary><div class="tx-body">${tx}</div></details>
+        <div class="decide">
+          <label for="note-${ep.key}">Anything to change? (optional)</label>
+          <textarea id="note-${ep.key}" placeholder="e.g. 12:40 should say 'servicescape'; cut the part at 25:10; chapter 3 title…"></textarea>
+          <div class="btns">
+            <button type="button" class="approve" data-act="approved" data-key="${ep.key}">Approve for the website</button>
+            <button type="button" class="changes-btn" data-act="changes" data-key="${ep.key}">Needs changes</button>
+            <span class="saved" data-saved="${ep.key}" aria-live="polite"></span>
+          </div>
+        </div>
+      </div>
+    </details>`;
+  }
+
+  function paint() {
+    let a = 0, c = 0;
+    EPISODES.forEach(ep => {
+      const d = decisions[ep.key];
+      const pill = document.querySelector(`[data-pill="${ep.key}"]`);
+      const st = d && d.status;
+      if (st === 'approved') a++; else if (st === 'changes') c++;
+      pill.className = 'pill' + (st ? ' ' + st : '');
+      pill.textContent = st === 'approved' ? 'Approved' : st === 'changes' ? 'Needs changes' : 'To review';
+      const ta = $('note-' + ep.key);
+      if (d && typeof d.note === 'string' && document.activeElement !== ta && !ta.dataset.dirty) ta.value = d.note;
+      const saved = document.querySelector(`[data-saved="${ep.key}"]`);
+      if (d && d.updatedAt && !saved.dataset.busy) saved.textContent = 'Saved ' + new Date(d.updatedAt).toLocaleString('en-GB', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
+    });
+    const n = EPISODES.length, todo = n - a - c;
+    $('tally').innerHTML = `<span><b>${a}</b> approved</span><span><b>${c}</b> need changes</span><span><b>${todo}</b> to review</span>`;
+    $('barA').style.width = (a / n * 100) + '%';
+    $('barC').style.width = (c / n * 100) + '%';
+  }
+
+  async function decide(key, status) {
+    if (!canSave) return;
+    const ta = $('note-' + key), saved = document.querySelector(`[data-saved="${key}"]`);
+    const body = { status, note: ta.value.trim(), updatedAt: new Date().toISOString() };
+    saved.dataset.busy = '1'; saved.textContent = 'Saving…';
+    document.querySelectorAll(`[data-key="${key}"]`).forEach(b => b.disabled = true);
+    try {
+      await db.collection('review').doc(key).set(body);
+      decisions[key] = body; delete ta.dataset.dirty;
+      saved.textContent = status === 'approved' ? 'Approved and saved' : 'Saved: marked as needing changes';
+    } catch (e) {
+      saved.textContent = e && e.code === 'invalid_argument' ? "You can read this page but can't save decisions." : 'Not saved. Check your connection and try again.';
+    } finally {
+      delete saved.dataset.busy;
+      document.querySelectorAll(`[data-key="${key}"]`).forEach(b => b.disabled = false);
+      paint();
+    }
+  }
+
+  $('list').innerHTML = EPISODES.map(card).join('');
+  document.querySelectorAll('.decide textarea').forEach(t => t.addEventListener('input', () => { t.dataset.dirty = '1'; }));
+  $('list').addEventListener('click', e => {
+    const b = e.target.closest('button[data-act]');
+    if (b) decide(b.dataset.key, b.dataset.act);
+  });
+  document.querySelectorAll('.decide button').forEach(b => b.disabled = true);
+  paint();
+
+  (async () => {
+    try { db = window.claude && window.claude.use ? await window.claude.use('db') : null; } catch (e) { db = null; }
+    if (!db) { $('offline').hidden = false; return; }
+    canSave = true;
+    document.querySelectorAll('.decide button').forEach(b => b.disabled = false);
+    db.collection('review').onSnapshot(snap => {
+      snap.docs.forEach(d => { if (d.exists) decisions[d.id] = d.data(); });
+      paint();
+    }, () => { /* keep what we have; saving still reports its own errors */ });
+  })();
+})();
+</script>

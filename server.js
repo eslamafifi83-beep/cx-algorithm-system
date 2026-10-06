@@ -328,19 +328,7 @@ const server = http.createServer(async (req, res) => {
     return res.end('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
       + sitePaths(content).map(p => `  <url><loc>${absolute(p)}</loc></url>`).join('\n') + '\n</urlset>\n');
   }
-  // Home, Guests, Episodes and Articles live in templates/ and are sent pre-filled, as api/page.js does live
-  const PRE = { '/': 'index', '/index.html': 'index', '/guests': 'guests', '/guests.html': 'guests', '/episodes': 'episodes', '/episodes.html': 'episodes', '/blog': 'blog', '/blog.html': 'blog' };
-  const preName = PRE[pathname.replace(/(.)\/+$/, '$1')];
-  if (preName) {
-    const html = fs.readFileSync(path.join(ROOT, 'templates', preName + '.html'), 'utf-8');
-    const content = JSON.parse(fs.readFileSync(path.join(ROOT, 'content.json'), 'utf-8'));
-    const { prerender } = require('./lib/prerender');
-    const { jsonLdTag } = require('./lib/structured');
-    let out = html;
-    try { out = (await prerender(html, { url: 'https://www.thecxalgorithm.com' + (preName === 'index' ? '/' : '/' + preName), content })).replace('</head>', jsonLdTag(preName, content) + '</head>'); } catch (e) { /* plain page */ }
-    res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
-    return res.end(out);
-  }
+  if (pathname === '/') pathname = '/index.html';
   // Clean URLs: /about serves about.html
   if (!path.extname(pathname) && fs.existsSync(path.join(ROOT, pathname.replace(/\/+$/, '') + '.html'))) {
     pathname = pathname.replace(/\/+$/, '') + '.html';

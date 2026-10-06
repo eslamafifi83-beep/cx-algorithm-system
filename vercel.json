@@ -3,141 +3,42 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "images": {
-    "sizes": [
-      64,
-      128,
-      256,
-      384,
-      640,
-      828,
-      1080,
-      1600,
-      2048
-    ],
-    "domains": [
-      "fuuuhcvwlrfenjfpcymy.supabase.co"
-    ],
-    "formats": [
-      "image/webp"
-    ],
+    "sizes": [64, 128, 256, 384, 640, 828, 1080, 1600, 2048],
+    "domains": ["fuuuhcvwlrfenjfpcymy.supabase.co"],
+    "formats": ["image/webp"],
     "minimumCacheTTL": 2678400
   },
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        },
-        {
-          "key": "Referrer-Policy",
-          "value": "strict-origin-when-cross-origin"
-        },
-        {
-          "key": "X-Frame-Options",
-          "value": "SAMEORIGIN"
-        },
-        {
-          "key": "Permissions-Policy",
-          "value": "camera=(), microphone=(), geolocation=(), payment=()"
-        }
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=(), payment=()" }
       ]
     },
     {
       "source": "/assets/fonts/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
     },
     {
       "source": "/admin(.*)",
-      "headers": [
-        {
-          "key": "X-Robots-Tag",
-          "value": "noindex, nofollow"
-        }
-      ]
+      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }]
     }
   ],
   "redirects": [
-    {
-      "source": "/lib/:path*",
-      "destination": "/",
-      "permanent": false
-    },
-    {
-      "source": "/templates/:path*",
-      "destination": "/episodes",
-      "permanent": false
-    },
-    {
-      "source": "/index.html",
-      "destination": "/",
-      "permanent": true
-    },
-    {
-      "source": "/guests.html",
-      "destination": "/guests",
-      "permanent": true
-    },
-    {
-      "source": "/episodes.html",
-      "destination": "/episodes",
-      "permanent": true
-    },
-    {
-      "source": "/blog.html",
-      "destination": "/blog",
-      "permanent": true
-    }
+    { "source": "/lib/:path*", "destination": "/", "permanent": false },
+    { "source": "/templates/:path*", "destination": "/episodes", "permanent": false }
   ],
   "rewrites": [
-    {
-      "source": "/",
-      "destination": "/api/page?name=index"
-    },
-    {
-      "source": "/guests",
-      "destination": "/api/page?name=guests"
-    },
-    {
-      "source": "/episodes",
-      "destination": "/api/page?name=episodes"
-    },
-    {
-      "source": "/blog",
-      "destination": "/api/page?name=blog"
-    },
-    {
-      "source": "/sitemap.xml",
-      "destination": "/api/sitemap"
-    },
-    {
-      "source": "/llms.txt",
-      "destination": "/api/sitemap?format=llms"
-    },
-    {
-      "source": "/episode",
-      "destination": "/api/episode-page"
-    },
-    {
-      "source": "/episodes/:slug",
-      "destination": "/api/episode-page?slug=:slug"
-    }
+    { "source": "/sitemap.xml", "destination": "/api/sitemap" },
+    { "source": "/llms.txt", "destination": "/api/sitemap?format=llms" },
+    { "source": "/episode", "destination": "/api/episode-page" },
+    { "source": "/episodes/:slug", "destination": "/api/episode-page?slug=:slug" }
   ],
   "functions": {
-    "api/episode-page.js": {
-      "includeFiles": "{templates/**,404.html,transcripts/**}"
-    },
-    "api/episode-meta.js": {
-      "includeFiles": "transcripts/**"
-    },
-    "api/page.js": {
-      "includeFiles": "{templates/**,assets/*.js}"
-    }
+    "api/episode-page.js": { "includeFiles": "{templates/**,404.html,transcripts/**}" },
+    "api/episode-meta.js": { "includeFiles": "transcripts/**" }
   }
 }

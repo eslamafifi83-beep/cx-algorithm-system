@@ -1,4 +1,24 @@
+# Everyone, including search engines and AI assistants, is welcome to read and cite this site.
+# Only the admin area is off limits.
 User-agent: *
+Allow: /
+Disallow: /admin
+
+# AI assistants and AI search, named explicitly (same rules as above)
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: Bingbot
+User-agent: DuckAssistBot
+User-agent: MistralAI-User
+User-agent: CCBot
 Allow: /
 Disallow: /admin
 

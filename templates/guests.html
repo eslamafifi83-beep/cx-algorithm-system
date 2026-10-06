@@ -325,15 +325,9 @@
     kicker: 'The people behind the ideas',
     heading: 'Voices shaping the future of experience',
     intro: "Every episode brings a leader with something real to say. Meet the operators, founders and thinkers who've joined me at the mic.",
-    stats: [ { value: '40+', label: 'Guests' }, { value: '18', label: 'Countries' }, { value: '12', label: 'Industries' } ],
-    items: [
-      { name: 'Dr Amina Rahal', role: 'Chief AI Officer, Meridian Bank', category: 'AI & Data', bio: 'Fifteen years turning customer data into trust at scale — and where most banks get it wrong.', episodeLabel: 'Episode 07', episodeUrl: '', linkedInUrl: '', featured: true, photo: '' },
-      { name: 'Marcus Chen', role: 'VP Customer Experience, Novaretail', category: 'AI & Data', bio: 'Rebuilt a 2,000-store loyalty program around real-time personalization.', episodeLabel: 'Episode 12', episodeUrl: '', linkedInUrl: '', photo: '' },
-      { name: 'Sofia Marchetti', role: 'Founder & CEO, Bloomkit', category: 'Founders', bio: 'Bootstrapped a customer-onboarding platform to 40M users in four years.', episodeLabel: 'Episode 11', episodeUrl: '', linkedInUrl: '', photo: '' },
-      { name: 'David Okonkwo', role: 'Chief Growth Officer, Lumen', category: 'Growth', bio: "Turned churn into the company's sharpest growth signal.", episodeLabel: 'Episode 10', episodeUrl: '', linkedInUrl: '', photo: '' },
-      { name: 'Priya Nair', role: 'Head of Service Design, Aster Health', category: 'Leadership', bio: 'Redesigned patient journeys across 60 clinics with a service-design lens.', episodeLabel: 'Episode 09', episodeUrl: '', linkedInUrl: '', photo: '' },
-      { name: 'Thomas Berg', role: 'SVP Digital, Kestrel Airlines', category: 'AI & Data', bio: 'Cut support contacts 38% with a predictive help engine.', episodeLabel: 'Episode 08', episodeUrl: '', linkedInUrl: '', photo: '' }
-    ]
+    // Real guests and stats always come from admin → Guests; nothing invented is shown if that fails
+    stats: [],
+    items: []
   };
 
   let data = DEFAULTS;

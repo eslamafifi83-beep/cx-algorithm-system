@@ -844,7 +844,7 @@
       if (t0 > 0) { P.pos = t0; P.pendingSeek = t0; }
       wave = makeWave(ep.sid || ep.title);
 
-      document.title = ep.title + ' | The CX Algorithm Podcast';
+      document.title = ep.title.length > 43 ? ep.title : ep.title + ' | The CX Algorithm Podcast';
       const canon = $('canonicalLink'); if (canon) canon.href = 'https://www.thecxalgorithm.com' + ep.url;
       $('page').innerHTML = playerHTML();
       $('dockArt').innerHTML = smart(ep.image, '', false, 100);

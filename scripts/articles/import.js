@@ -13,6 +13,22 @@ const path = require('path');
 const { pulseKey, fetchArticle } = require('../../lib/linkedin-article');
 
 const SITE = 'https://www.thecxalgorithm.com';
+
+// Width and height of a PNG or JPEG cover (so the page can keep its space while it loads)
+async function imageSize(url) {
+  try {
+    if (!/^https?:/.test(url) || /\.(mp4|webm|mov)(\?|$)/i.test(url)) return null;
+    const b = Buffer.from(await (await fetch(url)).arrayBuffer());
+    if (b.readUInt32BE(0) === 0x89504e47) return { w: b.readUInt32BE(16), h: b.readUInt32BE(20) };
+    for (let i = 2; i < b.length - 9;) {
+      if (b[i] !== 0xff) return null;
+      const m = b[i + 1], len = b.readUInt16BE(i + 2);
+      if (m >= 0xc0 && m <= 0xcf && ![0xc4, 0xc8, 0xcc].includes(m)) return { w: b.readUInt16BE(i + 7), h: b.readUInt16BE(i + 5) };
+      i += 2 + len;
+    }
+  } catch (e) { /* no size */ }
+  return null;
+}
 const OUT = path.join(__dirname, '..', '..', 'articles');
 
 // Corrections applied to the site's copy (fix them on LinkedIn too when you can)
@@ -36,11 +52,13 @@ const FIXES = [
       let html = art.html;
       FIXES.forEach(([re, to]) => { html = html.replace(re, to); });
       if (html.length < 500) throw new Error('article text looks empty');
+      const size = await imageSize(a.thumbnail);
       fs.writeFileSync(file, JSON.stringify({
         source: 'https://www.linkedin.com/pulse/' + key + '/',
         title: art.title,
         published: art.published,
         imported: new Date().toISOString().slice(0, 10),
+        hero: size ? { src: a.thumbnail, w: size.w, h: size.h } : undefined,
         html
       }, null, 1) + '\n');
       saved++;

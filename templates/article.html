@@ -268,11 +268,12 @@
   .art-hero img, .art-hero video { width: 100%; height: 100%; object-fit: cover; display: block; }
   .art-hero.is-image { aspect-ratio: auto; }
   .art-hero.is-image img { height: auto; }
-  .art-body { font-size: 1.0625rem; line-height: 1.8; color: #E4E6EE; }
+  .art-body { font-size: 1.0625rem; line-height: 1.8; color: #E4E6EE; overflow-wrap: break-word; }
+  .art-body a { overflow-wrap: anywhere; }
   .art-body > * + * { margin-top: 1.15em; }
   .art-body h2, .art-body h3 { font-family: var(--display); color: var(--text); line-height: 1.3; letter-spacing: -0.01em; margin-top: 2em; }
   .art-body h2 { font-size: clamp(1.4rem, 2.6vw, 1.75rem); font-weight: 800; }
-  .art-body h3 { font-size: clamp(1.2rem, 2.2vw, 1.4rem); font-weight: 700; }
+  .art-body h3, .art-body h2.sub { font-size: clamp(1.2rem, 2.2vw, 1.4rem); font-weight: 700; }
   .art-body h2 + *, .art-body h3 + * { margin-top: 0.6em; }
   .art-body strong { color: var(--text); font-weight: 600; }
   .art-body a { color: var(--gold-light); text-decoration: underline; text-decoration-color: rgba(244, 192, 105, 0.4); text-underline-offset: 3px; }

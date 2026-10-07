@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Articles — The CX Algorithm Podcast</title>
-<meta name="description" content="Notes on CX, AI and the algorithm of loyalty — long-form articles by Dr Eslam Afifi, host of The CX Algorithm Podcast." />
+<meta name="description" content="Notes on CX, AI and the algorithm of loyalty — long-form thinking from Dr Eslam Afifi's LinkedIn. Every piece opens on LinkedIn." />
 <link rel="canonical" href="https://www.thecxalgorithm.com/blog" />
 <meta name="theme-color" content="#0C1128" />
 <meta property="og:type" content="website" />
@@ -250,8 +250,47 @@
 
   /* Hold space for content that arrives after the page loads, so nothing jumps (layout shift) */
   main { min-height: 100vh; }
-  #featuredSlot:empty { min-height: 346px; }
-  @media (max-width: 1024px) { #featuredSlot:empty { min-height: calc(660px - 4vw); } }
+  /* Article page (/blog/<address>): the blog's colours and type, set for long reading */
+  .art { max-width: 760px; margin: 0 auto; }
+  .art-back { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--muted); text-decoration: none; font-family: var(--display); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.25s var(--ease); }
+  .art-back:hover { color: var(--gold-light); }
+  .art-head { margin-top: 1.75rem; display: flex; flex-direction: column; gap: 1rem; }
+  .art-head h1 { font-family: var(--display); font-weight: 800; font-size: clamp(1.9rem, 4.2vw, 3rem); line-height: 1.12; letter-spacing: -0.02em; }
+  .art-by { display: flex; align-items: center; flex-wrap: wrap; gap: 0.875rem 1.25rem; margin-top: 0.375rem; }
+  .art-by .who { display: flex; align-items: center; gap: 0.75rem; }
+  .art-by img { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; border: 1.5px solid var(--hairline-gold); }
+  .art-by .n { font-family: var(--display); font-weight: 700; font-size: 0.95rem; line-height: 1.3; }
+  .art-by .r { color: var(--muted); font-size: 0.8rem; line-height: 1.4; }
+  .art-li { display: inline-flex; align-items: center; gap: 0.5rem; color: #DFE7F3; text-decoration: none; font-family: var(--display); font-size: 0.8rem; font-weight: 600; border: 1px solid rgba(255, 255, 255, 0.09); background: rgba(255, 255, 255, 0.05); border-radius: 999px; padding: 0.4rem 0.9rem 0.4rem 0.45rem; transition: border-color 0.25s var(--ease); }
+  .art-li:hover { border-color: var(--gold); }
+  .art-li .in-mark { width: 22px; height: 22px; border-radius: 6px; font-size: 0.7rem; }
+  .art-hero { position: relative; margin: clamp(1.75rem, 3.5vw, 2.5rem) 0; border-radius: 18px; overflow: hidden; aspect-ratio: 16 / 9; background: radial-gradient(120% 120% at 40% 30%, #1C2F57, #0E1C3B); border: 1px solid rgba(255, 255, 255, 0.07); }
+  .art-hero img, .art-hero video { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .art-hero.is-image { aspect-ratio: auto; }
+  .art-hero.is-image img { height: auto; }
+  .art-body { font-size: 1.0625rem; line-height: 1.8; color: #E4E6EE; }
+  .art-body > * + * { margin-top: 1.15em; }
+  .art-body h2, .art-body h3 { font-family: var(--display); color: var(--text); line-height: 1.3; letter-spacing: -0.01em; margin-top: 2em; }
+  .art-body h2 { font-size: clamp(1.4rem, 2.6vw, 1.75rem); font-weight: 800; }
+  .art-body h3 { font-size: clamp(1.2rem, 2.2vw, 1.4rem); font-weight: 700; }
+  .art-body h2 + *, .art-body h3 + * { margin-top: 0.6em; }
+  .art-body strong { color: var(--text); font-weight: 600; }
+  .art-body a { color: var(--gold-light); text-decoration: underline; text-decoration-color: rgba(244, 192, 105, 0.4); text-underline-offset: 3px; }
+  .art-body a:hover { text-decoration-color: var(--gold-light); }
+  .art-body blockquote { border-left: 3px solid var(--gold); padding: 0.25rem 0 0.25rem 1.25rem; font-size: 1.15rem; color: var(--text); }
+  .art-body ul, .art-body ol { padding-left: 1.4rem; }
+  .art-body li + li { margin-top: 0.45em; }
+  .art-body li::marker { color: var(--gold); }
+  .art-body hr { border: none; height: 1px; background: var(--hairline); margin: 2.25em 0; }
+  .art-body figure { margin-top: 1.75em; margin-bottom: 1.75em; }
+  .art-body figure img, .art-body figure video { display: block; width: 100%; height: auto; border-radius: 14px; border: 1px solid rgba(255, 255, 255, 0.07); background: #0E1C3B; }
+  .art-body figcaption { color: var(--muted); font-size: 0.85rem; text-align: center; margin-top: 0.6rem; }
+  .art-end { margin-top: clamp(2.5rem, 5vw, 3.5rem); background: linear-gradient(135deg, rgba(233, 163, 61, 0.09), rgba(74, 110, 180, 0.05)); border: 1px solid rgba(233, 163, 61, 0.2); border-radius: 22px; padding: clamp(1.5rem, 3vw, 2.25rem); display: flex; flex-direction: column; gap: 0.75rem; }
+  .art-end h2 { font-family: var(--display); font-weight: 800; font-size: clamp(1.25rem, 2.4vw, 1.6rem); line-height: 1.25; }
+  .art-end p { color: var(--muted); }
+  .art-end .row { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 0.5rem; }
+  .art-more { margin-top: clamp(3rem, 6vw, 4.5rem); }
+  @media (max-width: 640px) { .art-body { font-size: 1rem; } }
   @media (max-width: 1024px) {
     .featured { grid-template-columns: 1fr; }
     .cards { grid-template-columns: repeat(2, 1fr); }
@@ -296,7 +335,6 @@
   @media (max-width: 640px) { .cards { grid-template-columns: 1fr; } }
 </style>
 <script src="/assets/img.js"></script>
-<script src="/assets/links.js"></script>
 </head>
 <body>
 
@@ -325,31 +363,7 @@
   </div>
 </header>
 
-<main class="container">
-  <div class="blog-head">
-    <div>
-      <p class="kicker">Insights &amp; Writing</p>
-      <h1>Notes on CX, AI &amp; the algorithm of loyalty</h1>
-      <p class="sub">Long-form thinking from my LinkedIn, where I unpack what really moves customer experience.</p>
-    </div>
-    <a class="nl-btn" id="nlBtn" href="#" target="_blank" rel="noopener noreferrer" hidden>
-      <span class="in-mark" aria-hidden="true">in</span>
-      The CX Algorithm Newsletter
-      <svg class="arrow" width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M2 11 L11 2 M11 2 H4.5 M11 2 V8.5"/></svg>
-    </a>
-  </div>
-
-  <div id="featuredSlot"></div>
-
-  <div class="grid-head">
-    <h2>Latest articles</h2>
-    <div class="chips" id="chips"></div>
-  </div>
-  <div class="cards" id="cards"></div>
-  <div class="load-wrap" id="loadWrap" hidden>
-    <button class="btn btn-outline" id="loadMore" type="button">Load more articles</button>
-  </div>
-</main>
+<main class="container art-main" id="page"></main>
 
 <footer class="footer">
   <div class="container footer-inner">
@@ -359,145 +373,15 @@
 </footer>
 
 <script>
-  const esc = s => { const d = document.createElement('div'); d.textContent = String(s ?? ''); return d.innerHTML; };
-  const escAttr = s => esc(s).replace(/"/g, '&quot;');
-  const isVideo = src => /\.(mp4|webm|mov)(\?|$)/i.test(src || '');
-
-  let articles = [];
-  let activeTag = 'All';
-  let shown = 9;
-
-  function thumbHTML(a, width) {
-    if (!a.thumbnail) {
-      return `<div class="ph" aria-hidden="true">
-        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"><rect x="3" y="5" width="18" height="14" rx="2.5"/><circle cx="9" cy="10" r="1.8"/><path d="M3.5 17 L9 12.5 L13 15.5 L16.5 12.5 L20.5 16"/></svg>
-      </div>`;
-    }
-    if (isVideo(a.thumbnail)) {
-      return `<video data-src="${escAttr(a.thumbnail)}" muted loop playsinline preload="none" aria-hidden="true"></video>`;
-    }
-    return `<img src="${escAttr(CXImg(a.thumbnail, width || 400))}" alt="" loading="lazy" decoding="async" />`;
-  }
-
-  // Each article opens as its own page on the site (/blog/<address>), which links on to LinkedIn
-  const linkAttrs = a => {
-    const i = articles.indexOf(a);
-    if (window.CXLinks && i >= 0) return `href="${escAttr(CXLinks.articleUrl(articles, i))}"`;
-    return a.linkedInUrl ? `href="${escAttr(a.linkedInUrl)}" target="_blank" rel="noopener noreferrer"` : 'role="article"';
-  };
-
-  function metaBits(a) {
-    const bits = [];
-    if (a.date) bits.push(esc(a.date));
-    if (a.readTime) bits.push(esc(a.readTime));
-    return bits.join(' · ');
-  }
-
-  function featuredHTML(a) {
-    return `
-      <a class="featured" ${linkAttrs(a)}>
-        <div class="featured-thumb">
-          ${thumbHTML(a, 680)}
-          <span class="feat-chip"><span class="in-mark">in</span>FEATURED ARTICLE</span>
-        </div>
-        <div class="featured-body">
-          <div class="meta-line">
-            ${a.tag ? `<span class="tag-pill">${esc(a.tag)}</span>` : ''}
-            ${metaBits(a) ? `<span class="meta-dim">${metaBits(a)}</span>` : ''}
-          </div>
-          <h2>${esc(a.title)}</h2>
-          ${a.excerpt ? `<p class="excerpt">${esc(a.excerpt)}</p>` : ''}
-          <div class="cta"><span class="btn btn-gold">Read article&nbsp;&rarr;</span></div>
-        </div>
-      </a>`;
-  }
-
-  function cardHTML(a) {
-    return `
-      <a class="post" ${linkAttrs(a)}>
-        <div class="post-thumb">
-          ${thumbHTML(a)}
-          <span class="in-badge" aria-hidden="true">in</span>
-        </div>
-        <div class="post-body">
-          <div class="meta-line">
-            ${a.tag ? `<span class="tag-pill">${esc(a.tag)}</span>` : ''}
-            ${a.readTime ? `<span class="meta-dim">${esc(a.readTime)}</span>` : ''}
-          </div>
-          <h3>${esc(a.title)}</h3>
-          ${a.excerpt ? `<p class="excerpt">${esc(a.excerpt)}</p>` : '<p class="excerpt"></p>'}
-          <div class="post-foot">
-            <span class="date">${esc(a.date || '')}</span>
-            <span class="read-link">Read article&nbsp;&rarr;</span>
-          </div>
-        </div>
-      </a>`;
-  }
-
-  function render() {
-    const featured = articles.find(a => a.featured) || articles[articles.length - 1];
-    document.getElementById('featuredSlot').innerHTML = featured ? featuredHTML(featured) : '';
-
-    // Tag chips from the data
-    const tags = ['All', ...new Set(articles.map(a => a.tag).filter(Boolean))];
-    document.getElementById('chips').innerHTML = tags.map(t =>
-      `<button class="chip${t === activeTag ? ' active' : ''}" type="button" data-tag="${escAttr(t)}">${esc(t)}</button>`).join('');
-    document.querySelectorAll('.chip').forEach(c => c.addEventListener('click', () => {
-      activeTag = c.dataset.tag; shown = 9; render();
-    }));
-
-    let list = articles.filter(a => a !== featured).reverse(); // newest first
-    if (activeTag !== 'All') list = list.filter(a => a.tag === activeTag);
-
-    const cardsEl = document.getElementById('cards');
-    if (!articles.length) {
-      cardsEl.innerHTML = '<div class="empty-note" style="grid-column:1/-1">New articles are on the way. Meanwhile, the conversations live on the <a href="/episodes" style="color:var(--gold-light)">episodes page</a>.</div>';
-    } else if (!list.length) {
-      cardsEl.innerHTML = '<div class="empty-note" style="grid-column:1/-1">More articles are on the way. The latest one is featured above.</div>';
-    } else {
-      cardsEl.innerHTML = list.slice(0, shown).map(cardHTML).join('');
-    }
-    document.getElementById('loadWrap').hidden = list.length <= shown;
-    watchVideos();
-  }
-
-  // Article videos are large (13–19 MB each), so each one only loads once the page has finished
-  // loading and the video is on screen, and pauses when scrolled away. With reduced motion,
-  // the first frame shows without playing.
-  const stillOnly = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let videoWatch = null;
-  function watchVideos() {
-    const vids = document.querySelectorAll('video[data-src]');
-    if (!vids.length) return;
-    if (document.readyState !== 'complete') { window.addEventListener('load', watchVideos, { once: true }); return; }
-    const start = v => {
-      if (!v.getAttribute('src')) { v.preload = stillOnly ? 'metadata' : 'auto'; v.src = v.dataset.src; }
-      if (!stillOnly) v.play().catch(() => {});
-    };
-    if (!('IntersectionObserver' in window)) { vids.forEach(start); return; }
-    if (!videoWatch) videoWatch = new IntersectionObserver(entries => entries.forEach(en => {
-      if (en.isIntersecting) start(en.target); else en.target.pause();
-    }), { rootMargin: '200px 0px' });
-    vids.forEach(v => videoWatch.observe(v));
-  }
-
-  document.getElementById('loadMore').addEventListener('click', () => { shown += 9; render(); });
-
-  (async function init() {
-    try {
-      const res = await fetch('/api/content', { cache: 'no-store' });
-      const c = await res.json();
-      const blog = c.blog || {};
-      articles = Array.isArray(blog.articles) ? blog.articles.filter(a => a && a.title) : [];
-      const nl = blog.newsletterUrl || (c.links && c.links.linkedin) || '';
-      if (nl) {
-        const btn = document.getElementById('nlBtn');
-        btn.href = nl;
-        btn.hidden = false;
-      }
-    } catch (e) { articles = []; }
-    render();
-  })();
+  // The cover video (13–19 MB) starts only once the page has loaded; with reduced motion it stays still
+  window.addEventListener('load', () => {
+    const v = document.querySelector('.art-hero video[data-src]');
+    if (!v) return;
+    const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    v.preload = still ? 'metadata' : 'auto';
+    v.src = v.dataset.src;
+    if (!still) v.play().catch(() => {});
+  });
   const navToggle = document.getElementById('navToggle');
   if (navToggle) {
     const siteNav = document.getElementById('siteNav');

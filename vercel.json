@@ -75,6 +75,11 @@
       "permanent": false
     },
     {
+      "source": "/articles/:path*",
+      "destination": "/blog",
+      "permanent": false
+    },
+    {
       "source": "/index.html",
       "destination": "/",
       "permanent": true
@@ -113,6 +118,14 @@
       "destination": "/api/page?name=blog"
     },
     {
+      "source": "/blog/:slug",
+      "destination": "/api/page?name=article&slug=:slug"
+    },
+    {
+      "source": "/press-kit",
+      "destination": "/api/page?name=press-kit"
+    },
+    {
       "source": "/sitemap.xml",
       "destination": "/api/sitemap"
     },
@@ -137,7 +150,7 @@
       "includeFiles": "transcripts/**"
     },
     "api/page.js": {
-      "includeFiles": "{templates/**,assets/*.js}"
+      "includeFiles": "{templates/**,assets/*.js,articles/**}"
     }
   }
 }

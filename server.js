@@ -328,6 +328,24 @@ const server = http.createServer(async (req, res) => {
     return res.end('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
       + sitePaths(content).map(p => `  <url><loc>${absolute(p)}</loc></url>`).join('\n') + '\n</urlset>\n');
   }
+  // /blog/<address>: an article page (saved copy in articles/, as api/page.js does live); /press-kit: the PDF
+  const artMatch = /^\/blog\/([^/]+)$/.exec(pathname);
+  if (artMatch || pathname === '/press-kit') {
+    const content = JSON.parse(fs.readFileSync(path.join(ROOT, 'content.json'), 'utf-8'));
+    if (!artMatch) {
+      const kit = String((content.host || {}).pressKit || '');
+      res.writeHead(302, { Location: kit ? (/^https?:/.test(kit) ? kit : '/' + kit.replace(/^\/+/, '')) : '/contact#press' });
+      return res.end();
+    }
+    const { route, render, savedCopy, listOf } = require('./lib/article-page');
+    const to = route(content, artMatch[1]);
+    if (to.location) { res.writeHead(to.permanent ? 301 : 302, { Location: to.location }); return res.end(); }
+    const a = to.idx >= 0 ? listOf(content)[to.idx] : null;
+    const copy = a && savedCopy(a);
+    if (!copy) { res.writeHead(302, { Location: (a && a.linkedInUrl) || '/blog' }); return res.end(); }
+    res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+    return res.end(render(content, to.idx, copy));
+  }
   // Home, Guests, Episodes and Articles live in templates/ and are sent pre-filled, as api/page.js does live
   const PRE = { '/': 'index', '/index.html': 'index', '/guests': 'guests', '/guests.html': 'guests', '/episodes': 'episodes', '/episodes.html': 'episodes', '/blog': 'blog', '/blog.html': 'blog' };
   const preName = PRE[pathname.replace(/(.)\/+$/, '$1')];

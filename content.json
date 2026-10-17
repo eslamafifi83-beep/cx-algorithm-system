@@ -25,312 +25,609 @@
       "label": "Contact"
     }
   ],
-  "navVersion": 2,
-  "hero": {
-    "onAir": "New episode available",
-    "headlineLine1": "Great experiences,",
-    "headlineLine2": "*decoded.*",
-    "lede": "*The CX Algorithm* is the podcast where Dr Eslam Afifi talks with the leaders reshaping customer experience, data and AI.",
-    "stats": [
+  "blog": {
+    "articles": [
       {
-        "value": "40K+",
-        "label": "Listeners"
+        "tag": "Strategy",
+        "date": "Jan 2026",
+        "title": "Customer-Centricity Is Not a Mindset. It’s an Algorithm.",
+        "excerpt": "That gap between intention and experience is what made me pause. And it is the reason I created The CX Algorithm podcast.",
+        "featured": true,
+        "readTime": "8 min read",
+        "thumbnail": "https://fuuuhcvwlrfenjfpcymy.supabase.co/storage/v1/object/public/media/1791114454025-1783364705200-1st-Article-Video.mp4",
+        "linkedInUrl": "https://www.linkedin.com/pulse/customer-centricity-mindset-its-algorithm-dr-eslam-afifi-vbjic/?trackingId=gwE5KF0fT4GBg6wTIJAsnw%3D%3D"
       },
       {
-        "value": "7",
-        "label": "Countries"
+        "tag": "AI",
+        "date": "Jan 2026",
+        "title": "Beyond the AI Hype: Why Augmentation Not Automation Creates Value",
+        "excerpt": "The AI technology is impressive, accessible, and often genuinely useful. But as enthusiasm accelerates, many organisations are discovering an uncomfortable gap between expectation and reality. Despite their heavy investment, real value remains elusive.",
+        "featured": false,
+        "readTime": "7 min read",
+        "thumbnail": "https://fuuuhcvwlrfenjfpcymy.supabase.co/storage/v1/object/public/media/1791114478495-1783364977968-2nd-Article-Video-v2.mp4",
+        "linkedInUrl": "https://www.linkedin.com/pulse/beyond-ai-hype-why-augmentation-automation-creates-value-afifi-833ac/?trackingId=QpGAvsDPQ1uu8K8k%2B1FSaA%3D%3D"
       },
       {
-        "value": "7+",
-        "label": "Industries"
-      }
-    ]
-  },
-  "guests": {
-    "kicker": "The people behind the ideas",
-    "heading": "Voices shaping the future of experience",
-    "intro": "Every episode brings a leader with something real to say. Meet the operators, founders and thinkers who've joined me at the mic.",
-    "stats": [
-      {
-        "value": "40+",
-        "label": "Guests"
+        "tag": "AI",
+        "date": "Feb 2026",
+        "title": "Back to the Middle: Engineering Customer Experience in the Age of AI Agents",
+        "excerpt": "The recent surge in conversation around AI agents has done more than introduce a new technology trend. It has unsettled long-held assumptions about how digital value is created and delivered. Analysts are now openly debating whether the multi-billion-dollar Software-as-a-Service (SaaS) industry could be facing an existential reckoning as AI systems and autonomous agents advance rapidly",
+        "featured": false,
+        "readTime": "6 min read",
+        "thumbnail": "https://fuuuhcvwlrfenjfpcymy.supabase.co/storage/v1/object/public/media/1791114480018-1783365421606-3rd-Article-Video.mp4",
+        "linkedInUrl": "https://www.linkedin.com/pulse/back-middle-engineering-customer-experience-age-ai-agents-afifi-xnoqf/?trackingId=LGp66Jn3RGmBr7FaqBYUvQ%3D%3D"
       },
       {
-        "value": "18",
-        "label": "Countries"
+        "tag": "Leadership",
+        "date": "Feb 2026",
+        "title": "The Hidden Architecture of CX: Body, Mind, and Soul",
+        "excerpt": "Customer experience is ultimately delivered through thousands of small human decisions. A frontline employee deciding how far to go for a customer. A manager interpreting signals from frustrated clients. A team navigating pressure while trying to resolve a difficult situation. When those human systems are healthy, organisations consistently deliver remarkable experiences. When they are not, even the most sophisticated technology struggles to compensate.",
+        "featured": false,
+        "readTime": "7 min read",
+        "thumbnail": "https://fuuuhcvwlrfenjfpcymy.supabase.co/storage/v1/object/public/media/1791114481239-1783375041632-Ana-Video.mp4",
+        "linkedInUrl": "https://www.linkedin.com/pulse/hidden-architecture-cx-body-mind-soul-dr-eslam-afifi-pojec/?trackingId=QbZfGNhxTsSLIVHk6C65aw%3D%3D"
       },
       {
-        "value": "12",
-        "label": "Industries"
+        "tag": "CX",
+        "date": "Mar 2026",
+        "title": "The three pillars of unbeatable CX: ease, authenticity, and trust",
+        "excerpt": "What does it take to survive — and thrive — through the internet boom, the booking.com wave, and now the rise of agentic AI? I recently sat down with Kate Couling, co-founder of World Journeys, a bespoke travel agency operating out of New Zealand for over two decades. The answer she gave me wasn't about technology, pricing, or marketing. It came down to three words: ease, authenticity, and trust.",
+        "featured": false,
+        "readTime": "5 min read",
+        "thumbnail": "https://fuuuhcvwlrfenjfpcymy.supabase.co/storage/v1/object/public/uploads/1783375319586-Article.png",
+        "linkedInUrl": "https://www.linkedin.com/pulse/three-pillars-unbeatable-cx-ease-authenticity-trust-dr-eslam-afifi-yedwc/?trackingId=FhQbmm%2BaQ%2BOmGDO5zMLCyA%3D%3D"
+      },
+      {
+        "tag": "AI",
+        "date": "Apr 2026",
+        "title": "Everything Is an Optimisation Problem — Including Your CX Strategy",
+        "excerpt": "Reflections from my conversation with Mohamed Soliman, Regional VP at Energy Exemplar, on The CX Algorithm Podcast.",
+        "featured": false,
+        "readTime": "8 min read",
+        "thumbnail": "https://fuuuhcvwlrfenjfpcymy.supabase.co/storage/v1/object/public/uploads/1783375453143-Final-v2.png",
+        "linkedInUrl": "https://www.linkedin.com/pulse/everything-optimisation-problem-including-your-cx-strategy-afifi-lqdic/?trackingId=9Y7itP9FS6ukGYEExxVawA%3D%3D"
+      },
+      {
+        "tag": "CX",
+        "date": "May 2026",
+        "title": "Channels Are Delivery Mechanisms. Journeys Are the Product.",
+        "excerpt": "There is a phrase I hear in boardrooms constantly. Every time I hear it, I tell myself I should reward myself with a treat.\n\nThat phrase is \"channel strategy.\"\n\nNot because channels don't matter. They do. Your app has to work. Your website has to be good. Your contact centre has to function. But the moment an organisation starts using channels as the primary unit of design, investment, and accountability — something quietly breaks. And the customer feels it long before leadership does.",
+        "featured": false,
+        "readTime": "8 min read",
+        "thumbnail": "https://fuuuhcvwlrfenjfpcymy.supabase.co/storage/v1/object/public/uploads/1783375636108-eddeddd5-1d78-442a-871c-c94a223bf603.jpg",
+        "linkedInUrl": "https://www.linkedin.com/pulse/channels-delivery-mechanisms-journeys-product-dr-eslam-afifi-xvipc/?trackingId=Ri9qUl44R0mudjcHkoEqEg%3D%3D"
       }
     ],
-    "items": [
-      {
-        "name": "Dr Amina Rahal",
-        "role": "Chief AI Officer, Meridian Bank",
-        "category": "AI & Data",
-        "bio": "Fifteen years turning customer data into trust at scale — and where most banks get it wrong.",
-        "episodeLabel": "Episode 07",
-        "episodeUrl": "",
-        "linkedInUrl": "",
-        "photo": "",
-        "featured": true
-      },
-      {
-        "name": "Marcus Chen",
-        "role": "VP Customer Experience, Novaretail",
-        "category": "AI & Data",
-        "bio": "Rebuilt a 2,000-store loyalty program around real-time personalization.",
-        "episodeLabel": "Episode 12",
-        "episodeUrl": "",
-        "linkedInUrl": "",
-        "photo": "",
-        "featured": false
-      },
-      {
-        "name": "Sofia Marchetti",
-        "role": "Founder & CEO, Bloomkit",
-        "category": "Founders",
-        "bio": "Bootstrapped a customer-onboarding platform to 40M users in four years.",
-        "episodeLabel": "Episode 11",
-        "episodeUrl": "",
-        "linkedInUrl": "",
-        "photo": "",
-        "featured": false
-      },
-      {
-        "name": "David Okonkwo",
-        "role": "Chief Growth Officer, Lumen",
-        "category": "Growth",
-        "bio": "Turned churn into the company's sharpest growth signal.",
-        "episodeLabel": "Episode 10",
-        "episodeUrl": "",
-        "linkedInUrl": "",
-        "photo": "",
-        "featured": false
-      },
-      {
-        "name": "Priya Nair",
-        "role": "Head of Service Design, Aster Health",
-        "category": "Leadership",
-        "bio": "Redesigned patient journeys across 60 clinics with a service-design lens.",
-        "episodeLabel": "Episode 09",
-        "episodeUrl": "",
-        "linkedInUrl": "",
-        "photo": "",
-        "featured": false
-      },
-      {
-        "name": "Thomas Berg",
-        "role": "SVP Digital, Kestrel Airlines",
-        "category": "AI & Data",
-        "bio": "Cut support contacts 38% with a predictive help engine.",
-        "episodeLabel": "Episode 08",
-        "episodeUrl": "",
-        "linkedInUrl": "",
-        "photo": "",
-        "featured": false
-      }
-    ]
+    "newsletterUrl": "https://www.linkedin.com/newsletters/the-cx-algorithim-podcast-7413940175195570176/"
   },
-  "marquee": {
-    "label": "Featuring guests from",
-    "items": [
+  "hero": {
+    "lede": "*The CX Algorithm* is the podcast where Dr Eslam Afifi talks with the leaders reshaping customer experience, data and AI.",
+    "onAir": "New episode available",
+    "stats": [
       {
-        "name": "IE University",
-        "logo": "assets/companies/ie-university.svg"
+        "label": "Listeners",
+        "value": "40K+"
       },
       {
-        "name": "Samsung",
-        "logo": "assets/companies/samsung.svg"
+        "label": "Countries",
+        "value": "7"
       },
       {
-        "name": "Openbank",
-        "logo": ""
-      },
-      {
-        "name": "Mastercard",
-        "logo": "assets/uploads/1783098031485-Mastercard.png"
-      },
-      {
-        "name": "World Journeys",
-        "logo": ""
+        "label": "Industries",
+        "value": "7+"
       }
-    ]
+    ],
+    "tagline": "A Weekly Podcast",
+    "headlineLine1": "Great experiences,",
+    "headlineLine2": "*decoded.*"
   },
-  "episodes": [
-    {
-      "eyebrow": "EPISODE 01",
-      "title": "Branding Excellence",
-      "description": "Crafting identities that stand out and connect with purpose.",
-      "guest": "",
-      "role": "",
-      "date": "",
-      "duration": "",
-      "image": "",
-      "audio": "",
-      "video": "",
-      "about": "",
-      "takeaways": "",
-      "chapters": "",
-      "resources": "",
-      "guestQuote": "",
-      "guestBio": ""
-    },
-    {
-      "eyebrow": "EPISODE 02",
-      "title": "Digital Innovation",
-      "description": "Designing seamless digital experiences that inspire action.",
-      "guest": "",
-      "role": "",
-      "date": "",
-      "duration": "",
-      "image": "",
-      "audio": "",
-      "video": "",
-      "about": "",
-      "takeaways": "",
-      "chapters": "",
-      "resources": "",
-      "guestQuote": "",
-      "guestBio": ""
-    },
-    {
-      "eyebrow": "EPISODE 03",
-      "title": "Creative Impact",
-      "description": "Transforming ideas into designs that leave a lasting impression.",
-      "guest": "",
-      "role": "",
-      "date": "",
-      "duration": "",
-      "image": "",
-      "audio": "",
-      "video": "",
-      "about": "",
-      "takeaways": "",
-      "chapters": "",
-      "resources": "",
-      "guestQuote": "",
-      "guestBio": ""
-    }
-  ],
+  "host": {
+    "bio1": "Hello, I'm Dr Eslam Afifi - a CX and data leader with over 15 years of experience helping organizations across Australia, Europe, and the GCC. I've learned that great experiences don't come from one element alone: they're created through the right Algorithm of people, data, and technology.",
+    "bio2": "I created The CX Algorithm to bring together diverse voices - innovators, leaders, and storytellers - who each add something unique to the formula. Because when we listen, share, and collaborate, we uncover the real intelligence behind extraordinary customer experiences.",
+    "name": "Dr Eslam Afifi",
+    "photo": "assets/dr-eslam-afifi.png",
+    "pressKit": "https://fuuuhcvwlrfenjfpcymy.supabase.co/storage/v1/object/public/media/1791670076470-CX-Algorithm-Press-Kit.pdf"
+  },
   "about": {
     "hero": {
       "image": "assets/stage/hx-sydney.jpg",
       "caption": "On stage · HX Forum, Sydney"
     },
-    "credentials": [
+    "wall": [
       {
-        "title": "PhD",
-        "org": "Monash University",
-        "note": "CX and marketing strategy using AI and machine learning"
+        "sub": "XI Forum, Sydney",
+        "image": "assets/stage/xi-forum-audience.jpg",
+        "title": "With the audience",
+        "detail": "33.87° S · 151.21° E"
       },
       {
-        "title": "Executive MBA",
-        "org": "IE Business School",
-        "note": "Blue Torch Award"
+        "sub": "Behind the scenes of an award-winning initiative to unlock customer data",
+        "image": "assets/stage/xi-forum-2023.jpg",
+        "title": "XI Forum 2023",
+        "detail": "Sydney · 2023"
       },
       {
-        "title": "3× winner",
-        "org": "Australian CX Awards",
-        "note": "Customer Data & Insights · CX Transformation (2022, 2023)"
+        "sub": "Joined the room live, on screen",
+        "image": "assets/stage/select-cairo.jpg",
+        "title": "Select Cairo",
+        "detail": "30.04° N · 31.24° E"
       }
     ],
-    "results": [
+    "stats": [
       {
-        "value": "15+",
         "label": "Years of global experience",
-        "note": ""
+        "value": "15+"
       },
       {
-        "value": "40K+",
-        "label": "Podcast listeners",
-        "note": ""
+        "label": "Continents lived & worked",
+        "value": "4"
       },
       {
-        "value": "3×",
-        "label": "Australian CX Awards",
-        "note": "Best Use of Customer Data & Insights 2022 · Best CX Transformation Project 2022 and 2023"
-      },
-      {
-        "value": "30+",
         "label": "Stages spoken on",
-        "note": ""
+        "value": "30+"
       },
       {
-        "value": "4",
-        "label": "Continents",
-        "note": "Lived and worked"
+        "label": "Podcast listeners",
+        "value": "40K+"
       }
     ],
     "story": {
       "image": "assets/stage/ie-madrid.jpg",
-      "caption": "IE University, Madrid",
-      "detail": "40.42° N · 3.70° W"
+      "detail": "40.42° N · 3.70° W",
+      "caption": "IE University, Madrid"
     },
-    "wall": [
-      {
-        "image": "assets/stage/xi-forum-audience.jpg",
-        "title": "With the audience",
-        "sub": "XI Forum, Sydney",
-        "detail": "33.87° S · 151.21° E"
-      },
-      {
-        "image": "assets/stage/xi-forum-2023.jpg",
-        "title": "XI Forum 2023",
-        "sub": "Behind the scenes of legalsuper's award-winning initiative to unlock customer data",
-        "detail": "Sydney · 2023"
-      },
-      {
-        "image": "assets/stage/select-cairo.jpg",
-        "title": "Select Cairo",
-        "sub": "Joined the room live, on screen",
-        "detail": "30.04° N · 31.24° E"
-      }
-    ],
     "seenAt": [
       "HX Forum Sydney",
       "XI Forum Sydney",
       "IE University Madrid",
       "Select Cairo"
-    ]
-  },
-  "blog": {
-    "newsletterUrl": "",
-    "articles": [
+    ],
+    "venues": [
+      "CX Summit",
+      "ForrData",
+      "NextGen CX",
+      "ExperienceLive",
+      "The Loyalty Forum"
+    ],
+    "gallery": [
       {
-        "title": "Channels Are Delivery Mechanisms. Journeys Are the Product.",
-        "excerpt": "Customers don't wake up wanting to use a channel, they have a job to be done. A reflection on my conversation with Sasha Zablotskyi of Openbank on journey-centricity, org design, and why AI is accelerating the death of channels.",
-        "tag": "Strategy",
-        "date": "Jan 2026",
-        "readTime": "8 min read",
-        "thumbnail": "",
-        "linkedInUrl": "",
-        "featured": true
+        "image": "https://fuuuhcvwlrfenjfpcymy.supabase.co/storage/v1/object/public/uploads/1783357196447-HX-Sydney-2.jpg",
+        "label": "HX Sydney"
+      },
+      {
+        "image": "https://fuuuhcvwlrfenjfpcymy.supabase.co/storage/v1/object/public/uploads/1783357218281-IE-University.jpg",
+        "label": "IE Madrid"
+      },
+      {
+        "image": "https://fuuuhcvwlrfenjfpcymy.supabase.co/storage/v1/object/public/uploads/1783357239498-Online.jpg",
+        "label": "Select Cairo"
+      },
+      {
+        "image": "https://fuuuhcvwlrfenjfpcymy.supabase.co/storage/v1/object/public/uploads/1783357262638-XI-Conference.jpg",
+        "label": "XI Sydney"
+      },
+      {
+        "image": "https://fuuuhcvwlrfenjfpcymy.supabase.co/storage/v1/object/public/uploads/1783357281711-XI-Conference-2.jpg",
+        "label": "With the audience"
+      }
+    ],
+    "results": [
+      {
+        "note": "",
+        "label": "Years of global experience",
+        "value": "15+"
+      },
+      {
+        "note": "",
+        "label": "Podcast listeners",
+        "value": "40K+"
+      },
+      {
+        "note": "Best Use of Customer Data & Insights 2022 · Best CX Transformation Project 2022 and 2023",
+        "label": "Australian CX Awards",
+        "value": "3×"
+      },
+      {
+        "note": "",
+        "label": "Stages spoken on",
+        "value": "30+"
+      },
+      {
+        "note": "Lived and worked",
+        "label": "Continents",
+        "value": "4"
+      }
+    ],
+    "credentials": [
+      {
+        "org": "Monash University",
+        "note": "CX and marketing strategy using AI and machine learning",
+        "title": "PhD"
+      },
+      {
+        "org": "IE Business School",
+        "note": "Blue Torch Award",
+        "title": "Executive MBA"
+      },
+      {
+        "org": "Australian CX Awards",
+        "note": "Customer Data & Insights · CX Transformation (2022, 2023)",
+        "title": "3× winner"
       }
     ]
   },
-  "host": {
-    "name": "Dr Eslam Afifi",
-    "bio1": "Hello, I'm Dr Eslam Afifi - a CX and data leader with over 15 years of experience helping organizations across Australia, Europe, and the GCC. I've learned that great experiences don't come from one element alone: they're created through the right Algorithm of people, data, and technology.",
-    "bio2": "I created The CX Algorithm to bring together diverse voices - innovators, leaders, and storytellers - who each add something unique to the formula. Because when we listen, share, and collaborate, we uncover the real intelligence behind extraordinary customer experiences.",
-    "photo": "assets/dr-eslam-afifi.png"
-  },
   "links": {
-    "apple": "https://podcasts.apple.com/au/podcast/the-cx-algorithm/id1868364883",
-    "spotify": "https://open.spotify.com/show/4jUMZl3zVFcI2uFWaVadQk",
-    "amazon": "https://music.amazon.com.au/podcasts/0a2c3a20-bd08-48cf-891e-ca59f63a76e5/the-cx-algorithm",
-    "youtube": "https://www.youtube.com/@TheCXAlgorithmPodcast",
-    "linkedin": "",
     "x": "",
-    "instagram": "",
+    "apple": "https://podcasts.apple.com/au/podcast/the-cx-algorithm/id1868364883",
     "email": "hello@thecxalgorithm.com",
+    "amazon": "https://music.amazon.com.au/podcasts/0a2c3a20-bd08-48cf-891e-ca59f63a76e5/the-cx-algorithm",
+    "deezer": "https://www.deezer.com/show/1003636142",
     "iheart": "https://www.iheart.com/podcast/1333-the-cx-algorithm-317661171/",
+    "tunein": "https://tunein.com/radio/p4831207/",
     "audible": "https://www.audible.com.au/podcast/The-CX-Algorithm/B0GGCF9T5V",
-    "pocketcasts": "https://pocketcasts.com/podcast/the-cx-algorithm/a5fa9820-0fe2-013f-57cf-02366ae7f0f7",
-    "deezer": "",
-    "tunein": "",
-    "pandora": ""
+    "formKey": "31421a9a-1ac9-4680-bba0-ee147d5b3a32",
+    "pandora": "",
+    "spotify": "https://open.spotify.com/show/4jUMZl3zVFcI2uFWaVadQk",
+    "youtube": "https://www.youtube.com/@TheCXAlgorithmPodcast",
+    "linkedin": "https://www.linkedin.com/newsletters/the-cx-algorithim-podcast-7413940175195570176/",
+    "instagram": "",
+    "pocketcasts": "https://pocketcasts.com/podcast/the-cx-algorithm/a5fa9820-0fe2-013f-57cf-02366ae7f0f7"
   },
+  "guests": {
+    "intro": "Every episode brings a leader with something real to say. Meet the operators, founders and thinkers who've joined me at the mic.",
+    "items": [
+      {
+        "bio": "Dr Kiron Ravindran has been teaching for over 15 years and is currently the department chair of the Information Systems and Technology area at IE Business School. Dr. Ravindran holds a Ph.D. from the University of California, Irvine, a Post Graduate Diploma in Management (International Business) a Bachelor of Technology in Mechanical Engineering. His research focuses on the Economics of Information Systems and has published on topics such as IT outsourcing, Cloud computing, Robotics, Blockchain startups and Organizational Networks.  \nHe hails from India, has lived and worked in the Middle East, North America and Europe.",
+        "name": "Prof Kiron Ravindran",
+        "role": "Department Chair, Information Systems and Technology",
+        "photo": "https://fuuuhcvwlrfenjfpcymy.supabase.co/storage/v1/object/public/uploads/1783423142439-Screenshot-2026-07-07-211843.jpg",
+        "company": "IE University",
+        "category": "AI & Data",
+        "featured": false,
+        "companyRef": "IE University",
+        "episodeUrl": "",
+        "linkedInUrl": "https://www.linkedin.com/in/kironravindran/",
+        "episodeLabel": "Episode 01"
+      },
+      {
+        "bio": "Kate Couling is a co-founding director of World Journeys and has worked in the travel industry since her early twenties. Her career began the way the best ones often do — travelling the world on a budget, arriving into cities late at night with nothing pre-arranged, navigating bureaucracy and language barriers, and proving she could figure it out on her own.\n\nThat formative experience is the foundation of everything World Journeys does today. Kate and her fellow directors built the agency on a simple but powerful mission: to design journeys they would undertake themselves. Every itinerary is crafted from personal knowledge and direct experience — not brochures, not third-party reviews. The team has worked in the industry for over 30 years and continues to travel regularly, because at World Journeys, staying current is not optional — it is the job",
+        "name": "Kate Couling",
+        "role": "Co-founder & director",
+        "photo": "https://fuuuhcvwlrfenjfpcymy.supabase.co/storage/v1/object/public/uploads/1783423347098-Screenshot-2026-07-07-212157.jpg",
+        "photoX": 61,
+        "photoY": 24,
+        "company": "World Journeys",
+        "category": "CX Design",
+        "featured": false,
+        "photoZoom": 175,
+        "companyRef": "World Journeys",
+        "episodeUrl": "",
+        "linkedInUrl": "https://www.linkedin.com/in/kate-couling-4651945/",
+        "episodeLabel": "Episode 04"
+      },
+      {
+        "bio": "David Carro is Head of Direct-to-Consumer (D2C) at Samsung Electronics Iberia, leading online sales for Spain and Portugal. He joined Samsung to accelerate the D2C strategy with a strong focus on operational excellence, customer experience, and data-driven growth.\n\nPreviously, David held senior leadership roles at Vodafone, where he led the Digital Business unit spanning eCommerce, Customer Care, and Omnichannel strategy. His career is marked by large-scale digital transformation and continuous improvement initiatives centered on customer value.\n\nWith over 20 years of experience across global organizations, David specializes in digital business models, customer experience, and technologies that drive efficiency and growth. He is also a recognized voice in artificial intelligence applied to marketing and customer experience, and a founding member of the AI Forum in Spain (https://www.foroia.es/).\n\nHe regularly speaks and teaches on AI, digital transformation, and the future of customer experience.",
+        "name": "David Carro",
+        "role": "Head of Direct-to-Consumer (D2C)",
+        "photo": "https://fuuuhcvwlrfenjfpcymy.supabase.co/storage/v1/object/public/uploads/1783448990583-Screenshot-2026-07-08-042912.jpg",
+        "company": "Samsung Electronics Iberia",
+        "category": "AI & Data",
+        "featured": false,
+        "companyRef": "Samsung",
+        "episodeUrl": "",
+        "linkedInUrl": "https://www.linkedin.com/in/david-carro-transformacion-digital/",
+        "episodeLabel": "Episode 02"
+      },
+      {
+        "bio": "Oleksandr (Sasha) Zablotskyi is a digital experience and transformation leader with deep expertise across e-commerce, telecommunications, and financial services. Currently serving as Head of Digital Channels at Openbank — Santander's digital-first banking platform and now the largest European digital bank by deposit volume, with operations across Spain, Germany, Portugal, the Netherlands, the US, and Mexico — Sasha leads the evolution of customer journeys at one of the most ambitious digital banking platforms in the world.\n\nOver the course of his career, Sasha has worked at the intersection of product, customer experience, technology, and digital strategy — helping organisations rethink how customers interact with digital services in an increasingly connected world. From pioneering Ukraine's first eSIM solution at lifecell (including a cross-company one-minute activation flow built in partnership with Monobank) to building omnichannel commerce at Eldorado, his experience spans the full arc of digital transformation — from legacy retail to modern banking infrastructure.",
+        "name": "Oleksandr (Sasha) Zablotskyi",
+        "role": "Head of Digital Channels",
+        "photo": "https://fuuuhcvwlrfenjfpcymy.supabase.co/storage/v1/object/public/uploads/1783449307701-1742483579520.jpg",
+        "company": "Openbank by Santander",
+        "category": "Growth",
+        "featured": false,
+        "companyRef": "Openbank",
+        "episodeUrl": "",
+        "linkedInUrl": "https://www.linkedin.com/in/alexanderzablotsky/",
+        "episodeLabel": "Episode 06"
+      },
+      {
+        "bio": "Mohamed Soliman is the Regional Vice President at Energy Exemplar, one of the world's leading platforms for energy market modelling and optimisation. Over the past two decades, Mohamed has operated at the intersection of strategic vision and commercial reality — scaling Energy Exemplar's MENAT and CIS operations, contributing to its A$1.6B acquisition, and driving a 12x revenue transformation in Siemens' steel sector. His foundation is rigorous: a B.Sc. in Electrical and Digital Control Engineering from Cairo University, an MBA, a DBA, and a Private Equity & VC certification from Wharton.\n\nWhat makes Mohamed the right voice for this episode is his ability to take some of the most mathematically complex problems in industry — multi-objective optimisation across thousand-node energy networks — and explain them in language any leader can act on. He has led the GCCIA Interconnection Program underpinning regional grid stability across the Gulf, advised sovereign funds, regulators, and policymakers across 28+ countries, and built a reputation as \"the quiet force\" who unlocks deals where strategic insight has to meet commercial realism.",
+        "name": "Mohamed Soliman",
+        "role": "Regional Vice President",
+        "photo": "https://fuuuhcvwlrfenjfpcymy.supabase.co/storage/v1/object/public/uploads/1783449450710-1758701503510.jpg",
+        "company": "Energy Exemplar",
+        "category": "AI & Data",
+        "featured": false,
+        "companyRef": "Energy Exemplar",
+        "episodeUrl": "",
+        "linkedInUrl": "https://www.linkedin.com/in/mohamed-soliman-803023166/",
+        "episodeLabel": "Episode 05"
+      },
+      {
+        "bio": "Ana Herranz is the Co-Founder of GameChangers People & Talent and a highly experienced executive coach, leadership advisor, and career development expert with over 30 years of combined corporate and academic experience.\n\nFor 15 years, she led the Career Advancement Center for Working Professionals and Alumni at one of Europe's leading business schools, where she coached and advised thousands of professionals across a wide range of industries and functions.\n\nThroughout her career, Ana has delivered more than 4,500 one-on-one coaching sessions and facilitated over 300 workshops focused on leadership, executive presence, high-performing teams, personal branding, and career development.\n\nPassionate about helping individuals unlock their potential, lead with clarity, and navigate career transitions with confidence, Ana now partners with executives to design career paths aligned with their strengths, values, and purpose. Through her work at GameChangers People & Talent, she helps leaders accelerate their impact while building and sustaining high-performing teams in an increasingly dynamic business environment.\n",
+        "name": "Ana Herranz",
+        "role": "Co-Founder",
+        "photo": "https://fuuuhcvwlrfenjfpcymy.supabase.co/storage/v1/object/public/uploads/1783450022096-1756487267381.jpg",
+        "company": "GameChangers People & Talent",
+        "category": "Leadership",
+        "featured": false,
+        "companyRef": "Gamechangers España",
+        "episodeUrl": "",
+        "linkedInUrl": "https://www.linkedin.com/in/anaherranz/",
+        "episodeLabel": "Episode 03"
+      },
+      {
+        "bio": "Alexei Krasnov is Director of Product Experience Design at Mastercard, where he leads customer experience and design innovation for payment products and services across the Asia Pacific region. His work sits at the intersection of design, research and technology — shaping the invisible systems billions of people rely on every day without ever noticing them. With a career spanning more than two decades across the US, Europe and Asia Pacific, Alexei brings a rare global perspective to one of the most complex, fast-moving and trust-critical spaces in customer experience: how you design for something people are never meant to think about.",
+        "name": "Alexei Krasnov",
+        "role": "Director of Product Experience Design",
+        "photo": "https://fuuuhcvwlrfenjfpcymy.supabase.co/storage/v1/object/public/uploads/1785812343451-alexei-krasnov.jpg",
+        "company": "Mastercard",
+        "category": "CX Design",
+        "featured": false,
+        "companyRef": "Mastercard",
+        "episodeUrl": "",
+        "linkedInUrl": "https://www.linkedin.com/in/akrasnov/",
+        "episodeLabel": "Episode 07"
+      },
+      {
+        "bio": "Dr Jacqueline Baker is a design researcher at COX Architecture, where she leads the research team. Drawing on multidisciplinary training in architecture, environmental psychology and marketing, her work bridges design, psychology and neuroscience to create places, spaces and precincts that promote human flourishing. Her career spans consulting, research, teaching and design across architecture and engineering practices and universities in Australia and the United Kingdom. She speaks, writes and collaborates with researchers, architects and specialists locally and abroad to address the complex challenges facing society and our cities.",
+        "name": "Dr Jacqueline Baker",
+        "role": "Head of Research",
+        "photo": "https://fuuuhcvwlrfenjfpcymy.supabase.co/storage/v1/object/public/uploads/1790947255431-Jacque-Prof-Picture.png",
+        "company": "COX Architecture",
+        "category": "CX Design",
+        "featured": false,
+        "companyRef": "COX Architecture",
+        "episodeUrl": "",
+        "linkedInUrl": "https://www.linkedin.com/in/dr-jacqueline-baker-369a3b78/",
+        "episodeLabel": "Episode 08"
+      },
+      {
+        "bio": "Jonathan Rabiei is a global strategic marketing leader in the fast-growing battery materials market, leading teams across strategy, innovation, market intelligence and market communication. With over 18 years in specialty materials, he has worked across sales, business development, strategy, innovation, capital investment and M&A, building growth strategies and finding new sources of value across the value chain. He believes growth is not owned by any single function, but by how a company creates, delivers and captures value. He holds an MSc in Chemical Engineering from Chalmers University of Technology and an Executive MBA from IE Business School.",
+        "name": "Jonathan Rabiei",
+        "role": "Senior Global Marketing & Strategy Manager",
+        "photo": "https://fuuuhcvwlrfenjfpcymy.supabase.co/storage/v1/object/public/uploads/1792210594387-Jonathan-Rabiei-profile.jpg",
+        "company": "Cabot Corporation",
+        "category": "Growth",
+        "featured": true,
+        "companyRef": "Cabot",
+        "episodeUrl": "",
+        "linkedInUrl": "https://www.linkedin.com/in/jonathan-rabiei-a707253/",
+        "episodeLabel": "Episode 09"
+      }
+    ],
+    "stats": [
+      {
+        "label": "Listeners",
+        "value": "40K+"
+      },
+      {
+        "label": "Continents",
+        "value": "4"
+      },
+      {
+        "label": "Industries",
+        "value": "7"
+      }
+    ],
+    "kicker": "The people behind the ideas",
+    "heading": "Voices shaping the future of experience"
+  },
+  "marquee": {
+    "items": [
+      {
+        "logo": "https://fuuuhcvwlrfenjfpcymy.supabase.co/storage/v1/object/public/uploads/1783986821280-IE-University-logo.png",
+        "name": "IE University"
+      },
+      {
+        "logo": "assets/companies/samsung.svg",
+        "name": "Samsung"
+      },
+      {
+        "logo": "https://fuuuhcvwlrfenjfpcymy.supabase.co/storage/v1/object/public/uploads/1783421957056-Openbank.png",
+        "name": "Openbank"
+      },
+      {
+        "logo": "https://fuuuhcvwlrfenjfpcymy.supabase.co/storage/v1/object/public/uploads/1783986949058-energy_exemplar_logo.jpg",
+        "name": "Energy Exemplar"
+      },
+      {
+        "logo": "https://fuuuhcvwlrfenjfpcymy.supabase.co/storage/v1/object/public/uploads/1783987051909-world-journeys-logo-png_seeklogo-178563.png",
+        "name": "World Journeys"
+      },
+      {
+        "logo": "https://fuuuhcvwlrfenjfpcymy.supabase.co/storage/v1/object/public/uploads/1783421943874-Gamechangers.jpg",
+        "name": "Gamechangers España"
+      },
+      {
+        "logo": "https://fuuuhcvwlrfenjfpcymy.supabase.co/storage/v1/object/public/uploads/1785812596353-Icon-2.png",
+        "name": "Mastercard"
+      },
+      {
+        "logo": "https://fuuuhcvwlrfenjfpcymy.supabase.co/storage/v1/object/public/uploads/1790948609404-COX-Brandmark-Black-copy.jpg",
+        "name": "COX Architecture"
+      },
+      {
+        "logo": "https://fuuuhcvwlrfenjfpcymy.supabase.co/storage/v1/object/public/uploads/1792210510320-cabot-logo.png",
+        "name": "Cabot"
+      }
+    ],
+    "label": "Featuring guests from"
+  },
+  "episodes": [
+    {
+      "date": "Jan, 2026",
+      "role": "Department Chair, Information Systems and Technology, IE University",
+      "about": "AI is everywhere — but real value remains elusive.\n\nIn this episode of The CX Algorithm Podcast, Dr Eslam Afifi is joined by Kiron Ravindran, Professor and Department Chair of Information Systems and Technology at IE Business School, to cut through the noise and examine what’s actually working — and what isn’t — in today’s AI-driven organisations.\n\nTogether, they explore why so many AI initiatives struggle to deliver ROI, despite unprecedented investment and capability. The conversation unpacks the growing gap between AI output and human understanding, the rise of “attention-span AI,” and how polished machine-generated answers can create an illusion of expertise rather than better decision-making.\n\nA key focus of the episode is the shift from automation to AI augmentation — why the most successful organisations are using AI to enhance human judgment rather than replace it. Kiron shares insights on where AI creates genuine productivity gains, where it consistently fails, and why IT productivity hasn’t improved at the pace many leaders expected.\n\nThe discussion also looks ahead to the next wave of AI — from intelligent agents to context-aware systems — and what leaders must rethink to design work that is more focused, human-centred, and outcome-driven.\n\nThis episode is for leaders and practitioners looking to move beyond AI hype — and design technology that truly creates value.",
+      "audio": "https://open.spotify.com/episode/52mS4ZrJxUjEtcXDh4i6wq",
+      "guest": "Prof Kiron Ravindran",
+      "image": "https://fuuuhcvwlrfenjfpcymy.supabase.co/storage/v1/object/public/uploads/spotify-52mS4ZrJxUjEtcXDh4i6wq-1783379846872.jpg",
+      "title": "Beyond the Hype: AI, Attention, and Why Augmentation — Not Automation — Creates Real Value",
+      "video": "",
+      "eyebrow": "EPISODE 01",
+      "chapters": "0:00 | Welcome and introducing Professor Kiron\n1:30 | Why AI hype outpaces results\n3:12 | Unrealistic expectations and where gains appear\n6:47 | From incompetent experts to seniority bias\n11:45 | Short-term pressure and redesigning work\n15:06 | Measuring AI ROI with process metrics\n19:50 | Who will win the next AI wave\n24:23 | Personalisation at scale and data ownership\n27:56 | Optimism, scepticism and final advice",
+      "duration": "33 min",
+      "guestBio": "",
+      "resources": "IE University (IE Business School) | https://www.ie.edu/ | Kiron chairs the Information Systems and Technology area there\nKiron Ravindran's article ‘Is AI Creating Incompetent Experts?’ |  | Sparked a LinkedIn debate on AI-assisted writing and who really gains from AI\nMIT study reporting that 95% of companies see no benefit from Gen AI |  | Cited on the AI value paradox and on benefits hidden in back-end work\nEthan Mollick's studies on AI's jagged frontier, centaurs and cyborgs |  | Cited on novices gaining far more than experts on well-scoped tasks\nErik Brynjolfsson's research on AI in call centres and the IT productivity paradox | https://en.wikipedia.org/wiki/Erik_Brynjolfsson | Cited on task-level gains and why IT benefits don't show up in the numbers\nDuPont analysis, which breaks return on equity into stages | https://en.wikipedia.org/wiki/DuPont_analysis | Kiron's model for splitting AI ROI into process metrics tracked over time",
+      "takeaways": "Why AI hype outpaces results, and what the AI value paradox really means\nWhen generative AI boosts productivity, and why novices gain more than experts\nWhat seniority-biased technical change means for junior hiring and middle management\nWhy AI only pays off when paired with new skills and redesigned jobs\nWhat bank ATMs teach us about augmentation versus substitution of staff\nHow to break AI ROI into DuPont-style process metrics you can track\nWhy owning customer data may decide who wins at personalisation at scale",
+      "guestQuote": "There is no benefit from IT or from technology if it's not complemented with people and process.",
+      "description": "AI is everywhere — but real value remains elusive.",
+      "homeFeatured": false
+    },
+    {
+      "date": "Feb, 2026",
+      "role": "Head of Direct-to-Consumer (D2C), Samsung Electronics Iberia",
+      "about": "In this episode of The CX Algorithm Podcast, Dr Eslam Afifi is joined by David Carro Estrade Head of Direct-to-Consumer (D2C) at Samsung Electronics Iberia to explore a quiet but profound shift in customer experience: the return of intermediaries.\n\nFor years, organisations worked to remove friction and get closer to customers. Today, AI agents are re-entering the middle — shaping decisions, filtering choices, and redefining how customer journeys are experienced. Together, Eslam and David unpack what this re-intermediation means for customer experience, emotional connection, advertising, trust, and leadership.\n\nDavid Carro is Head of Direct-to-Consumer (D2C) at Samsung Electronics Iberia, where he leads online sales across Spain and Portugal. He joined Samsung to accelerate its D2C strategy, with a strong focus on operational excellence, customer experience, and data-driven growth.\n\nPreviously, David held senior leadership roles at Vodafone, where he led the Digital Business unit across eCommerce, Customer Care, and Omnichannel strategy. His career spans more than 20 years across global organisations and is marked by large-scale digital transformation and continuous improvement initiatives centred on customer value.\n\nDavid is also a recognised voice in artificial intelligence applied to marketing and customer experience, and a founding member of the AI Forum Spain. He regularly speaks and teaches on AI, digital transformation, and the future of customer experience.",
+      "audio": "https://open.spotify.com/episode/3ufvvKxhmfVDe4aoJxi652",
+      "guest": "David Carro",
+      "image": "https://fuuuhcvwlrfenjfpcymy.supabase.co/storage/v1/object/public/uploads/spotify-3ufvvKxhmfVDe4aoJxi652-1783407963595.jpg",
+      "title": "Back to the Middle: AI Agents and the Re-Intermediation of Customer Experience",
+      "video": "",
+      "eyebrow": "EPISODE 02",
+      "chapters": "0:00 | Welcome and introductions\n1:00 | Cutting through the AI hype\n3:31 | Agents as the new intermediaries\n8:09 | Trust and how companies adopt agents\n10:37 | Emotional bonds versus full automation\n14:55 | Advertising and SEO in an agent world\n20:19 | Personalization, generative web and agent commerce\n27:15 | Inside AI Forum Spain\n28:46 | Where CX leaders should start",
+      "duration": "31 min",
+      "guestBio": "",
+      "resources": "Samsung Electronics Iberia | https://www.samsung.com/es/ | David's company, where he leads direct-to-consumer online sales for Spain and Portugal\nAI Forum Spain (ForoIA) |  | The executive learning community on AI in marketing and CX that David belongs to\nJeff Bezos's \"empty chair\" and \"Day 1\" principles at Amazon | https://en.wikipedia.org/wiki/Jeff_Bezos | Cited for keeping the customer in the room and starting fresh every morning\nAmazon Dash Button | https://en.wikipedia.org/wiki/Amazon_Dash | David's metaphor for replenishment purchases where brands get disintermediated\nGoogle's agentic commerce protocol for merchants and consumers |  | Cited as Google's new tools letting agents check retail stock and prices, even by phone\nOpenAI's agentic checkout |  | Cited alongside Google's protocol as a step towards agent-to-agent commerce",
+      "takeaways": "Why AI agents are re-intermediating brands, as Google did in the 2000s\nHow to cut through AI hype by returning to the value exchange with customers\nWhy large companies start with internal agents while smaller firms take more risks\nWhy emotional relevance decides whether agents disintermediate your brand\nHow AI search shifts investment from paid media to problem-solving content\nWhy AI expands SEO rather than replacing it, from keywords to conversations\nWhat generative web and agent-to-agent commerce could mean for brands",
+      "guestQuote": "We need to see the fundamental relationship between your brand and your customer. What incredible problem you are solving. So the higher the problem you are solving is, the higher your relevance is in their lives.",
+      "description": "In this episode of The CX Algorithm Podcast, Dr Eslam Afifi is joined by David Carro Estrade Head of Direct-to-Consumer (D2C) at Samsung Electronics Iberia to explore a quiet but profound shift in customer experience: the return of intermed",
+      "homeFeatured": false
+    },
+    {
+      "date": "Feb, 2026",
+      "role": "Co-Founder, GameChangers People & Talent",
+      "about": "AI is moving faster than most decision cycles — and leadership has never been more complex. In this episode of The CX Algorithm Podcast, Dr. Eslam Afifi is joined by Ana Herranz, executive & HR coach and co-founder of Game Changers for People and Talent, to unpack what leadership needs to become in the AI era: not more technical… but more human.\n\nAna introduces a practical “inner algorithm” for modern leadership built on three elements:\n\n1) The Mind (clarity & innovation) Under pressure, leaders default to convergent thinking (safe answers, repeat what worked before). Ana explains why innovation requires shifting to divergent thinking — creating cognitive space, asking “what are all the possible answers?”, and modelling learning over perfection.\n\n2) The Body (presence & regulation) Leadership is a physical act. Stress shows up in tone, posture, breath, speed, and patience — often before words do. Ana shares why healthy habits matter, how simple rituals (like breathing and grounding) help shift from survival mode to leadership mode, and why asking for feedback is critical because body language can reveal what you don’t notice.\n\n3) The Soul (purpose & authenticity) Purpose isn’t a single discovery moment — it’s built through action and attention. Ana shares a simple journal exercise: track daily activities and rate each by energy and engagement to identify patterns, find “flow” moments, and adjust your role (sometimes by delegating the energy-drainers rather than changing companies).\n\nThey also discuss a key practical challenge: your first three months in a new executive role. Ana explains why leaders must read the organization’s business cycle (growth vs mature vs restructuring), adapt their approach, and secure quick wins/pilots to earn buy-in.\n\nFinally, they connect it all back to AI: how AI can create space for better thinking, why leaders must rethink team skills and structure (including working alongside AI agents), and why the real differentiator going forward is the human behind the leader.👤 About the Guest\n\nAna Herranz is an executive and HR coach with over 15 years of experience working across academia and industry. She has delivered more than 3,000 one-on-one coaching sessions with executives worldwide and facilitated over 400 workshops for large organisations. Ana is the co-founder of Game Changers for People and Talent, where she supports leaders and organisations in building human-centred, future-ready leadership.",
+      "audio": "https://open.spotify.com/episode/115vEnQlwJF2E83d866MAT",
+      "guest": "Ana Herranz",
+      "image": "https://fuuuhcvwlrfenjfpcymy.supabase.co/storage/v1/object/public/uploads/spotify-115vEnQlwJF2E83d866MAT-1790992904095.jpg",
+      "title": "Beyond the AI Hype: The Human-Centred Blueprint for Modern CX Leadership",
+      "video": "",
+      "eyebrow": "EPISODE 03",
+      "chapters": "0:00 | Welcome and introducing Ana Herranz\n2:08 | Why leadership has never been more complex\n4:58 | The human behind the leader\n6:10 | The mind: from convergent to divergent thinking\n12:01 | Your first three months as an executive\n15:52 | The body: leadership as a physical act\n20:39 | The soul: purpose, journaling and flow\n27:11 | Aligning mind, body and soul\n32:15 | AI agents and rethinking team skills",
+      "duration": "35 min",
+      "guestBio": "",
+      "resources": "GameChangers People & Talent, Ana Herranz's company |  | Ana's co-founded company supporting leaders, introduced at the start of the episode\nFlow: The Psychology of Optimal Experience by Mihaly Csikszentmihalyi | https://en.wikipedia.org/wiki/Mihaly_Csikszentmihalyi | Ana's source for the flow channel between challenge and skills\nDivergent and convergent thinking | https://en.wikipedia.org/wiki/Divergent_thinking | Core of the mind element: moving from safe answers to exploring many ideas",
+      "takeaways": "Why the human behind the leader matters more than technical expertise\nHow to shift from convergent to divergent thinking to spark innovation under pressure\nWhy your first three months depend on reading the company's business cycle\nWhy leadership is a physical act, and how breathing and posture regulate stress\nHow a daily journal rating energy and engagement helps you find purpose\nHow aligning mind, body and soul ultimately creates a better customer experience\nHow to rethink team skills and structure when AI agents join your team",
+      "guestQuote": "What I see in my coaching practice is that the real differentiator is not knowledge or technical skill, it's the human behind the leader.",
+      "description": "AI is moving faster than most decision cycles — and leadership has never been more complex.",
+      "homeFeatured": false
+    },
+    {
+      "date": "Apr, 2026",
+      "role": "Co-founder & director, World Journeys",
+      "about": "What does it actually take to build customer relationships that last — not just satisfy, but genuinely endure? In this episode, Dr Eslam Afifi sits down with Kate Couling, founder of World Journeys, a bespoke luxury travel agency that has thrived for over 20 years through the internet boom, the rise of online booking platforms, and now the emergence of agentic AI.\n\nKate unpacks the three principles that have been the backbone of World Journeys since day one: ease of doing business, authenticity, and trust. But as the conversation unfolds, it becomes clear these are not three separate ideas — they are a chain reaction. Get the first one right, and the others follow naturally. Skip one, and the whole thing collapses.\n\nThe episode covers how World Journeys manages complex multi-destination itineraries for high-end clients, how they handle crises when things go wrong on the other side of the world, what luxury actually means when you strip away the brand names, and why the most powerful signal of customer trust is a client who sends you a single sentence — and nothing more.\n\nWhether you work in travel, financial services, government, or any service-driven industry, this conversation will change how you think about customer engagement, human connection, and the role of AI in the future of CX.",
+      "audio": "https://open.spotify.com/episode/376nD2hwMAt1cQ7PYtgriI",
+      "guest": "Kate Couling",
+      "image": "https://fuuuhcvwlrfenjfpcymy.supabase.co/storage/v1/object/public/uploads/spotify-376nD2hwMAt1cQ7PYtgriI-1783408074465.jpg",
+      "title": "The three pillars of unbeatable CX: ease, authenticity, and trust",
+      "video": "",
+      "eyebrow": "EPISODE 04",
+      "chapters": "0:00 | Welcome and 20 years of World Journeys\n3:24 | Ease, authenticity and trust in practice\n5:18 | Consistency, partners and managing expectations\n9:13 | Crisis support and owning mistakes\n11:49 | Group journeys and small authentic moments\n16:51 | Hiring for passion and defining luxury\n21:08 | AI as support, not replacement\n23:07 | Aftercare and staying small by choice\n26:20 | Advice for CX leaders: the gran test",
+      "duration": "28 min",
+      "guestBio": "",
+      "resources": "World Journeys, Kate's bespoke tour operator in New Zealand | https://www.worldjourneys.co.nz | Kate co-founded it 20 years ago to keep travel personal and tailored\nPerceived risk in consumer behaviour |  | Eslam on why clients won't risk booking a honeymoon or anniversary themselves\nCognitive load | https://en.wikipedia.org/wiki/Cognitive_load | Eslam on why busy, high-income clients hand complex trip planning to experts",
+      "takeaways": "Why ease of doing business is the foundation — not a nice-to-have\nHow authentic expertise converts curious customers into loyal ones\nWhat deep trust actually looks like in practice — and the three stages to get there\nHow World Journeys manages consistency across complex global itineraries\nWhy staying small was a deliberate and powerful strategic choice\nHow to think about AI as a support layer — not a replacement for human connection",
+      "guestQuote": "As clever as AI is and as wonderful as all of those websites are, it's not the same as sitting and chatting to somebody who knows it, who's been there, who's smelled it",
+      "description": "What does it actually take to build customer relationships that last — not just satisfy, but genuinely endure?",
+      "homeFeatured": false
+    },
+    {
+      "date": "May, 2026",
+      "role": "Regional Vice President, Energy Exemplar",
+      "about": "What if the same algorithm running thousand-node energy grids is the one quietly running every customer experience strategy too — whether we name it that way or not?\n\nIn this episode, Dr. Eslam Afifi sits down with Mohamed Soliman — the strategist behind Energy Exemplar's scale-up from $300K to over $10M in ARR and its A$1.6B acquisition — to strip optimisation down to its first principles and show why it belongs at the centre of how every CX leader thinks.\n\nMohamed has spent two decades modelling some of the most complex decision systems in industry — from the digital infrastructure underpinning the GCC's regional grid, to advising sovereign funds, regulators, and policymakers across 28+ countries. In this conversation, he translates that experience into language CX leaders can act on Monday morning.\n\nWhether you lead CX, design customer journeys, build AI-enabled experiences, or sit at the strategy table watching the same trade-offs come up week after week, this episode gives you a sharper lens for thinking about the problem and a cleaner framework for solving it.",
+      "audio": "https://open.spotify.com/episode/0VtRXkt8XE1emGCgqHAkb4",
+      "guest": "Mohamed Soliman",
+      "image": "https://fuuuhcvwlrfenjfpcymy.supabase.co/storage/v1/object/public/uploads/spotify-0VtRXkt8XE1emGCgqHAkb4-1783408187816.jpg",
+      "title": "Everything Is an Optimisation Problem — Including Your CX Strategy",
+      "video": "",
+      "eyebrow": "EPISODE 05",
+      "chapters": "0:00 | Welcome and introducing Mohamed Soliman\n1:18 | Optimisation explained from first principles\n5:29 | Objectives, constraints and multi-objective optimisation\n8:39 | Data, methodology and governance as trust layers\n13:10 | How dynamic energy systems have become\n16:10 | Resilience, efficiency and the limits of optimisation\n20:57 | From consumers to prosumers\n23:50 | Supply and demand beyond energy\n26:26 | Start from the vision, not the data",
+      "duration": "29 min",
+      "guestBio": "",
+      "resources": "Energy Exemplar, Mohamed Soliman's company | https://www.energyexemplar.com/ | Introduced as one of the leading companies in energy optimisation\nMulti-objective optimisation | https://en.wikipedia.org/wiki/Multi-objective_optimization | Balancing system benefit, security of supply, emissions and cost in one model\nMonte Carlo method | https://en.wikipedia.org/wiki/Monte_Carlo_method | The step beyond deterministic models when many variables change randomly\nGarbage in, garbage out | https://en.wikipedia.org/wiki/Garbage_in,_garbage_out | Cited to explain why trustworthy data is the foundation layer of any model\nThe prosumer concept | https://en.wikipedia.org/wiki/Prosumer | Rooftop solar turns consumers into producers; Mohamed applies the same lens to customers",
+      "takeaways": "Why optimisation is not a technical concept — it's a universal decision system every leader is already running, just not deliberately\nThe three foundation layers of trust — data, methodology, governance — that have to be verified before you trust any number a model gives you\nWhy AI hallucinations sound more confident than the truth, and what that means for CX teams deploying AI into customer journeys\nThe shift from consumer to prosumer — and why your customers are no longer just on the receiving end of experience, but active producers of value back into your business\nHow to stop choosing between resilience and efficiency in CX, and start treating the trade-off as the optimisation problem it actually is\nThe one principle that should anchor every CX strategy — start from the vision, not the data",
+      "guestQuote": "The same concept of supply and demand in the energy that we are trying to solve is exactly the same in water, in food, in logistics, in customer experience, in every aspect of life.",
+      "description": "What if the same algorithm running thousand-node energy grids is the one quietly running every customer experience strategy too — whether we name it that way or not?",
+      "homeFeatured": false
+    },
+    {
+      "date": "May, 2026",
+      "role": "Head of Digital Channels, Openbank by Santander",
+      "about": "Most organisations have a channel strategy. Very few have a journey strategy. And that gap — invisible from the inside, painfully obvious from the outside — is quietly undermining customer experience in banking, telecoms, retail, and beyond.\n\nIn this episode of The CX Algorithm, Dr Eslam Afifi sits down with Oleksandr (Sasha) Zablotskyi, Head of Digital Channels at Openbank (Santander), to challenge one of the most deeply embedded assumptions in CX design: that channels are the right unit of measurement, investment, and organisational structure.\n\nSasha's argument is direct. Customers have never thought in channels. They think in tasks, in needs, in moments. The channel is a delivery mechanism — invisible when it works, painful when it doesn't. The journey is the product. And until organisations restructure around that idea — not just in strategy decks, but in their org charts, their metrics, and their AI roadmaps — the gap between intent and experience will persist.\n\nWhether you lead CX, product, digital, or customer strategy — this episode will challenge how you think about the systems your organisation has built, and who they were actually built for.",
+      "audio": "https://open.spotify.com/episode/4M0K1WmSQjk2TDPL5Uapwz",
+      "guest": "Oleksandr (Sasha) Zablotskyi",
+      "image": "https://fuuuhcvwlrfenjfpcymy.supabase.co/storage/v1/object/public/uploads/spotify-4M0K1WmSQjk2TDPL5Uapwz-1783408228993.jpg",
+      "title": "Channels Are Delivery Mechanisms. Journeys Are the Product.",
+      "video": "",
+      "eyebrow": "EPISODE 06",
+      "chapters": "0:00 | Welcome and Sasha's role at Openbank\n2:09 | Why customers never think in channels\n5:46 | The org chart as the real obstacle\n6:50 | Cross-functional squads that own journeys\n8:45 | Journey metrics beyond channel metrics\n12:46 | Omnichannel and channels as delivery mechanisms\n13:56 | Overcoming channel turf and legacy systems\n17:31 | How AI accelerates the death of channels\n21:05 | Final advice: optimise the moment of need",
+      "duration": "22 min",
+      "guestBio": "",
+      "resources": "Openbank, Santander's digital bank | https://www.openbank.es | Sasha leads digital channels at this digital-first bank, where the mobile app is everything\nEldorado, a Ukrainian home appliance and electronics retailer |  | Where Sasha ran e-commerce and omnichannel, and saw online and store as one journey\nThe jobs-to-be-done framework |  | Sasha's lens for designing around the customer's task rather than the channel",
+      "takeaways": "Why customers have never thought in channels — and why organisations still do\nHow the org chart is the real obstacle to journey-centric experience\nWhy channel metrics are necessary but not sufficient — and what journey metrics actually look like in practice\nHow cross-functional squads change not just how teams work, but what questions they ask\nWhy AI is accelerating the death of channels — and the risk of automating fragmentation instead of solving it\nWhat leaders should stop designing immediately, and what they should start",
+      "guestQuote": "Fall in love with the customer problem. Do not optimize the channel. Optimize the moment of need. Customers don't care where the journey happens. They care whether it works.",
+      "description": "Most organisations have a channel strategy.",
+      "homeFeatured": false
+    },
+    {
+      "date": "Aug, 2026",
+      "role": "Director of Product Experience Design, Mastercard",
+      "about": "Think about your last payment. The screen, the colours, how it felt. Chances are you remember almost nothing — and that's exactly the point. In this episode of The CX Algorithm, we unpack the art of invisible customer experience design: how the best payment experiences succeed by disappearing, and why trust — not speed — is the real product.\n\nHost Dr Eslam Afifi sits down with Alexei Krasnov, a customer experience and product design leader in payments across Asia Pacific, for a practitioner's look at designing what people never consciously notice — engineering trust, calibrating friction, and building experiences for a customer who is increasingly not even in the room, because an AI agent is transacting on their behalf.\n\nWhether you work in customer experience, product design, UX, fintech, payments, or financial services — or you're just curious how the invisible systems around you are built — this episode will change how you see every tap, swipe, and checkout.",
+      "audio": "https://open.spotify.com/episode/06bfNDy8oLbNsFwiORmoDk",
+      "guest": "Alexei Krasnov",
+      "image": "https://fuuuhcvwlrfenjfpcymy.supabase.co/storage/v1/object/public/uploads/spotify-06bfNDy8oLbNsFwiORmoDk-1790987395696.jpg",
+      "title": "You Don't Remember Your Last Payment — The Art of Invisible CX",
+      "video": "",
+      "eyebrow": "EPISODE 07",
+      "chapters": "0:00 | Welcome and designing invisible payments\n4:28 | Adapting global products for Asia Pacific\n6:30 | When friction is good design\n8:36 | Trust what users do, not say\n11:40 | B2B2C customers and the services layer\n15:22 | Case study: the Carbon Calculator\n18:19 | How AI is changing payments design\n23:27 | Agentic commerce and the trust question\n29:14 | Closing advice: talk to real users",
+      "duration": "34 min",
+      "guestBio": "",
+      "resources": "Mastercard | https://www.mastercard.com/ | Alexei leads Asia Pacific CX and product experience design at Mastercard\nClick to Pay, the online checkout Mastercard and Visa work on together |  | Alexei's example of easing checkout barriers without giving up security\nMastercard Priceless experiences |  | Raised as part of the services layer, alongside loyalty points, cashback and lounge passes\nMastercard Carbon Calculator |  | Alexei's case study: a tool showing the carbon footprint of each transaction\nFigma Make, an AI design tool |  | Named among the AI tools his team uses to speed up design and delivery",
+      "takeaways": "Why \"frictionless\" is a myth — and when friction is actually good design\nHow to research behaviour people can't put into words: trust what users do, not what they say\nWhy the payment is table stakes — and where the real value lives beyond the tap\nDesigning for your customer's customer in a B2B2C world\nWhat Asia Pacific's fragmented, leapfrogging markets teach every CX leader\nAgentic commerce and AI payments: consent, control, and \"did I do that — or did my agent?\"",
+      "guestQuote": "When payments are expected to be 100% secure, 100% successful, what is there left to design?",
+      "description": "Think about your last payment. The screen, the colours, how it felt. Chances are you remember almost nothing — and that's exactly the point. In this episode of The CX Algorithm, we unpack the art of invisible customer experience design: how the best payment experiences succeed by disappearing, and why trust — not speed — is the real product.\n\n\nHost Dr Eslam Afifi sits down with Alexei Krasnov, a customer experience and product design leader in payments across Asia Pacific, for a practitioner's look at designing what people never consciously notice — engineering trust, calibrating friction, and building experiences for a customer who is increasingly not even in the room, because an AI agent is transacting on their behalf.\n",
+      "homeFeatured": false
+    },
+    {
+      "date": "Oct, 2026",
+      "role": "Head of Research at COX Architecture",
+      "about": "EPISODE DESCRIPTION\n\nWhat if the most overlooked part of customer experience isn't digital at all — but the physical room your service happens in? In this episode of The CX Algorithm, Dr Eslam Afifi and design researcher Dr Jacqueline Baker (Head of Research, COX Architecture) unpack the servicescape: the idea that space, light, sound and layout are part of the service itself, shaping how customers and staff behave before anyone forms a conscious thought.\n\nServicescape is a decades-old concept from service research, yet most CX, service design and customer journey work still treats the environment as a backdrop. This conversation puts it back at the centre — bridging architecture, environmental psychology and neuroscience to show how the built environment drives behaviour, emotion and commercial outcomes.\n\nYou'll hear how our nervous system appraises a space in seconds, how designers tune the \"dials\" of ambient and spatial conditions on purpose, and why the room shapes employee experience as much as the customer's. Jacqueline shares the airport study linking natural light, greenery and quiet zones to longer dwell time and higher spend — achieved by improving wellbeing, not exploiting it — and draws a sharp ethical line between enhancing an experience and manipulating it.\n\nIf you work in customer experience, service design, CX strategy, retail, healthcare, hospitality or the built environment, this episode gives you a new, measurable variable to design with: the room.",
+      "audio": "https://open.spotify.com/episode/2kUqrVrXDHaY6SWbjktV7Z?si=0Oz4sb-DTDyv9_MZV2UZEg",
+      "guest": "Dr Jacqueline Baker",
+      "image": "https://fuuuhcvwlrfenjfpcymy.supabase.co/storage/v1/object/public/uploads/1790947565327-ChatGPT-Image-29-Sept-2026-22_28_28--updated.png",
+      "title": "Before You Think, the Room Has Already Spoken — The Psychology of Space in Customer Experience",
+      "video": "",
+      "eyebrow": "EPISODE 08",
+      "chapters": "0:00 | Welcome and the overlooked physical environment\n2:05 | From architecture to evidence-based design\n6:27 | Servicescape and the nervous system's response\n11:02 | The dials of ambient and spatial design\n14:11 | The airport study and measurement tools\n18:31 | When data backs a designer's intuition\n22:10 | The CX blind spot and its cost\n27:18 | Enhancement versus manipulation in designed space\n30:21 | Lessons for CX leaders and the CFO",
+      "duration": "33 min",
+      "guestBio": "",
+      "resources": "COX Architecture | https://www.coxarchitecture.com.au/ | Jacqueline's practice, where she leads the research team\nCOX Architecture's airport study on increasing airport revenue through CX and design |  | Linked natural light, greenery, observation areas and quiet zones to dwell time and spend\nServicescape, the concept from service research | https://en.wikipedia.org/wiki/Servicescape | The episode's core idea: the physical setting is part of the service itself\nEnvironmental psychology | https://en.wikipedia.org/wiki/Environmental_psychology | The master's degree that moved Jacqueline from architecture into evidence-based design\nTrauma-informed design |  | Her example of a servicescape supporting care in supported accommodation and mental health units\nBiophilic design | https://en.wikipedia.org/wiki/Biophilic_design | One of the quality design features tested in the airport study",
+      "takeaways": "In this episode, you'll learn:\n\nWhat \"servicescape\" means and why CX keeps ignoring it\nHow your nervous system reacts to a space before conscious thought\nThe levers of environmental design — light, sound, temperature, layout, sightlines, signage\nHow space shapes staff behaviour, not just customers'\nHow to measure experience with eye-tracking, EEG, sentiment and choice modelling\nThe airport case study that tied good design to dwell time and revenue\nWhere enhancement ends and manipulation begins — the ethics of designed space\nHow to make the business case to a CFO for environment and experience",
+      "guestQuote": "The room is actually participating in the service experience alongside people, technology and other touch points.",
+      "description": "You remember the conversation, not the room — yet the room was shaping it the whole time. In this episode, Dr Eslam Afifi talks with design researcher Dr Jacqueline Baker (Head of Research, COX Architecture) about the servicescape: the idea that physical space is part of the service itself, not its backdrop. They explore how light, sound, layout and movement shape how customers and staff behave before a conscious thought forms, the airport study linking good design to dwell time and spend, and where enhancing an experience ends and manipulating it begins. A fresh, research-led look at the most overlooked variable in CX — the room.",
+      "homeFeatured": false
+    },
+    {
+      "date": "Oct, 2026",
+      "role": "Senior Global Marketing & Strategy Manager, Cabot Corporation",
+      "about": "EPISODE DESCRIPTION\n\nWhat if your best growth year was never really yours, just the market doing the work? In this episode of The CX Algorithm, Dr Eslam Afifi sits down with Jonathan Rabiei (Senior Global Marketing & Strategy Manager, Cabot Corporation) to pull apart one of the most comfortable illusions in business: that a rising market is proof you are good at growth.\n\nWhen demand outstrips supply, growth hides everything: weak pricing, a clogged innovation pipeline, thinning customer intimacy, and a business that looks like it is winning while it quietly stops earning. Drawing on more than 18 years across specialty and battery materials, Jonathan reframes growth not as a sales target but as a whole-company system: the way R&D, operations, supply chain, commercial and finance together create, deliver and capture value.\n\nYou'll hear the five blind spots a booming market hides, the four questions that separate real growth from a tailwind, how Jonathan turned a \"flat\", written-off polymer segment into a core business in three years, and why retention is engineered far upstream rather than defended with discounts at the exit.",
+      "audio": "https://open.spotify.com/episode/5L2UNhiPJSDapnKVKHJfMl",
+      "guest": "Jonathan Rabiei",
+      "image": "https://fuuuhcvwlrfenjfpcymy.supabase.co/storage/v1/object/public/uploads/1792210514428-EP09-Jonathan-thumbnail.jpg",
+      "title": "Is Your Business Growing, or Is the Market Doing the Work?",
+      "video": "https://youtu.be/Jl-7uUmco-8",
+      "eyebrow": "EPISODE 09",
+      "chapters": "0:00 | Growth, or just a rising market?\n1:07 | Meet Jonathan Rabiei\n3:54 | Who really owns growth\n6:17 | Five blind spots of a booming market\n9:57 | Four questions: real growth or a tailwind\n11:35 | When the tide goes out\n12:58 | Three levers when easy growth runs out\n14:33 | Turning a \"flat\" segment into a core business\n18:17 | Maximising value vs squeezing customers\n20:01 | When a diversification strategy fell flat\n22:00 | Retention: engineered, not defended\n28:26 | Efficiency plus focus\n32:31 | The Monday morning question\n34:36 | The one sentence to remember",
+      "duration": "36 min",
+      "guestBio": "",
+      "resources": "Cabot Corporation | https://www.cabotcorp.com/ | Jonathan's company, where he leads strategic marketing in battery materials\nThe three horizons of growth | https://en.wikipedia.org/wiki/Three_horizons | Jonathan's lens on why near-term projects starve long-term bets\n2021 Suez Canal obstruction | https://en.wikipedia.org/wiki/2021_Suez_Canal_obstruction | The supply shock that turned into lasting customer stickiness",
+      "takeaways": "In this episode, you'll learn:\n\nWhy a rising market hides organisational weakness, and what stagnation exposes\nWho really owns growth in a company (and why it is not the sales team)\nThe five blind spots: operations, customers, innovation, environment and economics\nFour questions that separate genuine growth from a market tailwind\nHow to turn a \"flat\", mature segment into a core business\nRetention as an engineered, upstream discipline, not an exit-time discount\nWhy efficiency plus focus becomes a growth lever in a down market",
+      "guestQuote": "Growth is not a single department. It's the whole company that creates, delivers and captures value.",
+      "description": "Growth hides a lot when the market is hot. Dr Eslam Afifi talks with Jonathan Rabiei (Senior Global Marketing & Strategy Manager, Cabot Corporation) about the five blind spots a booming market covers up, four questions that separate real growth from a tailwind, how a written-off \"flat\" segment became a core business, and why retention is engineered upstream rather than defended with discounts at the exit.",
+      "homeFeatured": true
+    }
+  ],
+  "navVersion": 2,
   "linksVersion": 2
 }

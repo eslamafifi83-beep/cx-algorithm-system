@@ -574,6 +574,26 @@
 
   /* ============ SECTION HEADINGS ============ */
   .band { padding: clamp(3.5rem, 8vw, 6.5rem) 0; }
+
+  /* Press & media kit band (above the footer) */
+  .presskit { padding-top: 0; }
+  .pk-card { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.65fr); align-items: center; gap: clamp(1.75rem, 5vw, 4.5rem);
+    padding: clamp(1.75rem, 4vw, 3.25rem); border-radius: 28px; background: radial-gradient(120% 140% at 100% 0%, rgba(233,163,61,0.14), rgba(233,163,61,0) 55%), rgba(255,255,255,0.03);
+    border: 1px solid rgba(233,163,61,0.28); }
+  .pk-eyebrow { font-family: var(--display); font-weight: 700; font-size: 0.75rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); }
+  .pk-card h2 { font-family: var(--display); font-weight: 800; font-size: clamp(1.75rem, 3.4vw, 2.75rem); line-height: 1.08; margin: 0.6rem 0 0.9rem; text-wrap: balance; }
+  .pk-card p { color: var(--muted, #A7ADC9); max-width: 34rem; line-height: 1.6; margin: 0 0 1.1rem; }
+  .pk-list { display: flex; flex-wrap: wrap; gap: 0.5rem 0.6rem; list-style: none; padding: 0; margin: 0 0 1.6rem; }
+  .pk-list li { font-size: 0.8125rem; padding: 0.4rem 0.85rem; border-radius: 999px; border: 1px solid rgba(255,255,255,0.12); color: #DCE3F0; }
+  .pk-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+  .pk-cover { justify-self: center; display: block; width: min(100%, 280px); aspect-ratio: 560 / 793; border-radius: 14px; overflow: hidden;
+    box-shadow: 0 0 0 4px #131B40, 0 30px 60px -20px rgba(0,0,0,0.8); transform: rotate(2.5deg); transition: transform 0.4s var(--ease); }
+  .pk-cover:hover { transform: rotate(0deg) translateY(-4px); }
+  .pk-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem 1.75rem; margin-top: 1.4rem; font-size: 0.8125rem; letter-spacing: 0.08em; }
+  .footer-links a { color: var(--muted, #A7ADC9); text-decoration: none; }
+  .footer-links a:hover { color: var(--gold-light); }
+  @media (max-width: 760px) { .pk-card { grid-template-columns: minmax(0, 1fr); } .pk-cover { order: -1; width: min(70%, 220px); } }
   .band-title {
     display: flex;
     align-items: center;
@@ -1114,6 +1134,27 @@
     </div>
   </section>
 
+  <!-- ============ PRESS & MEDIA KIT ============ -->
+  <section class="band presskit" id="press-kit">
+    <div class="container">
+      <div class="pk-card reveal">
+        <div>
+          <span class="pk-eyebrow">Press &amp; media</span>
+          <h2>The CX Algorithm press kit</h2>
+          <p>Everything journalists, event organisers and partners need in one PDF: the show, the host, audience numbers, past guests and brand assets.</p>
+          <ul class="pk-list"><li>Host bio &amp; headshot</li><li>Show facts &amp; audience</li><li>Guest line-up</li><li>Logos &amp; brand</li></ul>
+          <div class="pk-actions">
+            <a class="btn btn-gold" href="/press-kit" target="_blank" rel="noopener">Download press kit (PDF)</a>
+            <a class="btn btn-outline" href="/contact#press">Media enquiries</a>
+          </div>
+        </div>
+        <a class="pk-cover" href="/press-kit" target="_blank" rel="noopener" aria-label="Open the press kit PDF">
+          <img src="/assets/press-kit-cover.jpg" alt="Cover of The CX Algorithm Podcast press kit" width="560" height="793" loading="lazy" />
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ PLATFORMS / FOOTER ============ -->
   <footer class="band platforms" id="platforms">
     <div class="container">
@@ -1136,6 +1177,7 @@
         </a>
       </div>
 
+      <nav class="footer-links" aria-label="Footer"><a href="/episodes">All episodes</a><a href="/guests">Guests</a><a href="/about">The host</a><a href="/press-kit" target="_blank" rel="noopener">Press kit</a><a href="/contact">Contact</a></nav>
       <div class="footer-bottom">© 2026 THE CX ALGORITHM PODCAST · HOSTED BY DR ESLAM AFIFI</div>
     </div>
   </footer>

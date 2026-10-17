@@ -259,6 +259,14 @@
   .host-id .r { color: var(--gold); font-size: 0.8125rem; font-weight: 600; }
   .host-fact { display: flex; align-items: center; gap: 11px; color: var(--muted); font-size: 0.875rem; margin-bottom: 0.8rem; }
   .host-fact strong { color: #EEF3FA; font-weight: 600; }
+  .pk-mini { display: flex; align-items: center; gap: 14px; margin: 0.4rem 0 1rem; padding: 12px 14px; border-radius: 14px; text-decoration: none; color: #EEF3FA;
+    background: rgba(233,163,61,0.08); border: 1px solid rgba(233,163,61,0.35); transition: border-color 0.2s, background 0.2s; }
+  .pk-mini:hover { border-color: var(--gold); background: rgba(233,163,61,0.14); }
+  .pk-mini img { width: 44px; height: auto; border-radius: 6px; box-shadow: 0 0 0 2px #131B40; flex: none; }
+  .pk-mini span { display: flex; flex-direction: column; gap: 2px; flex: 1; min-width: 0; }
+  .pk-mini strong { font-size: 0.95rem; }
+  .pk-mini small { color: var(--muted); font-size: 0.78rem; }
+  .pk-mini svg { color: var(--gold-light); flex: none; }
   .host-socials { display: flex; gap: 12px; margin-top: 1.375rem; }
   .host-socials a {
     width: 42px; height: 42px; border-radius: 50%;
@@ -399,9 +407,10 @@
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6FA8DC" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-5.5 7-11a7 7 0 0 0-14 0c0 5.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
           <span>Available worldwide · in-person &amp; virtual</span>
         </div>
-        <a class="host-fact" href="/press-kit" target="_blank" rel="noopener" style="text-decoration:none">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6FA8DC" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M12 11v6M9.5 14.5 12 17l2.5-2.5"/></svg>
-          <span>Press kit · <strong>download the PDF</strong></span>
+        <a class="pk-mini" href="/press-kit" target="_blank" rel="noopener">
+          <img src="/assets/press-kit-cover.jpg" alt="" width="56" height="79" loading="lazy" />
+          <span><strong>Press kit</strong><small>Host bio, show facts, guests &amp; logos · PDF</small></span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7.5 10.5 12 15l4.5-4.5M5 20h14"/></svg>
         </a>
         <div class="host-socials">
           <a href="#" id="soLinkedin" hidden aria-label="LinkedIn">

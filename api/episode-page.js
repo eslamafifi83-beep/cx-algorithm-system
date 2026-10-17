@@ -46,7 +46,7 @@ module.exports = async (req, res) => {
   const ep = content.episodes[to.idx] || {};
   const number = parseInt((/\d+/.exec(ep.eyebrow || '') || [to.idx + 1])[0], 10);
   const item = matchItem(await feedItems(2000), ep.title, number);
-  let meta = item ? { durationMs: item.durationMs, releaseDate: item.releaseDate, notes: item.notes, learn: item.learn } : {};
+  let meta = item ? { durationMs: item.durationMs, releaseDate: item.releaseDate, audioUrl: item.audioUrl, notes: item.notes, learn: item.learn } : {};
   const sid = spotifyId(ep.audio) || spotifyId(ep.video);
   if (sid && !(meta.durationMs && meta.releaseDate)) {
     const emb = await fromEmbedPage(sid, 1500);

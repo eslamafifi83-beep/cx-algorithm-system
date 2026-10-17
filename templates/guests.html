@@ -161,8 +161,8 @@
 
   /* Toolbar */
   .grid-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin: clamp(2.75rem, 6vw, 4.5rem) 0 1.5rem; }
-  .grid-head h3 { font-family: var(--display); font-weight: 700; font-size: 1.15rem; display: flex; align-items: baseline; gap: 10px; }
-  .grid-head h3 span { font-size: 0.8rem; font-weight: 600; color: #7480A3; }
+  .grid-head h2 { font-family: var(--display); font-weight: 700; font-size: 1.15rem; display: flex; align-items: baseline; gap: 10px; }
+  .grid-head h2 span { font-size: 0.8rem; font-weight: 600; color: #7480A3; }
   .chips { display: flex; flex-wrap: wrap; gap: 8px; }
   .chip { font-family: var(--display); font-size: 0.74rem; font-weight: 600; letter-spacing: 0.02em; color: var(--muted); background: rgba(255, 255, 255, 0.04); border: 1px solid var(--hairline); border-radius: 999px; padding: 0.5rem 1rem; cursor: pointer; white-space: nowrap; transition: background 0.2s var(--ease), color 0.2s var(--ease), border-color 0.2s var(--ease); }
   .chip:hover { color: var(--text); border-color: rgba(255, 255, 255, 0.22); }
@@ -296,7 +296,7 @@
 
   <section aria-label="All guests">
     <div class="grid-head">
-      <h3>All guests <span id="gCount"></span></h3>
+      <h2>All guests <span id="gCount"></span></h2>
       <div class="chips" id="chips" role="group" aria-label="Filter guests by topic"></div>
     </div>
     <div class="guests-grid" id="grid"></div>
@@ -430,7 +430,7 @@
         </div>
         <div class="gcard-body">
           <p class="gcat">${esc(g.category || '')}</p>
-          <h4 class="gname">${esc(g.name)}</h4>
+          <h3 class="gname">${esc(g.name)}</h3>
           <p class="grole">${esc(id.title)}</p>
           <p class="gco">${esc(id.company)}</p>
           <div class="vp" aria-hidden="true">${voiceprint(g.name, 44)}</div>

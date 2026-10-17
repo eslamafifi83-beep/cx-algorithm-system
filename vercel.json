@@ -150,7 +150,7 @@
       "includeFiles": "transcripts/**"
     },
     "api/page.js": {
-      "includeFiles": "{templates/**,assets/*.js,articles/**}"
+      "includeFiles": "{templates/**,assets/*.js,articles/**,404.html}"
     },
     "api/sitemap.js": {
       "includeFiles": "articles/**"

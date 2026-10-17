@@ -36,9 +36,16 @@ async function pressKit(req, res) {
 // An article: the saved copy in articles/, else read from LinkedIn now, else off to LinkedIn
 async function article(req, res) {
   const slug = String((req.query && req.query.slug) || '');
-  const notFound = () => { res.setHeader('Cache-Control', 'public, s-maxage=60'); res.setHeader('Location', '/blog'); return res.status(302).end(); };
+  const toBlog = () => { res.setHeader('Cache-Control', 'public, s-maxage=60'); res.setHeader('Location', '/blog'); return res.status(302).end(); };
+  // No such article: a real 404 with the site's not-found page (as /episodes/<unknown> does)
+  const notFound = () => {
+    const { notFoundPage } = require('../lib/episode-page');
+    res.setHeader('Content-Type', 'text/html; charset=utf-8');
+    res.setHeader('Cache-Control', 'public, s-maxage=60');
+    return res.status(404).send(notFoundPage());
+  };
   let content;
-  try { content = await siteContent(); } catch (e) { return notFound(); }
+  try { content = await siteContent(); } catch (e) { return toBlog(); }
   const { route, render, savedCopy, listOf } = require('../lib/article-page');
   const to = route(content, slug);
   if (to.location) {

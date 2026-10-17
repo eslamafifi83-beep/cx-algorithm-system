@@ -340,7 +340,11 @@ const server = http.createServer(async (req, res) => {
     const { route, render, savedCopy, listOf } = require('./lib/article-page');
     const to = route(content, artMatch[1]);
     if (to.location) { res.writeHead(to.permanent ? 301 : 302, { Location: to.location }); return res.end(); }
-    const a = to.idx >= 0 ? listOf(content)[to.idx] : null;
+    if (!(to.idx >= 0)) {
+      res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' });
+      return res.end(require('./lib/episode-page').notFoundPage());
+    }
+    const a = listOf(content)[to.idx];
     const copy = a && savedCopy(a);
     if (!copy) { res.writeHead(302, { Location: (a && a.linkedInUrl) || '/blog' }); return res.end(); }
     res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });

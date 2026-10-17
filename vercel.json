@@ -151,6 +151,9 @@
     },
     "api/page.js": {
       "includeFiles": "{templates/**,assets/*.js,articles/**}"
+    },
+    "api/sitemap.js": {
+      "includeFiles": "articles/**"
     }
   }
 }

@@ -86,6 +86,72 @@
   }
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "@id": "https://www.thecxalgorithm.com/about#faq",
+  "url": "https://www.thecxalgorithm.com/about",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is The CX Algorithm?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A video and audio podcast about customer experience, data and AI, hosted by Dr Eslam Afifi. Each episode is a long-form conversation (about 20 to 35 minutes) with a leader who has made real decisions in CX, data or AI. Every episode has its own page on this site with notes, chapters and key takeaways, and most episodes have a full transcript."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who hosts The CX Algorithm?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Dr Eslam Afifi: a customer experience, Voice of Customer and AI leader with over 15 years of experience across Australia, Europe and the GCC. He holds a PhD from Monash University on developing customer experience and marketing strategies using AI and machine learning, and an Executive MBA from IE Business School, and has won three Australian CX Awards: Best Use of Customer Data & Insights 2022; Best CX Transformation 2022 and 2023."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where can I listen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Spotify, Apple Podcasts, YouTube, Amazon Music, iHeartRadio, Audible, Pocket Casts, Deezer, TuneIn, Castbox, and any podcast app through the RSS feed. Video episodes are on Spotify and YouTube."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How can I be a guest on the show?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Send a pitch through the contact page (https://www.thecxalgorithm.com/contact#guest) or email hello@thecxalgorithm.com. The show looks for leaders with a real story about customer experience, data or AI: the decisions made, the lessons learned and the results."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Dr Eslam Afifi speak at events?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes: keynotes, panels, fireside chats and workshops for CX and insights leaders, in person or live on screen. Book a talk (https://www.thecxalgorithm.com/contact#speak)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is there a press kit?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, a 4-page PDF about the podcast, its guests and the host: download the press kit (https://www.thecxalgorithm.com/press-kit)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I get in touch?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Email hello@thecxalgorithm.com or use the form on the contact page (https://www.thecxalgorithm.com/contact) for speaking, guest pitches, partnerships and press."
+      }
+    }
+  ]
+}
+</script>
 <script defer src="/_vercel/insights/script.js"></script>
 <link rel="alternate" type="application/rss+xml" title="The CX Algorithm Podcast" href="https://anchor.fm/s/10dcc5b9c/podcast/rss" />
 <link rel="preload" as="image" href="/_vercel/image?url=%2Fassets%2Flogo.png&amp;w=828&amp;q=80" fetchpriority="high" />
@@ -345,6 +411,13 @@
   .footer a:hover { color: var(--gold-light); }
   .footer .copy { font-size: 0.72rem; letter-spacing: 0.12em; color: var(--muted); }
 
+  .faq { padding-top: clamp(3rem, 7vw, 5.5rem); padding-bottom: clamp(3rem, 7vw, 5.5rem); }
+  .faq-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: clamp(2rem, 5vw, 4.5rem); margin-top: clamp(1.75rem, 4vw, 2.75rem); border-top: 1px solid var(--hairline); }
+  .qa { padding: 1.4rem 0; border-bottom: 1px solid var(--hairline); }
+  .qa h3 { font-size: 1.05rem; font-weight: 700; line-height: 1.35; margin-bottom: 0.5rem; }
+  .qa p { line-height: 1.7; max-width: 62ch; }
+  .qa a { color: var(--gold); }
+
   @media (max-width: 1100px) {
     .rgrid { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 1.75rem; }
     .r:nth-child(3n+1) { padding-left: 0; border-left: 0; }
@@ -383,6 +456,7 @@
     .tile-a, .tile-solo, .tile-tall { grid-column: 1 / -1; grid-row: span 2; }
     .tile-w { grid-column: 1 / -1; }
     .book-art { min-height: 300px; order: -1; }
+    .faq-list { grid-template-columns: minmax(0, 1fr); }
   }
   @media (max-width: 640px) {
     .rgrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -545,9 +619,9 @@
     <div class="console">
       <div class="channels" role="tablist" aria-label="Six lenses" id="channels"></div>
       <div class="display" role="tabpanel" id="display" aria-live="polite">
-        <p class="lcd-k" id="lcdK"></p>
-        <h3 id="lcdT"></h3>
-        <p class="lens-name" id="lcdN"></p>
+        <p class="lcd-k" id="lcdK">Channel 01 · solo</p>
+        <h3 id="lcdT">The psychology behind why customers choose, stay, or walk away.</h3>
+        <p class="lens-name" id="lcdN">Human behaviour</p>
         <div class="scope" id="scope" aria-hidden="true"></div>
         <p class="desk-hint">Select a channel to solo it.</p>
       </div>
@@ -580,6 +654,44 @@
         <span class="ring"></span><span class="ring r2"></span><span class="ring r3"></span>
         <span class="book-face"><img class="host-photo" src="/_vercel/image?url=%2Fassets%2Fdr-eslam-afifi.png&amp;w=384&amp;q=75" data-src="/assets/dr-eslam-afifi.png" alt="" loading="lazy" /></span>
         <span class="book-tag"><i></i>Your stage</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="container faq" id="faq" aria-labelledby="faq-title">
+    <header>
+      <p class="kicker">Questions</p>
+      <h2 class="sec-title" id="faq-title">Frequently asked questions</h2>
+    </header>
+    <div class="faq-list">
+      <div class="qa">
+        <h3>What is The CX Algorithm?</h3>
+        <p class="note">A video and audio podcast about customer experience, data and AI, hosted by Dr Eslam Afifi. Each episode is a long-form conversation (about 20 to 35 minutes) with a leader who has made real decisions in CX, data or AI. Every episode has its own page on this site with notes, chapters and key takeaways, and most episodes have a full transcript.</p>
+      </div>
+      <div class="qa">
+        <h3>Who hosts The CX Algorithm?</h3>
+        <p class="note">Dr Eslam Afifi: a customer experience, Voice of Customer and AI leader with over 15 years of experience across Australia, Europe and the GCC. He holds a PhD from Monash University on developing customer experience and marketing strategies using AI and machine learning, and an Executive MBA from IE Business School, and has won three Australian CX Awards: Best Use of Customer Data &amp; Insights 2022; Best CX Transformation 2022 and 2023.</p>
+      </div>
+      <div class="qa">
+        <h3>Where can I listen?</h3>
+        <p class="note">Spotify, Apple Podcasts, YouTube, Amazon Music, iHeartRadio, Audible, Pocket Casts, Deezer, TuneIn, Castbox, and any podcast app through the RSS feed. Video episodes are on Spotify and YouTube.</p>
+      </div>
+      <div class="qa">
+        <h3>How can I be a guest on the show?</h3>
+        <p class="note">Send a pitch through <a href="/contact#guest">the contact page</a> or email <a href="mailto:hello@thecxalgorithm.com">hello@thecxalgorithm.com</a>. The show looks for leaders with a real story about customer experience, data or AI: the decisions made, the lessons learned and the results.</p>
+      </div>
+      <div class="qa">
+        <h3>Does Dr Eslam Afifi speak at events?</h3>
+        <p class="note">Yes: keynotes, panels, fireside chats and workshops for CX and insights leaders, in person or live on screen. <a href="/contact#speak">Book a talk</a>.</p>
+      </div>
+      <div class="qa">
+        <h3>Is there a press kit?</h3>
+        <p class="note">Yes, a 4-page PDF about the podcast, its guests and the host: <a href="/press-kit" target="_blank" rel="noopener">download the press kit</a>.</p>
+      </div>
+      <div class="qa">
+        <h3>How do I get in touch?</h3>
+        <p class="note">Email <a href="mailto:hello@thecxalgorithm.com">hello@thecxalgorithm.com</a> or use the form on <a href="/contact">the contact page</a> for speaking, guest pitches, partnerships and press.</p>
       </div>
     </div>
   </section>

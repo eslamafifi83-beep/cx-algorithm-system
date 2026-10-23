@@ -210,8 +210,8 @@
     transition: transform 0.3s var(--ease), border-color 0.3s var(--ease);
   }
   .post:hover { transform: translateY(-4px); border-color: var(--hairline-gold); }
-  .post-thumb { position: relative; aspect-ratio: 16 / 9; background: radial-gradient(120% 120% at 40% 30%, #1C2F57, #0E1C3B); }
-  .post-thumb img, .post-thumb video { width: 100%; height: 100%; object-fit: contain; display: block; }
+  .post-thumb { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: radial-gradient(120% 120% at 40% 30%, #1C2F57, #0E1C3B); }
+  .post-thumb img, .post-thumb video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; display: block; }
   .post-thumb .in-badge {
     position: absolute; top: 0.75rem; left: 0.75rem;
     width: 26px; height: 26px; border-radius: 7px;

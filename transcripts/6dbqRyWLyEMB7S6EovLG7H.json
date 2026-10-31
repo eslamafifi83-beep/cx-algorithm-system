@@ -1,0 +1,444 @@
+{
+ "episode": 10,
+ "title": "Trust Is Not a Score — What a Financial Collapse Teaches Customer Experience",
+ "paragraphs": [
+  {
+   "t": 1,
+   "speaker": "Eslam",
+   "text": "Hi, the entire financial services is built on one key concept and one key foundation, which is trust. The moment that trust is broken, the entire experience is eroded. We're not talking about a low MBA score or a CCS score. No, we're talking about people who lost their life savings or sometimes even their retirement savings. Today, what we're going to be doing is a bit of something different. We're going to be speaking about a case study, a real case study that happened recently. We're talking about a few months back. One of the biggest developers in Sydney lost that trust and how the entire experience ended in a really sad news for everyone involved in the process."
+  },
+  {
+   "t": 41,
+   "speaker": "Eslam",
+   "text": "Welcome to another episode of the CX Algorithm Podcast. I'm Dr Eslam Afifi, and welcome to the show. Today, I just thought when we're going to be speaking about trust today, instead of just talking about the concept of trust, I need to find someone who can explain trust in the most amazing practical way. And I couldn't find anyone better than my friend, Linda. Linda Trusler is an incredible human being, but besides being an amazing 20 years of experience across financial services. Her titles are incredible senior titles between head of investment, between a chief investment officer, between so many titles she held. Incredible human being. I'm going to pass her in a minute, but all I want to say, if there's anyone can explain the idea of trust and how does trust work in financial services, we couldn't find anyone better than Linda."
+  },
+  {
+   "t": 97,
+   "speaker": "Eslam",
+   "text": "So Linda, welcome to the show."
+  },
+  {
+   "t": 99,
+   "speaker": "Linda",
+   "text": "Thank you so much, Dr Eslam. I'm so honored to be here at your show. I followed you for years and I've been very impressed with the ideas that you come about, the insights that you provide, the contribution to the industry is really amazing. And I think this show is really one of a kind and I personally have not come across something like this. I'm so pleased and so honored to be here. I think your introduction was really quite generous, but, you know, thank you for that. And I reciprocate, you know, the glowing recommendation and the introduction you've given me, I reciprocated to you 10 times more with all of my heart."
+  },
+  {
+   "t": 141,
+   "speaker": "Eslam",
+   "text": "I really thank you. It's really kind of you. Can you just give us to the audience a bit of a brief about your career and where you are right now? And how did you come across such a big case study?"
+  },
+  {
+   "t": 155,
+   "speaker": "Linda",
+   "text": "Well, Eslam, I've been in the markets over 25 years now, so I've always managed money. Now, started off managing money, you know, with equities, but then I grew and expanded up to managing multi -asset investments. Multi -asset means it's just a balanced portfolio, right? And then it's about researching all sorts of different asset classes and what their roles are in a whole of portfolio approach. The idea about private credit is an interesting one because I think the audience would be very well aware, very familiar with listed assets like equities, like bonds, et cetera. Now, there is unlisted assets, which is the opposite category, but as the name suggests, it's unlisted."
+  },
+  {
+   "t": 202,
+   "speaker": "Linda",
+   "text": "And so there's a lot of opacity within these asset classes. The disclosure is not as visible as equities, for example. It's not as transparent. But nonetheless, the asset class can't be written off because it has such a vital role within a portfolio if it's done right. And I think that's the big thing here. If it's done right, it can add a lot of value and a lot of yield, et cetera. So it's got a really good utility to add into the portfolio. Now, my work, I'm an independent asset consultant just by way of introduction. And my consultancy is to various high -net worth individuals to wealth managers."
+  },
+  {
+   "t": 246,
+   "speaker": "Linda",
+   "text": "A lot of the clients I conduct all CIO or outsource CIO services. And basically, all that's saying is I'm managing the portfolio for them. Now, private credit is very important asset class in the balance portfolios that I manage. And it's actually come to light in the industry for a few reasons. But I'll just talk about it from a macro perspective. We've come out of an environment where we had really low interest rates for a long time. And then we've had a really high magnitude of inflation, not least of which is caused by COVID and all of the supply chain blockages that came with that, et cetera."
+  },
+  {
+   "t": 294,
+   "speaker": "Linda",
+   "text": "But what that meant for us as investors is that there were a lot of people that took advantage of the low interest rates at the time it was prevailing. And now that we've had high interest rates, a lot of those loans are rerolling, if you like, onto a new tenure at a higher rate. So what that means, it's actually highlighting a lot of the fragility in the economy, a lot of the fragility, particularly of the borrowers, and we'll see that in the backlog case, is like they were not actually able to manage, you know, handling those loans. And it's just a twist in the environment that's brought to light."
+  },
+  {
+   "t": 336,
+   "speaker": "Linda",
+   "text": "And so really, my work stems from investment governance. Now, investment governance is a piece that's become and will become very, very important in the industry, because this is not, unfortunately, the first of its fallout. I don't think it will be the last either. But what this is, is a recurrence of the lack of failures in our system. It's the lack of investment governance, it's the lack of monitoring. And it's just prevailing within our industry, Eslam. It's not just institutional, it's retail. And I think more and more, as our world progresses, there's so much complexity within some of these investment products that are circulating in the market."
+  },
+  {
+   "t": 383,
+   "speaker": "Linda",
+   "text": "And I think that's really causing a lot of confusion as to what it is exactly that people are investing in. So that's how, you know, the genesis of why it my interest and why I took some time and effort to actually look into it and what it meant, why it happened, and importantly, for investors, what it means."
+  },
+  {
+   "t": 404,
+   "speaker": "Eslam",
+   "text": "That's an amazing overview. And I couldn't agree more on down the whole idea about when the tide is high, a lot of things can be hidden. When the tide is low, problems and frictions start to appear and especially even in the CX space. This is an amazing overview. But for audiences, I would love if you could give us a bit of an overview of how would they actually Bistla started? How does he actually started? And where they got the money from?"
+  },
+  {
+   "t": 431,
+   "speaker": "Linda",
+   "text": "Mm hmm. Oh, it's actually a script for Hollywood or Bollywood, I would say, as well. I mean, I'm amazed as well as to, you know, how exactly this started. And to your point, really, how did it become so big? It is quite a behemoth, quite a beast. Now, just for us to understand the growth of something like this, I wanted to go back to regulation, the regulatory environment. Now, within the regulatory environment, previously, when you wanted a loan by and large, traditionally, you had to go to banks. Banks ceased or withdrew from lending to developers, you know, construction loans, land development, rural, rural land development loans, etc."
+  },
+  {
+   "t": 481,
+   "speaker": "Linda",
+   "text": "Now, a lot of it was driven by regulation because post the GFC. Now, GFC is another kind of topic by itself. But that also introduced and, you know, shed light on a lot of the exposures. But post GFC, they came out with regulation that essentially meant banks were to withdraw from lending from this particular sector, because it was risky and because of the way in which the capital books were kind of reject to measure capital risk. So without getting too technical now, so what that means is this whole sector was fair game to private lenders. And this is why it's called private credit, as opposed to credit, right?"
+  },
+  {
+   "t": 524,
+   "speaker": "Linda",
+   "text": "So private credit then became an area and level playing field for managers that would come in and pretty much give loans to investor profiles that probably were not vetted very well or were were vetted on very low levels that had no docs or low docs applications. It's, you know, what is called that probably a lot of these loans might not have passed through the hurdles of banks, because they have a lot more strict hurdles. But having said that the interest rates that are charged for these borrowers are at a high rate as well. So it's in the interest of the borrowers to bypass the banks go to the private credit lenders."
+  },
+  {
+   "t": 570,
+   "speaker": "Linda",
+   "text": "So, so this whole, you know, this whole opportunity set just came about by way of regulation. The other thing as I want to point out is the characteristic of private credit within Australia. If you're investing into private credit, now 60 % of the opportunity set lies in real estate, pretty much residential real estate. Now, if we compare that statistic to the US, it's only about 15 to 20 % of the US sector that's exposed to real estate. And I think the one thing we have to understand with the Australian psyche is, you know, the Australian people on average is by they just love houses, you know, real estate, touch and feel property."
+  },
+  {
+   "t": 617,
+   "speaker": "Linda",
+   "text": "I think, you know, if you look at investors that that that make up equity portfolios, they've got to have the real estate on there for some reason, right? So it's kind of a little bit in great. And I think that's important because when you have an offering like this, they feel a lot more comfortable. It's something that they think they understand and they love. But that's how they were able to collect $3 billion or $3 .5 billion. And the suppliers to that credit were actually quite well known sophisticated private credit fund managers. So they do have a lot of history, they do have a lot of experience."
+  },
+  {
+   "t": 660,
+   "speaker": "Linda",
+   "text": "And they were not, you know, investors that, you know, just sort of opened their doors yesterday. So they do have a lot of experience. So that's why it's it's a little bit uncomfortable confronting, but also like amazing that they were managed to get these. But I think it's a lack of opportunity of 60 % of your exposures and the real estate. And you have a very big developer that's requiring money. That's where the capital will naturally allocate itself to. So you have the allocate, you have the investors that have provided the money, which will lot the majority of them. And on the other side, they were actually to raise able to raise money from depositors, first home buyers, the ones that have saved up, you know, all of their life savings, basically to get a roof over their heads."
+  },
+  {
+   "t": 709,
+   "speaker": "Linda",
+   "text": "So there's two very different cohorts and sources of these funds that were impacted in different ways."
+  },
+  {
+   "t": 716,
+   "speaker": "Eslam",
+   "text": "It's an amazing story, because if I can replay what we're talking about, because in your paper, which is we can attach it, by the way, to our audience, we can attach it into notes, people can read more details. Basically, in no time, they went from 510 houses, to more than 2000 or 2013 houses or development projects across Sydney and across even Australia, which is an incredible number. But what it does say is, if we're talking about from a CX lens, expectation settings, we're talking about two things. Those cohorts that you just mentioned, one cohort who wanted to, the borrowers in essence couldn't get the, go through the bank because the regulations, so they had to go to an easier one, was a higher risk."
+  },
+  {
+   "t": 756,
+   "speaker": "Eslam",
+   "text": "But the problem was everyone expected that that demand, as you mentioned, for properties and for the housing market, is just going to be on the rise, on the rise. Yeah. Which is an incredible thing. But again, that lack, as you said, sophisticated lenders here, we're not talking about someone small talking about well -established lenders, this lack of governance was incredible there."
+  },
+  {
+   "t": 778,
+   "speaker": "Linda",
+   "text": "Yeah, no, absolutely. And I think I've always kind of said this in forums that I've participated in Eslam. And like I said, I've actually been in the markets 20, 25 years. But what I do see by way of my observation and experience is like, people are getting really comfortable with risk. And they're quite okay, you know, going down the risk curve and not really wanting or having a big focus on, you know, whether they're actually compensated adequately for the risk they're taking. Now, when you, in this instance, a lot of the products, positive features were put in front of the client and focused and shed a light on, but the downside, you know, the risk, what it actually took to get potentially get those those sort of returns were not actually highlighted well enough."
+  },
+  {
+   "t": 834,
+   "speaker": "Linda",
+   "text": "Now, it was just a flaw in the system, I believe, but even with the battle promises, their returns compared to the other products were a lot higher. So if you look at a just a regular private equity product, we'd expect something between 9 to 11%, 12%, you know, rarely, but in some instances, they were actually promising 15%, which is quite bizarre, and they were and they were believed. So the trust, you know, the point you mentioned very early on when we started this discussion as mom, yeah, trust is extremely important. And I think we come from industry by and large as individuals, we probably trust when they're up until, you know, we there comes a time where we have no reason to trust."
+  },
+  {
+   "t": 882,
+   "speaker": "Linda",
+   "text": "But why wait until that time? I think way in advance, we should be asking the questions we should be asking. This is an amazing overview. But this is at least another big question is, what did the money actually go?"
+  },
+  {
+   "t": 894,
+   "speaker": "Eslam",
+   "text": "And what did the money all that more than 3 billion, as you just mentioned earlier, what did it actually tie to at the end?"
+  },
+  {
+   "t": 900,
+   "speaker": "Linda",
+   "text": "Yeah. Well, actually, that's the million dollar question, Eslam. And to be honest, at this stage, we have not answered that question completely. I think there are partial answers. And then once the investigation started on Bathla, there are skeletons that are appearing out of the cupboard. And I think it's not just to do with, you know, where did the money go? But like who were involved and also like, you know, there are various parties that emerged that played a role. And then, you know, it's all the all important question is really, where do we point the finger to? And then in the future, how do we, you know, stop something like this occurring?"
+  },
+  {
+   "t": 947,
+   "speaker": "Linda",
+   "text": "But if we have to just recap what we know of this situation at this point in time, bear in mind that, you know, all this came to the fore in late August. So we are, yeah, just nearly two months, nearly coming up to two months, two months. Yeah, coming up to two months from the when this thing hit. But basically, what we do know from a statistics perspective is that they had bought about three and a half billion dollars. Now, the where the money has gone really is to raw land, half built projects, and a lot of unsold stock. So these were all constructions, loans, residuals, stock loans."
+  },
+  {
+   "t": 998,
+   "speaker": "Linda",
+   "text": "Now, and basically, these were loans for largely health of future development, you know, quote unquote, we don't quite know exactly what that future development is. But the point to really draw from these Eslam is to say that they had three and a half million of what's called illiquid inventory. And it's illiquid, because obviously the classes are illiquid, but their their liquid ratio here I'm talking about is about $15 million. So you got $15 million, three and a half billion illiquid inventory. So what they were trying to do was really try and grow exponentially by taking the investors money, and rather than using it adequately to where it was supposed to be allocated in that proportion, they were, and it's come up now, paying off loans, pay they owed the 80 or $145 million."
+  },
+  {
+   "t": 1058,
+   "speaker": "Linda",
+   "text": "So there's that debt. And essentially, instead of using the money to build the particular projects that the investors had put it towards, they were just building and, and perhaps using that capital to just expand and use it as a source of capital, as opposed to a source of capital that was already dedicated to a particular project. So the two are, the two are very different. Now, there wasn't enough transparency, and there wasn't enough visibility as to where the three and a half million went. But just to give you a scale about what they were operating it, they had about 220 sites, now 45 of those sites were actually active construction sites."
+  },
+  {
+   "t": 1109,
+   "speaker": "Linda",
+   "text": "And the apartments that were underlying this was about two and a half thousand. So I just want to make a point as well, Eslam, if I may, about the the people that you know, the home buyers that had provided this deposits to this. Now, a lot of the deposits were supposed to be kept in a trust. This is by law, Australian law, you're supposed to keep investors deposits or home buyers deposits into a trust. Now, that trust was to be placed in a safe place for them, and used at the time of the completion of the projects, but essentially that the money that they had taken was actually being used to fund other projects as well."
+  },
+  {
+   "t": 1157,
+   "speaker": "Eslam",
+   "text": "But I would love to in this in this part of the episode, if to understand a concept that you refer to in your paper, in your research, it's called value that's complete, because it's tied together is how to use the money on to get an unfinished unfinished asset to be able to raise more money. If you can explain that our audience, what does it actually that concept actually means?"
+  },
+  {
+   "t": 1177,
+   "speaker": "Linda",
+   "text": "Yeah. No, thanks for that question. That's actually the crux of private credit and private markets in general is it's something that, you know, the liquid markets don't actually have is valuation. Now, valuation is something that is an is an accounting concept, whereby the assets invest that are invested into a need to be valued as per what they're worth once every, say, quarter or, you know, at least a year, but quarter is is probably more the industry norm. But the assets that Bathla hold, the property assets that Bathla hold held were were done on the basis of valued as if complete, which is exactly what it means in its nomenclature, that it's valued as if that particular project has been completed in time on budget."
+  },
+  {
+   "t": 1240,
+   "speaker": "Linda",
+   "text": "And it has a value and a selling price that has been advertised and perhaps disseminated to the investors as well. So the key difference between that and say valuing a project as is, which is valuing it for what it is, not for what it will be in the future, but for what it is today is the former is a forecast, the latter is actual. So that is a big, big difference. And I think investors were not privy to that information about whether the valuation was actually on the basis of as if completed versus as is now, as if, as if completed will probably give them an idea of the wonderful houses that they see in the brochures, very glossy and you know, everything in its place, etc, etc."
+  },
+  {
+   "t": 1292,
+   "speaker": "Linda",
+   "text": "It's like a utopian kind of residence. But valuation as is would actually show them amount of dirt. It will show them a vast, you know, land just dirt dug up, probably there'll be one or two display suites on it, but that would be valuation as is which is, you know, really having a difference between those two valuation concepts. And so, so I would suggest that, you know, if you do private credit riot, and if you're, if you're a property developer, you should always err on the side of conservatism. And as an investor, you know, you should err on the side of conservative. Now you can't avoid forecasts, forecasts are pretty normal in investments, we forecast the economy all the time, we've, you know, kind of forecast where prices will go."
+  },
+  {
+   "t": 1342,
+   "speaker": "Linda",
+   "text": "So forecast is okay. But I think that needed to have been disclosed and it needed to have been told to the investor or the depositor that you should be taking a really conservative approach to this, this was, you know, likelihood and the probability of something like this, that's, you know, going to be completed, have all the tick, tick, tick ticks, as opposed to probably realistically, you know, we could be faced with another COVID tomorrow, we just don't know life."
+  },
+  {
+   "t": 1372,
+   "speaker": "Eslam",
+   "text": "So yeah, that's an amazing review because it, it shows you how trust plays a critical role. Because again, if you look at, as you said, that idea of valid as if complete, if you don't understand the underlying assumptions of the balance sheet, you look at the balance sheet, you look for the investor, this is great. And opportunity is a very solid, solid return with solid assets. But it's actually the assumption that underlying because there is no transparency, there is no basically trust, and everything falls apart."
+  },
+  {
+   "t": 1397,
+   "speaker": "Linda",
+   "text": "I have an assumption. Absolutely. I have one more thing"
+  },
+  {
+   "t": 1401,
+   "speaker": "Eslam",
+   "text": "I want to know, when did that moment when the gap between the, you know, the sheets numbers and the reality start to show up?"
+  },
+  {
+   "t": 1411,
+   "speaker": "Linda",
+   "text": "Well, it actually, so this was all happening in the background, Eslam, and we just don't know for how long it had been in play. However, what happened was that in early May, around, I think the 10th, 12th of May, we had the federal budget come out, and then there were changes to CGT and taxes, et cetera, and land tax, et cetera. And we had that coupled with a downturn in the housing market. Now, the combination of that was quite important to Battler, because prior to that announcement, they were making, say, 120 million in revenue from sales. Now, after that, they were making 50 million in revenue from sales."
+  },
+  {
+   "t": 1460,
+   "speaker": "Linda",
+   "text": "And so it really put a big pin in that balloon and burst that bubble there. And they themselves announced that they were insolvent. And so they appointed an administrator. So they, and this thing we trust is like, you never know until you know. So a lot of the investors, a lot of the home buyers, they actually found out through the headlines. There was no phone call. There was no saying, you know, we'd like to update you. They actually found out through the headlines. So it would have been, you know, quite a shock, you know, for them to have found out that they were actually involved with something that made its way on, you know, the so, you know, that's how that came about."
+  },
+  {
+   "t": 1511,
+   "speaker": "Linda",
+   "text": "And after that, there was, I'm sorry, actually, before that, there wasn't, there was a private credit manager that actually started to redeem their, their investments. So I think they would have had some sort of eninkling as to what was going on, because, you know, it's, it's not rocket science, a lot of these changes in tax, et cetera, was public information. So they would have worked out, hey, there's these changes that taxes that are coming, and this would now it's going to impact that loss. So they removed their investments. And then that law announced that they would, they were going to be insolvent. And then after that, it was pretty chaotic in the market."
+  },
+  {
+   "t": 1556,
+   "speaker": "Linda",
+   "text": "And there were other investors, fund managers, you know, private credit managers that started to gate as and block redemptions from, from going through. And so it, and then it was just like a domino effect, Eslam. One caused the other. Yeah, it is incredible. When you hear, when you hear your, sorry, when I read your research as well, that was a great paper, by the way. And one of the things that struck me as amazing is that was 2 billion of much, that maturity within 12 months, which means that Bittler has to come up with, with something like 5 million every week or every day, actually, I think my math is correct, to be able to meet that, that maturity, which is incredibly and almost impossible for a, for any company with any size to kind of have those returns, which shows us the lack of the trust and what the impact of that lack and how it leads to. I mean, I, I boil it down to a lot of mismanagement internally, but you know, how do we know a company is mismanaging itself, unless you're part of that company, no outsider has that disability, you know, how would you have that knowledge of someone's, now what's come to light is, as you said, you know, they had the 2 billion that matured within the 12 months. And you put that information with what we mentioned earlier on with their cash, which was 15 million. And then you've got the illiquid side, which is 3 .5 billion. So illiquid is illiquid, you know, obviously for, obviously the reason."
+  },
+  {
+   "t": 1647,
+   "speaker": "Linda",
+   "text": "So you've got, basically they had $15 million to pay the 2 billion debt within the next 12 months. And I think not just the debt externally within their own staff as well. They went for weeks and months unpaid. I don't quite know how they convinced them to keep working. I suppose it talks about the stress that people are going through. And there's some promise, again, we come back to that word promise, but there's some promise to say, you keep working in my company. And when things get right, I'll pay you. I mean, if things get right, it's probably more the question. But exactly that's what happens."
+  },
+  {
+   "t": 1687,
+   "speaker": "Linda",
+   "text": "And they had about 350 staff there Eslam, when things hit, they stood down 200 and then ultimately they retained only about 50. But at the time they were declared insolent, they did not have money to keep the lights on. So yeah, it is extraordinary, as you said. It's an extraordinary story. Absolutely."
+  },
+  {
+   "t": 1706,
+   "speaker": "Eslam",
+   "text": "And I have to ask, we're not talking about one stakeholder. We're talking, we're talking about three or four from lenders, from, you know, private creditors, from borrowers to buyers. How come something with that scale, was that a man of debt went for too long? I noticed."
+  },
+  {
+   "t": 1726,
+   "speaker": "Linda",
+   "text": "Yeah, I know Eslam, you've absolutely hit the nail on the head with that question. I think in order to answer that question, we look at the ecosystem around this incident. And the ecosystem really comprised of the investor on one hand, you know, they're actually supplying the money. But there are financial intermediaries, you know, that perhaps might have advised them, this is where you should go. Certainly we're from a fund manager perspective, if they've invested in a fund manager, they trust that fund manager to have done their due diligence, so that they would have put their money into investments that are fairly stable and established. Now, if you answer that question from three pillars, number one is who held the money, who held the information, and then I'd say who held the relationship."
+  },
+  {
+   "t": 1785,
+   "speaker": "Linda",
+   "text": "So those are the kind of the triangulated factors or the contributing factors into, you know, how this collapse, why it collapse, etc. From the investor's point of view, they've supplied their money, they've been told, you know, the sun is shining, you're getting a lot of returns, etc. And that's the information they've been told, that their relationship is with their fund manager or with their advisor. So we'll talk about them next, because their fund manager, their advisor pretty much put out on their PDF statements, on their pitch deck, on their sales material, that this is the returns that that you is targeting to get. Now, a lot of the technicalities of this investment probably lacked the visibility and the disclosures, like the valuation, what were the loan terms, investors needed to have been told exactly what they're getting into, because private credit is not a kind of a, you know, hold all umbrella, private credit actually refers to sub -stacks within credit, you can have secured credit, you can have unsecured credit, and so on."
+  },
+  {
+   "t": 1861,
+   "speaker": "Linda",
+   "text": "So an investor needs to be aware of where exactly do they need to sit. And then you've got Battler themselves, you know, they're managing the projects, you've got Battler subcontractors, like the builders, etc. And they're the ones that knew things were going out of whack, you know, the budget, the budget was being blown, you know, the projects were being delayed, etc. And you've got a regulator sitting somewhere far away. Now, if you look at this whole picture, everyone's disaggregated. And I think you really hit the nail on the head because it's very compartmentalized with what people are seeing, what people are witnessing, what people are experiencing."
+  },
+  {
+   "t": 1900,
+   "speaker": "Linda",
+   "text": "And they're not actually passing on that information to where it mattered, which is the investors and the home buyers. Now, why the question is why didn't that information, you know, travel? Because if you look, if you think about it, the builders would have known, you know, things are going to whack these people out, you know, they don't have the money to keep things going. Now, who sort of thinks it's their job or their duty or their obligation, you know, to go and tell someone that would likely get impacted on this. We don't have that from a governance system. We don't have that built into the system to say, you should be actually working for the benefit of the end beneficiary or the investor or the home buyer."
+  },
+  {
+   "t": 1947,
+   "speaker": "Linda",
+   "text": "There isn't anything that's stipulated on any of these players to say, you should actually raise this and speak up. So I think people were witnessing it, parts of it, some of it, but no one actually thought, you know, it was something that they should, that they should raise. And raising it had repercussions as well. So, you know, I think that the next topic really talks about, you know, why or why not do people raise what they what they witness, et cetera. So it's bordering on psychology as well as investments, et cetera. But, but this is the ecosystem. And I think where the governance piece lacks is to say, you know, we should have a system whereby the investor and particularly from Essex point of view, the retail investor should be protected a lot more."
+  },
+  {
+   "t": 1996,
+   "speaker": "Linda",
+   "text": "And what is that system that protects them at what point in time, you know, do these technicalities of investment make its way up to the surface and that information be disseminated to all valuation is a big, is a big factor. And valuables by and large are independent. So they would have picked this up. But then again, are they obligated to say something about this by law? No. So, so that's where the head. Yeah, that's where the headwind and the head, you know, the walls kind of come in because everyone's pointing to civil. I, you know, like you just find the question is self preservation. Let's just protect ourselves, make sure I'm okay when, when I come through this."
+  },
+  {
+   "t": 2048,
+   "speaker": "Eslam",
+   "text": "That's a really ideal example of what we call in CX, the seam, which is a very long and complicated process that has a lot of people involved in it and the entire experience, no owner. So everyone just likes, as you said, everyone looks at their own base, make sure that the diligence is done on their own base, but no one looks at the bigger picture. And when that happened, the promise is broken, not only from to the end customer who's buying the property. Now it's actually between the part of words and the lenders themselves, because the promise and the information is not passed correctly."
+  },
+  {
+   "t": 2080,
+   "speaker": "Linda",
+   "text": "No, that's right."
+  },
+  {
+   "t": 2082,
+   "speaker": "Eslam",
+   "text": "I have to say that this is, I'm really mesmerized by the entire story, to be honest, and the scale of it. But now something that always struck me, and I'm always a big believer, especially financial services, there's a saying in CX that the customer experience is only tested at the exit. And what I mean by that is only when you make a claim, only when you withdraw your money, this is when you see how seamless because let's be honest, everyone focuses on onboarding. I have, we need to have the most seamless onboarding experience in terms of going on to format another financial institution. But the real, real experience is always tested at the exit."
+  },
+  {
+   "t": 2122,
+   "speaker": "Eslam",
+   "text": "So the question is what happened to all the stakeholders after the collapse that happened? I know it's only recent, it's only two months. I'm sure some of it is still on court. But it'd be crazy if you can give us an overview for how people got their money back. If they have been, if they have stayed well."
+  },
+  {
+   "t": 2139,
+   "speaker": "Linda",
+   "text": "Yeah. Long story short, as some know, people have not got their money back. Now, imagine if you are in a theater and you can see the exit signs. So you know, you know, that sign is pointing to, pointing to where the exit door is. So you know, you can exit there. And the fact is everyone else is trying to exit there. So what happens to that exit is becomes extremely narrow. Now, everyone's trying to exit that before the other person. The reason why that is is because of this concept called gating where, you know, we talked about earlier. So, for example, a fund would say that only 5 % of the fund will be liquidated every quarter."
+  },
+  {
+   "t": 2184,
+   "speaker": "Linda",
+   "text": "Now, you want to get in as early as possible because everyone's getting in really early as well because everyone joins a queue. So you want to get ahead of that on the queue. So if they are liquidating 5 % of the fund, what that means is that 5 % is pro -rata to all the applications. So, for example, if you had, say for argument's sake, say $100 into this battle investments and you join the queue, your pro -rata is that of the $100, say you get $3 back. And what that means is your $97, you can get it back, technically speaking, but you've got to join the queue again."
+  },
+  {
+   "t": 2227,
+   "speaker": "Linda",
+   "text": "So go for round two. And then we don't quite know when the liquidity window will be for round two and perhaps round three. So we just don't, it's really uncertain. Now, how do these managers provide the liquidity for these redemption queues? Is that they have to actually sell the assets from the fund. And a lot of the times they're selling assets for the fund in an urgent situation. So they're selling it for five sale prices. They're selling it for prices are way, way, way below what that particular property is worth. And whilst the investors waiting for their redemption, what happens is the NAB, the NAB asset value, the value of the fund, the assets that they're holding actually go down as well."
+  },
+  {
+   "t": 2282,
+   "speaker": "Linda",
+   "text": "So there's a double whammy, you know, that they could face. Now, I talked about the capital stack in a credit fund. So there are secured funds, which get, they get the first priority. Then there, there are the unsecured funds. But bear in mind that the secured funds are secured against what? And I think that's the question. Right. So it says, you know, it's so when something like this was sold to the investors, it would have said secured against property. But it's not really defined what that property is. What does the property look like? Is it finished property? Is it raw land, etc? What are the properties worth?"
+  },
+  {
+   "t": 2325,
+   "speaker": "Linda",
+   "text": "And I think a lot of the investors now are scrambling to find out, you know, what are those properties worth? Also, this product, Eslam was sold as a very moderate LVR, a loan to value ratio, I think by memory, about 55 to 65 percent or kept kept at, you know, two thirds the value of the land, which as an investor, you go, well, it's not very risky. So, you know, LVR of about 65 percent is doable. But come to think of it from a technical perspective, if that if the value of the land is actually below the loan value, you're in the negative. So even that moderate LVR ratio as it comes across is actually risky now because of what's happened."
+  },
+  {
+   "t": 2373,
+   "speaker": "Linda",
+   "text": "So they've got to then find out what is the value of the land that's been used as collateral has that has those land has the land and the assets been over collateralized. So there's all of that. That's actually being unearthed now. And from an investor's point of view, they're still working out. The first thing that they did when when all of this came to light is the administrator came to the largest four to five different in private credit managers and they needed to raise urgent urgent capital. I think they needed to raise like a twenty twenty million dollar keep the light funding on and they managed to raise only four of that 20 million."
+  },
+  {
+   "t": 2416,
+   "speaker": "Linda",
+   "text": "So so there's a there's a lot that talks about in paper investors are old these but in actual practice we don't know whether that will occur and when that will occur because they could be kept hanging in limbo for years. Now from a from a house bias perspective, their their deposits that were supposed to be put in a trust was not used and was yours was used and was not used for their particular dwelling that they had allocated it to. So probably that's gone. And I and I think they had unwittingly unknowingly as well signed contracts to that effect. So I think for them they fall into the unsecured category."
+  },
+  {
+   "t": 2469,
+   "speaker": "Linda",
+   "text": "And I think for them probably it would be a very, very long road. I mean, nothing nothing of these sad story in France."
+  },
+  {
+   "t": 2477,
+   "speaker": "Eslam",
+   "text": "An incredible sad story because again, this is all started with one promise that Bathla was promising people is all about one thing. One thing mainly that we're going to affordable housing and only normally, you know, getting the affordable house, actually loss of deposit, which is most of the time their life savings basically. She's really sad to hear how this whole idea of promise, the implication of it is incredible. But that leads me to one thing, one thing important that I would love to wrap up with. And again, because you started by saying the private credit market is a market that has a low potential if it's designed right. So what safeguards would you advise borrowers, lenders, but also buyers as well in that space to get the benefit of that market as an alternative for traditional banks?"
+  },
+  {
+   "t": 2529,
+   "speaker": "Linda",
+   "text": "If you look at the origins of Bathla, the founders were two brothers and they did not have, um, they did not have a kind of an established career within property development. They actually, their careers were taxi drivers, which is astounding. So they did end up from taxi driving to running quite a very big property development, um, in Sydney. Now it was very much based on this promise of affordable housing. They also positioned themselves as the development of the community. Like they would have slogans like, you know, welcome home or you know, something like that. So very community based, et cetera. So they did a lot of marketing and quite well."
+  },
+  {
+   "t": 2573,
+   "speaker": "Linda",
+   "text": "Now, some of the safeguards, uh, I'd say would be, you know, to test the waters, test all of the, all of the documents, um, you know, read the fine print. Um, cause I, I think a lot of the, uh, responsibility is put onto entities, people that we deem to be the experts. Now I think to some extent that is correct, but I think it's, you know, there is an onus on individuals as well to do their homework, um, and to really read the fine print, um, from a property developers perspective, the safeguards, there is about valuation. You know, and we stressed about this, uh, as this valuation versus as would be, uh, as if complete valuation."
+  },
+  {
+   "t": 2626,
+   "speaker": "Linda",
+   "text": "So have that independent valuation and show really conservative, uh, valuation foundation there. And there should be some sort of guard rails along the developers, um, the cash runway. So these people were operating with a very, very scant margin of cash, a big, big mountain of debt. Um, and so clearly the, the two were, you know, just did not congeal. They just, you know, were not, were not very symbiotic at all. So I think a lot of these red flags were there. […]"
+  },
+  {
+   "t": 2674,
+   "speaker": "Linda",
+   "text": "Um, but then I think also the point that we made earlier Eslam about the information, not traveling down the chain. Um, I think that's a big one, uh, in my view, to be honest, because like, I think you were operating in silos and not talking to each other as we should."
+  },
+  {
+   "t": 2721,
+   "speaker": "Linda",
+   "text": "Um, then the utility of that information that we've accumulated, uh, is not actually being passed down. It's not actually achieving, you know, the right objective, which is a safeguard of investors and, and home buyers. But everyone has to play their part. And I think that stressing of morality, whether you're a professional or, you know, just not knowing mom and dad, um, mom and dad as well. Um, I think the, the responsibility response, um, is just decreased in our society. Okay. So a couple, a couple of multifaceted contributors there, related, non -investment related,"
+  },
+  {
+   "t": 2763,
+   "speaker": "Eslam",
+   "text": "Couldn't agree more, right? This is the foundation of trust. It's not only a responsibility of one player or one stakeholder says all of us as stakeholders that we own the responsibility from a buyer, from a lender, from a borrower, in the entire industry, all the way that's just the ethical responsibility is each one of us. And I couldn't, I couldn't thank you enough. This has been one of the most, uh, amazing episodes. We can keep going for hours, by the way. That's the beauty of your research, that research that you have done for all of our audiences. I will be sharing again, the link for Linda research, be able to find it in details into the, by the show bio and the notes of the show."
+  },
+  {
+   "t": 2802,
+   "speaker": "Eslam",
+   "text": "Linda, we can't thank you enough. It has been an absolute pleasure. Thank you so much. And it's a great pleasure having you on the show. Thank you so much, Eslam. I really like being here. Thank you so much for your time. Thank you."
+  }
+ ],
+ "chapters": [
+  {
+   "t": 0,
+   "title": "Trust: the foundation of financial services"
+  },
+  {
+   "t": 47,
+   "title": "Intro"
+  },
+  {
+   "t": 56,
+   "title": "Introducing Linda Trusler"
+  },
+  {
+   "t": 147,
+   "title": "Linda's path and why private credit matters"
+  },
+  {
+   "t": 420,
+   "title": "How Bathla started and raised the money"
+  },
+  {
+   "t": 891,
+   "title": "Where did the money go?"
+  },
+  {
+   "t": 1161,
+   "title": "\"Valued as if complete\", explained"
+  },
+  {
+   "t": 1402,
+   "title": "When the gap between the books and reality appeared"
+  },
+  {
+   "t": 1707,
+   "title": "The seam: who owned the whole chain?"
+  },
+  {
+   "t": 2082,
+   "title": "Trust is tested at the exit"
+  },
+  {
+   "t": 2516,
+   "title": "Safeguards for lenders, borrowers and buyers"
+  },
+  {
+   "t": 2764,
+   "title": "Closing: trust is everyone's responsibility"
+  }
+ ],
+ "takeaways": [
+  "Why \"valued as if complete\" and \"valued as is\" are worlds apart for an investor",
+  "The seam: who held the money, who held the information, and who held the relationship",
+  "Why customer experience is tested at the exit, and what gating feels like from the inside",
+  "How investors and home buyers found out from the headlines, not a phone call",
+  "The safeguards Linda would put in place for lenders, borrowers and buyers"
+ ],
+ "quote": {
+  "text": "There was no phone call. There was no saying, you know, we'd like to update you. They actually found out through the headlines.",
+  "t": 1489
+ },
+ "resources": [
+  {
+   "label": "Linda's case study: The Bathla Collapse (PDF)",
+   "url": "https://fuuuhcvwlrfenjfpcymy.supabase.co/storage/v1/object/public/media/1793442541011-Trusler-Bathla-Collapse-Case-Study-Sept-2026.pdf",
+   "note": "Linda Trusler's case study in Australian private credit risk (Trusler Consulting and Academy, September 2026)"
+  },
+  {
+   "label": "Linda's private credit research (PDF)",
+   "url": "https://fuuuhcvwlrfenjfpcymy.supabase.co/storage/v1/object/public/media/1793442546540-Trusler-Private-Credit-Research-Sept-2026.pdf",
+   "note": "Linda Trusler's research on the private credit market (Trusler Consulting and Academy, September 2026)"
+  },
+  {
+   "label": "Trusler Consulting and Academy",
+   "url": "https://truslerconsulting.com.au/",
+   "note": "Linda's consultancy and academy"
+  },
+  {
+   "label": "ASIC",
+   "url": "https://asic.gov.au/",
+   "note": "Australia's corporate regulator, still investigating the events discussed"
+  }
+ ]
+}

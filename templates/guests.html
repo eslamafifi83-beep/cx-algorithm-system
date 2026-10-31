@@ -482,7 +482,10 @@
     gridEl.innerHTML = (list.length
       ? list.slice(0, shown).map((g, i) => cardHTML(g, data.items.indexOf(g), i)).join('')
       : '<div class="empty-note">No guests in this topic yet.</div>') + CTA_TILE;
-    document.getElementById('gCount').textContent = list.length + (list.length === 1 ? ' guest' : ' guests');
+    // The count includes the featured guest shown above the grid
+    const inTopic = g => activeTopic === 'All' || topicKey(g.category) === activeTopic;
+    const total = list.length + (featured && inTopic(featured) ? 1 : 0);
+    document.getElementById('gCount').textContent = total + (total === 1 ? ' guest' : ' guests');
     document.getElementById('loadWrap').hidden = list.length <= shown;
     syncReadMore();
     trimLogos();

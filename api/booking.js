@@ -1,13 +1,51 @@
 // GET  /api/booking  -> open 30-minute times (UTC ms) for the /book page (public)
 // POST /api/booking  -> book a time, or ask for another time (public, rate-limited)
+// Google Calendar connection (kept in this one function: the Hobby plan allows 12 functions):
+// POST /api/booking {action:"status"|"start"|"disconnect"}  (admin only)
+// GET  /api/booking?code=…&state=…  -> Google sends you back here after you sign in
 const { supabase } = require('../lib/supabase');
+const { isAdmin } = require('../lib/auth');
 const { TZ, LENGTH, loadSettings, openSlots, fmt, google } = require('../lib/booking');
 
 const hits = new Map();
 const str = (v, n) => (typeof v === 'string' ? v.trim().slice(0, n) : '');
 const validTz = tz => { try { new Intl.DateTimeFormat('en', { timeZone: tz }); return true; } catch (e) { return false; } };
 
+async function googleCallback(req, res) {
+  const q = req.query || {};
+  const back = msg => { res.writeHead(302, { Location: '/admin#bookings?google=' + msg }); res.end(); };
+  if (q.error) return back('cancelled');
+  if (!google.validState(q.state)) return back('failed');
+  try { await google.exchange(String(q.code)); return back('connected'); }
+  catch (e) { console.warn('[booking] Google connect failed:', e.message); return back('failed'); }
+}
+
+async function googleAdmin(req, res, action) {
+  if (!isAdmin(req)) return res.status(401).json({ error: 'Unauthorized' });
+  try {
+    if (action === 'start') {
+      if (!google.configured()) return res.status(400).json({ error: 'Google keys are not set up in Vercel yet.' });
+      return res.status(200).json({ ok: true, url: google.authUrl() });
+    }
+    if (action === 'disconnect') {
+      await google.forget();
+      return res.status(200).json({ ok: true, connected: false });
+    }
+    let connected = false, working = false;
+    if (google.configured()) {
+      connected = await google.connected();
+      if (connected) { try { await google.accessToken(); working = true; } catch (e) { working = false; } }
+    }
+    return res.status(200).json({ ok: true, configured: google.configured(), connected, working });
+  } catch (e) {
+    return res.status(500).json({ error: e.message });
+  }
+}
+
 module.exports = async (req, res) => {
+  if (req.method === 'GET' && req.query && (req.query.code || req.query.error)) return googleCallback(req, res);
+  if (req.method === 'POST' && req.body && typeof req.body.action === 'string') return googleAdmin(req, res, req.body.action);
+
   if (req.method === 'GET') {
     try {
       const settings = await loadSettings();

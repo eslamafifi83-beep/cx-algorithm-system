@@ -1811,7 +1811,7 @@
     };
   }
   async function bkGoogle(action) {
-    const res = await fetch(location.origin + '/api/booking-google', {
+    const res = await fetch(location.origin + '/api/booking', {
       method: 'POST', headers: { 'Content-Type': 'application/json', ...adminHeaders() }, body: JSON.stringify({ action })
     });
     const out = await res.json();

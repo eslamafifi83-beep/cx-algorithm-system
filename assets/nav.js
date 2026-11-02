@@ -55,6 +55,24 @@
     if (t) t.setAttribute('aria-expanded', 'false');
   });
 
+  // "Book a call" beside the header's Contact button on every page (desktop; it hides with
+  // that button on small screens, where the Contact page's own choice cards take over).
+  (function () {
+    var contact = document.querySelector('.header-subscribe[href="/contact"]');
+    var nav = document.getElementById('siteNav');
+    if (!contact || (nav && nav.getAttribute('data-page') === 'book') || document.querySelector('.header-book')) return;
+    var st = document.createElement('style');
+    st.textContent = '.header-book{display:inline-flex;align-items:center;gap:7px;padding:0.62rem 1.05rem;border-radius:999px;border:1.5px solid rgba(233,163,61,0.55);color:#F3C47A;font-family:var(--display);font-weight:700;font-size:0.8125rem;letter-spacing:0.1em;text-transform:uppercase;min-height:44px;text-decoration:none;white-space:nowrap;transition:background .2s,border-color .2s}' +
+      '.header-book:hover{background:rgba(233,163,61,0.12);border-color:#E9A33D}' +
+      '.header-book:focus-visible{outline:2px solid #E9A33D;outline-offset:3px}' +
+      '@media (max-width:960px){.header-book{display:none}}';
+    document.head.appendChild(st);
+    var a = document.createElement('a');
+    a.className = 'header-book'; a.href = '/book';
+    a.innerHTML = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="4" y="5" width="16" height="16" rx="2.5"/><path d="M4 9h16M8 3v4M16 3v4"/></svg>Book a call';
+    contact.parentNode.insertBefore(a, contact);
+  })();
+
   // The hardcoded markup already shows the correct defaults, so we only refine
   // from saved content (avoids a flash for anyone who hasn't customised the menu).
   fetch('/api/content', { cache: 'no-store' })

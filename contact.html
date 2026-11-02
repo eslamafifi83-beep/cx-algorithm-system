@@ -138,6 +138,26 @@
   }
   .contact-head .sub { color: var(--muted); font-size: 1.0625rem; max-width: 56ch; margin: 0 auto; }
 
+  /* Two ways in: book a call / send a message */
+  .ways { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; max-width: 920px; margin: clamp(2rem, 4.5vw, 2.75rem) auto 0; }
+  .way {
+    display: flex; flex-direction: column; align-items: flex-start; gap: 0.5rem;
+    padding: 1.75rem 1.75rem 1.625rem; border-radius: 20px; text-decoration: none; color: var(--text);
+    background: rgba(255, 255, 255, 0.035); border: 1.5px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.2s var(--ease), border-color 0.2s var(--ease), background 0.2s var(--ease);
+  }
+  .way:hover { transform: translateY(-3px); border-color: rgba(233, 163, 61, 0.6); }
+  .way:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
+  .way-book { border-color: rgba(233, 163, 61, 0.75); background: rgba(233, 163, 61, 0.09); box-shadow: 0 20px 50px -28px rgba(233, 163, 61, 0.5); }
+  .way-icon { width: 50px; height: 50px; border-radius: 14px; background: rgba(233, 163, 61, 0.12); display: grid; place-items: center; margin-bottom: 0.5rem; }
+  .way-title { font-family: var(--display); font-size: 1.3rem; font-weight: 700; }
+  .way-desc { color: var(--muted); font-size: 0.92rem; line-height: 1.55; flex: 1; }
+  .way-btn { margin-top: 0.875rem; pointer-events: none; }
+  .way-outline { border: 1.5px solid rgba(233, 163, 61, 0.55); color: var(--gold-light); background: transparent; }
+  .msg-head { font-family: var(--display); font-size: clamp(1.35rem, 2.4vw, 1.75rem); font-weight: 700; text-align: center; margin-top: clamp(3rem, 6vw, 4.5rem); scroll-margin-top: 6.5rem; }
+  .msg-head span { display: block; font-family: var(--body); font-size: 0.95rem; font-weight: 400; color: var(--muted); margin-top: 0.35rem; }
+  .msg-head + .intents { padding-top: 1.5rem; }
+
   /* Intent cards */
   .intents {
     display: grid;
@@ -284,6 +304,9 @@
   .footer a:hover { color: var(--gold-light); }
   .footer .copy { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.12em; color: var(--muted); }
 
+  @media (max-width: 720px) {
+    .ways { grid-template-columns: 1fr; }
+  }
   @media (max-width: 1024px) {
     .intents { grid-template-columns: 1fr; }
     .contact-grid { grid-template-columns: 1fr; }
@@ -366,9 +389,25 @@
   <div class="contact-head">
     <p class="kicker">Get in touch</p>
     <h1>Let's create something worth talking about</h1>
-    <p class="sub">Whether you want me on your stage, on your screen, or across the mic as a guest on the show, start here and tell me what you have in mind.</p>
+    <p class="sub">Book a quick call, or send a message about speaking, coming on the show or partnering.</p>
   </div>
 
+  <div class="ways">
+    <a class="way way-book" href="/book">
+      <span class="way-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#E9A33D" stroke-width="1.6" stroke-linecap="round"><rect x="4" y="5" width="16" height="16" rx="2.5"/><path d="M4 9h16M8 3v4M16 3v4"/></svg></span>
+      <span class="way-title">Book a 30-minute call</span>
+      <span class="way-desc">Pick a time that suits you, shown in your own time zone.</span>
+      <span class="btn btn-gold way-btn">See open times <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
+    </a>
+    <a class="way" href="#message">
+      <span class="way-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#E9A33D" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M4 7l8 6 8-6"/></svg></span>
+      <span class="way-title">Send a message</span>
+      <span class="way-desc">Speaking, guesting or a partnership. I reply within 2 business days.</span>
+      <span class="btn way-btn way-outline">Write a message <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v13M6 12l6 6 6-6"/></svg></span>
+    </a>
+  </div>
+
+  <h2 class="msg-head" id="message">Send a message <span>What's it about?</span></h2>
   <div class="intents" role="radiogroup" aria-label="What are you reaching out about?" id="intents"></div>
 
   <div class="contact-grid">
@@ -462,47 +501,38 @@
   const CONFIG = {
     speak: {
       formTitle: 'Speaking enquiry',
-      formBlurb: "Tell me about your event and the moment you're trying to create for your audience.",
+      formBlurb: 'A few lines is plenty. We can cover the details on a call.',
       submitLabel: 'Send enquiry',
-      messageLabel: 'Topic & goals for the session',
-      messagePh: 'What would you like me to speak about, and what should the audience walk away with?',
+      messageLabel: 'What would you like me to speak about?',
+      messagePh: 'The topic, the format (keynote, panel, workshop) and roughly how many people.',
       fields: [
         { label: 'Your name', ph: 'Your full name', col: '1 / 2', required: true },
-        { label: 'Work email', ph: 'you@company.com', col: '2 / 3', required: true, email: true },
-        { label: 'Organisation', ph: 'Company or event', col: '1 / 2' },
-        { label: 'Event name', ph: 'e.g. CX Summit 2026', col: '2 / 3' },
-        { label: 'Event date', ph: 'DD / MM / YYYY', col: '1 / 2' },
-        { label: 'Format', ph: 'Keynote · Panel · Fireside · Workshop', col: '2 / 3' },
-        { label: 'Audience size', ph: 'e.g. 300', col: '1 / 2' },
-        { label: 'Location', ph: 'City, or Virtual', col: '2 / 3' }
+        { label: 'Email', ph: 'you@company.com', col: '2 / 3', required: true, email: true },
+        { label: 'Event, date and city', ph: 'e.g. CX Summit, 14 May 2027, Sydney (or virtual)', col: '1 / -1' }
       ]
     },
     guest: {
       formTitle: 'Guest pitch',
-      formBlurb: 'Give me a feel for who you are and the conversation we could have on the show.',
+      formBlurb: 'Tell me who you are and the conversation we could have. Your LinkedIn covers the rest.',
       submitLabel: 'Send pitch',
-      messageLabel: 'What should we talk about?',
-      messagePh: "The angle, story or hot take you'd bring, and why it matters to our audience right now.",
-      fields: [
-        { label: 'Full name', ph: 'Your full name', col: '1 / 2', required: true },
-        { label: 'Email', ph: 'you@company.com', col: '2 / 3', required: true, email: true },
-        { label: 'Company & role', ph: 'e.g. Head of CX', col: '1 / 2' },
-        { label: 'LinkedIn profile', ph: 'linkedin.com/in/…', col: '2 / 3' },
-        { label: 'Area of expertise', ph: 'e.g. AI-driven personalization', col: '1 / 2' },
-        { label: 'Preferred format', ph: 'Audio · Video', col: '2 / 3' }
-      ]
-    },
-    other: {
-      formTitle: 'General enquiry',
-      formBlurb: "A few details and I'll point your message to the right place.",
-      submitLabel: 'Send message',
-      messageLabel: 'Your message',
-      messagePh: 'Tell me what you have in mind…',
+      messageLabel: 'What would you like to talk about on the show?',
+      messagePh: "The story, idea or strong view you'd bring, and why it matters to CX leaders now.",
       fields: [
         { label: 'Your name', ph: 'Your full name', col: '1 / 2', required: true },
         { label: 'Email', ph: 'you@company.com', col: '2 / 3', required: true, email: true },
-        { label: 'Organisation', ph: 'Company / outlet', col: '1 / 2' },
-        { label: 'Nature of enquiry', ph: 'Partnership · Press · Other', col: '2 / 3' }
+        { label: 'LinkedIn or website', ph: 'linkedin.com/in/…', col: '1 / -1' }
+      ]
+    },
+    other: {
+      formTitle: 'Partnership enquiry',
+      formBlurb: 'Sponsorship, media or anything else. Tell me what you have in mind.',
+      submitLabel: 'Send message',
+      messageLabel: 'Your message',
+      messagePh: 'What you have in mind, and what a good result looks like for you.',
+      fields: [
+        { label: 'Your name', ph: 'Your full name', col: '1 / 2', required: true },
+        { label: 'Email', ph: 'you@company.com', col: '2 / 3', required: true, email: true },
+        { label: 'Company', ph: 'Company or outlet', col: '1 / -1' }
       ]
     }
   };
@@ -514,10 +544,7 @@
   let contactEmail = 'hello@thecxalgorithm.com';
   const values = { speak: {}, guest: {}, other: {} }; // preserve typed values per intent
   if (deepLink === 'press') {
-    values.other['Nature of enquiry'] = 'Press kit request';
     values.other.__message = "Hi Eslam, could you send me your press kit? It's for: ";
-  } else if (deepLink === 'partner') {
-    values.other['Nature of enquiry'] = 'Partnership';
   }
 
   function renderIntents() {
@@ -559,8 +586,8 @@
               <input class="cx-in" type="${f.email ? 'email' : 'text'}" data-field="${escAttr(f.label)}" ${f.required ? 'data-required' : ''} ${f.email ? 'data-email' : ''} placeholder="${escAttr(f.ph)}" value="${escAttr(v[f.label] || '')}" />
             </div>`).join('')}
           <div class="field" style="grid-column:1/-1">
-            <label>${c.messageLabel}</label>
-            <textarea class="cx-in" id="msgField" rows="5" placeholder="${escAttr(c.messagePh)}">${esc(v.__message || '')}</textarea>
+            <label>${c.messageLabel} *</label>
+            <textarea class="cx-in" id="msgField" rows="4" placeholder="${escAttr(c.messagePh)}">${esc(v.__message || '')}</textarea>
           </div>
         </div>
         <div class="form-foot">
@@ -598,6 +625,9 @@
         if (!firstBad) firstBad = { el, msg: needsValue ? 'Please fill in the required fields.' : 'That email address doesn\'t look right.' };
       }
     });
+    const msgEl = document.getElementById('msgField');
+    msgEl.classList.remove('invalid');
+    if (!firstBad && !msgEl.value.trim()) { msgEl.classList.add('invalid'); firstBad = { el: msgEl, msg: 'Please add a short message.' }; }
     if (firstBad) {
       statusEl.className = 'form-status err';
       statusEl.textContent = firstBad.msg;

@@ -5,7 +5,7 @@
 // GET  /api/booking?code=…&state=…  -> Google sends you back here after you sign in
 const { supabase } = require('../lib/supabase');
 const { isAdmin } = require('../lib/auth');
-const { TZ, LENGTH, loadSettings, openSlots, fmt, google } = require('../lib/booking');
+const { TZ, LENGTH, loadSettings, openSlots, slotView, fmt, google } = require('../lib/booking');
 
 const hits = new Map();
 const str = (v, n) => (typeof v === 'string' ? v.trim().slice(0, n) : '');
@@ -49,9 +49,9 @@ module.exports = async (req, res) => {
   if (req.method === 'GET') {
     try {
       const settings = await loadSettings();
-      const slots = await openSlots(settings);
+      const { slots, taken } = await slotView(settings);
       res.setHeader('Cache-Control', 'no-store');
-      return res.status(200).json({ ok: true, tz: TZ, length: LENGTH, paused: !!settings.paused, slots });
+      return res.status(200).json({ ok: true, tz: TZ, length: LENGTH, paused: !!settings.paused, slots, taken });
     } catch (e) {
       return res.status(500).json({ error: 'Could not load times' });
     }

@@ -368,6 +368,10 @@
 .book .time b { display: block; font-weight: 600; }
 .book .time small { font-size: 0.74rem; color: var(--grey); }
 .book .time:hover { border-color: var(--gold); }
+.book .time.taken { background: #F4F5F7; border-color: #F4F5F7; color: #A3A9B4; cursor: default; }
+.book .time.taken b { text-decoration: line-through; font-weight: 500; }
+.book .time.taken small { color: #A3A9B4; }
+.book .time.taken:hover { border-color: #F4F5F7; }
 .book .time[aria-pressed="true"] { background: var(--gold); border-color: var(--gold); }
 .book .time[aria-pressed="true"] small { color: #5A3E0E; }
 .book .none { color: var(--grey); font-size: 0.9rem; }
@@ -436,7 +440,7 @@
   const MEL = 'Australia/Melbourne', LEN = 30;
   let detected = 'UTC';
   try { detected = Intl.DateTimeFormat().resolvedOptions().timeZone || detected; } catch (e) {}
-  const G = { tz: detected, show: 'you', day: null, slot: null, ask: false, done: false, form: {}, slots: [], paused: false, error: '', sending: false };
+  const G = { tz: detected, show: 'you', day: null, slot: null, ask: false, done: false, form: {}, slots: [], taken: [], paused: false, error: '', sending: false };
   const $ = id => document.getElementById(id);
   const esc = s => { const d = document.createElement('div'); d.textContent = String(s == null ? '' : s); return d.innerHTML; };
   let formKey = '';
@@ -469,20 +473,22 @@
     }
     const tz = G.show === 'mel' ? MEL : G.tz, other = G.show === 'mel' ? G.tz : MEL, groups = {};
     G.slots.forEach(ms => { const k = parts(ms, tz).key; (groups[k] = groups[k] || []).push(ms); });
-    const keys = Object.keys(groups).sort();
+    const keys = Object.keys(groups).sort(), taken = new Set(G.taken);
+    G.taken.forEach(ms => { const k = parts(ms, tz).key; if (groups[k]) groups[k].push(ms); });
+    keys.forEach(k => groups[k].sort((a, c) => a - c));
     if (!keys.includes(G.day)) G.day = keys[0] || null;
     const zones = [...new Set([detected, 'Europe/London', 'Europe/Madrid', 'America/New_York', 'America/Los_Angeles', 'Asia/Dubai', 'Asia/Singapore', 'Australia/Sydney', 'Australia/Perth'])];
     const sel = G.ask ? '<div class="sel on"><b>Asking for another time</b>Tell me when suits you below. <button class="link" id="cancelAsk">Pick from the list instead</button></div>'
-      : G.slot ? '<div class="sel on"><b>' + fmtD(G.slot, G.tz) + '</b>' + fmtT(G.slot, G.tz) + '–' + fmtT(G.slot + LEN * 60e3, G.tz) + ' your time · ' + fmtT(G.slot, MEL) + ' Melbourne</div>'
+      : G.slot ? '<div class="sel on"><b>' + fmtD(G.slot, G.tz) + '</b>' + fmtT(G.slot, G.tz) + '–' + fmtT(G.slot + LEN * 60e3, G.tz) + ' your local time · ' + fmtT(G.slot, MEL) + ' Melbourne</div>'
       : '<div class="sel">Choose a time on the left</div>';
     const empty = G.paused ? 'Bookings are paused at the moment. Ask for another time below.' : 'No open times right now. Ask for another time below.';
     b.innerHTML =
       '<div class="pane">' +
         '<div class="ph"><h2>Choose a time</h2><span class="chip">30 min · Google Meet</span></div>' +
-        '<div class="tzline"><div class="toggle"><button type="button" id="you" aria-pressed="' + (G.show === 'you') + '">Your time</button><button type="button" id="mel" aria-pressed="' + (G.show === 'mel') + '">Eslam\'s time (Melbourne)</button></div>' +
+        '<div class="tzline"><div class="toggle"><button type="button" id="you" aria-pressed="' + (G.show === 'you') + '">Your local time</button><button type="button" id="mel" aria-pressed="' + (G.show === 'mel') + '">Dr Eslam\'s time · Melbourne</button></div>' +
         (G.show === 'you' ? '<select id="tz" aria-label="Your time zone">' + zones.map(z => '<option value="' + z + '"' + (z === G.tz ? ' selected' : '') + '>' + esc(city(z)) + '</option>').join('') + '</select>' : '') + '</div>' +
         (keys.length ? '<p class="label">Day</p><div class="days">' + keys.map(k => { const q = parts(groups[k][0], tz); return '<button type="button" class="day" data-k="' + k + '" aria-pressed="' + (k === G.day) + '"><small>' + q.wd + '</small><b>' + q.d + '</b></button>'; }).join('') + '</div>' +
-          '<p class="label">Time</p><div class="times">' + (groups[G.day] || []).map(ms => '<button type="button" class="time" data-ms="' + ms + '" aria-pressed="' + (ms === G.slot) + '"><b>' + fmtT(ms, tz) + '</b><small>' + fmtT(ms, other) + ' ' + (G.show === 'mel' ? 'your time' : 'Melbourne') + '</small></button>').join('') + '</div>'
+          '<p class="label">Time</p><div class="times">' + (groups[G.day] || []).map(ms => taken.has(ms) ? '<button type="button" class="time taken" disabled><b>' + fmtT(ms, tz) + '</b><small>Booked</small></button>' : '<button type="button" class="time" data-ms="' + ms + '" aria-pressed="' + (ms === G.slot) + '"><b>' + fmtT(ms, tz) + '</b><small>' + fmtT(ms, other) + ' ' + (G.show === 'mel' ? 'your time' : 'Melbourne') + '</small></button>').join('') + '</div>'
           : '<p class="none">' + empty + '</p>') +
         '<p class="other">None of these work? <button type="button" class="link" id="ask">Ask for another time</button></p>' +
       '</div>' +
@@ -501,7 +507,7 @@
     $('mel').onclick = () => { keepForm(); G.show = 'mel'; render(); };
     if ($('tz')) $('tz').onchange = e => { keepForm(); G.tz = e.target.value; render(); };
     b.querySelectorAll('.day').forEach(x => x.onclick = () => { keepForm(); G.day = x.dataset.k; render(); });
-    b.querySelectorAll('.time').forEach(x => x.onclick = () => { keepForm(); G.slot = +x.dataset.ms; G.ask = false; G.error = ''; render(); });
+    b.querySelectorAll('.time:not(.taken)').forEach(x => x.onclick = () => { keepForm(); G.slot = +x.dataset.ms; G.ask = false; G.error = ''; render(); });
     $('ask').onclick = () => { keepForm(); G.ask = true; G.slot = null; G.error = ''; render(); $('w').focus(); };
     if ($('cancelAsk')) $('cancelAsk').onclick = () => { keepForm(); G.ask = false; render(); };
     $('f').onsubmit = submit;
@@ -566,10 +572,10 @@
       const res = await fetch('/api/booking', { cache: 'no-store' });
       const out = await res.json();
       if (!res.ok) throw new Error();
-      G.slots = out.slots || []; G.paused = !!out.paused;
+      G.slots = out.slots || []; G.taken = out.taken || []; G.paused = !!out.paused;
       if (!keepError) G.error = '';
     } catch (e) {
-      G.slots = []; G.error = 'Could not load the available times. Please refresh the page.';
+      G.slots = []; G.taken = []; G.error = 'Could not load the available times. Please refresh the page.';
     }
     render();
   }

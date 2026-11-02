@@ -155,49 +155,20 @@
   .way-btn { margin-top: 0.875rem; pointer-events: none; }
   .way-outline { border: 1.5px solid rgba(233, 163, 61, 0.55); color: var(--gold-light); background: transparent; }
   .msg-head { font-family: var(--display); font-size: clamp(1.35rem, 2.4vw, 1.75rem); font-weight: 700; text-align: center; margin-top: clamp(3rem, 6vw, 4.5rem); scroll-margin-top: 6.5rem; }
-  .msg-head span { display: block; font-family: var(--body); font-size: 0.95rem; font-weight: 400; color: var(--muted); margin-top: 0.35rem; }
-  .msg-head + .intents { padding-top: 1.5rem; }
+  .msg-head + .contact-grid { margin-top: 1.75rem; }
 
-  /* Intent cards */
-  .intents {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 22px;
-    padding: clamp(2rem, 4.5vw, 2.875rem) 0 0.75rem;
+  /* "About" pills inside the message form (optional topic) */
+  .about-row { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 12px; margin-bottom: 0.875rem; }
+  .about-label { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); }
+  .pills { display: flex; flex-wrap: wrap; gap: 8px; }
+  .pill {
+    font-family: var(--body); font-size: 0.875rem; font-weight: 500; color: var(--text); cursor: pointer;
+    padding: 0.5rem 1rem; min-height: 40px; border-radius: 999px; background: rgba(255, 255, 255, 0.04);
+    border: 1.5px solid rgba(255, 255, 255, 0.14); transition: border-color 0.2s var(--ease), background 0.2s var(--ease);
   }
-  .intent {
-    position: relative;
-    border-radius: 20px;
-    padding: 2rem 1.875rem;
-    background: rgba(255, 255, 255, 0.035);
-    border: 1.5px solid rgba(255, 255, 255, 0.08);
-    cursor: pointer;
-    text-align: left;
-    color: var(--text);
-    font-family: var(--body);
-    transition: transform 0.2s var(--ease), border-color 0.2s var(--ease), background 0.2s var(--ease), box-shadow 0.2s var(--ease);
-  }
-  .intent:hover { transform: translateY(-4px); }
-  .intent.active {
-    border-color: rgba(233, 163, 61, 0.75);
-    background: rgba(233, 163, 61, 0.09);
-    box-shadow: 0 20px 50px -28px rgba(233, 163, 61, 0.5);
-  }
-  .intent .tick {
-    position: absolute; top: 22px; right: 22px;
-    width: 26px; height: 26px; border-radius: 50%;
-    background: var(--gold);
-    display: none; align-items: center; justify-content: center;
-  }
-  .intent.active .tick { display: flex; }
-  .intent .icon-tile {
-    width: 58px; height: 58px; border-radius: 15px;
-    background: rgba(233, 163, 61, 0.12);
-    display: grid; place-items: center;
-    margin-bottom: 1.375rem;
-  }
-  .intent .intent-title { display: block; font-family: var(--display); font-size: 1.3rem; font-weight: 700; margin-bottom: 0.6rem; }
-  .intent p { color: var(--muted); font-size: 0.9rem; line-height: 1.6; }
+  .pill:hover { border-color: rgba(233, 163, 61, 0.6); }
+  .pill:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+  .pill[aria-checked="true"] { background: var(--gold); border-color: var(--gold); color: #2A1D05; font-weight: 600; }
 
   /* Form + sidebar */
   .contact-grid {
@@ -308,7 +279,6 @@
     .ways { grid-template-columns: 1fr; }
   }
   @media (max-width: 1024px) {
-    .intents { grid-template-columns: 1fr; }
     .contact-grid { grid-template-columns: 1fr; }
   }
   @media (max-width: 640px) {
@@ -353,7 +323,7 @@
     }
   }
   @media (prefers-reduced-motion: reduce) {
-    .intent:hover, .btn-gold:hover, .host-socials a:hover { transform: none; }
+    .btn-gold:hover, .host-socials a:hover { transform: none; }
   }
 </style>
 <script src="/assets/img.js"></script>
@@ -407,8 +377,7 @@
     </a>
   </div>
 
-  <h2 class="msg-head" id="message">Send a message <span>What's it about?</span></h2>
-  <div class="intents" role="radiogroup" aria-label="What are you reaching out about?" id="intents"></div>
+  <h2 class="msg-head" id="message">Send a message</h2>
 
   <div class="contact-grid">
     <div class="form-card" id="formCard"></div>
@@ -486,19 +455,25 @@
   const esc = s => { const d = document.createElement('div'); d.textContent = String(s ?? ''); return d.innerHTML; };
   const escAttr = s => esc(s).replace(/"/g, '&quot;');
 
-  const ICONS = {
-    stage: '<path d="M4 9l8-4.5L20 9l-8 4.5z"/><path d="M6 11v5c0 1.5 2.7 2.6 6 2.6s6-1.1 6-2.6v-5"/>',
-    mic: '<rect x="9" y="2.5" width="6" height="11" rx="3"/><path d="M5.8 11a6.2 6.2 0 0 0 12.4 0"/><line x1="12" y1="17.5" x2="12" y2="21"/><line x1="8.5" y1="21" x2="15.5" y2="21"/>',
-    handshake: '<path d="M8 12l2.5 2.5a1.5 1.5 0 0 0 2.1 0L20 8"/><path d="M4 8l3-2 4 3M20 8l-3-2-3.5 2.6"/><path d="M4 8v6l3 3M20 8v6l-3 3"/>'
-  };
-
-  const INTENTS = [
-    { key: 'speak', icon: 'stage', title: 'Speak at your event', desc: 'Keynotes, panels, fireside chats and workshops on CX, AI and customer-led growth.' },
-    { key: 'guest', icon: 'mic', title: 'Come on the show', desc: 'Pitch yourself or a guest to be featured in an upcoming episode of the podcast.' },
-    { key: 'other', icon: 'handshake', title: 'Partner or collaborate', desc: 'Sponsorships, media, and partnerships that move the customer experience forward.' }
+  // Optional topic pills; with none picked the message goes in as a general enquiry
+  const TOPICS = [
+    { key: 'speak', label: 'Speaking' },
+    { key: 'guest', label: 'The show' },
+    { key: 'other', label: 'Partnership' }
   ];
 
   const CONFIG = {
+    general: {
+      formTitle: 'Message',
+      formBlurb: "Pick a topic if one fits, or just write. I read every message myself.",
+      submitLabel: 'Send message',
+      messageLabel: 'Your message',
+      messagePh: 'What you have in mind…',
+      fields: [
+        { label: 'Your name', ph: 'Your full name', col: '1 / 2', required: true },
+        { label: 'Email', ph: 'you@company.com', col: '2 / 3', required: true, email: true }
+      ]
+    },
     speak: {
       formTitle: 'Speaking enquiry',
       formBlurb: 'A few lines is plenty. We can cover the details on a call.',
@@ -540,43 +515,30 @@
   // Deep links: #speak (Book me to speak), #guest (Pitch yourself), #other / #partner,
   // and #press (the Host page's "Request press kit"), which opens the general form pre-filled
   const deepLink = (location.hash || '').replace('#', '');
-  let selected = ['speak', 'guest', 'other'].includes(deepLink) ? deepLink : (deepLink === 'press' || deepLink === 'partner') ? 'other' : 'speak';
+  let selected = ['speak', 'guest', 'other'].includes(deepLink) ? deepLink : deepLink === 'partner' ? 'other' : 'general';
   let contactEmail = 'hello@thecxalgorithm.com';
-  const values = { speak: {}, guest: {}, other: {} }; // preserve typed values per intent
+  let values = {}; // typed values, kept when the topic changes
+  if (deepLink && deepLink !== 'message') requestAnimationFrame(() => document.getElementById('message').scrollIntoView());
   if (deepLink === 'press') {
-    values.other.__message = "Hi Eslam, could you send me your press kit? It's for: ";
-  }
-
-  function renderIntents() {
-    document.getElementById('intents').innerHTML = INTENTS.map(it => `
-      <button type="button" class="intent${it.key === selected ? ' active' : ''}" role="radio" aria-checked="${it.key === selected}" data-key="${it.key}">
-        <span class="tick"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#12203C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-11"/></svg></span>
-        <span class="icon-tile"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#E9A33D" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${ICONS[it.icon]}</svg></span>
-        <span class="intent-title">${it.title}</span>
-        <p>${it.desc}</p>
-      </button>`).join('');
-    document.querySelectorAll('.intent').forEach(b => b.addEventListener('click', () => {
-      saveValues();
-      selected = b.dataset.key;
-      renderIntents();
-      renderForm();
-    }));
+    values.__message = "Hi Eslam, could you send me your press kit? It's for: ";
   }
 
   function saveValues() {
-    const c = CONFIG[selected];
-    document.querySelectorAll('#formCard [data-field]').forEach((el, i) => {
-      values[selected][el.dataset.field] = el.value;
-    });
+    document.querySelectorAll('#formCard [data-field]').forEach(el => { values[el.dataset.field] = el.value; });
     const msg = document.getElementById('msgField');
-    if (msg) values[selected].__message = msg.value;
+    if (msg) values.__message = msg.value;
   }
 
   function renderForm() {
     const c = CONFIG[selected];
-    const v = values[selected];
+    const v = values;
     document.getElementById('formCard').innerHTML = `
-      <div class="form-title-row"><span class="dot"></span><h2>${c.formTitle}</h2></div>
+      <div class="about-row">
+        <span class="about-label" id="aboutLabel">About</span>
+        <div class="pills" role="radiogroup" aria-labelledby="aboutLabel">
+          ${TOPICS.map(t => `<button type="button" class="pill" role="radio" aria-checked="${t.key === selected}" data-key="${t.key}">${t.label}</button>`).join('')}
+        </div>
+      </div>
       <p class="form-blurb">${c.formBlurb}</p>
       <form id="contactForm" novalidate>
         <div class="fields">
@@ -603,6 +565,14 @@
         <p class="form-status" id="formStatus" role="status"></p>
       </form>`;
     document.getElementById('contactForm').addEventListener('submit', onSubmit);
+    // Tap a topic to pick it; tap it again to go back to a general message
+    document.querySelectorAll('#formCard .pill').forEach(b => b.addEventListener('click', () => {
+      saveValues();
+      selected = b.dataset.key === selected ? 'general' : b.dataset.key;
+      renderForm();
+      const p = document.querySelector('#formCard .pill[data-key="' + b.dataset.key + '"]');
+      if (p) p.focus();
+    }));
   }
 
   async function onSubmit(e) {
@@ -652,7 +622,7 @@
       // the visitor sees success if either one gets through
       const results = await Promise.allSettled(formKey ? [res, emailCopy(fields, message)] : [res]);
       if (!results.some(r => r.status === 'fulfilled')) throw results[0].reason;
-      values[selected] = {};
+      values = {};
       document.getElementById('formCard').innerHTML = `
         <div class="success-card">
           <div class="big-tick"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#12203C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-11"/></svg></div>
@@ -693,7 +663,6 @@
     });
   }
 
-  renderIntents();
   renderForm();
 
   (async function hydrate() {

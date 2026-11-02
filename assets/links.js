@@ -10,7 +10,7 @@
  * An episode's (or article's) address comes from its title, so renaming one changes its address.
  */
 (function (root) {
-  const PAGE = { home: '/', guests: '/guests', about: '/about', episodes: '/episodes', blog: '/blog', contact: '/contact' };
+  const PAGE = { home: '/', guests: '/guests', about: '/about', episodes: '/episodes', blog: '/blog', contact: '/contact', book: '/book' };
 
   function slugify(text) {
     let s = String(text || '')

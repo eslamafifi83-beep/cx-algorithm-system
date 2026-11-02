@@ -405,6 +405,7 @@
       <button class="tab-btn" data-tab="guests" type="button">Guests <span class="count" id="count-guests">0</span></button>
       <button class="tab-btn" data-tab="blog" type="button">Blog <span class="count" id="count-articles">0</span></button>
       <button class="tab-btn" data-tab="messages" type="button">Messages <span class="count" id="count-messages">0</span></button>
+      <button class="tab-btn" data-tab="bookings" type="button">Bookings</button>
       <button class="tab-btn" data-tab="host" type="button">Host</button>
       <button class="tab-btn" data-tab="about" type="button">About page</button>
       <button class="tab-btn" data-tab="links" type="button">Links</button>
@@ -488,6 +489,24 @@
         <h2 class="panel-title">Messages</h2>
         <p class="panel-desc">Submissions from the contact page: speaking enquiries, guest pitches and general messages. These live on the server only — visitors can't see them.</p>
         <div id="messagesList"></div>
+      </section>
+
+      <section class="panel" id="panel-bookings">
+        <h2 class="panel-title">Bookings</h2>
+        <p class="panel-desc">When people can book a 30-minute call on <a href="/book" target="_blank" style="color:var(--gold-light)">thecxalgorithm.com/book</a>. All times are Melbourne time. Each booking shows in Messages and is emailed to you. Click Save &amp; publish after changing anything here.</p>
+        <p class="panel-sub">Weekly hours</p>
+        <div id="bk-hours"></div>
+        <p class="panel-sub" style="margin-top:1.75rem">Rules</p>
+        <div class="row">
+          <div><label for="bk-maxwd">Most calls on a weekday</label><select id="bk-maxwd"><option>1</option><option>2</option><option>3</option><option>4</option><option>6</option></select></div>
+          <div><label for="bk-maxwe">Most calls on a weekend day</label><select id="bk-maxwe"><option>1</option><option>2</option><option>3</option><option>4</option><option>6</option></select></div>
+          <div><label for="bk-buffer">Gap between calls</label><select id="bk-buffer"><option value="0">None</option><option value="15">15 minutes</option><option value="30">30 minutes</option></select></div>
+          <div><label for="bk-notice">Earliest booking</label><select id="bk-notice"><option value="4">4 hours ahead</option><option value="12">12 hours ahead</option><option value="24">1 day ahead</option><option value="48">2 days ahead</option></select></div>
+          <div><label for="bk-weeks">Open up to</label><select id="bk-weeks"><option value="1">1 week ahead</option><option value="2">2 weeks ahead</option><option value="3">3 weeks ahead</option><option value="4">4 weeks ahead</option><option value="6">6 weeks ahead</option></select></div>
+          <div><label for="bk-paused">Bookings</label><select id="bk-paused"><option value="0">Open</option><option value="1">Paused (no times shown)</option></select></div>
+        </div>
+        <p class="panel-sub" style="margin-top:1.75rem">Google Calendar</p>
+        <div class="card" id="bk-google"><p class="hint">Checking…</p></div>
       </section>
 
       <section class="panel" id="panel-host">
@@ -676,8 +695,8 @@
   }
   buildTabSelect();
   $('tabSelect').addEventListener('change', (e) => showTab(e.target.value));
-  const initialTab = location.hash.slice(1);
-  if (['hero', 'companies', 'episodes', 'guests', 'blog', 'messages', 'host', 'about', 'links', 'navigation'].includes(initialTab)) showTab(initialTab);
+  const initialTab = location.hash.slice(1).split('?')[0];
+  if (['hero', 'companies', 'episodes', 'guests', 'blog', 'messages', 'bookings', 'host', 'about', 'links', 'navigation'].includes(initialTab)) showTab(initialTab);
 
   function updateCounts() {
     $('count-episodes').textContent = content ? content.episodes.length : 0;
@@ -1008,7 +1027,7 @@
   }
 
   /* ---- Contact messages (read-only inbox) ---- */
-  const INTENT_LABELS = { speak: 'Speaking enquiry', guest: 'Guest pitch', other: 'General enquiry' };
+  const INTENT_LABELS = { speak: 'Speaking enquiry', guest: 'Guest pitch', other: 'General enquiry', booking: 'Call booked', 'booking-request': 'Asked for another time' };
   async function loadMessages() {
     const box = $('messagesList');
     try {
@@ -1027,7 +1046,7 @@
         div.className = 'card';
         const when = new Date(m.receivedAt).toLocaleString();
         const fieldsHtml = Object.entries(m.fields || {})
-          .filter(([, v]) => String(v).trim())
+          .filter(([k, v]) => k !== 'startUtc' && String(v).trim())
           .map(([k, v]) => `<div style="margin-bottom:0.25rem"><span style="color:var(--muted); font-size:0.78rem">${k}:</span> ${String(v).replace(/</g, '&lt;')}</div>`)
           .join('');
         div.innerHTML = `
@@ -1582,6 +1601,7 @@
     renderGuestStats();
     renderGuestsList();
     renderNav();
+    fillBookings();
     updateCounts();
   }
 
@@ -1614,6 +1634,7 @@
     };
     PLATFORM_KEYS.forEach(k => { content.links[k] = $('l-' + k).value.trim(); });
     content.linksVersion = 2;
+    collectBookings();
   }
 
   $('host-photo-file').addEventListener('change', async (e) => {
@@ -1734,7 +1755,96 @@
     } catch (err) { status('Save failed: ' + err.message, 'err'); }
   });
 
+  /* ---- Bookings (/book page) ---- */
+  const BK_DAYS = [[1, 'Mon'], [2, 'Tue'], [3, 'Wed'], [4, 'Thu'], [5, 'Fri'], [6, 'Sat'], [0, 'Sun']];
+  const BK_DEFAULT = {
+    days: { 0: { on: true, s: '16:00', e: '22:00' }, 1: { on: true, s: '19:30', e: '22:30' }, 2: { on: true, s: '19:30', e: '22:30' }, 3: { on: true, s: '19:30', e: '22:30' }, 4: { on: true, s: '19:30', e: '22:30' }, 5: { on: true, s: '19:30', e: '22:30' }, 6: { on: true, s: '16:00', e: '22:00' } },
+    maxWeekday: 2, maxWeekend: 3, bufferMins: 15, noticeHours: 12, weeksAhead: 3, paused: false
+  };
+  const bkMins = v => v === '24:00' ? 1440 : (+v.slice(0, 2)) * 60 + (+v.slice(3));
+  function bkTimeOptions(v) {
+    let h = '';
+    for (let t = 360; t <= 1440; t += 30) {
+      const val = t === 1440 ? '24:00' : String(Math.floor(t / 60)).padStart(2, '0') + ':' + String(t % 60).padStart(2, '0');
+      const hr = Math.floor(t / 60) % 24;
+      const lab = t === 1440 ? 'Midnight' : ((hr % 12) || 12) + ':' + String(t % 60).padStart(2, '0') + (hr < 12 ? ' am' : ' pm');
+      h += `<option value="${val}"${v === val ? ' selected' : ''}>${lab}</option>`;
+    }
+    return h;
+  }
+  function fillBookings() {
+    const b = content.booking = Object.assign({}, BK_DEFAULT, content.booking || {});
+    b.days = Object.assign({}, BK_DEFAULT.days, b.days || {});
+    $('bk-hours').innerHTML = BK_DAYS.map(([d, name]) => {
+      const c = b.days[d];
+      return `<div style="display:grid;grid-template-columns:3rem auto minmax(0,1fr) auto minmax(0,1fr);gap:0.75rem;align-items:center;padding:0.45rem 0;border-bottom:1px solid var(--hairline)">
+        <strong>${name}</strong>
+        <label style="display:flex;align-items:center;gap:0.4rem;margin:0;text-transform:none;letter-spacing:0"><input type="checkbox" data-bk-on="${d}" ${c.on ? 'checked' : ''} style="width:auto;margin:0"> Open</label>
+        <select data-bk-s="${d}" ${c.on ? '' : 'disabled'} aria-label="${name} from">${bkTimeOptions(c.s)}</select>
+        <span class="hint" style="margin:0">to</span>
+        <select data-bk-e="${d}" ${c.on ? '' : 'disabled'} aria-label="${name} to">${bkTimeOptions(c.e)}</select>
+      </div>`;
+    }).join('');
+    $('bk-hours').querySelectorAll('[data-bk-on]').forEach(cb => cb.addEventListener('change', () => {
+      const d = cb.dataset.bkOn;
+      document.querySelector(`[data-bk-s="${d}"]`).disabled = !cb.checked;
+      document.querySelector(`[data-bk-e="${d}"]`).disabled = !cb.checked;
+    }));
+    $('bk-maxwd').value = String(b.maxWeekday);
+    $('bk-maxwe').value = String(b.maxWeekend);
+    $('bk-buffer').value = String(b.bufferMins);
+    $('bk-notice').value = String(b.noticeHours);
+    $('bk-weeks').value = String(b.weeksAhead);
+    $('bk-paused').value = b.paused ? '1' : '0';
+  }
+  function collectBookings() {
+    const days = {};
+    BK_DAYS.forEach(([d]) => {
+      const s = document.querySelector(`[data-bk-s="${d}"]`).value;
+      let e = document.querySelector(`[data-bk-e="${d}"]`).value;
+      if (bkMins(e) <= bkMins(s)) e = '24:00';
+      days[d] = { on: document.querySelector(`[data-bk-on="${d}"]`).checked, s, e };
+    });
+    content.booking = {
+      days, maxWeekday: +$('bk-maxwd').value, maxWeekend: +$('bk-maxwe').value, bufferMins: +$('bk-buffer').value,
+      noticeHours: +$('bk-notice').value, weeksAhead: +$('bk-weeks').value, paused: $('bk-paused').value === '1'
+    };
+  }
+  async function bkGoogle(action) {
+    const res = await fetch(location.origin + '/api/booking-google', {
+      method: 'POST', headers: { 'Content-Type': 'application/json', ...adminHeaders() }, body: JSON.stringify({ action })
+    });
+    const out = await res.json();
+    if (!res.ok) throw new Error(out.error || 'Request failed');
+    return out;
+  }
+  async function loadGoogleStatus() {
+    const box = $('bk-google');
+    const back = location.hash.split('?google=')[1] || '';
+    try {
+      const s = await bkGoogle('status');
+      const note = back === 'connected' ? '<p class="hint" style="color:#7FD1A1;margin-bottom:0.75rem">Connected. New bookings now go straight into your calendar.</p>'
+        : back === 'failed' ? '<p class="hint" style="color:#E06060;margin-bottom:0.75rem">Google sign-in did not finish. Please try again.</p>'
+        : back === 'cancelled' ? '<p class="hint" style="margin-bottom:0.75rem">Google sign-in was cancelled.</p>' : '';
+      if (!s.configured) {
+        box.innerHTML = `${note}<strong>Not connected yet</strong>
+          <p class="hint" style="margin-top:0.5rem">Bookings already work: each one appears in Messages and is emailed to you with a one-click "add to calendar" link that invites the guest. To have bookings land in your Google Calendar automatically, with a Google Meet link and your busy times hidden, add GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET in Vercel, then come back here and click Connect.</p>`;
+      } else if (s.connected && s.working) {
+        box.innerHTML = `${note}<strong style="color:#7FD1A1">Connected to Google Calendar</strong>
+          <p class="hint" style="margin-top:0.5rem">Busy times in your calendar are hidden from the booking page, and every booking creates a calendar event with a Google Meet link and invites the guest.</p>
+          <button class="btn-ghost btn-small" type="button" id="bk-disconnect" style="margin-top:0.75rem">Disconnect</button>`;
+        $('bk-disconnect').addEventListener('click', async () => { await bkGoogle('disconnect'); loadGoogleStatus(); });
+      } else {
+        box.innerHTML = `${note}<strong>${s.connected ? 'Google needs you to sign in again' : 'Ready to connect'}</strong>
+          <p class="hint" style="margin-top:0.5rem">Sign in with the Google account whose calendar should receive the bookings.</p>
+          <button class="btn-gold btn-small" type="button" id="bk-connect" style="margin-top:0.75rem">Connect Google Calendar</button>`;
+        $('bk-connect').addEventListener('click', async () => { const o = await bkGoogle('start'); location.href = o.url; });
+      }
+    } catch (e) { box.innerHTML = '<p class="hint">Could not check Google Calendar: ' + e.message + '</p>'; }
+  }
+
   async function boot() {
+    loadGoogleStatus();
     loadMessages();
     try {
       const res = await fetch(location.origin + '/api/content', { cache: 'no-store' });

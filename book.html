@@ -494,7 +494,7 @@
           '<label>Message<textarea id="m" required placeholder="What would you like to talk about?">' + esc(G.form.m || '') + '</textarea></label>' +
           (G.error ? '<p class="err" role="alert">' + esc(G.error) + '</p>' : '') +
           '<button class="btn btn-gold" type="submit"' + ((G.slot || G.ask) && !G.sending ? '' : ' disabled') + '>' + (G.sending ? 'Booking…' : G.ask ? 'Send request' : 'Book the call') + '</button>' +
-          '<p class="meet">You\'ll get a calendar invite with the Google Meet link.</p>' +
+          '<p class="meet">You\'ll get a calendar invite with the meeting link.</p>' +
         '</form></div>';
 
     $('you').onclick = () => { keepForm(); G.show = 'you'; render(); };
